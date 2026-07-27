@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Waves, Search, Menu, X } from 'lucide-react';
+import { 
+  Waves, Search, Menu, X, 
+  Compass, Wrench, BookOpen, 
+  FileText, HelpCircle, ChevronRight 
+} from 'lucide-react';
 
 export const Navbar: React.FC = () => {
   const navigate = useNavigate();
@@ -10,12 +14,12 @@ export const Navbar: React.FC = () => {
   const [showSearch, setShowSearch] = useState(false);
 
   const links = [
-    { href: '/', label: 'Home' },
-    { href: '/fish', label: 'Fish Encyclopedia' },
-    { href: '/equipment', label: 'Equipment' },
-    { href: '/guides', label: 'Learn' },
-    { href: '/blog', label: 'Blog' },
-    { href: '/about', label: 'About' },
+    { href: '/', label: 'Home', desc: 'Return to dashboard & news feed', icon: Waves },
+    { href: '/fish', label: 'Fish Encyclopedia', desc: 'Browse tropical fish species catalog', icon: Compass },
+    { href: '/equipment', label: 'Equipment Match', desc: 'Filter, heater & tank calculators', icon: Wrench },
+    { href: '/guides', label: 'Learn & Diagnose', desc: 'Expert care guides & disease diagnostics', icon: BookOpen },
+    { href: '/blog', label: 'FishVersa Blog', desc: 'Latest articles & aquascaping secrets', icon: FileText },
+    { href: '/about', label: 'Our Mission', desc: 'Founded to simplify ecosystem chemistry', icon: HelpCircle },
   ];
 
   const handleSearchSubmit = (e: React.FormEvent) => {
@@ -28,11 +32,11 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 shadow-lg shadow-black/25 transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-0">
+    <nav className="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80 shadow-lg shadow-black/25">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Logo & Triggers Row */}
-        <div className="flex items-center justify-between h-12 lg:h-20">
+        <div className="flex items-center justify-between h-20">
           
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -98,40 +102,59 @@ export const Navbar: React.FC = () => {
           </div>
 
         </div>
+      </div>
 
-        {/* Mobile Expanding Dropdown (Pushes page content down natively) */}
-        {isOpen && (
-          <div className="lg:hidden mt-4 pt-4 border-t border-slate-900 space-y-4 animate-in fade-in slide-in-from-top-4 duration-200">
-            <div className="grid grid-cols-2 gap-3">
-              {links.map((link) => {
-                const isActive = location.pathname === link.href;
-                return (
-                  <Link
-                    key={link.href}
-                    to={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className={`px-4 py-3 rounded-xl text-xs font-bold text-center transition-all ${
+      {/* Mobile Glassmorphic Overlay Dropdown */}
+      {isOpen && (
+        <div className="lg:hidden absolute top-20 left-0 right-0 bg-[#030712]/98 backdrop-blur-xl border-b border-slate-900 shadow-2xl p-5 space-y-5 animate-in slide-in-from-top-3 duration-250 max-h-[calc(100vh-5rem)] overflow-y-auto">
+          {/* Column list of items */}
+          <div className="flex flex-col space-y-2">
+            {links.map((link) => {
+              const Icon = link.icon;
+              const isActive = location.pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-between p-3 rounded-2xl bg-slate-900/30 border border-slate-900/40 hover:bg-slate-900/60 transition-all duration-200 group"
+                >
+                  <div className="flex items-center space-x-3">
+                    <div className={`p-2 rounded-xl border ${
                       isActive 
-                        ? 'bg-sky-500/10 text-sky-400 border border-sky-500/20' 
-                        : 'bg-slate-900/40 text-slate-350 hover:bg-slate-900/80 hover:text-sky-400 border border-transparent'
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                );
-              })}
-            </div>
+                        ? 'bg-sky-500/10 text-sky-400 border-sky-500/20' 
+                        : 'bg-slate-950 text-slate-450 border-slate-850 group-hover:text-sky-400'
+                    } transition-all`}>
+                      <Icon className="h-4.5 w-4.5" />
+                    </div>
+                    <div className="text-left">
+                      <span className={`block text-xs font-bold ${
+                        isActive ? 'text-sky-400' : 'text-slate-200 group-hover:text-sky-400'
+                      } transition-all`}>
+                        {link.label}
+                      </span>
+                      <span className="block text-[9px] text-slate-500 font-semibold mt-0.5 leading-none">
+                        {link.desc}
+                      </span>
+                    </div>
+                  </div>
+                  <ChevronRight className="h-3.5 w-3.5 text-slate-600 group-hover:text-sky-400 group-hover:translate-x-0.5 transition-all" />
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="pt-2">
             <Link
               to="/fish"
               onClick={() => setIsOpen(false)}
-              className="block w-full py-3.5 text-center text-xs font-black uppercase tracking-wider rounded-xl bg-sky-500 text-slate-950 shadow-md shadow-sky-500/10"
+              className="block w-full py-3.5 text-center text-xs font-black uppercase tracking-wider rounded-2xl bg-sky-500 hover:bg-sky-600 text-slate-950 shadow-md shadow-sky-500/10 transition-all btn-glow-cyan"
             >
-              Explore Species
+              Explore Species Catalog
             </Link>
           </div>
-        )}
-
-      </div>
+        </div>
+      )}
 
       {/* Global Search Overlay dropdown */}
       {showSearch && (
