@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Waves, Search, Menu, X } from 'lucide-react';
-import { AnimatePresence, motion } from 'framer-motion';
 
 export const Navbar: React.FC = () => {
   const navigate = useNavigate();
@@ -29,9 +28,11 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80 shadow-lg shadow-black/25">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+    <nav className="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 shadow-lg shadow-black/25 transition-all duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-0">
+        
+        {/* Main Logo & Triggers Row */}
+        <div className="flex items-center justify-between h-12 lg:h-20">
           
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -61,7 +62,7 @@ export const Navbar: React.FC = () => {
             })}
           </div>
 
-          {/* Right Actions */}
+          {/* Right Actions - Desktop */}
           <div className="hidden lg:flex items-center space-x-4">
             {/* Search Trigger */}
             <button
@@ -80,23 +81,56 @@ export const Navbar: React.FC = () => {
             </Link>
           </div>
 
-          {/* Mobile menu trigger */}
-          <div className="lg:hidden flex items-center space-x-3">
+          {/* Mobile triggers */}
+          <div className="lg:hidden flex items-center space-x-2">
             <button
               onClick={() => setShowSearch(!showSearch)}
-              className="p-2.5 text-slate-400 hover:text-sky-400 rounded-xl transition-colors cursor-pointer"
+              className="p-2 text-slate-400 hover:text-sky-400 rounded-xl transition-colors cursor-pointer"
             >
               <Search className="h-5 w-5" />
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2.5 text-slate-400 hover:text-sky-400 transition-colors cursor-pointer"
+              className="p-2 text-slate-400 hover:text-sky-400 transition-colors cursor-pointer"
             >
-              <Menu className="h-6 w-6" />
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
 
         </div>
+
+        {/* Mobile Expanding Dropdown (Pushes page content down natively) */}
+        {isOpen && (
+          <div className="lg:hidden mt-4 pt-4 border-t border-slate-900 space-y-4 animate-in fade-in slide-in-from-top-4 duration-200">
+            <div className="grid grid-cols-2 gap-3">
+              {links.map((link) => {
+                const isActive = location.pathname === link.href;
+                return (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`px-4 py-3 rounded-xl text-xs font-bold text-center transition-all ${
+                      isActive 
+                        ? 'bg-sky-500/10 text-sky-400 border border-sky-500/20' 
+                        : 'bg-slate-900/40 text-slate-350 hover:bg-slate-900/80 hover:text-sky-400 border border-transparent'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+            </div>
+            <Link
+              to="/fish"
+              onClick={() => setIsOpen(false)}
+              className="block w-full py-3.5 text-center text-xs font-black uppercase tracking-wider rounded-xl bg-sky-500 text-slate-950 shadow-md shadow-sky-500/10"
+            >
+              Explore Species
+            </Link>
+          </div>
+        )}
+
       </div>
 
       {/* Global Search Overlay dropdown */}
@@ -126,76 +160,6 @@ export const Navbar: React.FC = () => {
           </div>
         </div>
       )}
-
-      {/* Mobile full-screen overlay menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2, ease: 'easeInOut' }}
-            className="fixed inset-0 z-50 bg-[#030712] flex flex-col justify-between p-8 lg:hidden"
-          >
-            {/* Header */}
-            <div className="flex items-center justify-between">
-              <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center space-x-2.5 group">
-                <Waves className="h-8 w-8 text-sky-400" />
-                <span className="font-black text-2xl tracking-tight bg-gradient-to-r from-sky-400 via-blue-450 to-emerald-400 bg-clip-text text-transparent">
-                  FishVersa
-                </span>
-              </Link>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="p-2 text-slate-400 hover:text-sky-400 hover:bg-slate-900/60 rounded-xl transition-all cursor-pointer"
-              >
-                <X className="h-7 w-7" />
-              </button>
-            </div>
-
-            {/* Centered Navigation Links */}
-            <div className="flex flex-col space-y-6 items-center my-auto">
-              {links.map((link, idx) => {
-                const isActive = location.pathname === link.href;
-                return (
-                  <motion.div
-                    key={link.href}
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.04 }}
-                  >
-                    <Link
-                      to={link.href}
-                      onClick={() => setIsOpen(false)}
-                      className={`text-2xl font-black tracking-wide transition-all ${
-                        isActive 
-                          ? 'text-sky-400' 
-                          : 'text-slate-350 hover:text-sky-400'
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
-                  </motion.div>
-                );
-              })}
-            </div>
-
-            {/* Bottom Actions */}
-            <div className="w-full space-y-6 text-center">
-              <Link
-                to="/fish"
-                onClick={() => setIsOpen(false)}
-                className="block w-full py-4 text-center text-xs font-black uppercase tracking-widest rounded-xl bg-sky-500 hover:bg-sky-600 text-slate-950 shadow-md shadow-sky-500/10 btn-glow-cyan transition-all"
-              >
-                Explore Species
-              </Link>
-              <p className="text-[10px] text-slate-650 font-bold uppercase tracking-wider">
-                &copy; {new Date().getFullYear()} FishVersa. All rights reserved.
-              </p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </nav>
   );
 };
