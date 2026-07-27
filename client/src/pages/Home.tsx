@@ -459,7 +459,7 @@ export const Home: React.FC = () => {
               <Send className="h-6 w-6 animate-pulse" />
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold text-slate-100 tracking-tight leading-tight">
-              Join the AquaVersa Circle
+              Join the FishVersa Circle
             </h2>
             <p className="text-sm text-slate-405 leading-relaxed font-semibold">
               Subscribe to get expert aquascaping layouts, water quality checklists, and tropical fish care sheets delivered straight to your email inbox.

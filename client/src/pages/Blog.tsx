@@ -23,7 +23,7 @@ export const Blog: React.FC = () => {
           </div>
         </div>
         <h1 className="text-4xl md:text-5xl font-black tracking-tight text-slate-100">
-          AquaVersa <span className="bg-gradient-to-r from-sky-400 to-emerald-405 bg-clip-text text-transparent">Blog</span>
+          FishVersa <span className="bg-gradient-to-r from-sky-400 to-emerald-405 bg-clip-text text-transparent">Blog</span>
         </h1>
         <p className="text-sm text-slate-400 font-semibold leading-relaxed">
           Read articles on aquascaping styles, filter maintenance checklists, and community stories.

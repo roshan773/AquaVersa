@@ -41,7 +41,7 @@ export const Footer: React.FC = () => {
             <Link to="/" className="flex items-center space-x-2 text-sky-400">
               <Waves className="h-7 w-7 text-sky-400" />
               <span className="font-extrabold text-xl tracking-tight bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">
-                AquaVersa
+                FishVersa
               </span>
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm font-semibold">
@@ -125,7 +125,7 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Credits */}
         <div className="flex flex-col sm:flex-row items-center justify-between pt-8 text-xs text-slate-500 font-semibold">
-          <p>&copy; {new Date().getFullYear()} AquaVersa. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} FishVersa. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 sm:mt-0">
             <Link to="/privacy" className="hover:text-sky-400 transition-colors">Privacy Policy</Link>
             <Link to="/terms" className="hover:text-sky-400 transition-colors">Terms of Service</Link>

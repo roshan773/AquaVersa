@@ -4,7 +4,7 @@ export const About: React.FC = () => {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-8 leading-relaxed font-semibold text-sm text-slate-300">
       <h1 className="text-4xl md:text-5xl font-black text-slate-100 tracking-tight text-center">
-        About <span className="bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">AquaVersa</span>
+        About <span className="bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">FishVersa</span>
       </h1>
       <p className="text-center text-slate-400 max-w-lg mx-auto">
         The ultimate online portal dedicated to freshwater aquariums, plant aquascaping, biological filters, and species care directories.
@@ -13,7 +13,7 @@ export const About: React.FC = () => {
       <section className="glass rounded-3xl p-8 border border-slate-800/80 space-y-4 bg-slate-950/20 mt-10">
         <h2 className="text-xl font-bold text-slate-100">Our Mission</h2>
         <p>
-          AquaVersa was founded to simplify the complex chemistry, calculations, and care metrics required to establish thriving aquatic ecosystems. We combine deep biological facts with interactive equipment calculators and tank mate matching tools to make fishkeeping approachable, ethical, and successful.
+          FishVersa was founded to simplify the complex chemistry, calculations, and care metrics required to establish thriving aquatic ecosystems. We combine deep biological facts with interactive equipment calculators and tank mate matching tools to make fishkeeping approachable, ethical, and successful.
         </p>
       </section>
 

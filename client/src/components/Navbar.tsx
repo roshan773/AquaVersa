@@ -36,7 +36,7 @@ export const Navbar: React.FC = () => {
             <Link to="/" className="flex items-center space-x-2.5 group">
               <Waves className="h-8 w-8 text-sky-400 group-hover:rotate-12 transition-transform duration-300" />
               <span className="font-black text-2xl tracking-tight bg-gradient-to-r from-sky-400 via-blue-450 to-emerald-400 bg-clip-text text-transparent">
-                AquaVersa
+                FishVersa
               </span>
             </Link>
           </div>
