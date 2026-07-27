@@ -127,73 +127,73 @@ export const Navbar: React.FC = () => {
         </div>
       )}
 
-      {/* Mobile sliding drawer menu */}
+      {/* Mobile full-screen overlay menu */}
       <AnimatePresence>
         {isOpen && (
-          <>
-            {/* Backdrop Overlay */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsOpen(false)}
-              className="fixed inset-0 z-40 bg-black/75 backdrop-blur-md lg:hidden"
-            />
-
-            {/* Sidebar Drawer Container */}
-            <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 30, stiffness: 250 }}
-              className="fixed top-0 right-0 bottom-0 w-80 z-50 bg-[#030712] border-l border-slate-900 shadow-2xl flex flex-col p-6 space-y-6 lg:hidden"
-            >
-              {/* Close Button Header */}
-              <div className="flex items-center justify-between pb-4 border-b border-slate-900/60">
-                <span className="font-black text-xl tracking-tight bg-gradient-to-r from-sky-400 via-blue-450 to-emerald-400 bg-clip-text text-transparent">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2, ease: 'easeInOut' }}
+            className="fixed inset-0 z-50 bg-[#030712] flex flex-col justify-between p-8 lg:hidden"
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between">
+              <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center space-x-2.5 group">
+                <Waves className="h-8 w-8 text-sky-400" />
+                <span className="font-black text-2xl tracking-tight bg-gradient-to-r from-sky-400 via-blue-450 to-emerald-400 bg-clip-text text-transparent">
                   FishVersa
                 </span>
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="p-2 text-slate-400 hover:text-sky-400 hover:bg-slate-900/40 rounded-xl transition-all cursor-pointer"
-                >
-                  <X className="h-6 w-6" />
-                </button>
-              </div>
+              </Link>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="p-2 text-slate-400 hover:text-sky-400 hover:bg-slate-900/60 rounded-xl transition-all cursor-pointer"
+              >
+                <X className="h-7 w-7" />
+              </button>
+            </div>
 
-              {/* Links List */}
-              <div className="flex-grow flex flex-col space-y-4 pt-4">
-                {links.map((link) => {
-                  const isActive = location.pathname === link.href;
-                  return (
+            {/* Centered Navigation Links */}
+            <div className="flex flex-col space-y-6 items-center my-auto">
+              {links.map((link, idx) => {
+                const isActive = location.pathname === link.href;
+                return (
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.04 }}
+                  >
                     <Link
-                      key={link.href}
                       to={link.href}
                       onClick={() => setIsOpen(false)}
-                      className={`px-4 py-3 rounded-xl text-base font-bold transition-all flex items-center ${
+                      className={`text-2xl font-black tracking-wide transition-all ${
                         isActive 
-                          ? 'bg-sky-500/10 text-sky-400 border-l-2 border-sky-400' 
-                          : 'text-slate-300 hover:bg-slate-900/30 hover:text-sky-400'
+                          ? 'text-sky-400' 
+                          : 'text-slate-350 hover:text-sky-400'
                       }`}
                     >
                       {link.label}
                     </Link>
-                  );
-                })}
-              </div>
+                  </motion.div>
+                );
+              })}
+            </div>
 
-              {/* Action Button inside Drawer */}
-              <div className="pt-6 border-t border-slate-900/60">
-                <Link
-                  to="/fish"
-                  onClick={() => setIsOpen(false)}
-                  className="block w-full py-3.5 text-center text-xs font-bold uppercase tracking-wider rounded-xl bg-sky-500 hover:bg-sky-600 text-slate-950 shadow-md shadow-sky-500/10 btn-glow-cyan transition-all"
-                >
-                  Explore Species
-                </Link>
-              </div>
-            </motion.div>
-          </>
+            {/* Bottom Actions */}
+            <div className="w-full space-y-6 text-center">
+              <Link
+                to="/fish"
+                onClick={() => setIsOpen(false)}
+                className="block w-full py-4 text-center text-xs font-black uppercase tracking-widest rounded-xl bg-sky-500 hover:bg-sky-600 text-slate-950 shadow-md shadow-sky-500/10 btn-glow-cyan transition-all"
+              >
+                Explore Species
+              </Link>
+              <p className="text-[10px] text-slate-650 font-bold uppercase tracking-wider">
+                &copy; {new Date().getFullYear()} FishVersa. All rights reserved.
+              </p>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </nav>
