@@ -19,8 +19,10 @@ export const AdminDashboard: React.FC = () => {
   // Form states for creating new records
   const [newFishName, setNewFishName] = useState('');
   const [newFishSci, setNewFishSci] = useState('');
+  const [newFishImage, setNewFishImage] = useState('');
   const [newPlantName, setNewPlantName] = useState('');
   const [newPlantSci, setNewPlantSci] = useState('');
+  const [newPlantImage, setNewPlantImage] = useState('');
 
   // 1. Comments list
   const { data: comments = [], isLoading: isCommentsLoading } = useQuery({
@@ -64,6 +66,7 @@ export const AdminDashboard: React.FC = () => {
       queryClient.invalidateQueries({ queryKey: ['admin-fish'] });
       setNewFishName('');
       setNewFishSci('');
+      setNewFishImage('');
     }
   });
 
@@ -86,6 +89,7 @@ export const AdminDashboard: React.FC = () => {
       queryClient.invalidateQueries({ queryKey: ['admin-plants'] });
       setNewPlantName('');
       setNewPlantSci('');
+      setNewPlantImage('');
     }
   });
 
@@ -120,7 +124,8 @@ export const AdminDashboard: React.FC = () => {
         lifespan: 5,
         dietType: 'Omnivore',
         minTankSize: { liters: 38, gallons: 10 },
-        waterParams: { tempMin: 22, tempMax: 26, phMin: 6.5, phMax: 7.2, dghMin: 4, dghMax: 12, waterType: 'Freshwater' }
+        waterParams: { tempMin: 22, tempMax: 26, phMin: 6.5, phMax: 7.2, dghMin: 4, dghMax: 12, waterType: 'Freshwater' },
+        images: newFishImage ? [newFishImage] : ['https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&q=80&w=600']
       });
     }
   };
@@ -137,7 +142,8 @@ export const AdminDashboard: React.FC = () => {
         co2Needs: false,
         lightingNeeds: 'Low',
         growthRate: 'Slow',
-        description: 'Hardy plant created via dashboard.'
+        description: 'Hardy plant created via dashboard.',
+        images: newPlantImage ? [newPlantImage] : ['https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&q=80&w=600']
       });
     }
   };
@@ -266,7 +272,7 @@ export const AdminDashboard: React.FC = () => {
             <h3 className="text-base font-extrabold text-slate-200">Manage Fish Database</h3>
             
             {/* Quick Add Fish */}
-            <form onSubmit={handleAddFish} className="p-4 bg-slate-900/50 border border-slate-800 rounded-2xl grid grid-cols-1 sm:grid-cols-3 gap-4 items-end">
+            <form onSubmit={handleAddFish} className="p-4 bg-slate-900/50 border border-slate-800 rounded-2xl grid grid-cols-1 sm:grid-cols-4 gap-4 items-end">
               <div className="space-y-1.5">
                 <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Common Name</label>
                 <input
@@ -287,6 +293,16 @@ export const AdminDashboard: React.FC = () => {
                   onChange={(e) => setNewFishSci(e.target.value)}
                   className="w-full bg-slate-950/60 border border-slate-700/60 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-sky-400 font-semibold"
                   required
+                />
+              </div>
+              <div className="space-y-1.5">
+                <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Image URL (Optional)</label>
+                <input
+                  type="url"
+                  placeholder="https://images.unsplash.com/..."
+                  value={newFishImage}
+                  onChange={(e) => setNewFishImage(e.target.value)}
+                  className="w-full bg-slate-950/60 border border-slate-700/60 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-sky-400 font-semibold text-slate-200"
                 />
               </div>
               <button
@@ -329,7 +345,7 @@ export const AdminDashboard: React.FC = () => {
             <h3 className="text-base font-extrabold text-slate-200">Manage Plants</h3>
 
             {/* Quick Add Plant */}
-            <form onSubmit={handleAddPlant} className="p-4 bg-slate-900/50 border border-slate-800 rounded-2xl grid grid-cols-1 sm:grid-cols-3 gap-4 items-end">
+            <form onSubmit={handleAddPlant} className="p-4 bg-slate-900/50 border border-slate-800 rounded-2xl grid grid-cols-1 sm:grid-cols-4 gap-4 items-end">
               <div className="space-y-1.5">
                 <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Plant Name</label>
                 <input
@@ -350,6 +366,16 @@ export const AdminDashboard: React.FC = () => {
                   onChange={(e) => setNewPlantSci(e.target.value)}
                   className="w-full bg-slate-950/60 border border-slate-700/60 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-sky-400 font-semibold"
                   required
+                />
+              </div>
+              <div className="space-y-1.5">
+                <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Image URL (Optional)</label>
+                <input
+                  type="url"
+                  placeholder="https://images.unsplash.com/..."
+                  value={newPlantImage}
+                  onChange={(e) => setNewPlantImage(e.target.value)}
+                  className="w-full bg-slate-950/60 border border-slate-700/60 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-sky-400 font-semibold text-slate-200"
                 />
               </div>
               <button

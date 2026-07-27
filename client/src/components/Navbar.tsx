@@ -42,7 +42,7 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Links - Desktop */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             {links.map((link) => {
               const isActive = location.pathname === link.href;
               return (
@@ -60,7 +60,7 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Right Actions */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-4">
             {/* Search Trigger */}
             <button
               onClick={() => setShowSearch(!showSearch)}
@@ -79,7 +79,7 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Mobile menu trigger */}
-          <div className="md:hidden flex items-center space-x-3">
+          <div className="lg:hidden flex items-center space-x-3">
             <button
               onClick={() => setShowSearch(!showSearch)}
               className="p-2.5 text-slate-400 hover:text-sky-400 rounded-xl transition-colors cursor-pointer"
@@ -127,7 +127,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-slate-950 border-t border-slate-900 py-4 px-2 space-y-1 shadow-2xl">
+        <div className="lg:hidden bg-slate-950 border-t border-slate-900 py-4 px-2 space-y-1 shadow-2xl">
           {links.map((link) => {
             const isActive = location.pathname === link.href;
             return (
