@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Waves, Search, Menu, X } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
+
 export const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -90,7 +92,7 @@ export const Navbar: React.FC = () => {
               onClick={() => setIsOpen(!isOpen)}
               className="p-2.5 text-slate-400 hover:text-sky-400 transition-colors cursor-pointer"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              <Menu className="h-6 w-6" />
             </button>
           </div>
 
@@ -125,35 +127,76 @@ export const Navbar: React.FC = () => {
         </div>
       )}
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="lg:hidden bg-slate-950 border-t border-slate-900 py-4 px-2 space-y-1 shadow-2xl">
-          {links.map((link) => {
-            const isActive = location.pathname === link.href;
-            return (
-              <Link
-                key={link.href}
-                to={link.href}
-                onClick={() => setIsOpen(false)}
-                className={`block px-4 py-3 rounded-xl text-base font-bold transition-all ${
-                  isActive ? 'bg-slate-900 text-sky-400 border-l-2 border-sky-450' : 'text-slate-300 hover:bg-slate-900/40 hover:text-sky-400'
-                }`}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-          <Link
-            to="/fish"
-            onClick={() => setIsOpen(false)}
-            className="block mx-4 mt-4 px-4 py-3 text-center text-sm font-bold uppercase tracking-wider rounded-xl bg-sky-500 text-slate-950 shadow-md"
-          >
-            Explore Species
-          </Link>
-        </div>
-      )}
+      {/* Mobile sliding drawer menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Backdrop Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
+            />
+
+            {/* Sidebar Drawer Container */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 220 }}
+              className="fixed top-0 right-0 bottom-0 w-80 z-50 bg-slate-950/95 backdrop-blur-xl border-l border-slate-900/80 shadow-2xl flex flex-col p-6 space-y-6 lg:hidden"
+            >
+              {/* Close Button Header */}
+              <div className="flex items-center justify-between pb-4 border-b border-slate-900">
+                <span className="font-black text-xl tracking-tight bg-gradient-to-r from-sky-400 via-blue-450 to-emerald-400 bg-clip-text text-transparent">
+                  FishVersa
+                </span>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="p-2 text-slate-400 hover:text-sky-400 hover:bg-slate-900/60 rounded-xl transition-all cursor-pointer"
+                >
+                  <X className="h-6 w-6" />
+                </button>
+              </div>
+
+              {/* Links List */}
+              <div className="flex-grow flex flex-col space-y-2 pt-4">
+                {links.map((link) => {
+                  const isActive = location.pathname === link.href;
+                  return (
+                    <Link
+                      key={link.href}
+                      to={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`px-4 py-3 rounded-xl text-base font-bold transition-all flex items-center ${
+                        isActive 
+                          ? 'bg-sky-500/10 text-sky-400 border-l-2 border-sky-400' 
+                          : 'text-slate-300 hover:bg-slate-900/40 hover:text-sky-400'
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                })}
+              </div>
+
+              {/* Action Button inside Drawer */}
+              <div className="pt-6 border-t border-slate-900">
+                <Link
+                  to="/fish"
+                  onClick={() => setIsOpen(false)}
+                  className="block w-full py-3.5 text-center text-xs font-bold uppercase tracking-wider rounded-xl bg-sky-500 hover:bg-sky-600 text-slate-950 shadow-md shadow-sky-500/10 btn-glow-cyan transition-all"
+                >
+                  Explore Species
+                </Link>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
 export default Navbar;
-
