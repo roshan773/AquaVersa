@@ -105,7 +105,7 @@ export const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Full-Screen Navigation Menu */}
+      {/* Mobile 100vh Dropdown Panel */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -113,26 +113,10 @@ export const Navbar: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2, ease: 'easeInOut' }}
-            className="fixed inset-0 z-50 bg-[#030712] flex flex-col justify-between p-6 lg:hidden overflow-y-auto"
+            className="lg:hidden absolute top-20 left-0 right-0 bg-[#030712] border-b border-slate-900 shadow-2xl p-5 flex flex-col justify-between h-[calc(100vh-5rem)] overflow-y-auto"
           >
-            {/* Header */}
-            <div className="flex items-center justify-between pb-4 border-b border-slate-900/60">
-              <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center space-x-2.5 group">
-                <Waves className="h-8 w-8 text-sky-400" />
-                <span className="font-black text-2xl tracking-tight bg-gradient-to-r from-sky-400 via-blue-450 to-emerald-400 bg-clip-text text-transparent">
-                  FishVersa
-                </span>
-              </Link>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="p-2 text-slate-400 hover:text-sky-400 hover:bg-slate-900/60 rounded-xl transition-all cursor-pointer"
-              >
-                <X className="h-7 w-7" />
-              </button>
-            </div>
-
-            {/* List of items - Centered vertically */}
-            <div className="flex flex-col space-y-2.5 my-auto py-6">
+            {/* Column list of items */}
+            <div className="flex flex-col space-y-2.5 my-auto">
               {links.map((link, idx) => {
                 const Icon = link.icon;
                 const isActive = location.pathname === link.href;
@@ -174,16 +158,15 @@ export const Navbar: React.FC = () => {
               })}
             </div>
 
-            {/* Bottom Actions */}
-            <div className="w-full space-y-5 text-center pt-4 border-t border-slate-900/60">
+            <div className="pt-4 border-t border-slate-900/60 w-full space-y-4 text-center">
               <Link
                 to="/fish"
                 onClick={() => setIsOpen(false)}
-                className="block w-full py-4 text-center text-xs font-black uppercase tracking-wider rounded-2xl bg-sky-500 hover:bg-sky-600 text-slate-950 shadow-md shadow-sky-500/10 transition-all btn-glow-cyan"
+                className="block w-full py-3.5 text-center text-xs font-black uppercase tracking-wider rounded-2xl bg-sky-500 hover:bg-sky-600 text-slate-950 shadow-md shadow-sky-500/10 transition-all btn-glow-cyan"
               >
                 Explore Species Catalog
               </Link>
-              <p className="text-[10px] text-slate-650 font-bold uppercase tracking-wider">
+              <p className="text-[10px] text-slate-650 font-bold uppercase tracking-wider pb-2">
                 &copy; {new Date().getFullYear()} FishVersa. All rights reserved.
               </p>
             </div>
