@@ -137,7 +137,7 @@ export const Navbar: React.FC = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-40 bg-black/75 backdrop-blur-md lg:hidden"
             />
 
             {/* Sidebar Drawer Container */}
@@ -145,24 +145,24 @@ export const Navbar: React.FC = () => {
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 220 }}
-              className="fixed top-0 right-0 bottom-0 w-80 z-50 bg-slate-950/95 backdrop-blur-xl border-l border-slate-900/80 shadow-2xl flex flex-col p-6 space-y-6 lg:hidden"
+              transition={{ type: 'spring', damping: 30, stiffness: 250 }}
+              className="fixed top-0 right-0 bottom-0 w-80 z-50 bg-[#030712] border-l border-slate-900 shadow-2xl flex flex-col p-6 space-y-6 lg:hidden"
             >
               {/* Close Button Header */}
-              <div className="flex items-center justify-between pb-4 border-b border-slate-900">
+              <div className="flex items-center justify-between pb-4 border-b border-slate-900/60">
                 <span className="font-black text-xl tracking-tight bg-gradient-to-r from-sky-400 via-blue-450 to-emerald-400 bg-clip-text text-transparent">
                   FishVersa
                 </span>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-2 text-slate-400 hover:text-sky-400 hover:bg-slate-900/60 rounded-xl transition-all cursor-pointer"
+                  className="p-2 text-slate-400 hover:text-sky-400 hover:bg-slate-900/40 rounded-xl transition-all cursor-pointer"
                 >
                   <X className="h-6 w-6" />
                 </button>
               </div>
 
               {/* Links List */}
-              <div className="flex-grow flex flex-col space-y-2 pt-4">
+              <div className="flex-grow flex flex-col space-y-4 pt-4">
                 {links.map((link) => {
                   const isActive = location.pathname === link.href;
                   return (
@@ -173,7 +173,7 @@ export const Navbar: React.FC = () => {
                       className={`px-4 py-3 rounded-xl text-base font-bold transition-all flex items-center ${
                         isActive 
                           ? 'bg-sky-500/10 text-sky-400 border-l-2 border-sky-400' 
-                          : 'text-slate-300 hover:bg-slate-900/40 hover:text-sky-400'
+                          : 'text-slate-300 hover:bg-slate-900/30 hover:text-sky-400'
                       }`}
                     >
                       {link.label}
@@ -183,7 +183,7 @@ export const Navbar: React.FC = () => {
               </div>
 
               {/* Action Button inside Drawer */}
-              <div className="pt-6 border-t border-slate-900">
+              <div className="pt-6 border-t border-slate-900/60">
                 <Link
                   to="/fish"
                   onClick={() => setIsOpen(false)}
