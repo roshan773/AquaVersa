@@ -5,6 +5,7 @@ import {
   Compass, Wrench, BookOpen, 
   FileText, HelpCircle, ChevronRight 
 } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export const Navbar: React.FC = () => {
   const navigate = useNavigate();
@@ -104,57 +105,91 @@ export const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Glassmorphic Overlay Dropdown */}
-      {isOpen && (
-        <div className="lg:hidden absolute top-20 left-0 right-0 bg-[#030712]/98 backdrop-blur-xl border-b border-slate-900 shadow-2xl p-5 space-y-5 animate-in slide-in-from-top-3 duration-250 max-h-[calc(100vh-5rem)] overflow-y-auto">
-          {/* Column list of items */}
-          <div className="flex flex-col space-y-2">
-            {links.map((link) => {
-              const Icon = link.icon;
-              const isActive = location.pathname === link.href;
-              return (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-between p-3 rounded-2xl bg-slate-900/30 border border-slate-900/40 hover:bg-slate-900/60 transition-all duration-200 group"
-                >
-                  <div className="flex items-center space-x-3">
-                    <div className={`p-2 rounded-xl border ${
-                      isActive 
-                        ? 'bg-sky-500/10 text-sky-400 border-sky-500/20' 
-                        : 'bg-slate-950 text-slate-450 border-slate-850 group-hover:text-sky-400'
-                    } transition-all`}>
-                      <Icon className="h-4.5 w-4.5" />
-                    </div>
-                    <div className="text-left">
-                      <span className={`block text-xs font-bold ${
-                        isActive ? 'text-sky-400' : 'text-slate-200 group-hover:text-sky-400'
-                      } transition-all`}>
-                        {link.label}
-                      </span>
-                      <span className="block text-[9px] text-slate-500 font-semibold mt-0.5 leading-none">
-                        {link.desc}
-                      </span>
-                    </div>
-                  </div>
-                  <ChevronRight className="h-3.5 w-3.5 text-slate-600 group-hover:text-sky-400 group-hover:translate-x-0.5 transition-all" />
-                </Link>
-              );
-            })}
-          </div>
+      {/* Mobile Full-Screen Navigation Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2, ease: 'easeInOut' }}
+            className="fixed inset-0 z-50 bg-[#030712] flex flex-col justify-between p-6 lg:hidden overflow-y-auto"
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between pb-4 border-b border-slate-900/60">
+              <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center space-x-2.5 group">
+                <Waves className="h-8 w-8 text-sky-400" />
+                <span className="font-black text-2xl tracking-tight bg-gradient-to-r from-sky-400 via-blue-450 to-emerald-400 bg-clip-text text-transparent">
+                  FishVersa
+                </span>
+              </Link>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="p-2 text-slate-400 hover:text-sky-400 hover:bg-slate-900/60 rounded-xl transition-all cursor-pointer"
+              >
+                <X className="h-7 w-7" />
+              </button>
+            </div>
 
-          <div className="pt-2">
-            <Link
-              to="/fish"
-              onClick={() => setIsOpen(false)}
-              className="block w-full py-3.5 text-center text-xs font-black uppercase tracking-wider rounded-2xl bg-sky-500 hover:bg-sky-600 text-slate-950 shadow-md shadow-sky-500/10 transition-all btn-glow-cyan"
-            >
-              Explore Species Catalog
-            </Link>
-          </div>
-        </div>
-      )}
+            {/* List of items - Centered vertically */}
+            <div className="flex flex-col space-y-2.5 my-auto py-6">
+              {links.map((link, idx) => {
+                const Icon = link.icon;
+                const isActive = location.pathname === link.href;
+                return (
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.03 }}
+                  >
+                    <Link
+                      to={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-900/30 border border-slate-900/40 hover:bg-slate-900/60 transition-all duration-200 group"
+                    >
+                      <div className="flex items-center space-x-3.5">
+                        <div className={`p-2.5 rounded-xl border ${
+                          isActive 
+                            ? 'bg-sky-500/10 text-sky-400 border-sky-500/20' 
+                            : 'bg-slate-950 text-slate-450 border-slate-850 group-hover:text-sky-400'
+                        } transition-all`}>
+                          <Icon className="h-5 w-5" />
+                        </div>
+                        <div className="text-left">
+                          <span className={`block text-sm font-bold ${
+                            isActive ? 'text-sky-400' : 'text-slate-200 group-hover:text-sky-400'
+                          } transition-all`}>
+                            {link.label}
+                          </span>
+                          <span className="block text-[10px] text-slate-550 font-semibold mt-0.5 leading-none">
+                            {link.desc}
+                          </span>
+                        </div>
+                      </div>
+                      <ChevronRight className="h-4 w-4 text-slate-600 group-hover:text-sky-400 group-hover:translate-x-0.5 transition-all" />
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Bottom Actions */}
+            <div className="w-full space-y-5 text-center pt-4 border-t border-slate-900/60">
+              <Link
+                to="/fish"
+                onClick={() => setIsOpen(false)}
+                className="block w-full py-4 text-center text-xs font-black uppercase tracking-wider rounded-2xl bg-sky-500 hover:bg-sky-600 text-slate-950 shadow-md shadow-sky-500/10 transition-all btn-glow-cyan"
+              >
+                Explore Species Catalog
+              </Link>
+              <p className="text-[10px] text-slate-650 font-bold uppercase tracking-wider">
+                &copy; {new Date().getFullYear()} FishVersa. All rights reserved.
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Global Search Overlay dropdown */}
       {showSearch && (
