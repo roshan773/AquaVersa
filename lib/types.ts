@@ -5,6 +5,9 @@ export interface Fish {
   scientificName?: string;
   category?: string;
   difficulty?: string;
+  difficultyScore?: number;
+  difficultyReason?: string;
+  beginnerSuitable?: boolean;
   adultSize?: string;
   maxSize?: number;
   minTankSize?: number;

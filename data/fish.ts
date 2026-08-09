@@ -2,48 +2,12 @@ import { Fish } from "../lib/types";
 
 export const fishData: Fish[] = [
   {
-    "id": "1",
-    "name": "Neon Tetra",
-    "image": "/images/fish/neon-tetra.jpg",
-    "description": "Small, vibrant schooling fish ideal for community tanks."
-  },
-  {
-    "id": "2",
-    "name": "Betta Splendens",
-    "image": "/images/fish/betta.jpg",
-    "description": "Bold, colorful male betta that thrives in smaller aquariums."
-  },
-  {
-    "id": "3",
-    "name": "Corydoras Catfish",
-    "image": "/images/fish/corydoras.jpg",
-    "description": "Bottom‑dwelling catfish that helps keep substrate clean."
-  },
-  {
-    "id": "4",
-    "name": "Zebra Danio",
-    "image": "/images/fish/zebra-danio.jpg",
-    "description": "Hardy, active swimmer perfect for new hobbyists."
-  },
-  {
-    "id": "5",
-    "name": "Guppy",
-    "image": "/images/fish/guppy.jpg",
-    "description": "Live‑bearing fish with vivid tail patterns, great for breeding."
-  },
-  {
-    "id": "6",
-    "name": "Clownfish",
-    "image": "/images/fish/clownfish.jpg",
-    "description": "Iconic saltwater fish that pairs well with anemones."
-  },
-  {
     "id": "fw-0",
     "slug": "neon-tetra",
     "name": "Neon Tetra",
     "scientificName": "Neon Tetra",
     "category": "Freshwater",
-    "difficulty": "Intermediate",
+    "difficulty": "Advanced Beginner",
     "temperament": "Aggressive",
     "minTankSize": 20,
     "maxSize": 8,
@@ -54,7 +18,10 @@ export const fishData: Fish[] = [
     "description": "The Neon Tetra is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1601614838634-1bfaf38965f8?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-1",
@@ -73,7 +40,10 @@ export const fishData: Fish[] = [
     "description": "The Guppy is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1601614838634-1bfaf38965f8?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 1,
+    "difficultyReason": "Great choices for new aquarists. Hardy, forgiving of minor beginner mistakes, and have straightforward feeding and basic filtration requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-2",
@@ -92,7 +62,10 @@ export const fishData: Fish[] = [
     "description": "The Betta Fish is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1520302630592-fac87d005221?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 1,
+    "difficultyReason": "Great choices for new aquarists. Hardy, forgiving of minor beginner mistakes, and have straightforward feeding and basic filtration requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-3",
@@ -100,7 +73,7 @@ export const fishData: Fish[] = [
     "name": "Corydoras Catfish",
     "scientificName": "Corydoras Catfish",
     "category": "Freshwater",
-    "difficulty": "Intermediate",
+    "difficulty": "Advanced Beginner",
     "temperament": "Semi-Aggressive",
     "minTankSize": 30,
     "maxSize": 4,
@@ -111,7 +84,10 @@ export const fishData: Fish[] = [
     "description": "The Corydoras Catfish is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1534043464124-3be32fe000c9?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-4",
@@ -119,7 +95,7 @@ export const fishData: Fish[] = [
     "name": "Angelfish",
     "scientificName": "Angelfish species",
     "category": "Freshwater",
-    "difficulty": "Advanced",
+    "difficulty": "Intermediate",
     "temperament": "Aggressive",
     "minTankSize": 55,
     "maxSize": 6,
@@ -130,7 +106,10 @@ export const fishData: Fish[] = [
     "description": "The Angelfish is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1534043464124-3be32fe000c9?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "fw-5",
@@ -138,7 +117,7 @@ export const fishData: Fish[] = [
     "name": "Oscar",
     "scientificName": "Oscar species",
     "category": "Freshwater",
-    "difficulty": "Beginner",
+    "difficulty": "Advanced",
     "temperament": "Peaceful",
     "minTankSize": 55,
     "maxSize": 8,
@@ -149,7 +128,10 @@ export const fishData: Fish[] = [
     "description": "The Oscar is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "fw-6",
@@ -168,7 +150,10 @@ export const fishData: Fish[] = [
     "description": "The Discus is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "fw-7",
@@ -176,7 +161,7 @@ export const fishData: Fish[] = [
     "name": "Zebra Danio",
     "scientificName": "Zebra Danio",
     "category": "Freshwater",
-    "difficulty": "Advanced",
+    "difficulty": "Beginner",
     "temperament": "Peaceful",
     "minTankSize": 30,
     "maxSize": 8,
@@ -187,7 +172,10 @@ export const fishData: Fish[] = [
     "description": "The Zebra Danio is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 1,
+    "difficultyReason": "Great choices for new aquarists. Hardy, forgiving of minor beginner mistakes, and have straightforward feeding and basic filtration requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-8",
@@ -195,7 +183,7 @@ export const fishData: Fish[] = [
     "name": "Cherry Barb",
     "scientificName": "Cherry Barb",
     "category": "Freshwater",
-    "difficulty": "Advanced",
+    "difficulty": "Beginner",
     "temperament": "Peaceful",
     "minTankSize": 30,
     "maxSize": 8,
@@ -206,7 +194,10 @@ export const fishData: Fish[] = [
     "description": "The Cherry Barb is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1520302630592-fac87d005221?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 1,
+    "difficultyReason": "Great choices for new aquarists. Hardy, forgiving of minor beginner mistakes, and have straightforward feeding and basic filtration requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-9",
@@ -214,7 +205,7 @@ export const fishData: Fish[] = [
     "name": "Harlequin Rasbora",
     "scientificName": "Harlequin Rasbora",
     "category": "Freshwater",
-    "difficulty": "Intermediate",
+    "difficulty": "Beginner",
     "temperament": "Peaceful",
     "minTankSize": 5,
     "maxSize": 2,
@@ -225,7 +216,10 @@ export const fishData: Fish[] = [
     "description": "The Harlequin Rasbora is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1601614838634-1bfaf38965f8?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 1,
+    "difficultyReason": "Great choices for new aquarists. Hardy, forgiving of minor beginner mistakes, and have straightforward feeding and basic filtration requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-10",
@@ -233,7 +227,7 @@ export const fishData: Fish[] = [
     "name": "Plecostomus",
     "scientificName": "Plecostomus species",
     "category": "Freshwater",
-    "difficulty": "Advanced",
+    "difficulty": "Intermediate",
     "temperament": "Peaceful",
     "minTankSize": 20,
     "maxSize": 2,
@@ -244,7 +238,10 @@ export const fishData: Fish[] = [
     "description": "The Plecostomus is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1534043464124-3be32fe000c9?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "fw-11",
@@ -252,7 +249,7 @@ export const fishData: Fish[] = [
     "name": "Kuhli Loach",
     "scientificName": "Kuhli Loach",
     "category": "Freshwater",
-    "difficulty": "Intermediate",
+    "difficulty": "Advanced Beginner",
     "temperament": "Peaceful",
     "minTankSize": 55,
     "maxSize": 6,
@@ -263,7 +260,10 @@ export const fishData: Fish[] = [
     "description": "The Kuhli Loach is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1516684732162-798a0062be99?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-12",
@@ -282,7 +282,10 @@ export const fishData: Fish[] = [
     "description": "The Molly is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1520302630592-fac87d005221?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 1,
+    "difficultyReason": "Great choices for new aquarists. Hardy, forgiving of minor beginner mistakes, and have straightforward feeding and basic filtration requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-13",
@@ -290,7 +293,7 @@ export const fishData: Fish[] = [
     "name": "Platy",
     "scientificName": "Platy species",
     "category": "Freshwater",
-    "difficulty": "Intermediate",
+    "difficulty": "Beginner",
     "temperament": "Semi-Aggressive",
     "minTankSize": 55,
     "maxSize": 12,
@@ -301,7 +304,10 @@ export const fishData: Fish[] = [
     "description": "The Platy is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 1,
+    "difficultyReason": "Great choices for new aquarists. Hardy, forgiving of minor beginner mistakes, and have straightforward feeding and basic filtration requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-14",
@@ -309,7 +315,7 @@ export const fishData: Fish[] = [
     "name": "Swordtail",
     "scientificName": "Swordtail species",
     "category": "Freshwater",
-    "difficulty": "Advanced",
+    "difficulty": "Beginner",
     "temperament": "Peaceful",
     "minTankSize": 10,
     "maxSize": 8,
@@ -320,7 +326,10 @@ export const fishData: Fish[] = [
     "description": "The Swordtail is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 1,
+    "difficultyReason": "Great choices for new aquarists. Hardy, forgiving of minor beginner mistakes, and have straightforward feeding and basic filtration requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-15",
@@ -328,7 +337,7 @@ export const fishData: Fish[] = [
     "name": "Gourami",
     "scientificName": "Gourami species",
     "category": "Freshwater",
-    "difficulty": "Advanced",
+    "difficulty": "Advanced Beginner",
     "temperament": "Peaceful",
     "minTankSize": 5,
     "maxSize": 4,
@@ -339,7 +348,10 @@ export const fishData: Fish[] = [
     "description": "The Gourami is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-16",
@@ -347,7 +359,7 @@ export const fishData: Fish[] = [
     "name": "Celestial Pearl Danio",
     "scientificName": "Celestial Pearl",
     "category": "Freshwater",
-    "difficulty": "Beginner",
+    "difficulty": "Advanced Beginner",
     "temperament": "Aggressive",
     "minTankSize": 30,
     "maxSize": 4,
@@ -358,7 +370,10 @@ export const fishData: Fish[] = [
     "description": "The Celestial Pearl Danio is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1520302630592-fac87d005221?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-17",
@@ -366,7 +381,7 @@ export const fishData: Fish[] = [
     "name": "Rummy Nose Tetra",
     "scientificName": "Rummy Nose",
     "category": "Freshwater",
-    "difficulty": "Advanced",
+    "difficulty": "Intermediate",
     "temperament": "Semi-Aggressive",
     "minTankSize": 75,
     "maxSize": 6,
@@ -377,7 +392,10 @@ export const fishData: Fish[] = [
     "description": "The Rummy Nose Tetra is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1601614838634-1bfaf38965f8?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "fw-18",
@@ -385,7 +403,7 @@ export const fishData: Fish[] = [
     "name": "Cardinal Tetra",
     "scientificName": "Cardinal Tetra",
     "category": "Freshwater",
-    "difficulty": "Intermediate",
+    "difficulty": "Advanced Beginner",
     "temperament": "Semi-Aggressive",
     "minTankSize": 10,
     "maxSize": 12,
@@ -396,7 +414,10 @@ export const fishData: Fish[] = [
     "description": "The Cardinal Tetra is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1534043464124-3be32fe000c9?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-19",
@@ -404,7 +425,7 @@ export const fishData: Fish[] = [
     "name": "Otocinclus",
     "scientificName": "Otocinclus species",
     "category": "Freshwater",
-    "difficulty": "Advanced",
+    "difficulty": "Intermediate",
     "temperament": "Semi-Aggressive",
     "minTankSize": 10,
     "maxSize": 2,
@@ -415,7 +436,10 @@ export const fishData: Fish[] = [
     "description": "The Otocinclus is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "fw-20",
@@ -423,7 +447,7 @@ export const fishData: Fish[] = [
     "name": "African Cichlid",
     "scientificName": "African Cichlid",
     "category": "Freshwater",
-    "difficulty": "Beginner",
+    "difficulty": "Intermediate",
     "temperament": "Aggressive",
     "minTankSize": 20,
     "maxSize": 12,
@@ -434,7 +458,10 @@ export const fishData: Fish[] = [
     "description": "The African Cichlid is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "fw-21",
@@ -442,7 +469,7 @@ export const fishData: Fish[] = [
     "name": "Convict Cichlid",
     "scientificName": "Convict Cichlid",
     "category": "Freshwater",
-    "difficulty": "Beginner",
+    "difficulty": "Advanced Beginner",
     "temperament": "Semi-Aggressive",
     "minTankSize": 10,
     "maxSize": 4,
@@ -453,7 +480,10 @@ export const fishData: Fish[] = [
     "description": "The Convict Cichlid is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-22",
@@ -461,7 +491,7 @@ export const fishData: Fish[] = [
     "name": "Jack Dempsey",
     "scientificName": "Jack Dempsey",
     "category": "Freshwater",
-    "difficulty": "Beginner",
+    "difficulty": "Advanced",
     "temperament": "Peaceful",
     "minTankSize": 30,
     "maxSize": 6,
@@ -472,7 +502,10 @@ export const fishData: Fish[] = [
     "description": "The Jack Dempsey is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1601614838634-1bfaf38965f8?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "fw-23",
@@ -491,7 +524,10 @@ export const fishData: Fish[] = [
     "description": "The Texas Cichlid is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "fw-24",
@@ -499,7 +535,7 @@ export const fishData: Fish[] = [
     "name": "Green Terror",
     "scientificName": "Green Terror",
     "category": "Freshwater",
-    "difficulty": "Beginner",
+    "difficulty": "Advanced",
     "temperament": "Aggressive",
     "minTankSize": 55,
     "maxSize": 12,
@@ -510,7 +546,10 @@ export const fishData: Fish[] = [
     "description": "The Green Terror is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "fw-25",
@@ -518,7 +557,7 @@ export const fishData: Fish[] = [
     "name": "Bolivian Ram",
     "scientificName": "Bolivian Ram",
     "category": "Freshwater",
-    "difficulty": "Beginner",
+    "difficulty": "Advanced Beginner",
     "temperament": "Aggressive",
     "minTankSize": 75,
     "maxSize": 4,
@@ -529,7 +568,10 @@ export const fishData: Fish[] = [
     "description": "The Bolivian Ram is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1520302630592-fac87d005221?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-26",
@@ -537,7 +579,7 @@ export const fishData: Fish[] = [
     "name": "German Blue Ram",
     "scientificName": "German Blue",
     "category": "Freshwater",
-    "difficulty": "Advanced",
+    "difficulty": "Intermediate",
     "temperament": "Aggressive",
     "minTankSize": 20,
     "maxSize": 2,
@@ -548,7 +590,10 @@ export const fishData: Fish[] = [
     "description": "The German Blue Ram is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1516684732162-798a0062be99?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "fw-27",
@@ -556,7 +601,7 @@ export const fishData: Fish[] = [
     "name": "Apistogramma",
     "scientificName": "Apistogramma species",
     "category": "Freshwater",
-    "difficulty": "Advanced",
+    "difficulty": "Intermediate",
     "temperament": "Peaceful",
     "minTankSize": 55,
     "maxSize": 8,
@@ -567,7 +612,10 @@ export const fishData: Fish[] = [
     "description": "The Apistogramma is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1516684732162-798a0062be99?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "fw-28",
@@ -575,7 +623,7 @@ export const fishData: Fish[] = [
     "name": "Kribensis",
     "scientificName": "Kribensis species",
     "category": "Freshwater",
-    "difficulty": "Advanced",
+    "difficulty": "Advanced Beginner",
     "temperament": "Peaceful",
     "minTankSize": 30,
     "maxSize": 6,
@@ -586,7 +634,10 @@ export const fishData: Fish[] = [
     "description": "The Kribensis is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-29",
@@ -605,7 +656,10 @@ export const fishData: Fish[] = [
     "description": "The Clown Loach is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "fw-30",
@@ -613,7 +667,7 @@ export const fishData: Fish[] = [
     "name": "Yoyo Loach",
     "scientificName": "Yoyo Loach",
     "category": "Freshwater",
-    "difficulty": "Advanced",
+    "difficulty": "Intermediate",
     "temperament": "Semi-Aggressive",
     "minTankSize": 5,
     "maxSize": 12,
@@ -624,7 +678,10 @@ export const fishData: Fish[] = [
     "description": "The Yoyo Loach is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1516684732162-798a0062be99?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "fw-31",
@@ -632,7 +689,7 @@ export const fishData: Fish[] = [
     "name": "Tiger Barb",
     "scientificName": "Tiger Barb",
     "category": "Freshwater",
-    "difficulty": "Intermediate",
+    "difficulty": "Advanced Beginner",
     "temperament": "Peaceful",
     "minTankSize": 55,
     "maxSize": 6,
@@ -643,7 +700,10 @@ export const fishData: Fish[] = [
     "description": "The Tiger Barb is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1516684732162-798a0062be99?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-32",
@@ -651,7 +711,7 @@ export const fishData: Fish[] = [
     "name": "Odessa Barb",
     "scientificName": "Odessa Barb",
     "category": "Freshwater",
-    "difficulty": "Advanced",
+    "difficulty": "Advanced Beginner",
     "temperament": "Aggressive",
     "minTankSize": 75,
     "maxSize": 12,
@@ -662,7 +722,10 @@ export const fishData: Fish[] = [
     "description": "The Odessa Barb is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1520302630592-fac87d005221?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-33",
@@ -670,7 +733,7 @@ export const fishData: Fish[] = [
     "name": "Goldfish",
     "scientificName": "Goldfish species",
     "category": "Freshwater",
-    "difficulty": "Beginner",
+    "difficulty": "Advanced Beginner",
     "temperament": "Peaceful",
     "minTankSize": 20,
     "maxSize": 12,
@@ -681,7 +744,10 @@ export const fishData: Fish[] = [
     "description": "The Goldfish is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1601614838634-1bfaf38965f8?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-34",
@@ -689,7 +755,7 @@ export const fishData: Fish[] = [
     "name": "Koi",
     "scientificName": "Koi species",
     "category": "Freshwater",
-    "difficulty": "Beginner",
+    "difficulty": "Advanced",
     "temperament": "Peaceful",
     "minTankSize": 20,
     "maxSize": 4,
@@ -700,7 +766,10 @@ export const fishData: Fish[] = [
     "description": "The Koi is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "fw-35",
@@ -708,7 +777,7 @@ export const fishData: Fish[] = [
     "name": "White Cloud Mountain Minnow",
     "scientificName": "White Cloud",
     "category": "Freshwater",
-    "difficulty": "Intermediate",
+    "difficulty": "Advanced Beginner",
     "temperament": "Semi-Aggressive",
     "minTankSize": 75,
     "maxSize": 8,
@@ -719,7 +788,10 @@ export const fishData: Fish[] = [
     "description": "The White Cloud Mountain Minnow is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-36",
@@ -738,7 +810,10 @@ export const fishData: Fish[] = [
     "description": "The Rainbow Shark is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "fw-37",
@@ -757,7 +832,10 @@ export const fishData: Fish[] = [
     "description": "The Red Tail Shark is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "fw-38",
@@ -776,7 +854,10 @@ export const fishData: Fish[] = [
     "description": "The Bala Shark is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "fw-39",
@@ -795,7 +876,10 @@ export const fishData: Fish[] = [
     "description": "The Silver Dollar is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "fw-40",
@@ -803,7 +887,7 @@ export const fishData: Fish[] = [
     "name": "Congo Tetra",
     "scientificName": "Congo Tetra",
     "category": "Freshwater",
-    "difficulty": "Beginner",
+    "difficulty": "Advanced Beginner",
     "temperament": "Semi-Aggressive",
     "minTankSize": 10,
     "maxSize": 8,
@@ -814,7 +898,10 @@ export const fishData: Fish[] = [
     "description": "The Congo Tetra is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1601614838634-1bfaf38965f8?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-41",
@@ -822,7 +909,7 @@ export const fishData: Fish[] = [
     "name": "Ember Tetra",
     "scientificName": "Ember Tetra",
     "category": "Freshwater",
-    "difficulty": "Intermediate",
+    "difficulty": "Advanced Beginner",
     "temperament": "Semi-Aggressive",
     "minTankSize": 75,
     "maxSize": 6,
@@ -833,7 +920,10 @@ export const fishData: Fish[] = [
     "description": "The Ember Tetra is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1534043464124-3be32fe000c9?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-42",
@@ -852,7 +942,10 @@ export const fishData: Fish[] = [
     "description": "The Black Skirt Tetra is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 1,
+    "difficultyReason": "Great choices for new aquarists. Hardy, forgiving of minor beginner mistakes, and have straightforward feeding and basic filtration requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-43",
@@ -860,7 +953,7 @@ export const fishData: Fish[] = [
     "name": "Bloodfin Tetra",
     "scientificName": "Bloodfin Tetra",
     "category": "Freshwater",
-    "difficulty": "Intermediate",
+    "difficulty": "Beginner",
     "temperament": "Semi-Aggressive",
     "minTankSize": 10,
     "maxSize": 2,
@@ -871,7 +964,10 @@ export const fishData: Fish[] = [
     "description": "The Bloodfin Tetra is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1534043464124-3be32fe000c9?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 1,
+    "difficultyReason": "Great choices for new aquarists. Hardy, forgiving of minor beginner mistakes, and have straightforward feeding and basic filtration requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-44",
@@ -890,7 +986,10 @@ export const fishData: Fish[] = [
     "description": "The Buenos Aires Tetra is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1520302630592-fac87d005221?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 1,
+    "difficultyReason": "Great choices for new aquarists. Hardy, forgiving of minor beginner mistakes, and have straightforward feeding and basic filtration requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-45",
@@ -898,7 +997,7 @@ export const fishData: Fish[] = [
     "name": "Serpae Tetra",
     "scientificName": "Serpae Tetra",
     "category": "Freshwater",
-    "difficulty": "Intermediate",
+    "difficulty": "Advanced Beginner",
     "temperament": "Aggressive",
     "minTankSize": 20,
     "maxSize": 4,
@@ -909,7 +1008,10 @@ export const fishData: Fish[] = [
     "description": "The Serpae Tetra is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-46",
@@ -917,7 +1019,7 @@ export const fishData: Fish[] = [
     "name": "Diamond Tetra",
     "scientificName": "Diamond Tetra",
     "category": "Freshwater",
-    "difficulty": "Intermediate",
+    "difficulty": "Advanced Beginner",
     "temperament": "Semi-Aggressive",
     "minTankSize": 10,
     "maxSize": 8,
@@ -928,7 +1030,10 @@ export const fishData: Fish[] = [
     "description": "The Diamond Tetra is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-47",
@@ -936,7 +1041,7 @@ export const fishData: Fish[] = [
     "name": "Emperor Tetra",
     "scientificName": "Emperor Tetra",
     "category": "Freshwater",
-    "difficulty": "Advanced",
+    "difficulty": "Advanced Beginner",
     "temperament": "Peaceful",
     "minTankSize": 30,
     "maxSize": 8,
@@ -947,7 +1052,10 @@ export const fishData: Fish[] = [
     "description": "The Emperor Tetra is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "fw-48",
@@ -966,7 +1074,10 @@ export const fishData: Fish[] = [
     "description": "The Panda Garra is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "fw-49",
@@ -974,7 +1085,7 @@ export const fishData: Fish[] = [
     "name": "Glass Catfish",
     "scientificName": "Glass Catfish",
     "category": "Freshwater",
-    "difficulty": "Beginner",
+    "difficulty": "Intermediate",
     "temperament": "Semi-Aggressive",
     "minTankSize": 5,
     "maxSize": 4,
@@ -985,7 +1096,10 @@ export const fishData: Fish[] = [
     "description": "The Glass Catfish is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
     "image": "https://images.unsplash.com/photo-1601614838634-1bfaf38965f8?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-0",
@@ -1004,7 +1118,10 @@ export const fishData: Fish[] = [
     "description": "The Ocellaris Clownfish is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 1,
+    "difficultyReason": "Great choices for new aquarists. Hardy, forgiving of minor beginner mistakes, and have straightforward feeding and basic filtration requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "sw-1",
@@ -1023,7 +1140,10 @@ export const fishData: Fish[] = [
     "description": "The Yellow Tang is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1520302630592-fac87d005221?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-2",
@@ -1031,7 +1151,7 @@ export const fishData: Fish[] = [
     "name": "Blue Hippo Tang",
     "scientificName": "Blue Hippo",
     "category": "Saltwater",
-    "difficulty": "Advanced",
+    "difficulty": "Intermediate",
     "temperament": "Aggressive",
     "minTankSize": 120,
     "maxSize": 10,
@@ -1042,7 +1162,10 @@ export const fishData: Fish[] = [
     "description": "The Blue Hippo Tang is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1516684732162-798a0062be99?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-3",
@@ -1050,7 +1173,7 @@ export const fishData: Fish[] = [
     "name": "Royal Gramma",
     "scientificName": "Royal Gramma",
     "category": "Saltwater",
-    "difficulty": "Advanced",
+    "difficulty": "Beginner",
     "temperament": "Peaceful",
     "minTankSize": 75,
     "maxSize": 10,
@@ -1061,7 +1184,10 @@ export const fishData: Fish[] = [
     "description": "The Royal Gramma is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1601614838634-1bfaf38965f8?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 1,
+    "difficultyReason": "Great choices for new aquarists. Hardy, forgiving of minor beginner mistakes, and have straightforward feeding and basic filtration requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "sw-4",
@@ -1069,7 +1195,7 @@ export const fishData: Fish[] = [
     "name": "Flame Angelfish",
     "scientificName": "Flame Angelfish",
     "category": "Saltwater",
-    "difficulty": "Beginner",
+    "difficulty": "Intermediate",
     "temperament": "Aggressive",
     "minTankSize": 120,
     "maxSize": 5,
@@ -1080,7 +1206,10 @@ export const fishData: Fish[] = [
     "description": "The Flame Angelfish is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-5",
@@ -1088,7 +1217,7 @@ export const fishData: Fish[] = [
     "name": "Coral Beauty",
     "scientificName": "Coral Beauty",
     "category": "Saltwater",
-    "difficulty": "Beginner",
+    "difficulty": "Intermediate",
     "temperament": "Aggressive",
     "minTankSize": 55,
     "maxSize": 15,
@@ -1099,7 +1228,10 @@ export const fishData: Fish[] = [
     "description": "The Coral Beauty is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1534043464124-3be32fe000c9?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-6",
@@ -1107,7 +1239,7 @@ export const fishData: Fish[] = [
     "name": "Mandarinfish",
     "scientificName": "Mandarinfish species",
     "category": "Saltwater",
-    "difficulty": "Intermediate",
+    "difficulty": "Advanced",
     "temperament": "Aggressive",
     "minTankSize": 120,
     "maxSize": 15,
@@ -1118,7 +1250,10 @@ export const fishData: Fish[] = [
     "description": "The Mandarinfish is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-7",
@@ -1126,7 +1261,7 @@ export const fishData: Fish[] = [
     "name": "Banggai Cardinalfish",
     "scientificName": "Banggai Cardinalfish",
     "category": "Saltwater",
-    "difficulty": "Beginner",
+    "difficulty": "Advanced Beginner",
     "temperament": "Semi-Aggressive",
     "minTankSize": 120,
     "maxSize": 5,
@@ -1137,7 +1272,10 @@ export const fishData: Fish[] = [
     "description": "The Banggai Cardinalfish is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "sw-8",
@@ -1145,7 +1283,7 @@ export const fishData: Fish[] = [
     "name": "Pajama Cardinalfish",
     "scientificName": "Pajama Cardinalfish",
     "category": "Saltwater",
-    "difficulty": "Advanced",
+    "difficulty": "Beginner",
     "temperament": "Aggressive",
     "minTankSize": 30,
     "maxSize": 15,
@@ -1156,7 +1294,10 @@ export const fishData: Fish[] = [
     "description": "The Pajama Cardinalfish is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1516684732162-798a0062be99?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 1,
+    "difficultyReason": "Great choices for new aquarists. Hardy, forgiving of minor beginner mistakes, and have straightforward feeding and basic filtration requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "sw-9",
@@ -1164,7 +1305,7 @@ export const fishData: Fish[] = [
     "name": "Firefish Goby",
     "scientificName": "Firefish Goby",
     "category": "Saltwater",
-    "difficulty": "Intermediate",
+    "difficulty": "Beginner",
     "temperament": "Aggressive",
     "minTankSize": 55,
     "maxSize": 10,
@@ -1175,7 +1316,10 @@ export const fishData: Fish[] = [
     "description": "The Firefish Goby is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1534043464124-3be32fe000c9?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 1,
+    "difficultyReason": "Great choices for new aquarists. Hardy, forgiving of minor beginner mistakes, and have straightforward feeding and basic filtration requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "sw-10",
@@ -1183,7 +1327,7 @@ export const fishData: Fish[] = [
     "name": "Diamond Goby",
     "scientificName": "Diamond Goby",
     "category": "Saltwater",
-    "difficulty": "Advanced",
+    "difficulty": "Intermediate",
     "temperament": "Peaceful",
     "minTankSize": 120,
     "maxSize": 3,
@@ -1194,7 +1338,10 @@ export const fishData: Fish[] = [
     "description": "The Diamond Goby is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-11",
@@ -1202,7 +1349,7 @@ export const fishData: Fish[] = [
     "name": "Watchman Goby",
     "scientificName": "Watchman Goby",
     "category": "Saltwater",
-    "difficulty": "Advanced",
+    "difficulty": "Advanced Beginner",
     "temperament": "Aggressive",
     "minTankSize": 30,
     "maxSize": 10,
@@ -1213,7 +1360,10 @@ export const fishData: Fish[] = [
     "description": "The Watchman Goby is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1520302630592-fac87d005221?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "sw-12",
@@ -1221,7 +1371,7 @@ export const fishData: Fish[] = [
     "name": "Six Line Wrasse",
     "scientificName": "Six Line",
     "category": "Saltwater",
-    "difficulty": "Advanced",
+    "difficulty": "Intermediate",
     "temperament": "Peaceful",
     "minTankSize": 75,
     "maxSize": 10,
@@ -1232,7 +1382,10 @@ export const fishData: Fish[] = [
     "description": "The Six Line Wrasse is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1601614838634-1bfaf38965f8?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-13",
@@ -1251,7 +1404,10 @@ export const fishData: Fish[] = [
     "description": "The Melanurus Wrasse is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-14",
@@ -1259,7 +1415,7 @@ export const fishData: Fish[] = [
     "name": "Leopard Wrasse",
     "scientificName": "Leopard Wrasse",
     "category": "Saltwater",
-    "difficulty": "Beginner",
+    "difficulty": "Advanced",
     "temperament": "Aggressive",
     "minTankSize": 30,
     "maxSize": 5,
@@ -1270,7 +1426,10 @@ export const fishData: Fish[] = [
     "description": "The Leopard Wrasse is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-15",
@@ -1278,7 +1437,7 @@ export const fishData: Fish[] = [
     "name": "Cleaner Wrasse",
     "scientificName": "Cleaner Wrasse",
     "category": "Saltwater",
-    "difficulty": "Beginner",
+    "difficulty": "Advanced",
     "temperament": "Peaceful",
     "minTankSize": 75,
     "maxSize": 8,
@@ -1289,7 +1448,10 @@ export const fishData: Fish[] = [
     "description": "The Cleaner Wrasse is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1520302630592-fac87d005221?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-16",
@@ -1297,7 +1459,7 @@ export const fishData: Fish[] = [
     "name": "Fairy Wrasse",
     "scientificName": "Fairy Wrasse",
     "category": "Saltwater",
-    "difficulty": "Advanced",
+    "difficulty": "Intermediate",
     "temperament": "Semi-Aggressive",
     "minTankSize": 120,
     "maxSize": 15,
@@ -1308,7 +1470,10 @@ export const fishData: Fish[] = [
     "description": "The Fairy Wrasse is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1516684732162-798a0062be99?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-17",
@@ -1316,7 +1481,7 @@ export const fishData: Fish[] = [
     "name": "Bicolor Blenny",
     "scientificName": "Bicolor Blenny",
     "category": "Saltwater",
-    "difficulty": "Advanced",
+    "difficulty": "Advanced Beginner",
     "temperament": "Semi-Aggressive",
     "minTankSize": 75,
     "maxSize": 5,
@@ -1327,7 +1492,10 @@ export const fishData: Fish[] = [
     "description": "The Bicolor Blenny is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1534043464124-3be32fe000c9?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "sw-18",
@@ -1335,7 +1503,7 @@ export const fishData: Fish[] = [
     "name": "Tailspot Blenny",
     "scientificName": "Tailspot Blenny",
     "category": "Saltwater",
-    "difficulty": "Beginner",
+    "difficulty": "Advanced Beginner",
     "temperament": "Semi-Aggressive",
     "minTankSize": 55,
     "maxSize": 3,
@@ -1346,7 +1514,10 @@ export const fishData: Fish[] = [
     "description": "The Tailspot Blenny is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "sw-19",
@@ -1354,7 +1525,7 @@ export const fishData: Fish[] = [
     "name": "Lawnmower Blenny",
     "scientificName": "Lawnmower Blenny",
     "category": "Saltwater",
-    "difficulty": "Intermediate",
+    "difficulty": "Advanced Beginner",
     "temperament": "Aggressive",
     "minTankSize": 30,
     "maxSize": 10,
@@ -1365,7 +1536,10 @@ export const fishData: Fish[] = [
     "description": "The Lawnmower Blenny is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1520302630592-fac87d005221?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "sw-20",
@@ -1373,7 +1547,7 @@ export const fishData: Fish[] = [
     "name": "Midas Blenny",
     "scientificName": "Midas Blenny",
     "category": "Saltwater",
-    "difficulty": "Intermediate",
+    "difficulty": "Advanced Beginner",
     "temperament": "Peaceful",
     "minTankSize": 55,
     "maxSize": 10,
@@ -1384,7 +1558,10 @@ export const fishData: Fish[] = [
     "description": "The Midas Blenny is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "sw-21",
@@ -1392,7 +1569,7 @@ export const fishData: Fish[] = [
     "name": "Foxface Rabbitfish",
     "scientificName": "Foxface Rabbitfish",
     "category": "Saltwater",
-    "difficulty": "Advanced",
+    "difficulty": "Intermediate",
     "temperament": "Semi-Aggressive",
     "minTankSize": 30,
     "maxSize": 5,
@@ -1403,7 +1580,10 @@ export const fishData: Fish[] = [
     "description": "The Foxface Rabbitfish is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1534043464124-3be32fe000c9?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-22",
@@ -1411,7 +1591,7 @@ export const fishData: Fish[] = [
     "name": "Kole Tang",
     "scientificName": "Kole Tang",
     "category": "Saltwater",
-    "difficulty": "Advanced",
+    "difficulty": "Intermediate",
     "temperament": "Semi-Aggressive",
     "minTankSize": 120,
     "maxSize": 10,
@@ -1422,7 +1602,10 @@ export const fishData: Fish[] = [
     "description": "The Kole Tang is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1520302630592-fac87d005221?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-23",
@@ -1441,7 +1624,10 @@ export const fishData: Fish[] = [
     "description": "The Powder Blue Tang is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1520302630592-fac87d005221?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-24",
@@ -1460,7 +1646,10 @@ export const fishData: Fish[] = [
     "description": "The Achilles Tang is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1520302630592-fac87d005221?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-25",
@@ -1479,7 +1668,10 @@ export const fishData: Fish[] = [
     "description": "The Naso Tang is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1520302630592-fac87d005221?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-26",
@@ -1487,7 +1679,7 @@ export const fishData: Fish[] = [
     "name": "Sailfin Tang",
     "scientificName": "Sailfin Tang",
     "category": "Saltwater",
-    "difficulty": "Beginner",
+    "difficulty": "Advanced",
     "temperament": "Peaceful",
     "minTankSize": 55,
     "maxSize": 5,
@@ -1498,7 +1690,10 @@ export const fishData: Fish[] = [
     "description": "The Sailfin Tang is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-27",
@@ -1517,7 +1712,10 @@ export const fishData: Fish[] = [
     "description": "The Emperor Angelfish is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1516684732162-798a0062be99?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-28",
@@ -1536,7 +1734,10 @@ export const fishData: Fish[] = [
     "description": "The Majestic Angelfish is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1534043464124-3be32fe000c9?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-29",
@@ -1544,7 +1745,7 @@ export const fishData: Fish[] = [
     "name": "Regal Angelfish",
     "scientificName": "Regal Angelfish",
     "category": "Saltwater",
-    "difficulty": "Intermediate",
+    "difficulty": "Advanced",
     "temperament": "Peaceful",
     "minTankSize": 30,
     "maxSize": 10,
@@ -1555,7 +1756,10 @@ export const fishData: Fish[] = [
     "description": "The Regal Angelfish is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1516684732162-798a0062be99?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-30",
@@ -1563,7 +1767,7 @@ export const fishData: Fish[] = [
     "name": "Peppermint Angelfish",
     "scientificName": "Peppermint Angelfish",
     "category": "Saltwater",
-    "difficulty": "Beginner",
+    "difficulty": "Advanced",
     "temperament": "Semi-Aggressive",
     "minTankSize": 75,
     "maxSize": 15,
@@ -1574,7 +1778,10 @@ export const fishData: Fish[] = [
     "description": "The Peppermint Angelfish is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1601614838634-1bfaf38965f8?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-31",
@@ -1582,7 +1789,7 @@ export const fishData: Fish[] = [
     "name": "Longnose Hawkfish",
     "scientificName": "Longnose Hawkfish",
     "category": "Saltwater",
-    "difficulty": "Intermediate",
+    "difficulty": "Advanced Beginner",
     "temperament": "Aggressive",
     "minTankSize": 30,
     "maxSize": 10,
@@ -1593,7 +1800,10 @@ export const fishData: Fish[] = [
     "description": "The Longnose Hawkfish is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1516684732162-798a0062be99?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "sw-32",
@@ -1601,7 +1811,7 @@ export const fishData: Fish[] = [
     "name": "Flame Hawkfish",
     "scientificName": "Flame Hawkfish",
     "category": "Saltwater",
-    "difficulty": "Advanced",
+    "difficulty": "Advanced Beginner",
     "temperament": "Aggressive",
     "minTankSize": 30,
     "maxSize": 8,
@@ -1612,7 +1822,10 @@ export const fishData: Fish[] = [
     "description": "The Flame Hawkfish is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1534043464124-3be32fe000c9?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 2,
+    "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
+    "beginnerSuitable": true
   },
   {
     "id": "sw-33",
@@ -1631,7 +1844,10 @@ export const fishData: Fish[] = [
     "description": "The Snowflake Eel is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1534043464124-3be32fe000c9?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-34",
@@ -1639,7 +1855,7 @@ export const fishData: Fish[] = [
     "name": "Ribbon Eel",
     "scientificName": "Ribbon Eel",
     "category": "Saltwater",
-    "difficulty": "Beginner",
+    "difficulty": "Advanced",
     "temperament": "Aggressive",
     "minTankSize": 75,
     "maxSize": 5,
@@ -1650,7 +1866,10 @@ export const fishData: Fish[] = [
     "description": "The Ribbon Eel is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-35",
@@ -1658,7 +1877,7 @@ export const fishData: Fish[] = [
     "name": "Green Mandarin",
     "scientificName": "Green Mandarin",
     "category": "Saltwater",
-    "difficulty": "Beginner",
+    "difficulty": "Advanced",
     "temperament": "Semi-Aggressive",
     "minTankSize": 30,
     "maxSize": 10,
@@ -1669,7 +1888,10 @@ export const fishData: Fish[] = [
     "description": "The Green Mandarin is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-36",
@@ -1688,7 +1910,10 @@ export const fishData: Fish[] = [
     "description": "The Spotted Mandarin is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-37",
@@ -1696,7 +1921,7 @@ export const fishData: Fish[] = [
     "name": "Clown Triggerfish",
     "scientificName": "Clown Triggerfish",
     "category": "Saltwater",
-    "difficulty": "Beginner",
+    "difficulty": "Advanced",
     "temperament": "Aggressive",
     "minTankSize": 75,
     "maxSize": 5,
@@ -1707,7 +1932,10 @@ export const fishData: Fish[] = [
     "description": "The Clown Triggerfish is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1520302630592-fac87d005221?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-38",
@@ -1726,7 +1954,10 @@ export const fishData: Fish[] = [
     "description": "The Niger Triggerfish is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-39",
@@ -1734,7 +1965,7 @@ export const fishData: Fish[] = [
     "name": "Picasso Triggerfish",
     "scientificName": "Picasso Triggerfish",
     "category": "Saltwater",
-    "difficulty": "Beginner",
+    "difficulty": "Advanced",
     "temperament": "Semi-Aggressive",
     "minTankSize": 30,
     "maxSize": 5,
@@ -1745,7 +1976,10 @@ export const fishData: Fish[] = [
     "description": "The Picasso Triggerfish is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1516684732162-798a0062be99?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-40",
@@ -1753,7 +1987,7 @@ export const fishData: Fish[] = [
     "name": "Porcupine Puffer",
     "scientificName": "Porcupine Puffer",
     "category": "Saltwater",
-    "difficulty": "Intermediate",
+    "difficulty": "Advanced",
     "temperament": "Peaceful",
     "minTankSize": 75,
     "maxSize": 15,
@@ -1764,7 +1998,10 @@ export const fishData: Fish[] = [
     "description": "The Porcupine Puffer is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1534043464124-3be32fe000c9?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-41",
@@ -1772,7 +2009,7 @@ export const fishData: Fish[] = [
     "name": "Dogface Puffer",
     "scientificName": "Dogface Puffer",
     "category": "Saltwater",
-    "difficulty": "Beginner",
+    "difficulty": "Intermediate",
     "temperament": "Peaceful",
     "minTankSize": 75,
     "maxSize": 5,
@@ -1783,7 +2020,10 @@ export const fishData: Fish[] = [
     "description": "The Dogface Puffer is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-42",
@@ -1791,7 +2031,7 @@ export const fishData: Fish[] = [
     "name": "Valentini Puffer",
     "scientificName": "Valentini Puffer",
     "category": "Saltwater",
-    "difficulty": "Beginner",
+    "difficulty": "Intermediate",
     "temperament": "Peaceful",
     "minTankSize": 30,
     "maxSize": 15,
@@ -1802,7 +2042,10 @@ export const fishData: Fish[] = [
     "description": "The Valentini Puffer is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1516684732162-798a0062be99?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-43",
@@ -1810,7 +2053,7 @@ export const fishData: Fish[] = [
     "name": "Copperband Butterflyfish",
     "scientificName": "Copperband Butterflyfish",
     "category": "Saltwater",
-    "difficulty": "Beginner",
+    "difficulty": "Advanced",
     "temperament": "Peaceful",
     "minTankSize": 120,
     "maxSize": 5,
@@ -1821,7 +2064,10 @@ export const fishData: Fish[] = [
     "description": "The Copperband Butterflyfish is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1520302630592-fac87d005221?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-44",
@@ -1829,7 +2075,7 @@ export const fishData: Fish[] = [
     "name": "Raccoon Butterflyfish",
     "scientificName": "Raccoon Butterflyfish",
     "category": "Saltwater",
-    "difficulty": "Intermediate",
+    "difficulty": "Advanced",
     "temperament": "Peaceful",
     "minTankSize": 75,
     "maxSize": 15,
@@ -1840,7 +2086,10 @@ export const fishData: Fish[] = [
     "description": "The Raccoon Butterflyfish is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1516684732162-798a0062be99?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-45",
@@ -1848,7 +2097,7 @@ export const fishData: Fish[] = [
     "name": "Threadfin Butterflyfish",
     "scientificName": "Threadfin Butterflyfish",
     "category": "Saltwater",
-    "difficulty": "Intermediate",
+    "difficulty": "Advanced",
     "temperament": "Semi-Aggressive",
     "minTankSize": 120,
     "maxSize": 10,
@@ -1859,7 +2108,10 @@ export const fishData: Fish[] = [
     "description": "The Threadfin Butterflyfish is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-46",
@@ -1878,7 +2130,10 @@ export const fishData: Fish[] = [
     "description": "The Moorish Idol is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1534043464124-3be32fe000c9?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-47",
@@ -1886,7 +2141,7 @@ export const fishData: Fish[] = [
     "name": "Lionfish",
     "scientificName": "Lionfish species",
     "category": "Saltwater",
-    "difficulty": "Beginner",
+    "difficulty": "Intermediate",
     "temperament": "Aggressive",
     "minTankSize": 75,
     "maxSize": 15,
@@ -1897,7 +2152,10 @@ export const fishData: Fish[] = [
     "description": "The Lionfish is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-48",
@@ -1916,7 +2174,10 @@ export const fishData: Fish[] = [
     "description": "The Fuzzy Dwarf Lionfish is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 3,
+    "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
+    "beginnerSuitable": false
   },
   {
     "id": "sw-49",
@@ -1935,6 +2196,9 @@ export const fishData: Fish[] = [
     "description": "The Panther Grouper is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
     "image": "https://images.unsplash.com/photo-1520302630592-fac87d005221?q=80&w=800&auto=format&fit=crop",
-    "compatibleWith": []
+    "compatibleWith": [],
+    "difficultyScore": 4,
+    "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
+    "beginnerSuitable": false
   }
 ];

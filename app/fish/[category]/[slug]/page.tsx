@@ -69,6 +69,33 @@ export default async function FishDetailPage({
           {/* Left Column: Details */}
           <div className="lg:col-span-2 space-y-12">
             
+            {/* Difficulty & Guidance */}
+            <section className="glass p-8 rounded-3xl border border-border bg-card/50">
+              <div className="flex items-start justify-between mb-4">
+                <div>
+                  <h2 className="text-2xl font-bold flex items-center gap-2">
+                    Experience Level: {fish.difficulty}
+                  </h2>
+                  <p className="text-lg font-medium text-primary mt-1">
+                    {fish.difficulty === "Beginner" && "Beginner-friendly"}
+                    {fish.difficulty === "Advanced Beginner" && "Good for beginners who are ready for additional care"}
+                    {fish.difficulty === "Intermediate" && "Recommended for aquarists with some experience"}
+                    {fish.difficulty === "Advanced" && "Recommended for experienced aquarists"}
+                  </p>
+                </div>
+                <div className="text-right">
+                  <div className="text-sm text-muted-foreground uppercase tracking-wider font-semibold mb-1">Difficulty Score</div>
+                  <div className="text-3xl font-bold text-primary">{fish.difficultyScore} <span className="text-xl text-muted-foreground">/ 4</span></div>
+                </div>
+              </div>
+              <div className="p-4 bg-muted/50 rounded-xl border border-border">
+                <p className="text-muted-foreground italic text-sm">
+                  <strong className="text-foreground not-italic mr-1">Why this difficulty?</strong>
+                  {fish.difficultyReason}
+                </p>
+              </div>
+            </section>
+
             {/* Description */}
             <section>
               <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
@@ -84,27 +111,44 @@ export default async function FishDetailPage({
               <div className="space-y-8">
                 <div>
                   <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
-                    <Droplets className="w-5 h-5 text-blue-400" /> Water Parameters
+                    <Droplets className="w-5 h-5 text-blue-400" /> Water Parameters & Setup
                   </h3>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div className="p-4 rounded-xl bg-muted/50 border border-border">
+                      <span className="text-sm text-muted-foreground block mb-1">Water Type</span>
+                      <span className="font-semibold capitalize">{fish.category}</span>
+                    </div>
+                    <div className="p-4 rounded-xl bg-muted/50 border border-border">
                       <span className="text-sm text-muted-foreground block mb-1">Temperature</span>
-                      <span className="font-semibold">{fish.temperature}</span>
+                      <span className="font-semibold">{fish.temperature || 'Varies'}</span>
                     </div>
                     <div className="p-4 rounded-xl bg-muted/50 border border-border">
                       <span className="text-sm text-muted-foreground block mb-1">pH Level</span>
-                      <span className="font-semibold">{fish.ph}</span>
+                      <span className="font-semibold">{fish.ph || 'Varies'}</span>
                     </div>
                     <div className="p-4 rounded-xl bg-muted/50 border border-border">
-                      <span className="text-sm text-muted-foreground block mb-1">Tank Size</span>
-                      <span className="font-semibold">{fish.minimumTankSize}</span>
+                      <span className="text-sm text-muted-foreground block mb-1">Min Tank Size</span>
+                      <span className="font-semibold">{fish.minimumTankSize || (fish.minTankSize ? `${fish.minTankSize} gal` : 'Varies')}</span>
                     </div>
                     <div className="p-4 rounded-xl bg-muted/50 border border-border">
                       <span className="text-sm text-muted-foreground block mb-1">Adult Size</span>
-                      <span className="font-semibold">{fish.adultSize}</span>
+                      <span className="font-semibold">{fish.adultSize || (fish.maxSize ? `${fish.maxSize} inches` : 'Varies')}</span>
+                    </div>
+                    <div className="p-4 rounded-xl bg-muted/50 border border-border">
+                      <span className="text-sm text-muted-foreground block mb-1">Lifespan</span>
+                      <span className="font-semibold">{fish.lifespan || 'Unknown'}</span>
                     </div>
                   </div>
                 </div>
+
+                {fish.careGuide && (
+                  <div>
+                    <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
+                      <Info className="w-5 h-5 text-green-500" /> Care Instructions
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">{fish.careGuide}</p>
+                  </div>
+                )}
 
                 <div>
                   <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
@@ -113,7 +157,7 @@ export default async function FishDetailPage({
                   <ul className="list-disc list-inside space-y-2 text-muted-foreground">
                     {Array.isArray(fish.diet) ? fish.diet.map((item, i) => (
                       <li key={i}>{item}</li>
-                    )) : fish.diet ? <li>{fish.diet}</li> : null}
+                    )) : fish.diet ? <li>{fish.diet}</li> : <li>Varies</li>}
                   </ul>
                 </div>
               </div>
