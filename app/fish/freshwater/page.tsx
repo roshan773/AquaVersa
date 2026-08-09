@@ -68,10 +68,44 @@ export default function FreshwaterPage() {
         </div>
 
         {filteredFish.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredFish.map(fish => (
-              <FishCard key={fish.id} fish={fish} />
-            ))}
+          <div className="space-y-12">
+            {["Beginner", "Intermediate", "Advanced"].map(diff => {
+              const diffFish = filteredFish.filter(f => f.difficulty === diff);
+              if (diffFish.length === 0) return null;
+              
+              return (
+                <section key={diff} className="space-y-6">
+                  <div className="flex items-center gap-4">
+                    <h2 className="text-2xl font-bold font-poppins text-cyan-400">{diff} Level</h2>
+                    <div className="h-px bg-border flex-1"></div>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {diffFish.map(fish => (
+                      <FishCard key={fish.id} fish={fish} />
+                    ))}
+                  </div>
+                </section>
+              );
+            })}
+            
+            {/* Fallback for fish with no difficulty or other values */}
+            {(() => {
+              const otherFish = filteredFish.filter(f => !["Beginner", "Intermediate", "Advanced"].includes(f.difficulty || ""));
+              if (otherFish.length === 0) return null;
+              return (
+                <section className="space-y-6">
+                  <div className="flex items-center gap-4">
+                    <h2 className="text-2xl font-bold font-poppins text-cyan-400">Other / Uncategorized</h2>
+                    <div className="h-px bg-border flex-1"></div>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {otherFish.map(fish => (
+                      <FishCard key={fish.id} fish={fish} />
+                    ))}
+                  </div>
+                </section>
+              )
+            })()}
           </div>
         ) : (
           <div className="text-center py-20 bg-muted/30 rounded-2xl border border-border border-dashed">
