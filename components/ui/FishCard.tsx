@@ -17,11 +17,11 @@ export default function FishCard({ fish }: FishCardProps) {
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
-        <div className="absolute top-3 right-3 bg-white/90 dark:bg-black/80 backdrop-blur-sm px-2 py-1 rounded-md text-xs font-semibold text-foreground">
+        <div className="absolute top-3 right-3 bg-black/60 text-white backdrop-blur-md px-2.5 py-1 rounded-md text-xs font-semibold border border-white/20 shadow-sm">
           {fish.difficulty}
         </div>
-        <div className="absolute top-3 left-3 bg-white/90 dark:bg-black/80 backdrop-blur-sm p-1.5 rounded-md">
-          <Droplets className={`w-4 h-4 ${fish.category === 'freshwater' ? 'text-cyan-500' : 'text-blue-500'}`} />
+        <div className="absolute top-3 left-3 bg-black/60 text-white backdrop-blur-md p-1.5 rounded-md border border-white/20 shadow-sm">
+          <Droplets className={`w-4 h-4 ${fish.category?.toLowerCase() === 'freshwater' ? 'text-cyan-400' : 'text-blue-400'}`} />
         </div>
       </div>
       
