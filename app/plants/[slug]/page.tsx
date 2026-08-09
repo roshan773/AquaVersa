@@ -5,9 +5,11 @@ import Link from "next/link";
 import { ArrowLeft, Leaf, Info, Activity, ArrowUpRight } from "lucide-react";
 
 export async function generateStaticParams() {
-  return plantData.map((plant) => ({
-    slug: plant.slug,
-  }));
+  return plantData
+    .filter(plant => plant.slug)
+    .map((plant) => ({
+      slug: plant.slug,
+    }));
 }
 
 export default async function PlantDetailPage({

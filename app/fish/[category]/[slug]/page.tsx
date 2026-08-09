@@ -5,10 +5,12 @@ import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Droplets, Thermometer, Info, Leaf, Activity } from "lucide-react";
 
 export async function generateStaticParams() {
-  return fishData.map((fish) => ({
-    category: fish.category,
-    slug: fish.slug,
-  }));
+  return fishData
+    .filter(fish => fish.category && fish.slug)
+    .map((fish) => ({
+      category: fish.category!.toLowerCase(),
+      slug: fish.slug,
+    }));
 }
 
 export default async function FishDetailPage({
@@ -17,7 +19,7 @@ export default async function FishDetailPage({
   params: Promise<{ category: string; slug: string }>;
 }) {
   const { category, slug } = await params;
-  const fish = fishData.find((f) => f.slug === slug && f.category === category);
+  const fish = fishData.find((f) => f.slug === slug && f.category?.toLowerCase() === category.toLowerCase());
 
   if (!fish) {
     notFound();

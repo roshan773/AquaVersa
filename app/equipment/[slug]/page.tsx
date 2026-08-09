@@ -5,9 +5,11 @@ import Link from "next/link";
 import { ArrowLeft, Settings, Info, AlertTriangle, CheckCircle } from "lucide-react";
 
 export async function generateStaticParams() {
-  return equipmentData.map((eq) => ({
-    slug: eq.slug,
-  }));
+  return equipmentData
+    .filter(eq => eq.slug)
+    .map((eq) => ({
+      slug: eq.slug,
+    }));
 }
 
 export default async function EquipmentDetailPage({
@@ -91,7 +93,7 @@ export default async function EquipmentDetailPage({
               <div className="mb-8">
                 <h3 className="text-xl font-bold mb-4">Suitable For</h3>
                 <ul className="space-y-3">
-                  {eq.suitableTanks.map((tank, i) => (
+                  {eq.suitableTanks?.map((tank, i) => (
                     <li key={i} className="flex items-center gap-3 p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-sm font-medium">
                       <CheckCircle className="w-4 h-4 text-amber-500" /> {tank} Tanks
                     </li>

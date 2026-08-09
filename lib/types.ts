@@ -42,14 +42,14 @@ export interface Equipment {
   id: string;
   slug?: string;
   name: string;
-  category?: string;
-  description?: string;
+  category: string;
+  description: string;
   purpose?: string;
   howItWorks?: string;
   suitableTanks?: string[];
   maintenance?: string;
   beginnerMistakes?: string;
-  image?: string;
+  image: string;
 }
 
 export interface GuideStep {
