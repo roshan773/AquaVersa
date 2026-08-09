@@ -14,6 +14,10 @@ export const metadata: Metadata = {
   description: "Discover the right fish, equipment, and plants to create a healthy aquarium.",
 };
 
+import Navbar from "@/components/navbar/Navbar";
+import { StatsProvider } from '@/components/home/StatsContext';
+import Footer from "@/components/footer/Footer";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -21,13 +25,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${poppins.variable} font-sans antialiased min-h-screen flex flex-col`}>
-        {/* Navbar will go here */}
-        <main className="flex-grow">
-          {children}
-        </main>
-        {/* Footer will go here */}
-      </body>
-    </html>
+        <body className={`${inter.variable} ${poppins.variable} font-sans antialiased min-h-screen flex flex-col`}>
+          <Navbar />
+          <StatsProvider>
+            <main className="flex-grow">
+              {children}
+            </main>
+          </StatsProvider>
+          <Footer />
+        </body>
+      </html>
   );
 }
