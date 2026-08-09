@@ -1,35 +1,39 @@
 export interface Fish {
   id: string;
-  slug: string;
+  slug?: string;
   name: string;
-  scientificName: string;
-  category: "freshwater" | "saltwater";
-  difficulty: "Easy" | "Intermediate" | "Advanced";
-  adultSize: string;
-  minimumTankSize: string;
-  temperature: string;
-  ph: string;
-  temperament: string;
-  diet: string[];
-  lifespan: string;
-  compatibility: string[];
-  plants: string[];
+  scientificName?: string;
+  category?: string;
+  difficulty?: string;
+  adultSize?: string;
+  maxSize?: number;
+  minTankSize?: number;
+  minimumTankSize?: string;
+  temperature?: string;
+  ph?: string;
+  temperament?: string;
+  diet?: string | string[];
+  lifespan?: string;
+  compatibility?: string[];
+  compatibleWith?: string[];
+  plants?: string[];
   image: string;
   description: string;
+  careGuide?: string;
 }
 
 export interface Plant {
   id: string;
-  slug: string;
+  slug?: string;
   name: string;
-  scientificName: string;
-  difficulty: "Easy" | "Intermediate" | "Advanced";
-  growthRate: "Slow" | "Moderate" | "Fast";
-  light: "Low" | "Medium" | "High";
-  co2: "Optional" | "Recommended" | "Required";
-  placement: string;
-  temperature: string;
-  ph: string;
+  scientificName?: string;
+  difficulty?: string;
+  growthRate?: string;
+  light?: string;
+  co2?: string;
+  placement?: string;
+  temperature?: string;
+  ph?: string;
   image: string;
   description: string;
 }
