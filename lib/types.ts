@@ -40,24 +40,24 @@ export interface Plant {
 
 export interface Equipment {
   id: string;
-  slug: string;
+  slug?: string;
   name: string;
-  category: string;
-  description: string;
-  purpose: string;
-  howItWorks: string;
-  suitableTanks: string[];
-  maintenance: string;
-  beginnerMistakes: string;
-  image: string;
+  category?: string;
+  description?: string;
+  purpose?: string;
+  howItWorks?: string;
+  suitableTanks?: string[];
+  maintenance?: string;
+  beginnerMistakes?: string;
+  image?: string;
 }
 
 export interface GuideStep {
   step: number;
   title: string;
   description: string;
-  whatToBuy: string;
-  whyNeeded: string;
-  commonMistakes: string;
-  recommendation: string;
+  whatToBuy?: string;
+  whyNeeded?: string;
+  commonMistakes?: string;
+  recommendation?: string;
 }

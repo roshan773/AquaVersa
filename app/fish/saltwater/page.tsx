@@ -6,7 +6,7 @@ import FishCard from "@/components/ui/FishCard";
 import { Search } from "lucide-react";
 
 export default function SaltwaterPage() {
-  const saltwaterFish = fishData.filter(f => f.category.toLowerCase() === "saltwater");
+  const saltwaterFish = fishData.filter(f => f.category?.toLowerCase() === "saltwater");
   
   const [searchTerm, setSearchTerm] = useState("");
   const [difficultyFilter, setDifficultyFilter] = useState("All");

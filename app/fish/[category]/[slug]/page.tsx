@@ -109,9 +109,9 @@ export default async function FishDetailPage({
                     <Activity className="w-5 h-5 text-amber-500" /> Diet & Feeding
                   </h3>
                   <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                    {fish.diet.map((item, i) => (
+                    {Array.isArray(fish.diet) ? fish.diet.map((item, i) => (
                       <li key={i}>{item}</li>
-                    ))}
+                    )) : fish.diet ? <li>{fish.diet}</li> : null}
                   </ul>
                 </div>
               </div>
