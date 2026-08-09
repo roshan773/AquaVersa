@@ -17,7 +17,7 @@ export const fishData: Fish[] = [
     "diet": "Omnivore",
     "description": "The Neon Tetra is a stunning addition to any freshwater aquarium. Known for its dynamic coloration and interesting behavior, this species has become a staple in the hobby. It thrives in well-planted environments with plenty of hiding spaces. Ensure proper water parameters are maintained to keep them healthy and vibrant.",
     "careGuide": "Keep the tank clean with regular 20% weekly water changes. Feed a varied diet of high-quality flakes, pellets, and occasional frozen treats like bloodworms. Ensure the tank size meets their minimum requirements to prevent stunting and stress.",
-    "image": "images/neon-tetra.png",
+    "image": "../images/neon-tetra.png",
     "compatibleWith": [],
     "difficultyScore": 2,
     "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
