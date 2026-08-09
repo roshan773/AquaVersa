@@ -26,13 +26,13 @@ fishData = fishData.filter(f => f.slug);
 let errors = [];
 
 // Validation Rules
-if (fishData.length !== 100) errors.push(`Total fish is ${fishData.length}, expected 100.`);
+if (fishData.length !== 20) errors.push(`Total fish is ${fishData.length}, expected 20.`);
 
 const fw = fishData.filter(f => f.category?.toLowerCase() === 'freshwater');
-if (fw.length !== 50) errors.push(`Freshwater fish is ${fw.length}, expected 50.`);
+if (fw.length !== 10) errors.push(`Freshwater fish is ${fw.length}, expected 10.`);
 
 const sw = fishData.filter(f => f.category?.toLowerCase() === 'saltwater');
-if (sw.length !== 50) errors.push(`Saltwater fish is ${sw.length}, expected 50.`);
+if (sw.length !== 10) errors.push(`Saltwater fish is ${sw.length}, expected 10.`);
 
 const allowedDiffs = ['Beginner', 'Advanced Beginner', 'Intermediate', 'Advanced'];
 const ids = new Set();

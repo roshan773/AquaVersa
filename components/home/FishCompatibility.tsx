@@ -9,7 +9,7 @@ export default function FishCompatibility() {
   const [fish2, setFish2] = useState(fishData[1].id);
 
   const getCompatibility = (id1: string, id2: string) => {
-    if (id1 === id2) return { status: 'Warning', message: 'Same species. Some species are territorial with their own kind (e.g., male Bettas or Tangs).', icon: <AlertTriangle className="text-amber-500 w-6 h-6" /> };
+    if (id1 === id2) return { status: 'Compatible', message: 'Same species. Generally compatible together in groups or pairs.', icon: <CheckCircle2 className="text-emerald-500 w-6 h-6" /> };
     
     const f1 = fishData.find(f => f.id === id1);
     const f2 = fishData.find(f => f.id === id2);
