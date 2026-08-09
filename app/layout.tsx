@@ -25,7 +25,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-        <body className={`${inter.variable} ${poppins.variable} font-sans antialiased min-h-screen flex flex-col`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.classList.add('dark');
+              }
+            `,
+          }}
+        />
+      </head>
+      <body className={`${inter.variable} ${poppins.variable} font-sans antialiased min-h-screen flex flex-col`}>
           <Navbar />
           <StatsProvider>
             <main className="flex-grow">
