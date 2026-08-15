@@ -54,8 +54,8 @@ export default function Diseases() {
             <p className="text-sm mb-1"><span className="font-medium">Susceptible:</span> {d.susceptible.join(", ")}</p>
             <p className="text-sm mb-1"><span className="font-medium">Affected:</span> {d.affected.join(", ")}</p>
             <p className="text-sm mb-4"><span className="font-medium">Cure:</span> {d.cure}</p>
-            <Link href="#" className="inline-flex items-center gap-1 text-cyan-600 hover:text-cyan-500 font-medium">
-              Learn More <ArrowRight className="w-4 h-4" />
+            <Link href={`/search?q=${encodeURIComponent(d.name.split(" ")[0])}`} className="inline-flex items-center gap-1 text-cyan-600 hover:text-cyan-500 font-medium group">
+              Find Affected Fish <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         ))}

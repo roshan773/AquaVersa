@@ -4,9 +4,9 @@ import { ArrowRight } from 'lucide-react';
 
 export default function JourneySelector() {
   const journeys = [
-    { title: 'Start Fresh', description: 'Beginner guide to set up your first tank.', href: '/start-aquarium' },
-    { title: 'Upgrade', description: 'Take your hobby to the next level with advanced setups.', href: '/upgrade' },
-    { title: 'Marine Mastery', description: 'Dive into saltwater reefs and marine ecosystems.', href: '/marine' },
+    { title: 'Start Fresh', description: 'Beginner guide to set up your first tank step by step.', href: '/start-aquarium' },
+    { title: 'Advanced Gear', description: 'Take your hobby to the next level with essential aquarium hardware.', href: '/equipment' },
+    { title: 'Ecosystem Balance', description: 'Ensure your fish and plants peacefully co-exist.', href: '/compatibility' },
   ];
 
   return (

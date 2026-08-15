@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Search, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const popularQuestions = [
   "How many fish can I put in a 10-gallon tank?",
@@ -12,13 +13,13 @@ const popularQuestions = [
 ];
 
 export default function QuickQuestions() {
+  const router = useRouter();
   const [query, setQuery] = useState('');
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if(query.trim()) {
-      // In a real app, route to search page: router.push(`/search?q=${query}`)
-      console.log('Searching for:', query);
+      router.push(`/search?q=${encodeURIComponent(query.trim())}`);
     }
   };
 

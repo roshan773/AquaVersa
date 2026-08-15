@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { CheckCircle2, Leaf, Fish } from 'lucide-react';
 import { plantData } from '@/data/plants';
+import Link from 'next/link';
 
 export default function FishPlantCompatibility() {
   const [fishType, setFishType] = useState('Community');
@@ -65,15 +66,15 @@ export default function FishPlantCompatibility() {
               <div className="space-y-4">
                 {recommendations.length > 0 ? (
                   recommendations.map(plant => (
-                    <div key={plant.id} className="bg-background p-4 rounded-xl shadow-sm border border-border flex items-center justify-between">
+                    <Link key={plant.id} href={`/plants/${plant.slug}`} className="bg-background p-4 rounded-xl shadow-sm border border-border flex items-center justify-between hover:border-emerald-500/30 hover:shadow transition-all block group">
                       <div>
-                        <h4 className="font-bold text-foreground">{plant.name}</h4>
+                        <h4 className="font-bold text-foreground group-hover:text-emerald-600 transition-colors">{plant.name}</h4>
                         <p className="text-xs text-muted-foreground">{plant.placement}</p>
                       </div>
-                      <span className="text-xs font-semibold bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full">
+                      <span className="text-xs font-semibold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300 px-2 py-1 rounded-full">
                         Compatible
                       </span>
-                    </div>
+                    </Link>
                   ))
                 ) : (
                   <div className="bg-background p-4 rounded-xl shadow-sm border border-border text-center">

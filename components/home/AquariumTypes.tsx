@@ -7,29 +7,33 @@ export default function AquariumTypes() {
       id: 'community',
       title: 'Community Tank',
       desc: 'Peaceful mix of species. Perfect for beginners.',
-      image: '/hero_aquarium.jpg',
+      image: '/images/neon_tetra.png',
       color: 'bg-emerald-500/20 text-emerald-600',
+      href: '/start-aquarium',
     },
     {
       id: 'cichlid',
       title: 'African Cichlid',
       desc: 'High pH, rockscapes, and vibrant colors.',
-      image: '/hero_aquarium.jpg',
+      image: '/images/african_cichlid.png',
       color: 'bg-amber-500/20 text-amber-600',
+      href: '/fish/freshwater?search=cichlid',
     },
     {
       id: 'planted',
       title: 'Planted Aquascape',
       desc: 'Focus on aquatic flora and natural layouts.',
-      image: '/hero_aquarium.jpg',
+      image: '/images/anubias.png',
       color: 'bg-green-500/20 text-green-600',
+      href: '/plants',
     },
     {
       id: 'reef',
       title: 'Saltwater Reef',
       desc: 'Corals, anemones, and marine fish.',
-      image: '/hero_aquarium.jpg',
+      image: '/images/blue_tang.png',
       color: 'bg-cyan-500/20 text-cyan-600',
+      href: '/fish/saltwater',
     }
   ];
 
@@ -45,8 +49,8 @@ export default function AquariumTypes() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {types.map((type) => (
-            <Link href="/guides" key={type.id} className="group text-left rounded-3xl border border-border bg-card overflow-hidden hover:shadow-xl transition-all block">
-              <div className="relative h-48 w-full overflow-hidden">
+            <Link href={type.href} key={type.id} className="group text-left rounded-3xl border border-border bg-card overflow-hidden hover:shadow-xl transition-all block">
+              <div className="relative h-48 w-full overflow-hidden bg-muted">
                  <Image src={type.image} alt={type.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
               <div className="p-6">

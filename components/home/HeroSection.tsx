@@ -7,13 +7,13 @@ import { ArrowRight, Waves } from 'lucide-react';
 export default function HeroSection() {
   const { fish, plants, equipment } = useStats();
   return (
-    <section className="relative w-full h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#071A2B] to-[#0B3B5A]">
+    <section className="relative w-full h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       {/* Background Image */}
       <Image
-        src="/hero_aquarium.jpg"
+        src="/betta_bg.png"
         alt="Lush planted aquarium with tropical fish"
         fill
-        className="object-cover opacity-70"
+        className="object-cover opacity-50 mix-blend-luminosity hover:scale-105 transition-transform duration-1000"
         priority
       />
       {/* Overlay */}

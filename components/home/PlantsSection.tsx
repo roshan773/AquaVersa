@@ -40,23 +40,29 @@ export default function PlantsSection() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {plantData.slice(0, 4).map((plant) => (
-            <div key={plant.id} className="group rounded-3xl overflow-hidden bg-card border border-border hover:shadow-xl transition-all">
-              <div className="relative h-56 w-full">
-                 <Image src={plant.image || '/hero_aquarium.jpg'} alt={plant.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                 <div className="absolute top-4 right-4">
-                   <span className="px-3 py-1 bg-background/90 backdrop-blur-md rounded-full text-xs font-bold shadow-sm text-foreground">
-                     {plant.placement}
-                   </span>
-                 </div>
+            <div key={plant.id} className="group rounded-3xl overflow-hidden bg-card border border-border hover:shadow-xl transition-all flex flex-col justify-between">
+              <div>
+                <div className="relative h-56 w-full bg-muted">
+                   <Image src={plant.image || '/hero_aquarium.jpg'} alt={plant.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                   <div className="absolute top-4 right-4">
+                     <span className="px-3 py-1 bg-background/90 backdrop-blur-md rounded-full text-xs font-bold shadow-sm text-foreground">
+                       {plant.placement}
+                     </span>
+                   </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-2 text-foreground line-clamp-1 group-hover:text-emerald-600 transition-colors">{plant.name}</h3>
+                  <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{plant.description}</p>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 text-foreground line-clamp-1">{plant.name}</h3>
-                <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{plant.description}</p>
-                
-                <div className="flex items-center justify-between mt-auto">
+              <div className="px-6 pb-6 pt-0 mt-auto">
+                <div className="flex items-center justify-between pt-4 border-t border-border">
                   <div className="flex items-center gap-1 text-xs font-medium text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded-md">
                     Light: {plant.light}
                   </div>
+                  <Link href={`/plants/${plant.slug}`} className="text-xs font-semibold text-emerald-600 hover:text-emerald-500 inline-flex items-center gap-1">
+                    Read Guide <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
                 </div>
               </div>
             </div>

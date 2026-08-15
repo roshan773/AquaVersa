@@ -1,7 +1,8 @@
 'use client';
 import { useState } from 'react';
-import { Ruler, Maximize } from 'lucide-react';
+import { Ruler, Maximize, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const tankData = [
   {
@@ -106,6 +107,12 @@ export default function TankSizeGuide() {
                     </h4>
                     <p className="text-amber-900/80 dark:text-amber-200/70">{selected.warning}</p>
                   </div>
+                </div>
+
+                <div className="mt-8 flex justify-end">
+                  <Link href="/tank-size" className="inline-flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-semibold hover:underline">
+                    Compare All Tank Sizes & Dimensions <ArrowRight className="w-4 h-4" />
+                  </Link>
                 </div>
               </div>
             </div>

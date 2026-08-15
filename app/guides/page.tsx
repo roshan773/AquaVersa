@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Link from "next/link";
 import { Waves } from "lucide-react";
 
 export default function GuidesPage() {
@@ -14,15 +14,23 @@ export default function GuidesPage() {
             In‑depth step‑by‑step guides covering everything from water chemistry to advanced aquascaping techniques.
           </p>
         </div>
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="p-6 glass rounded-3xl border border-border">
-            <h2 className="text-2xl font-semibold mb-4 text-cyan-400">Water Chemistry</h2>
-            <p className="text-slate-200">Learn how to test, balance, and maintain optimal parameters for a healthy aquarium.</p>
-          </div>
-          <div className="p-6 glass rounded-3xl border border-border">
-            <h2 className="text-2xl font-semibold mb-4 text-cyan-400">Aquascaping Basics</h2>
-            <p className="text-slate-200">Design stunning planted tanks with layout principles, plant placement, and lighting tips.</p>
-          </div>
+        
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <Link href="/water-params" className="p-8 glass rounded-3xl border border-border/40 hover:border-cyan-500/40 hover:shadow-lg transition-all block text-left group">
+            <h2 className="text-2xl font-bold mb-4 text-cyan-400 group-hover:text-cyan-300 transition-colors">Water Chemistry Guide</h2>
+            <p className="text-slate-300 leading-relaxed">
+              Master the science of water quality. Learn how to test, balance, and maintain optimal parameters like pH, ammonia, nitrite, and nitrates for a healthy aquarium.
+            </p>
+            <span className="inline-block mt-6 text-sm font-semibold text-cyan-400 group-hover:underline">Read Water Guide →</span>
+          </Link>
+          
+          <Link href="/plants" className="p-8 glass rounded-3xl border border-border/40 hover:border-emerald-500/40 hover:shadow-lg transition-all block text-left group">
+            <h2 className="text-2xl font-bold mb-4 text-emerald-400 group-hover:text-emerald-300 transition-colors">Aquascaping & Plants Guide</h2>
+            <p className="text-slate-300 leading-relaxed">
+              Design stunning planted tanks. Discover beginner-friendly low-tech plants, placement layouts (foreground/background), lighting needs, and growth guidelines.
+            </p>
+            <span className="inline-block mt-6 text-sm font-semibold text-emerald-400 group-hover:underline">Read Plants Guide →</span>
+          </Link>
         </div>
       </div>
     </section>

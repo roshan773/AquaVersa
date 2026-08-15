@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { equipmentData } from '@/data/equipment';
 import { Check, Cpu, PackageSearch } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function EquipmentGuide() {
   const [tankSize, setTankSize] = useState('Small (5-10g)');
@@ -94,18 +95,18 @@ export default function EquipmentGuide() {
               {recommendations.length > 0 ? (
                 <div className="grid sm:grid-cols-2 gap-6">
                   {recommendations.map((item) => (
-                    <div key={item.id} className="flex gap-4 p-4 rounded-2xl bg-muted/50 border border-border hover:bg-muted transition-colors">
+                    <Link key={item.id} href={`/equipment/${item.slug}`} className="flex gap-4 p-4 rounded-2xl bg-muted/50 border border-border hover:border-amber-500/30 hover:bg-muted transition-all block group">
                       <div className="w-20 h-20 rounded-xl bg-background border border-border flex-shrink-0 relative overflow-hidden">
                         <Image src={item.image || "/hero_aquarium.jpg"} alt={item.name} fill className="object-cover" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-foreground mb-1 line-clamp-1">{item.name}</h4>
+                        <h4 className="font-bold text-foreground mb-1 line-clamp-1 group-hover:text-amber-600 transition-colors">{item.name}</h4>
                         <span className="text-xs font-semibold text-amber-600 bg-amber-100 dark:bg-amber-900/30 px-2 py-0.5 rounded-full mb-2 inline-block">
                           {item.category}
                         </span>
                         <p className="text-xs text-muted-foreground line-clamp-2">{item.purpose}</p>
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               ) : (

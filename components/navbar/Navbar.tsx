@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Droplets, Fish, Search, Menu, X, Waves, Anchor, Settings } from "lucide-react";
@@ -8,11 +9,21 @@ import Image from "next/image";
 import { equipmentData } from "@/data/equipment";
 
 export default function Navbar() {
+  const router = useRouter();
+  const [searchQuery, setSearchQuery] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [showSearch, setShowSearch] = useState(false);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+      setSearchQuery("");
+    }
+  };
 
   return (
     <nav className="sticky top-0 z-50 w-full glass border-b border-border shadow-sm">
@@ -97,14 +108,16 @@ export default function Navbar() {
 
           {/* Modern Search Bar */}
           <div className="flex items-center gap-4">
-            <div className="relative">
+            <form onSubmit={handleSearchSubmit} className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
               <input
                 type="text"
                 placeholder="Search..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-10 pr-3 py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500"
               />
-            </div>
+            </form>
             <button className="md:hidden p-2 rounded-full hover:bg-muted transition-colors" onClick={toggleMobileMenu}>
               {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
