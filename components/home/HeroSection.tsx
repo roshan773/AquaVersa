@@ -44,13 +44,6 @@ export default function HeroSection() {
             Start Your Aquarium
           </Link>
         </div>
-        {/* Trust stats */}
-        <div className="mt-12 flex gap-8 text-sm text-white/80">
-          <span>{fish}+ Fish Guides</span>
-          <span>{plants}+ Plants</span>
-          <span>{equipment}+ Equipment Guides</span>
-          <span>Beginner Friendly</span>
-        </div>
       </div>
     </section>
   );
