@@ -23,6 +23,7 @@ export interface Fish {
   image: string;
   description: string;
   careGuide?: string;
+  foods?: string[];
 }
 
 export interface Plant {

@@ -22,6 +22,8 @@ export const fishData: Fish[] = [
     "difficultyScore": 2,
     "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
     "beginnerSuitable": true
+  ,
+    "foods": ["Tropical Flakes", "Sinking Pellets", "Freeze-Dried Bloodworms"]
   },
   {
     "id": "fw-1",
@@ -44,6 +46,8 @@ export const fishData: Fish[] = [
     "difficultyScore": 1,
     "difficultyReason": "Great choices for new aquarists. Hardy, forgiving of minor beginner mistakes, and have straightforward feeding and basic filtration requirements.",
     "beginnerSuitable": true
+  ,
+    "foods": ["Tropical Flakes", "Sinking Pellets", "Freeze-Dried Bloodworms"]
   },
   {
     "id": "fw-2",
@@ -66,6 +70,8 @@ export const fishData: Fish[] = [
     "difficultyScore": 1,
     "difficultyReason": "Great choices for new aquarists. Hardy, forgiving of minor beginner mistakes, and have straightforward feeding and basic filtration requirements.",
     "beginnerSuitable": true
+  ,
+    "foods": ["Freeze-Dried Bloodworms", "Live Brine Shrimp", "Tropical Flakes"]
   },
   {
     "id": "fw-3",
@@ -88,6 +94,8 @@ export const fishData: Fish[] = [
     "difficultyScore": 2,
     "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
     "beginnerSuitable": true
+  ,
+    "foods": ["Sinking Pellets", "Algae Wafers", "Gel Food Mix"]
   },
   {
     "id": "fw-4",
@@ -110,6 +118,8 @@ export const fishData: Fish[] = [
     "difficultyScore": 3,
     "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
     "beginnerSuitable": false
+  ,
+    "foods": ["Freeze-Dried Bloodworms", "Live Brine Shrimp"]
   },
   {
     "id": "fw-5",
@@ -132,6 +142,8 @@ export const fishData: Fish[] = [
     "difficultyScore": 4,
     "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
     "beginnerSuitable": false
+  ,
+    "foods": ["Freeze-Dried Bloodworms", "Live Brine Shrimp"]
   },
   {
     "id": "fw-6",
@@ -154,6 +166,8 @@ export const fishData: Fish[] = [
     "difficultyScore": 4,
     "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
     "beginnerSuitable": false
+  ,
+    "foods": ["Algae Wafers", "Gel Food Mix", "Tropical Flakes"]
   },
   {
     "id": "fw-7",
@@ -176,6 +190,8 @@ export const fishData: Fish[] = [
     "difficultyScore": 1,
     "difficultyReason": "Great choices for new aquarists. Hardy, forgiving of minor beginner mistakes, and have straightforward feeding and basic filtration requirements.",
     "beginnerSuitable": true
+  ,
+    "foods": ["Tropical Flakes", "Sinking Pellets", "Freeze-Dried Bloodworms"]
   },
   {
     "id": "fw-8",
@@ -198,6 +214,8 @@ export const fishData: Fish[] = [
     "difficultyScore": 1,
     "difficultyReason": "Great choices for new aquarists. Hardy, forgiving of minor beginner mistakes, and have straightforward feeding and basic filtration requirements.",
     "beginnerSuitable": true
+  ,
+    "foods": ["Freeze-Dried Bloodworms", "Live Brine Shrimp"]
   },
   {
     "id": "fw-9",
@@ -220,6 +238,8 @@ export const fishData: Fish[] = [
     "difficultyScore": 1,
     "difficultyReason": "Great choices for new aquarists. Hardy, forgiving of minor beginner mistakes, and have straightforward feeding and basic filtration requirements.",
     "beginnerSuitable": true
+  ,
+    "foods": ["Algae Wafers", "Gel Food Mix", "Tropical Flakes"]
   },
   {
     "id": "sw-0",
@@ -242,6 +262,8 @@ export const fishData: Fish[] = [
     "difficultyScore": 1,
     "difficultyReason": "Great choices for new aquarists. Hardy, forgiving of minor beginner mistakes, and have straightforward feeding and basic filtration requirements.",
     "beginnerSuitable": true
+  ,
+    "foods": ["Live Brine Shrimp", "Sinking Pellets"]
   },
   {
     "id": "sw-1",
@@ -264,6 +286,8 @@ export const fishData: Fish[] = [
     "difficultyScore": 3,
     "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
     "beginnerSuitable": false
+  ,
+    "foods": ["Live Brine Shrimp", "Algae Wafers"]
   },
   {
     "id": "sw-2",
@@ -286,6 +310,8 @@ export const fishData: Fish[] = [
     "difficultyScore": 3,
     "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
     "beginnerSuitable": false
+  ,
+    "foods": ["Live Brine Shrimp", "Sinking Pellets"]
   },
   {
     "id": "sw-3",
@@ -308,6 +334,8 @@ export const fishData: Fish[] = [
     "difficultyScore": 1,
     "difficultyReason": "Great choices for new aquarists. Hardy, forgiving of minor beginner mistakes, and have straightforward feeding and basic filtration requirements.",
     "beginnerSuitable": true
+  ,
+    "foods": ["Live Brine Shrimp", "Sinking Pellets"]
   },
   {
     "id": "sw-4",
@@ -330,6 +358,8 @@ export const fishData: Fish[] = [
     "difficultyScore": 3,
     "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
     "beginnerSuitable": false
+  ,
+    "foods": ["Live Brine Shrimp", "Algae Wafers"]
   },
   {
     "id": "sw-5",
@@ -352,6 +382,8 @@ export const fishData: Fish[] = [
     "difficultyScore": 3,
     "difficultyReason": "Best for aquarists with some experience. Requires more demanding water parameters, larger aquarium, or more careful compatibility planning.",
     "beginnerSuitable": false
+  ,
+    "foods": ["Live Brine Shrimp", "Algae Wafers"]
   },
   {
     "id": "sw-6",
@@ -374,6 +406,8 @@ export const fishData: Fish[] = [
     "difficultyScore": 4,
     "difficultyReason": "Best suited for experienced aquarists. Requires specialized care, large aquariums, or difficult acclimation and feeding.",
     "beginnerSuitable": false
+  ,
+    "foods": ["Live Brine Shrimp", "Algae Wafers"]
   },
   {
     "id": "sw-7",
@@ -396,6 +430,8 @@ export const fishData: Fish[] = [
     "difficultyScore": 2,
     "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",
     "beginnerSuitable": true
+  ,
+    "foods": ["Live Brine Shrimp", "Freeze-Dried Bloodworms"]
   },
   {
     "id": "sw-8",
@@ -418,6 +454,8 @@ export const fishData: Fish[] = [
     "difficultyScore": 1,
     "difficultyReason": "Great choices for new aquarists. Hardy, forgiving of minor beginner mistakes, and have straightforward feeding and basic filtration requirements.",
     "beginnerSuitable": true
+  ,
+    "foods": ["Live Brine Shrimp", "Sinking Pellets"]
   },
   {
     "id": "sw-9",
@@ -440,6 +478,8 @@ export const fishData: Fish[] = [
     "difficultyScore": 1,
     "difficultyReason": "Great choices for new aquarists. Hardy, forgiving of minor beginner mistakes, and have straightforward feeding and basic filtration requirements.",
     "beginnerSuitable": true
+  ,
+    "foods": ["Live Brine Shrimp", "Sinking Pellets"]
   },
   {
     "id": "fw-10",
@@ -462,6 +502,8 @@ export const fishData: Fish[] = [
     "difficultyScore": 1,
     "difficultyReason": "Hardy and adaptable dwarf cichlid, excellent introduction to cichlid behavior.",
     "beginnerSuitable": true
+  ,
+    "foods": ["Tropical Flakes", "Sinking Pellets", "Freeze-Dried Bloodworms"]
   },
   {
     "id": "fw-11",
@@ -484,6 +526,8 @@ export const fishData: Fish[] = [
     "difficultyScore": 2,
     "difficultyReason": "Schooling fish that requires stable water conditions and active swimming space.",
     "beginnerSuitable": false
+  ,
+    "foods": ["Tropical Flakes", "Sinking Pellets", "Freeze-Dried Bloodworms"]
   },
   {
     "id": "sw-10",
@@ -506,6 +550,8 @@ export const fishData: Fish[] = [
     "difficultyScore": 1,
     "difficultyReason": "Hardy, bottom-dwelling marine goby with straightforward feeding requirements.",
     "beginnerSuitable": true
+  ,
+    "foods": ["Live Brine Shrimp", "Freeze-Dried Bloodworms"]
   },
   {
     "id": "sw-11",
@@ -528,6 +574,8 @@ export const fishData: Fish[] = [
     "difficultyScore": 2,
     "difficultyReason": "Requires a larger, established tank with abundant live rock grazing surfaces.",
     "beginnerSuitable": false
+  ,
+    "foods": ["Live Brine Shrimp", "Algae Wafers"]
   },
   {
     "id": "fw-12",
@@ -550,6 +598,8 @@ export const fishData: Fish[] = [
     "difficultyScore": 1,
     "difficultyReason": "Highly adaptable, peaceful livebearer that does well in a wide range of freshwater setups.",
     "beginnerSuitable": true
+  ,
+    "foods": ["Tropical Flakes", "Sinking Pellets", "Freeze-Dried Bloodworms"]
   },
   {
     "id": "fw-13",
@@ -572,5 +622,7 @@ export const fishData: Fish[] = [
     "difficultyScore": 4,
     "difficultyReason": "Grows extremely large, requires specialized feeding, and needs an exceptionally large enclosure.",
     "beginnerSuitable": false
+  ,
+    "foods": ["Live Brine Shrimp", "Freeze-Dried Bloodworms"]
   }
 ];
