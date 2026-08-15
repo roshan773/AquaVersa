@@ -12,7 +12,7 @@ export default function Diseases() {
       susceptible: ["Freshwater Betta", "Guppies", "Tetras"],
       affected: ["All freshwater species"],
       cure: "Increase temperature to 28°C, add aquarium salt, and treat with formalin or malachite green.",
-      image: "/images/ich.png"
+      image: "/images/Ich (White Spot Disease).png"
     },
     {
       name: "Velvet (Oodinium)",
@@ -20,7 +20,7 @@ export default function Diseases() {
       susceptible: ["Cichlids", "Angelfish"],
       affected: ["All freshwater and some saltwater species"],
       cure: "Raise temperature, improve water flow, and treat with copper-based medication.",
-      image: "/images/velvet.png"
+      image: "/images/Velvet (Oodinium).png"
     },
     {
       name: "Fin Rot",
@@ -28,7 +28,7 @@ export default function Diseases() {
       susceptible: ["Goldfish", "Betta"],
       affected: ["Any fish in poor water conditions"],
       cure: "Perform water changes, keep water quality high, and treat with antibiotics.",
-      image: "/images/finrot.png"
+      image: "/images/Fin Rot.png"
     }
   ];
 

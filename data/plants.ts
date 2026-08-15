@@ -88,7 +88,7 @@ export const plantData: Plant[] = [
     "placement": "Midground",
     "temperature": "70-82°F",
     "ph": "6.0-7.5",
-    "image": "https://images.unsplash.com/photo-1616011400827-0cfd6874ebdb?q=80&w=800&auto=format&fit=crop",
+    "image": "/images/Dwarf Hairgrass.png",
     "description": "The Dwarf Hairgrass is a beautiful aquatic plant that provides oxygen, absorbs nitrates, and offers hiding spots for shy fish. It is an excellent choice for aquascaping and creating a natural environment."
   },
   {
@@ -103,7 +103,7 @@ export const plantData: Plant[] = [
     "placement": "Midground",
     "temperature": "70-82°F",
     "ph": "6.0-7.5",
-    "image": "https://images.unsplash.com/photo-1518558406542-93116df157e9?q=80&w=800&auto=format&fit=crop",
+    "image": "/images/Dwarf Baby Tears.png",
     "description": "The Dwarf Baby Tears is a beautiful aquatic plant that provides oxygen, absorbs nitrates, and offers hiding spots for shy fish. It is an excellent choice for aquascaping and creating a natural environment."
   },
   {
@@ -118,7 +118,7 @@ export const plantData: Plant[] = [
     "placement": "Background",
     "temperature": "70-82°F",
     "ph": "6.0-7.5",
-    "image": "https://images.unsplash.com/photo-1500466487140-5259e51221b6?q=80&w=800&auto=format&fit=crop",
+    "image": "/images/Glossostigma.png",
     "description": "The Glossostigma is a beautiful aquatic plant that provides oxygen, absorbs nitrates, and offers hiding spots for shy fish. It is an excellent choice for aquascaping and creating a natural environment."
   },
   {
@@ -133,7 +133,7 @@ export const plantData: Plant[] = [
     "placement": "Midground",
     "temperature": "70-82°F",
     "ph": "6.0-7.5",
-    "image": "https://images.unsplash.com/photo-1616011400827-0cfd6874ebdb?q=80&w=800&auto=format&fit=crop",
+    "image": "/images/Cryptocoryne Wendtii.png",
     "description": "The Cryptocoryne Wendtii is a beautiful aquatic plant that provides oxygen, absorbs nitrates, and offers hiding spots for shy fish. It is an excellent choice for aquascaping and creating a natural environment."
   },
   {
@@ -148,7 +148,7 @@ export const plantData: Plant[] = [
     "placement": "Background",
     "temperature": "70-82°F",
     "ph": "6.0-7.5",
-    "image": "https://images.unsplash.com/photo-1518558406542-93116df157e9?q=80&w=800&auto=format&fit=crop",
+    "image": "/images/Cryptocoryne Balansae.png",
     "description": "The Cryptocoryne Balansae is a beautiful aquatic plant that provides oxygen, absorbs nitrates, and offers hiding spots for shy fish. It is an excellent choice for aquascaping and creating a natural environment."
   },
   {
@@ -163,7 +163,7 @@ export const plantData: Plant[] = [
     "placement": "Foreground",
     "temperature": "70-82°F",
     "ph": "6.0-7.5",
-    "image": "https://images.unsplash.com/photo-1518558406542-93116df157e9?q=80&w=800&auto=format&fit=crop",
+    "image": "/images/Water Wisteria.png",
     "description": "The Water Wisteria is a beautiful aquatic plant that provides oxygen, absorbs nitrates, and offers hiding spots for shy fish. It is an excellent choice for aquascaping and creating a natural environment."
   },
   {
@@ -178,7 +178,7 @@ export const plantData: Plant[] = [
     "placement": "Midground",
     "temperature": "70-82°F",
     "ph": "6.0-7.5",
-    "image": "https://images.unsplash.com/photo-1500466487140-5259e51221b6?q=80&w=800&auto=format&fit=crop",
+    "image": "/images/Water Sprite.png",
     "description": "The Water Sprite is a beautiful aquatic plant that provides oxygen, absorbs nitrates, and offers hiding spots for shy fish. It is an excellent choice for aquascaping and creating a natural environment."
   },
   {
@@ -193,7 +193,7 @@ export const plantData: Plant[] = [
     "placement": "Background",
     "temperature": "70-82°F",
     "ph": "6.0-7.5",
-    "image": "https://images.unsplash.com/photo-1518558406542-93116df157e9?q=80&w=800&auto=format&fit=crop",
+    "image": "/images/Hornwort.png",
     "description": "The Hornwort is a beautiful aquatic plant that provides oxygen, absorbs nitrates, and offers hiding spots for shy fish. It is an excellent choice for aquascaping and creating a natural environment."
   },
   {
@@ -208,7 +208,7 @@ export const plantData: Plant[] = [
     "placement": "Background",
     "temperature": "70-82°F",
     "ph": "6.0-7.5",
-    "image": "https://images.unsplash.com/photo-1518558406542-93116df157e9?q=80&w=800&auto=format&fit=crop",
+    "image": "/images/Anacharis.png",
     "description": "The Anacharis is a beautiful aquatic plant that provides oxygen, absorbs nitrates, and offers hiding spots for shy fish. It is an excellent choice for aquascaping and creating a natural environment."
   },
   {
@@ -223,7 +223,7 @@ export const plantData: Plant[] = [
     "placement": "Background",
     "temperature": "70-82°F",
     "ph": "6.0-7.5",
-    "image": "https://images.unsplash.com/photo-1518558406542-93116df157e9?q=80&w=800&auto=format&fit=crop",
+    "image": "/images/Duckweed.png",
     "description": "The Duckweed is a beautiful aquatic plant that provides oxygen, absorbs nitrates, and offers hiding spots for shy fish. It is an excellent choice for aquascaping and creating a natural environment."
   },
   {
@@ -238,7 +238,7 @@ export const plantData: Plant[] = [
     "placement": "Floating",
     "temperature": "70-82°F",
     "ph": "6.0-7.5",
-    "image": "https://images.unsplash.com/photo-1500466487140-5259e51221b6?q=80&w=800&auto=format&fit=crop",
+    "image": "/images/Frogbit.png",
     "description": "The Frogbit is a beautiful aquatic plant that provides oxygen, absorbs nitrates, and offers hiding spots for shy fish. It is an excellent choice for aquascaping and creating a natural environment."
   },
   {
@@ -253,7 +253,7 @@ export const plantData: Plant[] = [
     "placement": "Floating",
     "temperature": "70-82°F",
     "ph": "6.0-7.5",
-    "image": "https://images.unsplash.com/photo-1616011400827-0cfd6874ebdb?q=80&w=800&auto=format&fit=crop",
+    "image": "/images/Water Spangles.png",
     "description": "The Water Spangles is a beautiful aquatic plant that provides oxygen, absorbs nitrates, and offers hiding spots for shy fish. It is an excellent choice for aquascaping and creating a natural environment."
   },
   {
@@ -268,7 +268,7 @@ export const plantData: Plant[] = [
     "placement": "Foreground",
     "temperature": "70-82°F",
     "ph": "6.0-7.5",
-    "image": "https://images.unsplash.com/photo-1616011400827-0cfd6874ebdb?q=80&w=800&auto=format&fit=crop",
+    "image": "/images/Red Root Floater.png",
     "description": "The Red Root Floater is a beautiful aquatic plant that provides oxygen, absorbs nitrates, and offers hiding spots for shy fish. It is an excellent choice for aquascaping and creating a natural environment."
   },
   {
@@ -283,7 +283,7 @@ export const plantData: Plant[] = [
     "placement": "Midground",
     "temperature": "70-82°F",
     "ph": "6.0-7.5",
-    "image": "https://images.unsplash.com/photo-1616011400827-0cfd6874ebdb?q=80&w=800&auto=format&fit=crop",
+    "image": "/images/Ludwigia Repens.png",
     "description": "The Ludwigia Repens is a beautiful aquatic plant that provides oxygen, absorbs nitrates, and offers hiding spots for shy fish. It is an excellent choice for aquascaping and creating a natural environment."
   },
   {
@@ -298,7 +298,7 @@ export const plantData: Plant[] = [
     "placement": "Background",
     "temperature": "70-82°F",
     "ph": "6.0-7.5",
-    "image": "https://images.unsplash.com/photo-1500466487140-5259e51221b6?q=80&w=800&auto=format&fit=crop",
+    "image": "/images/Ludwigia Super Red.png",
     "description": "The Ludwigia Super Red is a beautiful aquatic plant that provides oxygen, absorbs nitrates, and offers hiding spots for shy fish. It is an excellent choice for aquascaping and creating a natural environment."
   }
 ];

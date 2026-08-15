@@ -391,7 +391,7 @@ export const fishData: Fish[] = [
     "diet": "Carnivore",
     "description": "The Banggai Cardinalfish is a brilliant marine fish that brings life to any reef or fish-only saltwater tank. With its striking patterns, it serves as an excellent centerpiece. They require pristine water conditions and a mature tank with plenty of live rock for grazing and hiding.",
     "careGuide": "Maintain stable salinity (1.023-1.025 SG) and zero ammonia/nitrites. They can be sensitive to sudden changes in water chemistry. Feed them a high-quality marine diet including mysis shrimp and algae sheets.",
-    "image": "/images/banggai_cardinalfish.png",
+    "image": "/images/Banggai Cardinalfish.png",
     "compatibleWith": [],
     "difficultyScore": 2,
     "difficultyReason": "Suitable for beginners ready for a little more responsibility. May require more consistent maintenance or have specific social/group requirements.",

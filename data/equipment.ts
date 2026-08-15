@@ -169,7 +169,7 @@ export const equipmentData: Equipment[] = [
     ],
     "maintenance": "Regular cleaning and inspection every 1-3 months to ensure optimal performance.",
     "beginnerMistakes": "Failing to read the instruction manual and miscalibrating the device during initial setup.",
-    "image": "/hero_aquarium.jpg"
+    "image": "/images/UV Sterilizer.png"
   },
   {
     "id": "e-10",
@@ -186,7 +186,7 @@ export const equipmentData: Equipment[] = [
     ],
     "maintenance": "Regular cleaning and inspection every 1-3 months to ensure optimal performance.",
     "beginnerMistakes": "Failing to read the instruction manual and miscalibrating the device during initial setup.",
-    "image": "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=800&auto=format&fit=crop"
+    "image": "/images/Titanium Heater.png"
   },
   {
     "id": "e-11",
@@ -203,7 +203,7 @@ export const equipmentData: Equipment[] = [
     ],
     "maintenance": "Regular cleaning and inspection every 1-3 months to ensure optimal performance.",
     "beginnerMistakes": "Failing to read the instruction manual and miscalibrating the device during initial setup.",
-    "image": "/hero_aquarium.jpg"
+    "image": "/images/Inline Heater.png"
   },
   {
     "id": "e-12",
@@ -220,7 +220,7 @@ export const equipmentData: Equipment[] = [
     ],
     "maintenance": "Regular cleaning and inspection every 1-3 months to ensure optimal performance.",
     "beginnerMistakes": "Failing to read the instruction manual and miscalibrating the device during initial setup.",
-    "image": "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=800&auto=format&fit=crop"
+    "image": "/images/Aquarium Chiller.png"
   },
   {
     "id": "e-13",
@@ -237,7 +237,7 @@ export const equipmentData: Equipment[] = [
     ],
     "maintenance": "Regular cleaning and inspection every 1-3 months to ensure optimal performance.",
     "beginnerMistakes": "Failing to read the instruction manual and miscalibrating the device during initial setup.",
-    "image": "/hero_aquarium.jpg"
+    "image": "/images/T5 Fluorescent Fixture.png"
   },
   {
     "id": "e-14",
@@ -254,7 +254,7 @@ export const equipmentData: Equipment[] = [
     ],
     "maintenance": "Regular cleaning and inspection every 1-3 months to ensure optimal performance.",
     "beginnerMistakes": "Failing to read the instruction manual and miscalibrating the device during initial setup.",
-    "image": "/hero_aquarium.jpg"
+    "image": "/images/Metal Halide Light.png"
   },
   {
     "id": "e-15",
@@ -271,7 +271,7 @@ export const equipmentData: Equipment[] = [
     ],
     "maintenance": "Regular cleaning and inspection every 1-3 months to ensure optimal performance.",
     "beginnerMistakes": "Failing to read the instruction manual and miscalibrating the device during initial setup.",
-    "image": "/hero_aquarium.jpg"
+    "image": "/images/LED Reef Light.png"
   },
   {
     "id": "e-16",
@@ -288,7 +288,7 @@ export const equipmentData: Equipment[] = [
     ],
     "maintenance": "Regular cleaning and inspection every 1-3 months to ensure optimal performance.",
     "beginnerMistakes": "Failing to read the instruction manual and miscalibrating the device during initial setup.",
-    "image": "/hero_aquarium.jpg"
+    "image": "/images/Moonlight LEDs.png"
   },
   {
     "id": "e-17",
@@ -305,7 +305,7 @@ export const equipmentData: Equipment[] = [
     ],
     "maintenance": "Regular cleaning and inspection every 1-3 months to ensure optimal performance.",
     "beginnerMistakes": "Failing to read the instruction manual and miscalibrating the device during initial setup.",
-    "image": "/hero_aquarium.jpg"
+    "image": "/images/Air Pump.png"
   },
   {
     "id": "e-18",
@@ -322,7 +322,7 @@ export const equipmentData: Equipment[] = [
     ],
     "maintenance": "Regular cleaning and inspection every 1-3 months to ensure optimal performance.",
     "beginnerMistakes": "Failing to read the instruction manual and miscalibrating the device during initial setup.",
-    "image": "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=800&auto=format&fit=crop"
+    "image": "/images/Air Stone.png"
   },
   {
     "id": "e-19",
@@ -339,6 +339,6 @@ export const equipmentData: Equipment[] = [
     ],
     "maintenance": "Regular cleaning and inspection every 1-3 months to ensure optimal performance.",
     "beginnerMistakes": "Failing to read the instruction manual and miscalibrating the device during initial setup.",
-    "image": "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=800&auto=format&fit=crop"
+    "image": "/images/Check Valve.png"
   }
 ];
