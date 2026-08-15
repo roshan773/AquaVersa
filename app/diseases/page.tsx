@@ -47,7 +47,7 @@ export default function Diseases() {
         {diseases.map((d, i) => (
           <div key={i} className="bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-lg transition-shadow">
             <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden bg-gray-100">
-              <Image src={d.image} alt={d.name} fill className="object-cover" />
+              <Image src={d.image} alt={d.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" />
             </div>
             <h2 className="text-2xl font-semibold mb-2 text-foreground">{d.name}</h2>
             <p className="text-sm text-muted-foreground mb-2">{d.description}</p>

@@ -43,7 +43,7 @@ export default function EquipmentSection() {
             <div key={item.id} className="group rounded-3xl p-6 bg-card border border-border hover:shadow-xl transition-all flex flex-col h-full">
               <div className="relative w-full h-48 rounded-2xl overflow-hidden mb-6 bg-muted">
                 {/* Fallback to generic image if specific not found */}
-                <Image src={item.image || "/hero_aquarium.jpg"} alt={item.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                <Image src={item.image || "/hero_aquarium.jpg"} alt={item.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" />
                 <div className="absolute top-4 left-4">
                   <span className="px-3 py-1 bg-background/90 backdrop-blur-md rounded-full text-xs font-bold shadow-sm">
                     {item.category}

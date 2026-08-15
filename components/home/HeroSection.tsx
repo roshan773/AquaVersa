@@ -15,6 +15,7 @@ export default function HeroSection() {
         fill
         className="object-cover opacity-50 mix-blend-luminosity hover:scale-105 transition-transform duration-1000"
         priority
+        sizes="100vw"
       />
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/30" />

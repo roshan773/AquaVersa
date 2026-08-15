@@ -51,7 +51,7 @@ export default function AquariumTypes() {
           {types.map((type) => (
             <Link href={type.href} key={type.id} className="group text-left rounded-3xl border border-border bg-card overflow-hidden hover:shadow-xl transition-all block">
               <div className="relative h-48 w-full overflow-hidden bg-muted">
-                 <Image src={type.image} alt={type.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                 <Image src={type.image} alt={type.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
               </div>
               <div className="p-6">
                 <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold mb-4 ${type.color}`}>

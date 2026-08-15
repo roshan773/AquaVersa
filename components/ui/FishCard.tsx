@@ -16,6 +16,7 @@ export default function FishCard({ fish }: FishCardProps) {
           alt={fish.name}
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-500"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
         <div className="absolute top-3 right-3 bg-black/60 text-white backdrop-blur-md px-2.5 py-1 rounded-md text-xs font-semibold border border-white/20 shadow-sm">
           {fish.difficulty}

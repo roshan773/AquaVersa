@@ -43,7 +43,7 @@ export default function PlantsSection() {
             <div key={plant.id} className="group rounded-3xl overflow-hidden bg-card border border-border hover:shadow-xl transition-all flex flex-col justify-between">
               <div>
                 <div className="relative h-56 w-full bg-muted">
-                   <Image src={plant.image || '/hero_aquarium.jpg'} alt={plant.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                   <Image src={plant.image || '/hero_aquarium.jpg'} alt={plant.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
                    <div className="absolute top-4 right-4">
                      <span className="px-3 py-1 bg-background/90 backdrop-blur-md rounded-full text-xs font-bold shadow-sm text-foreground">
                        {plant.placement}

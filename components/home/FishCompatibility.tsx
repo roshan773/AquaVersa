@@ -114,7 +114,7 @@ export default function FishCompatibility() {
             <div className="md:col-span-3 flex flex-col items-center">
               <div className={`w-36 h-36 rounded-full overflow-hidden mb-6 border-4 bg-slate-950 relative transition-all duration-500 ${themeClasses.border} ${themeClasses.glow}`}>
                 {f1Data?.image ? (
-                  <Image src={f1Data.image} alt={f1Data.name} fill className="object-cover scale-105" />
+                  <Image src={f1Data.image} alt={f1Data.name} fill className="object-cover scale-105" sizes="144px" />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-slate-500">No Image</div>
                 )}
@@ -142,7 +142,7 @@ export default function FishCompatibility() {
             <div className="md:col-span-3 flex flex-col items-center">
               <div className={`w-36 h-36 rounded-full overflow-hidden mb-6 border-4 bg-slate-950 relative transition-all duration-500 ${themeClasses.border} ${themeClasses.glow}`}>
                 {f2Data?.image ? (
-                  <Image src={f2Data.image} alt={f2Data.name} fill className="object-cover scale-105" />
+                  <Image src={f2Data.image} alt={f2Data.name} fill className="object-cover scale-105" sizes="144px" />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-slate-500">No Image</div>
                 )}

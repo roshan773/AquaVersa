@@ -54,7 +54,7 @@ export default function LearningHub() {
           {articles.map((article, idx) => (
             <Link key={idx} href={article.link} className="group flex flex-col rounded-3xl overflow-hidden bg-card border border-border hover:shadow-xl transition-all h-full">
               <div className="relative h-56 w-full overflow-hidden">
-                <Image src={article.image} alt={article.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                <Image src={article.image} alt={article.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" />
                 <div className="absolute top-4 left-4">
                   <span className="px-3 py-1 bg-background/90 backdrop-blur-md rounded-full text-xs font-bold shadow-sm">
                     {article.category}
