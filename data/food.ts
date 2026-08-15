@@ -21,7 +21,7 @@ export const foodData: Food[] = [
     benefits: ["Targeted bottom feeding", "High protein concentration", "Supports shell health for snails and shrimp"],
     frequency: "Daily (Once at night)",
     suitableFor: ["Corydoras Catfish", "Loaches", "Plecos", "Shrimp", "Snails"],
-    image: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=600&auto=format&fit=crop"
+    image: "/images/Sinking Pellets.png"
   },
   {
     id: "fo-2",
