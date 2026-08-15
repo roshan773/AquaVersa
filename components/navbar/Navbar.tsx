@@ -130,10 +130,9 @@ export default function Navbar() {
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
-
-          <Link href="/equipment" className={linkClass}>Equipment</Link>
+          </div>          <Link href="/equipment" className={linkClass}>Equipment</Link>
           <Link href="/plants" className={linkClass}>Plants</Link>
+          <Link href="/food" className={linkClass}>Food</Link>
           <Link href="/diseases" className={linkClass}>Diseases</Link>
         </div>
 
@@ -166,31 +165,49 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div 
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="md:hidden bg-background border-t border-border overflow-hidden"
-          >
-            <div className="flex flex-col p-4 gap-4">
-              <Link href="/" className="font-medium p-2 rounded-md hover:bg-muted" onClick={toggleMobileMenu}>Home</Link>
-              <Link href="/about" className="font-medium p-2 rounded-md hover:bg-muted" onClick={toggleMobileMenu}>About Us</Link>
-              <div className="font-medium p-2 rounded-md">
-                <span className="text-muted-foreground mb-2 block text-sm">Fish</span>
-                <div className="flex flex-col gap-2 pl-4 border-l-2 border-muted">
-                  <Link href="/fish/freshwater" className="p-2 hover:bg-muted rounded-md flex items-center gap-2" onClick={toggleMobileMenu}>
-                    <Droplets className="w-4 h-4 text-cyan-500" /> Freshwater
-                  </Link>
-                  <Link href="/fish/saltwater" className="p-2 hover:bg-muted rounded-md flex items-center gap-2" onClick={toggleMobileMenu}>
-                    <Anchor className="w-4 h-4 text-blue-500" /> Saltwater
-                  </Link>
+          <>
+            {/* Backdrop */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.4 }}
+              exit={{ opacity: 0 }}
+              onClick={toggleMobileMenu}
+              className="fixed inset-0 top-16 bg-black/60 z-30 md:hidden"
+            />
+            
+            {/* Sidebar */}
+            <motion.div 
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", bounce: 0, duration: 0.4 }}
+              className="fixed top-16 right-0 w-full sm:w-80 h-[calc(100vh-4rem)] bg-background/95 backdrop-blur-lg border-l border-border shadow-2xl z-40 overflow-y-auto md:hidden"
+            >
+              <div className="flex flex-col p-6 gap-6">
+                <Link href="/" className="font-semibold text-lg hover:text-cyan-500 transition-colors" onClick={toggleMobileMenu}>Home</Link>
+                <Link href="/about" className="font-semibold text-lg hover:text-cyan-500 transition-colors" onClick={toggleMobileMenu}>About Us</Link>
+                
+                <div className="border-t border-border pt-4">
+                  <span className="text-muted-foreground text-xs uppercase tracking-wider font-bold mb-3 block">Species Library</span>
+                  <div className="flex flex-col gap-3 pl-2">
+                    <Link href="/fish/freshwater" className="font-semibold text-base hover:text-cyan-500 transition-colors flex items-center gap-2" onClick={toggleMobileMenu}>
+                      <Droplets className="w-5 h-5 text-cyan-500" /> Freshwater Fish
+                    </Link>
+                    <Link href="/fish/saltwater" className="font-semibold text-base hover:text-blue-500 transition-colors flex items-center gap-2" onClick={toggleMobileMenu}>
+                      <Anchor className="w-5 h-5 text-blue-500" /> Saltwater Fish
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="border-t border-border pt-4 flex flex-col gap-4">
+                  <Link href="/equipment" className="font-semibold text-lg hover:text-amber-500 transition-colors" onClick={toggleMobileMenu}>Equipment</Link>
+                  <Link href="/plants" className="font-semibold text-lg hover:text-emerald-500 transition-colors" onClick={toggleMobileMenu}>Plants</Link>
+                  <Link href="/food" className="font-semibold text-lg hover:text-cyan-500 transition-colors" onClick={toggleMobileMenu}>Fish Food</Link>
+                  <Link href="/diseases" className="font-semibold text-lg hover:text-red-500 transition-colors" onClick={toggleMobileMenu}>Diseases Guide</Link>
                 </div>
               </div>
-              <Link href="/equipment" className="font-medium p-2 rounded-md hover:bg-muted" onClick={toggleMobileMenu}>Equipment</Link>
-              <Link href="/plants" className="font-medium p-2 rounded-md hover:bg-muted" onClick={toggleMobileMenu}>Plants</Link>
-              <Link href="/diseases" className="font-medium p-2 rounded-md hover:bg-muted" onClick={toggleMobileMenu}>Diseases</Link>
-            </div>
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </nav>

@@ -64,3 +64,30 @@ export interface GuideStep {
   commonMistakes?: string;
   recommendation?: string;
 }
+
+export interface Food {
+  id: string;
+  slug: string;
+  name: string;
+  category: string;
+  description: string;
+  benefits: string[];
+  frequency: string;
+  suitableFor: string[];
+  image: string;
+}
+
+export interface Disease {
+  id: string;
+  slug: string;
+  name: string;
+  description: string;
+  symptoms: string[];
+  transmission: string;
+  treatment: string[];
+  prevention: string[];
+  image: string;
+  susceptible: string[];
+  affected: string[];
+  cure: string;
+}

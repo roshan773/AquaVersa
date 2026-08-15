@@ -21,7 +21,21 @@ export default function FishCompatibility() {
       return { status: 'Incompatible', message: `${f1.name} is ${f1.category}, while ${f2.name} is ${f2.category}. They cannot survive in the same water.`, colorTheme: 'red' };
     }
 
-    // Size / Predator check (Angelfish eat small tetras)
+    // Size check - predatory risk (e.g. Arowana or Oscar will eat anything small)
+    const largeFish = (f1.maxSize && f1.maxSize >= 12) ? f1 : ((f2.maxSize && f2.maxSize >= 12) ? f2 : null);
+    const smallFish = largeFish === f1 ? f2 : (largeFish === f2 ? f1 : null);
+    if (largeFish && smallFish && smallFish.maxSize && smallFish.maxSize <= 4) {
+      return { status: 'Incompatible', message: `Predatory hazard: ${largeFish.name} grows up to ${largeFish.maxSize} inches and will easily swallow small fish like ${smallFish.name}.`, colorTheme: 'red' };
+    }
+
+    // Explicit compatibility list check
+    const slug1 = f1.slug || "";
+    const slug2 = f2.slug || "";
+    const isExplicitlyCompatible = 
+      (f1.compatibleWith && f1.compatibleWith.includes(slug2)) || 
+      (f2.compatibleWith && f2.compatibleWith.includes(slug1));
+
+    // Angelfish eat small tetras
     if ((f1.name.includes('Angelfish') && f2.name.includes('Tetra') && !f2.name.includes('Cardinal')) || 
         (f2.name.includes('Angelfish') && f1.name.includes('Tetra') && !f1.name.includes('Cardinal'))) {
       return { status: 'Incompatible', message: 'Angelfish will eat small, slender fish like Neon Tetras as they grow.', colorTheme: 'red' };
@@ -34,8 +48,8 @@ export default function FishCompatibility() {
       if (other.name.includes('Guppy')) {
         return { status: 'Incompatible', message: 'Bettas may attack colorful, long-finned fish like Guppies.', colorTheme: 'red' };
       }
-      if (other.name.includes('Corydoras')) {
-        return { status: 'Compatible', message: 'Corydoras are peaceful bottom-dwellers that Bettas usually ignore.', colorTheme: 'emerald' };
+      if (other.name.includes('Corydoras') || other.name.includes('Neon Tetra')) {
+        return { status: 'Compatible', message: `Generally compatible. ${other.name} are peaceful and Bettas usually ignore them.`, colorTheme: 'emerald' };
       }
       return { status: 'Warning', message: 'Bettas are highly territorial. Keep them alone or monitor them very closely with other fish.', colorTheme: 'amber' };
     }
@@ -44,14 +58,37 @@ export default function FishCompatibility() {
     const isTang1 = f1.name.includes('Tang');
     const isTang2 = f2.name.includes('Tang');
     if (isTang1 && isTang2) {
-      return { status: 'Warning', message: 'Tangs can be highly aggressive toward other Tangs. Requires a very large tank.', colorTheme: 'amber' };
+      return { status: 'Warning', message: 'Tangs can be highly aggressive toward other Tangs of similar shape or species. Requires a very large tank.', colorTheme: 'amber' };
+    }
+
+    // Aggressive cichlid check vs peaceful
+    const hasAggressiveCichlid = 
+      ((f1.name.includes('Cichlid') || f1.name.includes('Oscar')) && f1.temperament === 'Aggressive') ||
+      ((f2.name.includes('Cichlid') || f2.name.includes('Oscar')) && f2.temperament === 'Aggressive');
+    if (hasAggressiveCichlid) {
+      const other = (f1.name.includes('Cichlid') || f1.name.includes('Oscar')) ? f2 : f1;
+      if (other.temperament === 'Peaceful') {
+        const aggr = other === f1 ? f2 : f1;
+        return { status: 'Incompatible', message: `Highly aggressive territory-holders like ${aggr.name} will harass or kill peaceful fish like ${other.name}.`, colorTheme: 'red' };
+      }
+    }
+
+    // General Temperament checks
+    if (f1.temperament === 'Aggressive' && f2.temperament === 'Aggressive') {
+      return { status: 'Warning', message: 'Both species are aggressive/territorial. Keeping them together requires a very large tank with distinct territory boundaries.', colorTheme: 'amber' };
+    }
+
+    if (f1.temperament === 'Aggressive' || f2.temperament === 'Aggressive') {
+      if (!isExplicitlyCompatible) {
+        return { status: 'Warning', message: `One of these species (${f1.temperament === 'Aggressive' ? f1.name : f2.name}) is aggressive and may bully or injure the other.`, colorTheme: 'amber' };
+      }
     }
 
     if (f1.difficulty === 'Advanced' || f2.difficulty === 'Advanced') {
       return { status: 'Warning', message: 'One or more of these fish require advanced care and pristine water conditions.', colorTheme: 'amber' };
     }
     
-    return { status: 'Compatible', message: 'Generally peaceful together in an appropriately sized tank.', colorTheme: 'emerald' };
+    return { status: 'Compatible', message: 'Generally peaceful and compatible together in an appropriately sized tank.', colorTheme: 'emerald' };
   };
 
   const compResult = getCompatibility(fish1, fish2);
