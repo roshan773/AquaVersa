@@ -597,8 +597,7 @@ export const fishData: Fish[] = [
     "compatibleWith": ["guppy", "neon-tetra", "corydoras-catfish", "platy", "swordtail"],
     "difficultyScore": 1,
     "difficultyReason": "Highly adaptable, peaceful livebearer that does well in a wide range of freshwater setups.",
-    "beginnerSuitable": true
-  ,
+    "beginnerSuitable": true,
     "foods": ["Tropical Flakes", "Sinking Pellets", "Freeze-Dried Bloodworms"]
   },
   {
@@ -621,8 +620,30 @@ export const fishData: Fish[] = [
     "compatibleWith": ["oscar", "plecostomus"],
     "difficultyScore": 4,
     "difficultyReason": "Grows extremely large, requires specialized feeding, and needs an exceptionally large enclosure.",
-    "beginnerSuitable": false
-  ,
+    "beginnerSuitable": false,
     "foods": ["Live Brine Shrimp", "Freeze-Dried Bloodworms"]
+  },
+  {
+    "id": "fw-14",
+    "slug": "sucker-fish",
+    "name": "Sucker Fish (Plecostomus)",
+    "scientificName": "Hypostomus plecostomus",
+    "category": "Freshwater",
+    "difficulty": "Beginner",
+    "temperament": "Peaceful",
+    "minTankSize": 75,
+    "maxSize": 15,
+    "temperature": "72-82°F",
+    "ph": "6.5-7.5",
+    "lifespan": "10-15 years",
+    "diet": "Herbivore",
+    "description": "The Sucker Fish, commonly known as the Plecostomus or Pleco, is a highly popular bottom-dwelling species known for its ability to consume algae. They have a specialized suckermouth that allows them to scrape algae off glass, rocks, and wood.",
+    "careGuide": "Requires a spacious tank with driftwood to rasp on, as it provides essential fiber for their digestion. Supplement their diet with high-quality algae wafers and fresh vegetables like zucchini.",
+    "image": "/images/plecostomus.png",
+    "compatibleWith": ["guppy", "neon-tetra", "corydoras-catfish", "molly", "angelfish"],
+    "difficultyScore": 1,
+    "difficultyReason": "Hardy and excellent algae eaters, though they grow large and require an appropriately spacious tank as they mature.",
+    "beginnerSuitable": true,
+    "foods": ["Sinking Pellets", "Algae Wafers", "Gel Food Mix"]
   }
 ];

@@ -32,7 +32,7 @@ export const foodData: Food[] = [
     benefits: ["Extremely high protein", "Stimulates natural hunting behaviors", "Great for conditioning breeding pairs"],
     frequency: "Occasional (2-3 times a week)",
     suitableFor: ["Betta Fish", "Angelfish", "Discus", "Gouramis", "Tetras"],
-    image: "https://images.unsplash.com/photo-1518558406542-93116df157e9?q=80&w=600&auto=format&fit=crop"
+    image: "/images/Freeze-Dried Bloodworms.png"
   },
   {
     id: "fo-3",
@@ -43,7 +43,7 @@ export const foodData: Food[] = [
     benefits: ["Rich in natural vegetable fibers", "Promotes healthy digestion", "Long-lasting stability prevents water clouding"],
     frequency: "Daily (Once at night)",
     suitableFor: ["Plecostomus", "Otocinclus", "Snails", "Amano Shrimp", "Mollies"],
-    image: "https://images.unsplash.com/photo-1616011400827-0cfd6874ebdb?q=80&w=600&auto=format&fit=crop"
+    image: "/images/Algae Wafers.png"
   },
   {
     id: "fo-4",
