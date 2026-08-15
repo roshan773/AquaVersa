@@ -1,7 +1,11 @@
 import { TestTubes, Droplets, Thermometer, FlaskConical, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
-export default function WaterParams() {
+interface WaterParamsProps {
+  showCTA?: boolean;
+}
+
+export default function WaterParams({ showCTA = true }: WaterParamsProps) {
   const params = [
     {
       id: 'ammonia',
@@ -98,11 +102,13 @@ export default function WaterParams() {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <Link href="/water-params" className="inline-flex items-center gap-2 px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-full transition-colors shadow-lg shadow-cyan-500/10">
-            View Full Water Chemistry Guide <ArrowRight className="w-5 h-5" />
-          </Link>
-        </div>
+        {showCTA && (
+          <div className="mt-12 text-center">
+            <Link href="/water-params" className="inline-flex items-center gap-2 px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-full transition-colors shadow-lg shadow-cyan-500/10">
+              View Full Water Chemistry Guide <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

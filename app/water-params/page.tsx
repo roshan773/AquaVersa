@@ -19,7 +19,7 @@ export default function WaterChemistryPage() {
         </div>
       </section>
 
-      <WaterParams />
+      <WaterParams showCTA={false} />
       <MaintenanceSection />
     </div>
   );
