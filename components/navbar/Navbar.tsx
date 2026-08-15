@@ -69,7 +69,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-8">
           <Link href="/" className={linkClass}>Home</Link>
           <Link href="/about" className={linkClass}>About Us</Link>
           
@@ -147,14 +147,14 @@ export default function Navbar() {
               placeholder="Search..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className={`pl-10 pr-3 py-2 rounded-full border text-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 ${
+              className={`w-28 sm:w-36 lg:w-48 pl-10 pr-3 py-2 rounded-full border text-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 ${
                 isScrolled 
                   ? "bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 border-border" 
                   : "bg-white/10 text-white placeholder-white/50 border-white/20 focus:bg-white/20"
               }`}
             />
           </form>
-          <button className={`md:hidden p-2 rounded-full transition-colors ${
+          <button className={`lg:hidden p-2 rounded-full transition-colors ${
             isScrolled ? "hover:bg-muted text-slate-800 dark:text-slate-200" : "hover:bg-white/15 text-white"
           }`} onClick={toggleMobileMenu}>
             {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -172,7 +172,7 @@ export default function Navbar() {
               animate={{ opacity: 0.4 }}
               exit={{ opacity: 0 }}
               onClick={toggleMobileMenu}
-              className="fixed inset-0 top-16 bg-black/60 z-30 md:hidden"
+              className="fixed inset-0 top-16 bg-black/60 z-30 lg:hidden"
             />
             
             {/* Sidebar */}
@@ -181,7 +181,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", bounce: 0, duration: 0.4 }}
-              className="fixed top-16 right-0 w-full sm:w-80 h-[calc(100vh-4rem)] bg-background/95 backdrop-blur-lg border-l border-border shadow-2xl z-40 overflow-y-auto md:hidden"
+              className="fixed top-16 right-0 w-full sm:w-80 h-[calc(100vh-4rem)] bg-background/95 backdrop-blur-lg border-l border-border shadow-2xl z-40 overflow-y-auto lg:hidden"
             >
               <div className="flex flex-col p-6 gap-6">
                 <Link href="/" className="font-semibold text-lg hover:text-cyan-500 transition-colors" onClick={toggleMobileMenu}>Home</Link>

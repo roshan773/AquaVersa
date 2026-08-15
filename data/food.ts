@@ -54,7 +54,7 @@ export const foodData: Food[] = [
     benefits: ["Stimulates appetite in picky eaters", "High concentrations of essential amino acids", "Improves fry survival rates"],
     frequency: "Treat (1-2 times a week)",
     suitableFor: ["Betta Fish", "Arowana", "Discus", "Cichlids", "Clownfish"],
-    image: "https://images.unsplash.com/photo-1500466487140-5259e51221b6?q=80&w=600&auto=format&fit=crop"
+    image: "/images/Live Brine Shrimp.png"
   },
   {
     id: "fo-5",
@@ -65,6 +65,6 @@ export const foodData: Food[] = [
     benefits: ["Highest hydration level", "Perfect carrier for medications", "Gentle on sensitive digestive tracts"],
     frequency: "Daily or alternate days",
     suitableFor: ["Goldfish", "Plecos", "Mollies", "Snails", "Cichlids"],
-    image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=600&auto=format&fit=crop"
+    image: "/images/Gel Food Mix.png"
   }
 ];
