@@ -26,6 +26,7 @@ export default function Footer() {
               <li><Link href="/fish/saltwater" className="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-cyan-500 opacity-0 transition-opacity"></span> Saltwater Fish</Link></li>
               <li><Link href="/plants" className="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-cyan-500 opacity-0 transition-opacity"></span> Aquatic Plants</Link></li>
               <li><Link href="/equipment" className="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-cyan-500 opacity-0 transition-opacity"></span> Equipment Guide</Link></li>
+              <li><Link href="/food" className="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-cyan-500 opacity-0 transition-opacity"></span> Fish Food</Link></li>
             </ul>
           </div>
 

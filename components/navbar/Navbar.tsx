@@ -132,7 +132,6 @@ export default function Navbar() {
             </AnimatePresence>
           </div>          <Link href="/equipment" className={linkClass}>Equipment</Link>
           <Link href="/plants" className={linkClass}>Plants</Link>
-          <Link href="/food" className={linkClass}>Food</Link>
           <Link href="/diseases" className={linkClass}>Diseases</Link>
         </div>
 
@@ -202,7 +201,6 @@ export default function Navbar() {
                 <div className="border-t border-border pt-4 flex flex-col gap-4">
                   <Link href="/equipment" className="font-semibold text-lg hover:text-amber-500 transition-colors" onClick={toggleMobileMenu}>Equipment</Link>
                   <Link href="/plants" className="font-semibold text-lg hover:text-emerald-500 transition-colors" onClick={toggleMobileMenu}>Plants</Link>
-                  <Link href="/food" className="font-semibold text-lg hover:text-cyan-500 transition-colors" onClick={toggleMobileMenu}>Fish Food</Link>
                   <Link href="/diseases" className="font-semibold text-lg hover:text-red-500 transition-colors" onClick={toggleMobileMenu}>Diseases Guide</Link>
                 </div>
               </div>
