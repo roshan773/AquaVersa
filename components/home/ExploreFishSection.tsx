@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Droplets, Waves } from 'lucide-react';
@@ -17,14 +18,14 @@ export default function ExploreFishSection() {
         
         <div className="grid md:grid-cols-2 gap-8">
           {/* Freshwater Card */}
-          <div className="group relative rounded-3xl overflow-hidden min-h-[400px] flex flex-col justify-end p-8 border border-border">
+          <div className="group relative rounded-3xl overflow-hidden min-h-[400px] flex flex-col justify-end p-8 border border-border bg-slate-955">
             <Image 
-              src="/hero_aquarium.jpg" 
+              src="/images/neon_tetra.png" 
               alt="Freshwater Aquarium" 
               fill 
-              className="object-cover transition-transform duration-700 group-hover:scale-105" 
+              className="object-cover opacity-60 transition-transform duration-700 group-hover:scale-105" 
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
             <div className="relative z-10 text-white">
               <div className="w-12 h-12 rounded-full bg-cyan-500/20 backdrop-blur-md flex items-center justify-center mb-6 border border-cyan-500/30">
                 <Droplets className="w-6 h-6 text-cyan-300" />
@@ -43,16 +44,14 @@ export default function ExploreFishSection() {
           </div>
 
           {/* Saltwater Card */}
-          <div className="group relative rounded-3xl overflow-hidden min-h-[400px] flex flex-col justify-end p-8 border border-border">
-            <div className="absolute inset-0 bg-blue-900">
-               <Image 
-                src="/hero_aquarium.jpg" 
-                alt="Saltwater Aquarium" 
-                fill 
-                className="object-cover transition-transform duration-700 group-hover:scale-105 hue-rotate-180 brightness-75" 
-              />
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+          <div className="group relative rounded-3xl overflow-hidden min-h-[400px] flex flex-col justify-end p-8 border border-border bg-slate-955">
+            <Image 
+              src="/images/clownfish.png" 
+              alt="Saltwater Aquarium" 
+              fill 
+              className="object-cover opacity-60 transition-transform duration-700 group-hover:scale-105" 
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
             <div className="relative z-10 text-white">
               <div className="w-12 h-12 rounded-full bg-blue-500/20 backdrop-blur-md flex items-center justify-center mb-6 border border-blue-500/30">
                 <Waves className="w-6 h-6 text-blue-300" />
