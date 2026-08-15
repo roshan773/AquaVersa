@@ -7,7 +7,7 @@ import { ArrowRight, Waves } from 'lucide-react';
 export default function HeroSection() {
   const { fish, plants, equipment } = useStats();
   return (
-    <section className="relative w-full h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+    <section className="relative min-h-[90vh] -mt-16 flex items-center justify-center bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 overflow-hidden text-center pt-36 pb-20 px-4">
       {/* Background Image */}
       <Image
         src="/betta_bg.png"
