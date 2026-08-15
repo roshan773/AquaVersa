@@ -10,7 +10,7 @@ export const foodData: Food[] = [
     benefits: ["Balanced nutrition", "Enhances natural coloration", "Highly digestible, minimizes waste"],
     frequency: "Daily (1-2 times)",
     suitableFor: ["Tetras", "Guppies", "Mollies", "Barbs", "Danios"],
-    image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=600&auto=format&fit=crop"
+    image: "/images/Tropical Flakes.png"
   },
   {
     id: "fo-1",
