@@ -1,9 +1,9 @@
 'use client';
 import { useStats } from '@/components/home/StatsContext';
-import { Fish, Leaf, Settings, BookOpen } from 'lucide-react';
+import { Fish, Leaf, Settings } from 'lucide-react';
 
 export default function StatsStrip() {
-  const { fish, plants, equipment, careTopics } = useStats();
+  const { fish, plants, equipment } = useStats();
 
   const statsItems = [
     {
@@ -33,21 +33,12 @@ export default function StatsStrip() {
       borderClass: 'hover:border-amber-500/20',
       bgGlow: 'from-amber-500/10 to-transparent',
     },
-    {
-      label: 'Ecosystem Guides',
-      value: careTopics,
-      icon: <BookOpen className="w-6 h-6 text-indigo-400" />,
-      colorClass: 'text-indigo-400',
-      shadowClass: 'hover:shadow-indigo-500/5',
-      borderClass: 'hover:border-indigo-500/20',
-      bgGlow: 'from-indigo-500/10 to-transparent',
-    },
   ];
 
   return (
     <section className="w-full bg-slate-900/90 dark:bg-slate-950/90 border-y border-slate-800/80 py-8">
       <div className="container mx-auto px-4 max-w-6xl">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {statsItems.map((stat, i) => (
             <div 
               key={i} 
