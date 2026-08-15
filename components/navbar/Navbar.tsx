@@ -1,19 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Droplets, Fish, Search, Menu, X, Waves, Anchor, Settings } from "lucide-react";
 import Image from "next/image";
-import { equipmentData } from "@/data/equipment";
 
 export default function Navbar() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [showSearch, setShowSearch] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
@@ -25,29 +24,62 @@ export default function Navbar() {
     }
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const linkClass = `text-sm font-medium transition-colors duration-300 ${
+    isScrolled 
+      ? "text-slate-700 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400" 
+      : "text-white/95 hover:text-cyan-300"
+  }`;
+
+  const btnClass = `text-sm font-medium transition-colors duration-300 flex items-center gap-1 ${
+    isScrolled 
+      ? "text-slate-700 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400" 
+      : "text-white/95 hover:text-cyan-300"
+  }`;
+
   return (
-    <nav className="sticky top-0 z-50 w-full glass border-b border-border shadow-sm">
+    <nav className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+      isScrolled 
+        ? "glass border-b border-border shadow-sm" 
+        : "bg-transparent border-transparent shadow-none"
+    }`}>
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
           <div className="bg-cyan-500 p-1.5 rounded-lg group-hover:bg-cyan-400 transition-colors">
             <Waves className="w-5 h-5 text-slate-900" />
           </div>
-          <span className="font-poppins font-bold text-xl tracking-tight">AquaGuide</span>
+          <span className={`font-poppins font-bold text-xl tracking-tight transition-colors duration-300 ${
+            isScrolled ? "text-slate-900 dark:text-white" : "text-white"
+          }`}>
+            AquaGuide
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
-          <Link href="/" className="text-sm font-medium hover:text-cyan-600 transition-colors">Home</Link>
-          <Link href="/about" className="text-sm font-medium hover:text-cyan-600 transition-colors">About Us</Link>
+          <Link href="/" className={linkClass}>Home</Link>
+          <Link href="/about" className={linkClass}>About Us</Link>
           
           <div
             className="relative h-16 flex items-center"
             onMouseEnter={() => setActiveDropdown('fish')}
             onMouseLeave={() => setActiveDropdown(null)}
           >
-            <button className="text-sm font-medium hover:text-cyan-600 transition-colors flex items-center gap-1">
-              Fish <span className="text-[10px] opacity-50">▼</span>
+            <button className={btnClass}>
+              Fish <span className="text-[10px] opacity-60">▼</span>
             </button>
             <AnimatePresence>
               {activeDropdown === 'fish' && (
@@ -56,7 +88,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 10, scale: 0.95 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute top-16 left-1/2 -translate-x-1/2 w-[800px] bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm grid grid-cols-2 gap-6 z-50"
+                  className="absolute top-16 left-1/2 -translate-x-1/2 w-[800px] bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm grid grid-cols-2 gap-6 z-50 animate-in fade-in zoom-in-95 duration-200"
                 >
                   <Link href="/fish/freshwater" className="group flex flex-col gap-3 p-4 rounded-xl hover:bg-white/50 dark:hover:bg-black/30 transition-all border border-transparent hover:border-border text-gray-900 dark:text-gray-100">
                     <div className="relative w-full h-32 rounded-lg overflow-hidden bg-blue-100 dark:bg-blue-950">
@@ -100,28 +132,35 @@ export default function Navbar() {
             </AnimatePresence>
           </div>
 
-          <Link href="/equipment" className="text-sm font-medium hover:text-cyan-600 transition-colors">Equipment</Link>
-
-          <Link href="/plants" className="text-sm font-medium hover:text-cyan-600 transition-colors">Plants</Link>
-          <Link href="/diseases" className="text-sm font-medium hover:text-cyan-600 transition-colors">Diseases</Link>
+          <Link href="/equipment" className={linkClass}>Equipment</Link>
+          <Link href="/plants" className={linkClass}>Plants</Link>
+          <Link href="/diseases" className={linkClass}>Diseases</Link>
         </div>
 
-          {/* Modern Search Bar */}
-          <div className="flex items-center gap-4">
-            <form onSubmit={handleSearchSubmit} className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
-              <input
-                type="text"
-                placeholder="Search..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 pr-3 py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500"
-              />
-            </form>
-            <button className="md:hidden p-2 rounded-full hover:bg-muted transition-colors" onClick={toggleMobileMenu}>
-              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-          </div>
+        {/* Modern Search Bar */}
+        <div className="flex items-center gap-4">
+          <form onSubmit={handleSearchSubmit} className="relative">
+            <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 transition-colors duration-300 ${
+              isScrolled ? "text-slate-400" : "text-white/60"
+            }`} />
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className={`pl-10 pr-3 py-2 rounded-full border text-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 ${
+                isScrolled 
+                  ? "bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 border-border" 
+                  : "bg-white/10 text-white placeholder-white/50 border-white/20 focus:bg-white/20"
+              }`}
+            />
+          </form>
+          <button className={`md:hidden p-2 rounded-full transition-colors ${
+            isScrolled ? "hover:bg-muted text-slate-800 dark:text-slate-200" : "hover:bg-white/15 text-white"
+          }`} onClick={toggleMobileMenu}>
+            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -134,21 +173,22 @@ export default function Navbar() {
             className="md:hidden bg-background border-t border-border overflow-hidden"
           >
             <div className="flex flex-col p-4 gap-4">
-              <Link href="/" className="font-medium p-2 rounded-md hover:bg-muted">Home</Link>
-              <Link href="/about" className="font-medium p-2 rounded-md hover:bg-muted">About Us</Link>
+              <Link href="/" className="font-medium p-2 rounded-md hover:bg-muted" onClick={toggleMobileMenu}>Home</Link>
+              <Link href="/about" className="font-medium p-2 rounded-md hover:bg-muted" onClick={toggleMobileMenu}>About Us</Link>
               <div className="font-medium p-2 rounded-md">
                 <span className="text-muted-foreground mb-2 block text-sm">Fish</span>
                 <div className="flex flex-col gap-2 pl-4 border-l-2 border-muted">
-                  <Link href="/fish/freshwater" className="p-2 hover:bg-muted rounded-md flex items-center gap-2">
+                  <Link href="/fish/freshwater" className="p-2 hover:bg-muted rounded-md flex items-center gap-2" onClick={toggleMobileMenu}>
                     <Droplets className="w-4 h-4 text-cyan-500" /> Freshwater
                   </Link>
-                  <Link href="/fish/saltwater" className="p-2 hover:bg-muted rounded-md flex items-center gap-2">
+                  <Link href="/fish/saltwater" className="p-2 hover:bg-muted rounded-md flex items-center gap-2" onClick={toggleMobileMenu}>
                     <Anchor className="w-4 h-4 text-blue-500" /> Saltwater
                   </Link>
                 </div>
               </div>
-              <Link href="/equipment" className="font-medium p-2 rounded-md hover:bg-muted">Equipment</Link>
-              <Link href="/plants" className="font-medium p-2 rounded-md hover:bg-muted">Plants</Link>
+              <Link href="/equipment" className="font-medium p-2 rounded-md hover:bg-muted" onClick={toggleMobileMenu}>Equipment</Link>
+              <Link href="/plants" className="font-medium p-2 rounded-md hover:bg-muted" onClick={toggleMobileMenu}>Plants</Link>
+              <Link href="/diseases" className="font-medium p-2 rounded-md hover:bg-muted" onClick={toggleMobileMenu}>Diseases</Link>
             </div>
           </motion.div>
         )}
