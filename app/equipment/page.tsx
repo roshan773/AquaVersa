@@ -1,17 +1,37 @@
 "use client";
-import { useState } from "react";
-import { equipmentData } from "@/data/equipment";
+
+import { useState, useEffect } from "react";
+import { Equipment as EquipmentType } from "@/lib/types";
 import { Search, Settings } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function EquipmentPage() {
+  const [eqList, setEqList] = useState<EquipmentType[]>([]);
+  const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("All");
 
-  const categories = ["All", ...Array.from(new Set(equipmentData.map(e => e.category)))];
+  useEffect(() => {
+    async function fetchEquipment() {
+      try {
+        const res = await fetch("/api/equipment");
+        if (res.ok) {
+          const data = await res.json();
+          setEqList(data);
+        }
+      } catch (err) {
+        console.error("Failed to load equipment data:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchEquipment();
+  }, []);
 
-  const filteredEq = equipmentData.filter(eq => {
+  const categories = ["All", ...Array.from(new Set(eqList.map(e => e.category)))];
+
+  const filteredEq = eqList.filter(eq => {
     const matchesSearch = eq.name.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = categoryFilter === "All" || eq.category === categoryFilter;
     return matchesSearch && matchesCategory;
@@ -35,6 +55,7 @@ export default function EquipmentPage() {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full bg-background border border-border rounded-lg pl-9 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                disabled={loading}
               />
             </div>
           </div>
@@ -51,6 +72,7 @@ export default function EquipmentPage() {
                     checked={categoryFilter === c}
                     onChange={() => setCategoryFilter(c)}
                     className="text-amber-500 focus:ring-amber-500 bg-background border-border"
+                    disabled={loading}
                   />
                   <span className="text-sm">{c}</span>
                 </label>
@@ -67,7 +89,21 @@ export default function EquipmentPage() {
           <p className="text-muted-foreground">Essential gear to maintain a healthy and stable ecosystem.</p>
         </div>
 
-        {filteredEq.length > 0 ? (
+        {loading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[1, 2, 3, 4, 5, 6].map(i => (
+              <div key={i} className="rounded-2xl border border-border bg-card overflow-hidden shadow-sm animate-pulse flex flex-col">
+                <div className="h-48 bg-muted w-full shrink-0"></div>
+                <div className="p-5 space-y-4 flex-1 flex flex-col">
+                  <div className="h-6 bg-muted rounded w-2/3"></div>
+                  <div className="h-4 bg-muted rounded w-full"></div>
+                  <div className="h-4 bg-muted rounded w-5/6"></div>
+                  <div className="h-10 bg-muted rounded-xl w-full mt-auto"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : filteredEq.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredEq.map(eq => (
               <div key={eq.id} className="group rounded-2xl border border-border bg-card overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col">
@@ -110,3 +146,4 @@ export default function EquipmentPage() {
     </div>
   );
 }
+

@@ -1,15 +1,35 @@
 "use client";
-import { useState } from "react";
-import { plantData } from "@/data/plants";
+
+import { useState, useEffect } from "react";
+import { Plant as PlantType } from "@/lib/types";
 import { Search, Leaf } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function PlantsPage() {
+  const [plantList, setPlantList] = useState<PlantType[]>([]);
+  const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [lightFilter, setLightFilter] = useState("All");
 
-  const filteredPlants = plantData.filter(plant => {
+  useEffect(() => {
+    async function fetchPlants() {
+      try {
+        const res = await fetch("/api/plants");
+        if (res.ok) {
+          const data = await res.json();
+          setPlantList(data);
+        }
+      } catch (err) {
+        console.error("Failed to load plants data:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchPlants();
+  }, []);
+
+  const filteredPlants = plantList.filter(plant => {
     const matchesSearch = plant.name.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesLight = lightFilter === "All" || plant.light === lightFilter;
     return matchesSearch && matchesLight;
@@ -33,6 +53,7 @@ export default function PlantsPage() {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full bg-background border border-border rounded-lg pl-9 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                disabled={loading}
               />
             </div>
           </div>
@@ -49,6 +70,7 @@ export default function PlantsPage() {
                     checked={lightFilter === l}
                     onChange={() => setLightFilter(l)}
                     className="text-emerald-500 focus:ring-emerald-500 bg-background border-border"
+                    disabled={loading}
                   />
                   <span className="text-sm">{l}</span>
                 </label>
@@ -65,7 +87,26 @@ export default function PlantsPage() {
           <p className="text-muted-foreground">Discover beautiful, natural filtration for your aquarium.</p>
         </div>
 
-        {filteredPlants.length > 0 ? (
+        {loading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[1, 2, 3, 4, 5, 6].map(i => (
+              <div key={i} className="rounded-2xl border border-border bg-card overflow-hidden shadow-sm animate-pulse">
+                <div className="h-48 bg-muted w-full"></div>
+                <div className="p-5 space-y-4">
+                  <div className="h-6 bg-muted rounded w-2/3"></div>
+                  <div className="h-4 bg-muted rounded w-1/2"></div>
+                  <div className="grid grid-cols-2 gap-3 pt-2">
+                    <div className="h-6 bg-muted rounded"></div>
+                    <div className="h-6 bg-muted rounded"></div>
+                    <div className="h-6 bg-muted rounded"></div>
+                    <div className="h-6 bg-muted rounded"></div>
+                  </div>
+                  <div className="h-10 bg-muted rounded-xl w-full pt-2"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : filteredPlants.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredPlants.map(plant => (
               <div key={plant.id} className="group rounded-2xl border border-border bg-card overflow-hidden shadow-sm hover:shadow-md transition-all">
@@ -127,3 +168,4 @@ export default function PlantsPage() {
     </div>
   );
 }
+
