@@ -29,15 +29,15 @@ export default function FirstAquariumTimeline() {
           </p>
         </div>
 
-        {/* Horizontal scrollable timeline container on desktop */}
-        <div className="flex flex-col md:flex-row md:overflow-x-auto gap-6 pb-6 scrollbar-thin scrollbar-thumb-slate-800 scrollbar-track-transparent">
+        {/* Responsive Grid layout (stacked on mobile, 2/3/4 cols on larger devices) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {steps.map((s, i) => {
             const stepNum = i + 1;
             const stepFormatted = stepNum < 10 ? `0${stepNum}` : `${stepNum}`;
             return (
               <div 
                 key={i} 
-                className="flex-1 min-w-[240px] md:min-w-[260px] relative overflow-hidden group p-6 rounded-2xl bg-slate-900/40 dark:bg-slate-950/20 border border-slate-850 hover:bg-slate-900/70 transition-all duration-500 hover:border-cyan-500/30 transform hover:-translate-y-1 shadow-sm flex flex-col justify-between"
+                className="relative overflow-hidden group p-6 rounded-2xl bg-slate-900/40 dark:bg-slate-950/20 border border-slate-850 hover:bg-slate-900/70 transition-all duration-500 hover:border-cyan-500/30 transform hover:-translate-y-1 shadow-sm flex flex-col justify-between min-h-[180px]"
               >
                 {/* Background watermarked step number */}
                 <span className="absolute right-4 bottom-2 text-7xl font-extrabold text-slate-800/10 group-hover:text-cyan-500/5 select-none transition-colors duration-500 font-mono">
