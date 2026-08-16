@@ -17,6 +17,7 @@ export const metadata: Metadata = {
 import Navbar from "@/components/navbar/Navbar";
 import { StatsProvider } from '@/components/home/StatsContext';
 import Footer from "@/components/footer/Footer";
+import SitePreloader from "@/components/ui/SitePreloader";
 
 export default function RootLayout({
   children,
@@ -37,6 +38,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${poppins.variable} font-sans antialiased min-h-screen flex flex-col`}>
+          <SitePreloader />
           <Navbar />
           <StatsProvider>
             <main className="flex-grow">
