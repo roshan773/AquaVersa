@@ -2,48 +2,37 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Fish } from "lucide-react";
-
-const BUBBLES = Array.from({ length: 25 }, (_, i) => ({
-  id: i,
-  left: `${(i * 4.3 + Math.random() * 4) % 100}%`,
-  delay: `${Math.random() * 6}s`,
-  size: `${Math.random() * 12 + 6}px`,
-  speed: i % 3 === 0 ? "animate-bubble-slow" : i % 3 === 1 ? "animate-bubble-medium" : "animate-bubble-fast"
-}));
-
-const LOADING_TEXTS = [
-  "Cycling the biological filter...",
-  "Testing ammonia and nitrite levels...",
-  "Acclimating tropical species...",
-  "Planting aquatic flora...",
-  "Polishing water column clarity...",
-];
+import { Waves } from "lucide-react";
 
 export default function SitePreloader() {
-  const [show, setShow] = useState(true);
-  const [textIndex, setTextIndex] = useState(0);
+  const [mounted, setMounted] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
-    // Cycle text messages
-    const textInterval = setInterval(() => {
-      setTextIndex((prev) => (prev + 1) % LOADING_TEXTS.length);
-    }, 450);
+    setMounted(true);
+    
+    // Check for reduced motion preference
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(mediaQuery.matches);
+    
+    const listener = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+    mediaQuery.addEventListener("change", listener);
 
-    // Disable loading screen after 1.8 seconds
+    // Keep loader visible briefly (500ms) to prevent visual layout flash on fast load
     const timer = setTimeout(() => {
-      setShow(false);
-    }, 2000);
+      setIsLoaded(true);
+    }, 500);
 
     return () => {
-      clearInterval(textInterval);
+      mediaQuery.removeEventListener("change", listener);
       clearTimeout(timer);
     };
   }, []);
 
-  // Disable body scroll when loader is active
+  // Block body scroll while preloader is active
   useEffect(() => {
-    if (show) {
+    if (!isLoaded) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
@@ -51,76 +40,74 @@ export default function SitePreloader() {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [show]);
+  }, [isLoaded]);
+
+  // If component is server-side rendered (SSR), render a static backdrop
+  // to prevent layout flash before React mounts on the client
+  if (!mounted) {
+    return (
+      <div className="fixed inset-0 z-[9999] bg-slate-950 flex flex-col items-center justify-center">
+        <div className="flex items-center gap-3">
+          <div className="bg-cyan-500 p-2.5 rounded-xl">
+            <Waves className="w-6 h-6 text-slate-900" />
+          </div>
+          <span className="font-poppins font-extrabold text-2xl tracking-tight text-white">
+            AquaGuide
+          </span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <AnimatePresence>
-      {show && (
+      {!isLoaded && (
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="fixed inset-0 z-[9999] bg-gradient-to-b from-slate-900 via-slate-950 to-blue-950 flex flex-col items-center justify-center overflow-hidden"
+          transition={{ duration: 0.35, ease: "easeInOut" }}
+          aria-busy="true"
+          aria-label="Loading AquaGuide"
+          className="fixed inset-0 z-[9999] bg-slate-950 flex flex-col items-center justify-center overflow-hidden"
         >
-          {/* Floating Bubble Particles */}
-          <div className="absolute inset-0 pointer-events-none z-0">
-            {BUBBLES.map((bubble) => (
-              <div
-                key={bubble.id}
-                className={`absolute rounded-full bg-white/10 dark:bg-white/5 border border-white/20 backdrop-blur-[1px] ${bubble.speed}`}
-                style={{
-                  left: bubble.left,
-                  width: bubble.size,
-                  height: bubble.size,
-                  animationDelay: bubble.delay,
-                  bottom: "-40px",
-                }}
-              />
-            ))}
-          </div>
-
-          {/* Swimming Track & Bobbing Fish */}
-          <div className="relative w-full max-w-xl h-32 mb-8 flex items-center justify-center z-10">
-            {/* Ambient Water Stream Line */}
-            <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400/25 to-transparent rounded-full shadow-[0_0_8px_rgba(34,211,238,0.2)]" />
-            
-            {/* Swimming Fish Wrapper */}
-            <div className="absolute w-[80%] left-0 animate-swim h-full flex items-center">
-              <div className="animate-bob">
-                <Fish className="w-14 h-14 text-cyan-400 drop-shadow-[0_0_12px_rgba(34,211,238,0.75)]" />
+          {/* Centered Branded Logo Block */}
+          <div className="flex flex-col items-center">
+            <motion.div
+              initial={reducedMotion ? { opacity: 1 } : { opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="flex items-center gap-3 select-none"
+            >
+              {/* Pulsing Aqua Symbol */}
+              <div className={`bg-cyan-500 p-2.5 rounded-xl shadow-lg shadow-cyan-500/10 ${
+                reducedMotion ? "" : "animate-pulse"
+              }`}>
+                <Waves className="w-6 h-6 text-slate-900" />
               </div>
-            </div>
-          </div>
+              <span className="font-poppins font-extrabold text-2xl tracking-tight text-white">
+                AquaGuide
+              </span>
+            </motion.div>
 
-          {/* Loading Progress & Text */}
-          <div className="w-full max-w-sm px-4 flex flex-col items-center text-center z-10">
-            <h2 className="font-poppins font-bold text-xl text-white tracking-wide mb-2 flex items-center gap-2">
-              AquaGuide
-            </h2>
-            
-            {/* Loading text with transition animation */}
-            <div className="h-6 overflow-hidden mb-6">
-              <motion.p
-                key={textIndex}
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -20, opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="text-xs font-semibold text-cyan-300 tracking-wider uppercase"
-              >
-                {LOADING_TEXTS[textIndex]}
-              </motion.p>
-            </div>
+            {/* Subtle Aquarium-Inspired Ripple/Wave Animation */}
+            {!reducedMotion && (
+              <div className="mt-8 flex gap-1.5 justify-center items-center" aria-hidden="true">
+                <span 
+                  className="w-2 h-2 rounded-full bg-cyan-400/80 shadow-[0_0_6px_rgba(34,211,238,0.4)] animate-[bounce_1.4s_infinite_ease-in-out_0ms]" 
+                />
+                <span 
+                  className="w-2 h-2 rounded-full bg-cyan-400/80 shadow-[0_0_6px_rgba(34,211,238,0.4)] animate-[bounce_1.4s_infinite_ease-in-out_200ms]" 
+                />
+                <span 
+                  className="w-2 h-2 rounded-full bg-cyan-400/80 shadow-[0_0_6px_rgba(34,211,238,0.4)] animate-[bounce_1.4s_infinite_ease-in-out_400ms]" 
+                />
+              </div>
+            )}
 
-            {/* Premium Progress Bar Track */}
-            <div className="relative w-full h-1.5 bg-white/10 rounded-full overflow-hidden shadow-inner">
-              <motion.div 
-                initial={{ width: "0%" }}
-                animate={{ width: "100%" }}
-                transition={{ duration: 2.0, ease: "easeInOut" }}
-                className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"
-              />
-            </div>
+            {/* Subtly Faded Loading Text indicator */}
+            <span className="mt-4 text-[10px] uppercase font-bold tracking-widest text-slate-500 dark:text-slate-500 select-none">
+              Loading
+            </span>
           </div>
         </motion.div>
       )}
