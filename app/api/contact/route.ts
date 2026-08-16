@@ -145,8 +145,8 @@ export async function POST(request: Request) {
     const emailFrom = process.env.EMAIL_FROM || "onboarding@resend.dev";
     
     // Recipient list configuration
-    const contactEmail1 = process.env.CONTACT_EMAIL_1 || "aquaversa@gmail.com";
-    const contactEmail2 = process.env.CONTACT_EMAIL_2 || "pakhreroshan@gmail.com";
+    const contactEmail1 = process.env.CONTACT_EMAIL_1 || "pakhreroshan@gmail.com";
+    const contactEmail2 = process.env.CONTACT_EMAIL_2 || "aquaversa@gmail.com";
 
     if (!resendApiKey) {
       console.warn("WARNING: RESEND_API_KEY environment variable is not configured. Email not sent.");

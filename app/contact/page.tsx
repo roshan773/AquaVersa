@@ -77,6 +77,18 @@ export default function ContactPage() {
         setSubmitError(result.error || "We couldn't send your message right now. Please try again.");
       } else {
         setSubmitted(true);
+        setFormData({
+          name: '',
+          email: '',
+          category: 'general',
+          subject: '',
+          message: '',
+          itemName: '',
+          incorrectInfo: '',
+          correction: '',
+          source: '',
+          honeypot: ''
+        });
       }
     } catch (err) {
       setSubmitError("We couldn't send your message right now. Please try again.");
@@ -87,18 +99,6 @@ export default function ContactPage() {
 
   const handleReset = () => {
     setSubmitted(false);
-    setFormData({
-      name: '',
-      email: '',
-      category: 'general',
-      subject: '',
-      message: '',
-      itemName: '',
-      incorrectInfo: '',
-      correction: '',
-      source: '',
-      honeypot: ''
-    });
   };
 
   return (
