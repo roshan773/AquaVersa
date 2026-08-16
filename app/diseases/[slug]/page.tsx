@@ -26,13 +26,13 @@ export default async function DiseaseDetailPage({ params }: PageProps) {
   const getTypeBadgeClass = (type: string) => {
     switch (type) {
       case "Parasitic":
-        return "bg-red-500/10 text-red-500 border border-red-500/20";
+        return "bg-red-600 text-white border border-red-500/30 shadow-md backdrop-blur-sm";
       case "Bacterial":
-        return "bg-purple-500/10 text-purple-500 border border-purple-500/20";
+        return "bg-purple-600 text-white border border-purple-500/30 shadow-md backdrop-blur-sm";
       case "Fungal":
-        return "bg-amber-500/10 text-amber-500 border border-amber-500/20";
+        return "bg-amber-500 text-slate-950 border border-amber-400/30 shadow-md backdrop-blur-sm";
       default:
-        return "bg-blue-500/10 text-blue-500 border border-blue-500/20";
+        return "bg-blue-600 text-white border border-blue-500/30 shadow-md backdrop-blur-sm";
     }
   };
 
