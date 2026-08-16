@@ -160,12 +160,12 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
             >
               <div
                 className={`w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-300 border-2 ${isActive
-                    ? "bg-cyan-500 text-slate-950 border-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.5)] scale-110"
-                    : isDone
-                      ? "bg-emerald-500 text-slate-950 border-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.3)]"
-                      : isVisited
-                        ? "bg-background text-cyan-500 border-cyan-500 dark:border-cyan-400"
-                        : "bg-muted dark:bg-slate-900 text-muted-foreground border-border dark:border-slate-800"
+                  ? "bg-cyan-500 text-slate-950 border-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.5)] scale-110"
+                  : isDone
+                    ? "bg-emerald-500 text-slate-950 border-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.3)]"
+                    : isVisited
+                      ? "bg-background text-cyan-500 border-cyan-500 dark:border-cyan-400"
+                      : "bg-muted dark:bg-slate-900 text-muted-foreground border-border dark:border-slate-800"
                   }`}
               >
                 {isDone ? (
@@ -175,10 +175,10 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
                 )}
               </div>
               <span className={`text-xs md:text-sm font-semibold mt-3 transition-colors ${isActive
-                  ? "text-cyan-500 dark:text-cyan-400"
-                  : isDone
-                    ? "text-emerald-500"
-                    : "text-muted-foreground group-hover:text-foreground"
+                ? "text-cyan-500 dark:text-cyan-400"
+                : isDone
+                  ? "text-emerald-500"
+                  : "text-muted-foreground group-hover:text-foreground"
                 }`}>
                 {idx === 0 ? "1. Tank" : idx === 1 ? "2. Water" : "3. Cycle"}
               </span>
@@ -359,19 +359,19 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
                             key={item.id}
                             onClick={() => handleToggleCheck(item.id)}
                             className={`flex gap-3.5 items-start p-4 rounded-xl border cursor-pointer transition-all ${isChecked
-                                ? "bg-emerald-500/5 border-emerald-500/30 dark:bg-emerald-500/5 dark:border-emerald-500/20"
-                                : "bg-card border-border hover:border-cyan-500/30 dark:hover:border-cyan-500/20 hover:shadow-sm"
+                              ? "bg-emerald-500/5 border-emerald-500/30 dark:bg-emerald-500/5 dark:border-emerald-500/20"
+                              : "bg-card border-border hover:border-cyan-500/30 dark:hover:border-cyan-500/20 hover:shadow-sm"
                               }`}
                           >
                             <div className={`w-5 h-5 rounded border-2 shrink-0 flex items-center justify-center transition-all ${isChecked
-                                ? "bg-emerald-500 border-emerald-400 text-slate-950"
-                                : "border-muted-foreground/40 bg-background"
+                              ? "bg-emerald-500 border-emerald-400 text-slate-950"
+                              : "border-muted-foreground/40 bg-background"
                               }`}>
                               {isChecked && <Check className="w-3.5 h-3.5 stroke-[3]" />}
                             </div>
                             <span className={`text-sm md:text-base leading-tight select-none transition-colors ${isChecked
-                                ? "text-muted-foreground line-through decoration-emerald-500/40"
-                                : "text-foreground"
+                              ? "text-muted-foreground line-through decoration-emerald-500/40"
+                              : "text-foreground"
                               }`}>
                               {item.text}
                             </span>
@@ -419,8 +419,8 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
                     }}
                     disabled={currentStepIndex === 0}
                     className={`px-5 py-3 rounded-xl border text-sm font-semibold flex items-center gap-1.5 transition-colors ${currentStepIndex === 0
-                        ? "opacity-0 cursor-default"
-                        : "border-border hover:bg-muted bg-card cursor-pointer"
+                      ? "opacity-0 cursor-default"
+                      : "border-border hover:bg-muted bg-card cursor-pointer"
                       }`}
                   >
                     <ChevronLeft className="w-4 h-4" /> Previous Step
@@ -430,8 +430,8 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
                     <button
                       onClick={() => setShowCelebration(true)}
                       className={`px-6 py-3 rounded-xl font-semibold flex items-center gap-2 transition-all cursor-pointer ${isStepCompleted(currentStepIndex)
-                          ? "bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 font-bold hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:brightness-105"
-                          : "bg-cyan-500 hover:bg-cyan-400 text-slate-950"
+                        ? "bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 font-bold hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:brightness-105"
+                        : "bg-cyan-500 hover:bg-cyan-400 text-slate-950"
                         }`}
                     >
                       Finish Setup Guide <CheckCircle2 className="w-4 h-4 stroke-[2.5]" />
@@ -492,16 +492,11 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
                 )}
 
                 {/* Helpful tips panel */}
-                {/* <div className="p-6 rounded-3xl border border-border bg-card shadow-sm">
+                <div className="p-6 rounded-3xl border border-border bg-card shadow-sm">
                   <h4 className="font-bold text-sm mb-3 flex items-center gap-1.5 text-muted-foreground uppercase tracking-wider">
                     <HelpCircle className="w-4 h-4" /> Need Extra Help?
                   </h4>
                   <ul className="space-y-2.5 text-sm text-muted-foreground leading-relaxed">
-                    <li>
-                      <Link href="/guides" className="text-cyan-500 dark:text-cyan-400 hover:underline">
-                        Read detailed cycling guide
-                      </Link>
-                    </li>
                     <li>
                       <Link href="/water-params" className="text-cyan-500 dark:text-cyan-400 hover:underline">
                         Learn about water chemistry
@@ -513,7 +508,7 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
                       </Link>
                     </li>
                   </ul>
-                </div> */}
+                </div>
               </div>
             </motion.div>
           )}
