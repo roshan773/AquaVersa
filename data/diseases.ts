@@ -6,7 +6,7 @@ export const diseasesData: Disease[] = [
     slug: "ich-white-spot",
     name: "Ich (White Spot Disease)",
     type: "Parasitic",
-    description: "Ich is the most common freshwater parasite (Ichthyophthirius multifiliis). It manifests as small, white, salt-like spots across the fish's body, fins, and gills. It is highly contagious and fatal if untreated.",
+    description: "Ich (white spot disease) is a common freshwater parasitic disease caused by Ichthyophthirius multifiliis. It produces small white spots on the skin and fins and can also affect the gills. Heavy infections can be rapidly fatal if untreated.",
     symptoms: [
       "Small white spots resembling salt grains on the skin, fins, and eyes",
       "Fish rubbing or scratching against rocks and decorations (flashing)",
@@ -16,28 +16,28 @@ export const diseasesData: Disease[] = [
     ],
     transmission: "Ich is introduced via infected new fish, plants, or equipment. The parasite goes through multiple life stages, including a free-swimming stage (theront) that infects new hosts.",
     treatment: [
-      "Gradually raise the water temperature to 82°F–85°F (28°C–29°C) over 24-48 hours. This speeds up the life cycle of the parasite, exposing the vulnerable free-swimming stage.",
-      "Increase aeration using an air stone, as warmer water holds less dissolved oxygen.",
-      "Add aquarium salt (1 tablespoon per 5 gallons of water) to support the fish's slime coat and disrupt the parasite's osmotic balance.",
-      "Dose with a dedicated copper sulfate or malachite green medication, following the instructions strictly.",
-      "Perform daily 25% water changes, vacuuming the substrate thoroughly to remove fallen parasite cysts (tomonts)."
+      "Treat promptly with an appropriate ich medication according to the product label and treatment schedule.",
+      "Maintain stable, species-appropriate temperature and provide strong aeration during treatment.",
+      "Aquarium salt may be appropriate for some freshwater species, but it is not suitable for every fish, plant, or invertebrate; use it only when appropriate and according to a species-safe protocol.",
+      "Appropriate treatments may include labeled formalin-, copper-, or other ich medications; follow the product label and species-specific precautions.",
+      "Perform water changes and substrate cleaning according to the medication instructions; removing debris can help reduce environmental parasite stages."
     ],
     prevention: [
-      "Quarantine all new fish and plants in a separate tank for at least 14 days before introducing them to the main aquarium.",
+      "Quarantine new fish and other livestock in a separate system for an appropriate observation period before introduction, with longer quarantine providing greater opportunity to detect disease.",
       "Maintain stable water temperature and avoid sudden drops (stress weakens the immune system).",
       "Regularly vacuum the gravel to reduce parasite loads."
     ],
     image: "/images/Ich (White Spot Disease).png",
     susceptible: ["Freshwater Betta", "Guppies", "Tetras", "Mollies"],
     affected: ["All freshwater species"],
-    cure: "Increase temperature to 28°C, add aquarium salt, and treat with malachite green/formalin."
+    cure: "Treat with an appropriate ich medication according to its label, while maintaining stable, species-appropriate water conditions and good aeration."
   },
   {
     id: "dis-1",
     slug: "velvet-oodinium",
     name: "Velvet (Oodinium)",
     type: "Parasitic",
-    description: "Velvet is a parasite infection caused by tiny dinoflagellates (Oodinium). It resembles a fine, dusty golden-yellow or rust-colored powder on the fish's body. It is fast-acting and attacks the gills heavily.",
+    description: "Velvet is a parasitic disease caused by dinoflagellates. In freshwater fish it is associated with Piscinoodinium, while marine velvet is caused by related Amyloodinium species. It can appear as fine yellow, gold, or rust-colored spots or a velvety film and can severely affect the gills.",
     symptoms: [
       "Fine dusty golden, yellow, or rust-colored film on the fish's body",
       "Frequent scratching or flashing against decorations",
@@ -45,13 +45,13 @@ export const diseasesData: Disease[] = [
       "Peeling skin or loss of color in advanced stages",
       "Clamped fins and extreme lethargy"
     ],
-    transmission: "Highly contagious. Introduced via infected fish, water, or nets. The dinoflagellate contains chlorophyll, meaning it utilizes light to produce energy, making blackout treatments useful.",
+    transmission: "Highly contagious and capable of spreading through infected fish, contaminated water, and equipment. The pathogenic stages are photosynthetic, but light reduction alone should not be relied on as a complete treatment.",
     treatment: [
-      "Perform a complete blackout of the aquarium (turn off lights and cover the tank with a blanket), as the parasite relies on light for photosynthesis.",
-      "Raise water temperature gradually to 82°F (28°C) to accelerate the parasite's life cycle.",
-      "Add aquarium salt to reduce osmotic stress on the fish.",
-      "Treat with copper-based medications (e.g., CopperSafe) or acriflavine. Maintain copper levels as instructed on the packaging.",
-      "Maintain strong aeration during treatment."
+      "Treat promptly with an appropriate velvet medication recommended for the affected freshwater or marine fish and follow the product instructions exactly.",
+      "Maintain stable, species-appropriate water conditions rather than using temperature increases as a stand-alone treatment.",
+      "Use aquarium salt only when appropriate for the species and other aquarium inhabitants.",
+      "For freshwater velvet, appropriate antiparasitic treatments may include copper or other veterinarian-recommended medications; marine velvet requires a marine-appropriate treatment protocol.",
+      "Maintain strong aeration during treatment, especially when gill function is affected."
     ],
     prevention: [
       "Quarantine all new livestock for 2-3 weeks.",
@@ -61,14 +61,14 @@ export const diseasesData: Disease[] = [
     image: "/images/Velvet (Oodinium).png",
     susceptible: ["Cichlids", "Angelfish", "Bettas", "Danios"],
     affected: ["All freshwater and saltwater species"],
-    cure: "Blackout the tank, raise temperature, improve water flow, and treat with copper-based medication."
+    cure: "Treat with an appropriate velvet medication according to the species and product instructions, while maintaining stable water conditions and strong aeration."
   },
   {
     id: "dis-2",
     slug: "fin-rot",
     name: "Fin Rot",
     type: "Bacterial",
-    description: "Fin Rot is a bacterial (Pseudomonas or Aeromonas) or fungal infection that eats away at a fish's fins and tail. It is almost always a secondary infection brought on by poor water quality, injury, or severe stress.",
+    description: "Fin rot describes progressive erosion or damage of the fins that is commonly associated with poor water quality, injury, stress, or secondary bacterial infection. Opportunistic microorganisms can colonize damaged tissue, and fungal or water-mold growth may occur secondarily.",
     symptoms: [
       "Fin edges turning white, red, or black",
       "Fins appearing frayed, split, or ragged",
@@ -76,13 +76,13 @@ export const diseasesData: Disease[] = [
       "Fungal cotton-like growths on the affected fin edges",
       "Loss of appetite and hovering near the bottom"
     ],
-    transmission: "Fin Rot bacteria are naturally present in the aquarium but only infect fish when their immune systems are compromised due to high ammonia/nitrite levels, physical damage, or poor diet.",
+    transmission: "Fin damage is often associated with poor water quality, injury, stress, overcrowding, or fin-nipping. Opportunistic microorganisms can colonize damaged tissue, so improving the underlying conditions is an important part of treatment.",
     treatment: [
-      "Perform an immediate 50% water change and thoroughly vacuum the substrate. High water quality is the best cure.",
-      "Remove any carbon filters if you plan to dose medication.",
-      "Add Melafix or a broad-spectrum antibiotic (like Erythromycin or Furan-2) for severe bacterial cases.",
-      "For fungal rot, treat with an anti-fungal medication (like Ichonex or Pimafix).",
-      "Add aquarium salt (1 teaspoon per gallon) to help heal tissues."
+      "Test and correct ammonia, nitrite, nitrate, temperature, and other water-quality problems, and perform an appropriate partial water change.",
+      "If medication is used, follow the product instructions regarding activated carbon and filtration.",
+      "If bacterial infection is suspected to be severe or progressive, use an appropriate antibacterial treatment according to its label or seek fish-health professional advice.",
+      "Do not use antifungal medication unless a fungal or water-mold infection is actually suspected; white or fuzzy growth on damaged tissue can be secondary.",
+      "Salt is not a universal treatment; use it only when appropriate for the species and other aquarium inhabitants."
     ],
     prevention: [
       "Perform regular weekly water changes (20-30%) and monitor water quality parameters (Ammonia: 0, Nitrite: 0, Nitrate: <20).",
@@ -92,14 +92,14 @@ export const diseasesData: Disease[] = [
     image: "/images/Fin Rot.png",
     susceptible: ["Goldfish", "Betta", "Angelfish", "Guppies"],
     affected: ["Any fish in poor water conditions"],
-    cure: "Perform large water changes, keep water quality high, and treat with Melafix or broad-spectrum antibiotics."
+    cure: "Correct the underlying water-quality and husbandry problems first; if a bacterial infection is severe or progressing, use an appropriate treatment according to its label or seek fish-health professional advice."
   },
   {
     id: "dis-3",
     slug: "dropsy",
     name: "Dropsy",
     type: "Bacterial",
-    description: "Dropsy is not a specific disease itself, but rather a physical symptom of severe internal bacterial infection or kidney failure. It causes fluid retention, leading to a swollen abdomen and scales that stick outward, resembling a pinecone.",
+    description: "Dropsy is not a specific disease but a clinical sign of abnormal fluid accumulation in a fish. It can be associated with kidney dysfunction, severe infection, or other serious systemic problems and may cause abdominal swelling and scales that protrude outward (pineconing).",
     symptoms: [
       "Severely bloated or swollen abdomen",
       "Scales sticking out like a pinecone",
@@ -107,13 +107,13 @@ export const diseasesData: Disease[] = [
       "Lethargy and loss of appetite",
       "Pale gills and clamped fins"
     ],
-    transmission: "Caused by opportunistic bacteria (usually Aeromonas) that attack fish with compromised immune systems due to severe stress, poor water quality, or organ failure. Not directly contagious, but the underlying poor conditions affect all tankmates.",
+    transmission: "Dropsy itself is not a single contagious disease. Its underlying cause may vary, and infectious conditions can sometimes affect other fish. Poor water quality and chronic stress can increase disease risk for the aquarium population.",
     treatment: [
-      "Isolate the infected fish in a clean hospital tank immediately.",
-      "Perform a 50% water change in the main tank to protect other fish.",
-      "Add Epsom salt (1 to 2 teaspoons per 5 gallons) to the hospital tank to help draw fluid out of the body.",
-      "Treat with a broad-spectrum antibiotic designed for internal infections (e.g., Kanaplex/Kanamycin or Maracyn-Two).",
-      "Keep the water pristine and feed high-quality food if the fish is willing to eat."
+      "Isolate the affected fish when practical so it can be observed and treated in a controlled environment.",
+      "Test the main aquarium water and correct ammonia, nitrite, temperature, and other husbandry problems.",
+      "Do not treat every case with Epsom salt; supportive treatment should be based on the suspected cause and species tolerance.",
+      "Do not assume every case is bacterial; targeted treatment should be based on the suspected cause and, when possible, fish-health professional diagnosis.",
+      "Maintain excellent water quality and offer an appropriate nutritious diet if the fish is willing to eat."
     ],
     prevention: [
       "Do not overfeed and ensure a high-quality, varied diet.",
@@ -123,27 +123,27 @@ export const diseasesData: Disease[] = [
     image: "/images/Dropsy.png",
     susceptible: ["Goldfish", "Betta", "Gourami", "Guppies"],
     affected: ["All freshwater species, especially older or stressed fish"],
-    cure: "Isolate in hospital tank, add Epsom salt to draw out fluids, and treat with Kanaplex."
+    cure: "There is no single cure for dropsy. Isolate when appropriate, correct water-quality problems, and seek fish-health advice to identify and treat the underlying cause."
   },
   {
     id: "dis-4",
     slug: "swim-bladder-disorder",
     name: "Swim Bladder Disorder",
     type: "Bacterial",
-    description: "A condition affecting the swim bladder, an organ that controls buoyancy. Affected fish struggle to maintain their position, floating uncontrollably to the top, sinking to the bottom, or swimming upside down or sideways.",
+    description: "Swim bladder disorder is a general term for abnormal buoyancy or swimming problems. The swim bladder helps regulate buoyancy, but similar signs can result from digestive problems, injury, infection, organ disease, or other conditions.",
     symptoms: [
       "Sinking to the bottom or floating uncontrollably at the surface",
       "Swimming sideways, upside down, or at an odd angle",
       "Swollen belly or curved back",
       "Struggling to swim down or reach food"
     ],
-    transmission: "Usually non-infectious. Caused by constipation (from eating dry flakes that expand in the gut), swallowing air during feeding, rapid temperature drops, or bacterial infections of the swim bladder.",
+    transmission: "Usually not directly contagious. Causes vary and may include digestive problems, injury, infection, organ dysfunction, or other conditions; constipation and swallowed air are only possible causes in some cases.",
     treatment: [
-      "Fast the fish for 3 days to allow their digestive system to clear.",
-      "On the 4th day, feed a shelled, cooked green pea (microwave a frozen pea, peel the skin, and cut it into bite-sized pieces) to act as a natural laxative.",
-      "Raise the water temperature gradually to 78°F–80°F (25°C–27°C) to aid digestion.",
-      "Lower the water level in the tank so the fish does not have to struggle as hard to swim.",
-      "If constipation is not the cause, treat with an internal antibacterial medication."
+      "If constipation is suspected, a short period without food followed by an appropriate easily digested diet may help; avoid assuming constipation is the cause in every case.",
+      "Avoid treating every buoyancy problem with peas; choose an appropriate, species-specific diet if constipation is suspected.",
+      "Maintain a stable, species-appropriate temperature rather than raising temperature as a universal treatment.",
+      "If buoyancy problems are severe, adjust the environment to make feeding and resting easier while avoiding unnecessary changes to the aquarium.",
+      "If signs persist, worsen, or occur with swelling, wounds, respiratory distress, or other illness signs, seek fish-health professional advice rather than treating blindly with antibiotics."
     ],
     prevention: [
       "Pre-soak dry flake foods or pellets so they do not expand inside the fish's stomach.",
@@ -153,27 +153,27 @@ export const diseasesData: Disease[] = [
     image: "/images/Swim Bladder Disorder.png",
     susceptible: ["Fancy Goldfish", "Bettas", "Angelfish", "Gouramis"],
     affected: ["Deep-bodied fish species are most susceptible"],
-    cure: "Fast the fish for 3 days, feed a cooked skinned pea, raise temperature, and lower water levels."
+    cure: "Treatment depends on the underlying cause. Check water quality, provide appropriate feeding and stable conditions, and seek fish-health advice if the problem persists or is accompanied by other illness signs."
   },
   {
     id: "dis-5",
     slug: "cotton-wool-disease",
     name: "Cotton Wool Disease (Saprolegnia)",
     type: "Fungal",
-    description: "A fungal infection characterized by white, grey, or brown cotton-like growths on the body, fins, mouth, or eyes. It typically attacks fish that have existing wounds, parasite damage, or are severely stressed.",
+    description: "Cotton-wool disease commonly refers to an external water-mold infection such as Saprolegnia. It produces white, grey, or brown cotton-like growths on damaged skin, fins, eyes, or eggs and often develops after injury, parasite damage, or other stressors. Saprolegnia is an oomycete rather than a true fungus.",
     symptoms: [
       "White or grey cotton-like, fuzzy tufts on the skin or fins",
       "Fungal growths forming around open wounds or sores",
       "Clamped fins and scratching behavior",
       "Lethargy and fading skin color"
     ],
-    transmission: "Fungal spores are present in all aquariums but only take hold when a fish's slime coat is damaged by injury, netting, parasites, or poor water quality.",
+    transmission: "Saprolegnia and related water molds are widespread in aquatic environments and commonly colonize damaged or dead tissue. Outbreaks are associated with injury, poor sanitation, organic debris, parasites, and other stressors.",
     treatment: [
-      "Perform a 30-50% water change and clean the aquarium filter.",
-      "Isolate the affected fish in a hospital tank.",
-      "Treat with an anti-fungal medication (e.g., Pimafix, API Fungus Cure, or Ichonex).",
-      "Add aquarium salt (1 tablespoon per 5 gallons) to support gill function and skin healing.",
-      "Maintain clean, well-oxygenated water throughout the treatment."
+      "Correct water-quality and sanitation problems and remove dead or decaying material from the aquarium.",
+      "Isolate the affected fish when practical, especially if it needs targeted treatment or close observation.",
+      "Use an appropriate treatment for external Saprolegnia or other suspected water molds according to the product label or fish-health professional advice.",
+      "Do not use salt as a universal treatment; use it only when appropriate for the species and other aquarium inhabitants.",
+      "Maintain clean, well-oxygenated water and minimize further handling or injury."
     ],
     prevention: [
       "Handle fish carefully with soft nets to avoid damaging their protective slime coat.",
@@ -183,6 +183,6 @@ export const diseasesData: Disease[] = [
     image: "/images/Cotton Wool Disease (Saprolegnia).png",
     susceptible: ["Tetras", "Livebearers", "Goldfish", "Bettas"],
     affected: ["Any species with physical injuries or compromised slime coat"],
-    cure: "Isolate in hospital tank, treat with Pimafix or API Fungus Cure, and add aquarium salt."
+    cure: "Correct the underlying environmental or injury problem and use an appropriate treatment for suspected Saprolegnia or other water-mold infection according to its label or fish-health professional advice."
   }
 ];
