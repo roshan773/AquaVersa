@@ -8,20 +8,182 @@ export default function FishCompatibility() {
   const [fish1, setFish1] = useState(fishData[0].id);
   const [fish2, setFish2] = useState(fishData[1].id);
 
-  const parseRange = (str: string): [number, number] | null => {
-    const match = str.match(/([0-9.]+)\s*-\s*([0-9.]+)/) || str.match(/([0-9.]+)\s*–\s*([0-9.]+)/) || str.match(/([0-9.]+)\s*—\s*([0-9.]+)/);
-    if (match) {
-      return [parseFloat(match[1]), parseFloat(match[2])];
-    }
-    return null;
+  // Parse numeric ranges such as "72-78°F", "72 – 78°F", or "6.5-7.5".
+  const parseRange = (value?: string): [number, number] | null => {
+    if (!value) return null;
+
+    const matches = value.match(/(-?\d+(?:\.\d+)?)\s*(?:-|–|—|to)\s*(-?\d+(?:\.\d+)?)/i);
+    if (!matches) return null;
+
+    const a = Number(matches[1]);
+    const b = Number(matches[2]);
+    if (!Number.isFinite(a) || !Number.isFinite(b)) return null;
+
+    return [Math.min(a, b), Math.max(a, b)];
   };
 
-  const getCompatibility = (id1: string, id2: string) => {
+  type CompatibilityResult = {
+    status: string;
+    message: string;
+    colorTheme: 'emerald' | 'amber' | 'orange' | 'red' | 'blue';
+  };
+
+  type SocialType =
+    | 'schooling'
+    | 'small-school'
+    | 'solitary-territorial'
+    | 'pair-territorial'
+    | 'territorial'
+    | 'community';
+
+  /*
+   * fishData intentionally remains the source of truth for:
+   * - environment
+   * - temperature
+   * - pH
+   * - adult size
+   * - minimum tank size
+   * - temperament
+   * - diet
+   * - compatibleWith
+   *
+   * The traits below only add behavior that the current Fish type does not
+   * explicitly model. They are species-specific guardrails for the checker,
+   * not replacement fish records.
+   *
+   * Compatibility is inherently probabilistic. Even reputable aquarium
+   * compatibility charts describe their results as guidelines rather than
+   * guarantees, so this engine deliberately avoids pretending that one
+   * variable (especially temperament) can determine compatibility by itself.
+   */
+  const socialTraits: Record<string, SocialType> = {
+    'neon-tetra': 'schooling',
+    'zebra-danio': 'schooling',
+    'cherry-barb': 'schooling',
+    'harlequin-rasbora': 'schooling',
+    'neon-dwarf-rainbowfish': 'schooling',
+    'corydoras-catfish': 'schooling',
+    'pajama-cardinalfish': 'small-school',
+
+    'betta-fish': 'solitary-territorial',
+    'royal-gramma': 'solitary-territorial',
+    'yellow-watchman-goby': 'solitary-territorial',
+    'firefish-goby': 'solitary-territorial',
+    'mandarinfish': 'solitary-territorial',
+
+    'kribensis-cichlid': 'pair-territorial',
+    'angelfish': 'territorial',
+    'oscar': 'territorial',
+    'yellow-tang': 'territorial',
+    'blue-hippo-tang': 'territorial',
+    'flame-angelfish': 'territorial',
+    'coral-beauty': 'territorial',
+    'kole-yellow-eye-tang': 'territorial',
+    'banggai-cardinalfish': 'territorial',
+    'arowana': 'territorial',
+
+    'guppy': 'community',
+    'molly': 'community',
+    'discus': 'community',
+    'ocellaris-clownfish': 'community',
+    'sucker-fish': 'community',
+  };
+
+  const knownPredatorySpecies = new Set([
+    'oscar',
+    'arowana',
+  ]);
+
+  const sameSpeciesWarning = (fish: typeof fishData[number]): CompatibilityResult => {
+    const social = socialTraits[fish.slug || ''];
+
+    if (fish.slug === 'betta-fish') {
+      return {
+        status: '🟠 Use Caution',
+        message:
+          'Same Species: Do not assume two Bettas can share an aquarium. Male Bettas are strongly territorial and should not be housed together; sex, individual temperament, and breeding plans matter.',
+        colorTheme: 'orange',
+      };
+    }
+
+    if (fish.slug === 'royal-gramma') {
+      return {
+        status: '🔴 Not Recommended',
+        message:
+          'Same Species: Royal Grammas are territorial toward their own kind and are normally best kept singly unless a known compatible pair is being maintained in a suitably sized aquarium.',
+        colorTheme: 'red',
+      };
+    }
+
+    if (fish.slug === 'yellow-watchman-goby') {
+      return {
+        status: '🔴 Not Recommended',
+        message:
+          'Same Species: Yellow Watchman Gobies are territorial and can fight with their own kind unless they are a compatible/mated pair.',
+        colorTheme: 'red',
+      };
+    }
+
+    if (fish.slug === 'firefish-goby' || fish.slug === 'mandarinfish') {
+      return {
+        status: '🟠 Use Caution',
+        message:
+          `Same Species: ${fish.name} can show territorial or conspecific aggression. A compatible pair may work, but keeping multiple unrelated individuals is not a safe default.`,
+        colorTheme: 'orange',
+      };
+    }
+
+    if (fish.slug === 'banggai-cardinalfish') {
+      return {
+        status: '🟠 Use Caution',
+        message:
+          'Same Species: Banggai Cardinalfish are not a simple "keep six together" schooling fish. Group composition and pair formation matter, and aggression can occur between conspecifics.',
+        colorTheme: 'orange',
+      };
+    }
+
+    if (fish.slug?.includes('tang')) {
+      return {
+        status: '🟠 Use Caution',
+        message:
+          'Same Species: Tangs can become territorial toward conspecifics. Multiple tangs require a much larger aquarium, careful species selection, and deliberate introduction; the listed minimum tank size for one fish is not a multiple-fish stocking rule.',
+        colorTheme: 'orange',
+      };
+    }
+
+    if (fish.slug === 'kribensis-cichlid') {
+      return {
+        status: '🟠 Use Caution',
+        message:
+          'Same Species: Kribensis are pair-bonding cave spawners. A compatible pair is the normal social arrangement; adding unrelated adults can create territorial conflict.',
+        colorTheme: 'orange',
+      };
+    }
+
+    if (social === 'schooling' || social === 'small-school') {
+      const groupText = social === 'schooling' ? 'a proper group' : 'a small group';
+      return {
+        status: '🟢 Generally Compatible',
+        message:
+          `Same Species: ${fish.name} is social and should be kept as ${groupText}. Group size, aquarium footprint, filtration, and the species' adult size still need to be considered.`,
+        colorTheme: 'emerald',
+      };
+    }
+
+    return {
+      status: '🟢 Generally Compatible',
+      message:
+        `Same Species: ${fish.name} can generally be kept with conspecifics when the species' social behavior, adult size, aquarium footprint, and territorial requirements are respected.`,
+      colorTheme: 'emerald',
+    };
+  };
+
+  const getCompatibility = (id1: string, id2: string): CompatibilityResult => {
     if (!id1 || !id2) {
       return {
-        status: "Select Species",
-        message: "Select two species to check compatibility.",
-        colorTheme: "blue"
+        status: 'Select Species',
+        message: 'Select two species to check compatibility.',
+        colorTheme: 'blue',
       };
     }
 
@@ -30,297 +192,397 @@ export default function FishCompatibility() {
 
     if (!f1 || !f2) {
       return {
-        status: "Select Species",
-        message: "Select two species to check compatibility.",
-        colorTheme: "blue"
+        status: 'Select Species',
+        message: 'Select two species to check compatibility.',
+        colorTheme: 'blue',
       };
     }
 
-    // 1. Same Species Selection
+    // Same-species checks must happen before pairwise calculations.
     if (id1 === id2) {
-      const isSchooling = f1.slug === 'neon-tetra' || 
-                          f1.slug === 'zebra-danio' || 
-                          f1.slug === 'cherry-barb' || 
-                          f1.slug === 'harlequin-rasbora' || 
-                          f1.slug === 'neon-dwarf-rainbowfish' || 
-                          f1.slug === 'pajama-cardinalfish' || 
-                          f1.slug === 'banggai-cardinalfish' ||
-                          f1.slug === 'corydoras-catfish';
-                          
-      if (f1.slug === 'betta-fish') {
-        return {
-          status: '🔴 Not Recommended',
-          message: 'Same Species Conflict: Male Bettas are highly territorial and must never be housed together in the same aquarium as they will fight aggressively, often fatally.',
-          colorTheme: 'red'
-        };
-      }
-
-      if (f1.slug?.includes('tang')) {
-        return {
-          status: '🟠 Use Caution',
-          message: 'Same Species Conflict: Marine Tangs are territorial toward their own kind. Keeping multiples of the same species requires an exceptionally large tank (120+ gallons) with ample swimming space and visual barriers.',
-          colorTheme: 'orange'
-        };
-      }
-
-      if (isSchooling) {
-        return {
-          status: '🟢 Generally Compatible',
-          message: `Same Species: Generally compatible. Note that ${f1.name} is a schooling species and must be kept in a group of 6 or more individuals to prevent stress and promote natural behaviors.`,
-          colorTheme: 'emerald'
-        };
-      }
-
-      return {
-        status: '🟢 Generally Compatible',
-        message: `Same Species: Generally compatible together in pairs, groups, or as individuals depending on tank size and aquarium structure.`,
-        colorTheme: 'emerald'
-      };
+      return sameSpeciesWarning(f1);
     }
 
-    // Compatibility variables
-    let status = '🟢 Generally Compatible';
-    let colorTheme: 'emerald' | 'amber' | 'orange' | 'red' | 'blue' = 'emerald';
+    const slug1 = f1.slug || '';
+    const slug2 = f2.slug || '';
+
+    let status: CompatibilityResult['status'] = '🟢 Generally Compatible';
+    let colorTheme: CompatibilityResult['colorTheme'] = 'emerald';
     const reasons: string[] = [];
     const warnings: string[] = [];
 
-    // 2. Environment Mismatch
+    const setStatus = (
+      nextStatus: CompatibilityResult['status'],
+      nextTheme: CompatibilityResult['colorTheme']
+    ) => {
+      const priority: Record<string, number> = {
+        'Select Species': 0,
+        '🟢 Generally Compatible': 1,
+        '🟡 Usually Compatible with Conditions': 2,
+        '🟠 Use Caution': 3,
+        '🔴 Not Recommended': 4,
+      };
+
+      if (priority[nextStatus] > priority[status]) {
+        status = nextStatus;
+        colorTheme = nextTheme;
+      }
+    };
+
+    const temp1 = parseRange(f1.temperature);
+    const temp2 = parseRange(f2.temperature);
+    const ph1 = parseRange(f1.ph);
+    const ph2 = parseRange(f2.ph);
+
+    // 1. Environment: freshwater and marine fish cannot share the same aquarium.
     if (f1.category?.toLowerCase() !== f2.category?.toLowerCase()) {
       return {
         status: '🔴 Not Recommended',
-        message: `Incompatible environments: ${f1.name} is a ${f1.category} species, whereas ${f2.name} is a ${f2.category} species. Freshwater and marine species cannot coexist in the same tank.`,
-        colorTheme: 'red'
+        message:
+          `Incompatible environments: ${f1.name} is listed as ${f1.category}, while ${f2.name} is listed as ${f2.category}. These species require different aquarium environments and should not be combined in one aquarium.`,
+        colorTheme: 'red',
       };
     }
 
-    // 3. Temperature Overlap Check
-    const temp1 = f1.temperature ? parseRange(f1.temperature) : null;
-    const temp2 = f2.temperature ? parseRange(f2.temperature) : null;
+    // 2. Temperature: require a meaningful shared target, not merely a single
+    // mathematical endpoint. A tiny overlap is treated as conditional.
     if (temp1 && temp2) {
-      const minTemp = Math.max(temp1[0], temp2[0]);
-      const maxTemp = Math.min(temp1[1], temp2[1]);
-      if (minTemp > maxTemp) {
-        return {
-          status: '🔴 Not Recommended',
-          message: `Temperature mismatch: ${f1.name} requires ${f1.temperature}, while ${f2.name} requires ${f2.temperature}. These species have no suitable temperature range in common.`,
-          colorTheme: 'red'
-        };
-      } else if (maxTemp - minTemp < 2) {
-        status = '🟡 Usually Compatible with Conditions';
-        colorTheme = 'amber';
-        reasons.push(`Narrow temperature range overlap of ${minTemp}–${maxTemp}°F.`);
-        warnings.push(`Maintain water temperature strictly between ${minTemp}°F and ${maxTemp}°F.`);
-      }
-    }
+      const overlapMin = Math.max(temp1[0], temp2[0]);
+      const overlapMax = Math.min(temp1[1], temp2[1]);
 
-    // 4. pH Overlap Check
-    const ph1 = f1.ph ? parseRange(f1.ph) : null;
-    const ph2 = f2.ph ? parseRange(f2.ph) : null;
-    if (ph1 && ph2) {
-      const minPh = Math.max(ph1[0], ph2[0]);
-      const maxPh = Math.min(ph1[1], ph2[1]);
-      if (minPh > maxPh) {
-        const gap = minPh - maxPh;
-        if (gap > 0.5) {
-          status = '🔴 Not Recommended';
-          colorTheme = 'red';
-          reasons.push(`Severe pH parameter mismatch: ${f1.name} prefers a pH of ${f1.ph}, while ${f2.name} prefers a pH of ${f2.ph}.`);
-        } else {
-          status = '🟠 Use Caution';
-          colorTheme = 'orange';
-          reasons.push(`pH range mismatch: ${f1.name} prefers a pH of ${f1.ph}, while ${f2.name} prefers a pH of ${f2.ph}. Keeping them together will cause chronic osmotic stress to one or both species.`);
-        }
-      } else if (maxPh - minPh < 0.4) {
-        if (status === '🟢 Generally Compatible') {
-          status = '🟡 Usually Compatible with Conditions';
-          colorTheme = 'amber';
-        }
-        reasons.push(`Limited pH range overlap (${minPh.toFixed(1)}–${maxPh.toFixed(1)}).`);
-      }
-    }
+      if (overlapMin > overlapMax) {
+        const gap = overlapMin - overlapMax;
 
-    // 5. Size and Predation Mismatch
-    const f1Max = f1.maxSize || 0;
-    const f2Max = f2.maxSize || 0;
-    const largeFish = f1Max >= f2Max ? f1 : f2;
-    const smallFish = f1Max >= f2Max ? f2 : f1;
-    const largeSize = Math.max(f1Max, f2Max);
-    const smallSize = Math.min(f1Max, f2Max);
-    const sizeRatio = smallSize > 0 ? largeSize / smallSize : 1;
-
-    // Check for predator risk (carnivorous/omnivorous large fish vs small fish)
-    const isCarnivorousPredator = largeFish.diet === 'Carnivore' || 
-                                  largeFish.diet?.includes('Carnivore') || 
-                                  largeFish.diet === 'Omnivore' || 
-                                  largeFish.diet?.includes('Omnivore');
-    
-    if (isCarnivorousPredator && sizeRatio >= 4 && smallSize <= 3.0) {
-      return {
-        status: '🔴 Not Recommended',
-        message: `Predation hazard: ${largeFish.name} grows to a large size of ${largeSize} inches and will likely swallow the small ${smallFish.name} (${smallSize} inches) as it matures. Large predatory fish naturally consume smaller tankmates that fit in their mouths.`,
-        colorTheme: 'red'
-      };
-    } else if (sizeRatio >= 3.0 && smallSize <= 2.5) {
-      if (status !== '🔴 Not Recommended') {
-        status = '🟠 Use Caution';
-        colorTheme = 'orange';
-      }
-      reasons.push(`Significant size difference: ${largeFish.name} (${largeSize} inches) is much larger than ${smallFish.name} (${smallSize} inches), which presents a risk of chasing or ingestion.`);
-    }
-
-    // 6. Explicit Compatibility Mapping
-    const slug1 = f1.slug || "";
-    const slug2 = f2.slug || "";
-    const isExplicitlyCompatible = 
-      (f1.compatibleWith && f1.compatibleWith.includes(slug2)) || 
-      (f2.compatibleWith && f2.compatibleWith.includes(slug1));
-
-    // 7. Specific Aggression / Behaviors
-    const hasBetta = slug1 === 'betta-fish' || slug2 === 'betta-fish';
-    if (hasBetta) {
-      const betta = slug1 === 'betta-fish' ? f1 : f2;
-      const other = slug1 === 'betta-fish' ? f2 : f1;
-      
-      if (other.slug === 'guppy') {
-        return {
-          status: '🔴 Not Recommended',
-          message: 'Behavioral conflict: Male Bettas are territorial and can be triggered by colorful, long-finned fish like Guppies, often leading to persistent aggression and fin damage.',
-          colorTheme: 'red'
-        };
-      } else if (other.slug === 'neon-tetra') {
-        status = '🟠 Use Caution';
-        colorTheme = 'orange';
-        reasons.push(`Betta aggression warning: Bettas are highly territorial. Neon Tetras are active schoolers that may nip fins, or the Betta may chase them depending on individual temperament.`);
-        warnings.push("Ensure the tank has dense planting and plenty of cover to break lines of sight.");
-      } else if (other.slug === 'corydoras-catfish' || other.slug === 'sucker-fish' || other.slug === 'harlequin-rasbora') {
-        if (status === '🟢 Generally Compatible') {
-          status = '🟡 Usually Compatible with Conditions';
-          colorTheme = 'amber';
-        }
-        reasons.push(`Bettas generally ignore peaceful bottom-dwellers like ${other.name} or quiet midwater schoolers.`);
-        warnings.push("Provide caves/plants, and monitor the Betta's individual behavior closely.");
-      } else {
-        if (other.temperament !== 'Peaceful') {
+        if (gap > 2) {
           return {
             status: '🔴 Not Recommended',
-            message: `Territorial warning: Housing a solitary Betta with another semi-aggressive/aggressive species like ${other.name} will likely result in severe territorial fighting.`,
-            colorTheme: 'red'
+            message:
+              `Temperature mismatch: ${f1.name} is listed at ${f1.temperature}, while ${f2.name} is listed at ${f2.temperature}. There is no practical temperature range that comfortably satisfies both records.`,
+            colorTheme: 'red',
           };
+        }
+
+        setStatus('🟠 Use Caution', 'orange');
+        reasons.push(
+          `Their listed temperature ranges are very close but do not overlap (${f1.temperature} vs ${f2.temperature}).`
+        );
+        warnings.push(
+          'Do not force the aquarium temperature outside either species\' appropriate range just to make the pair work.'
+        );
+      } else {
+        const overlapWidth = overlapMax - overlapMin;
+
+        if (overlapWidth < 2) {
+          setStatus('🟡 Usually Compatible with Conditions', 'amber');
+          reasons.push(
+            `Their listed temperature ranges overlap only narrowly at about ${overlapMin}–${overlapMax}°F.`
+          );
+          warnings.push(
+            `Keep the aquarium stable within the shared range rather than repeatedly adjusting temperature (${overlapMin}–${overlapMax}°F).`
+          );
         } else {
-          status = '🟠 Use Caution';
-          colorTheme = 'orange';
-          reasons.push("Bettas are solitary and territorial. Mixing them with other community fish always carries a risk of aggression.");
+          reasons.push(`Temperature overlap: approximately ${overlapMin}–${overlapMax}°F.`);
         }
       }
     }
 
-    // Angelfish vs Neon Tetra
+    // 3. pH: pH is not a hard binary compatibility switch. A shared range is
+    // useful, but a narrow overlap is a condition rather than proof of harm.
+    if (ph1 && ph2) {
+      const overlapMin = Math.max(ph1[0], ph2[0]);
+      const overlapMax = Math.min(ph1[1], ph2[1]);
+
+      if (overlapMin > overlapMax) {
+        const gap = overlapMin - overlapMax;
+
+        if (gap > 0.5) {
+          return {
+            status: '🔴 Not Recommended',
+            message:
+              `Water-chemistry mismatch: ${f1.name} is listed at pH ${f1.ph}, while ${f2.name} is listed at pH ${f2.ph}. Their listed pH ranges do not overlap enough to recommend combining them.`,
+            colorTheme: 'red',
+          };
+        }
+
+        setStatus('🟠 Use Caution', 'orange');
+        reasons.push(
+          `Their listed pH ranges are very close but do not overlap (${f1.ph} vs ${f2.ph}).`
+        );
+        warnings.push(
+          'Prioritize stable, species-appropriate water rather than chemically forcing pH to an exact number.'
+        );
+      } else {
+        const overlapWidth = overlapMax - overlapMin;
+
+        if (overlapWidth < 0.3) {
+          setStatus('🟡 Usually Compatible with Conditions', 'amber');
+          reasons.push(
+            `Their listed pH ranges have only a narrow shared window (${overlapMin.toFixed(1)}–${overlapMax.toFixed(1)}).`
+          );
+        } else {
+          reasons.push(`pH overlap: approximately ${overlapMin.toFixed(1)}–${overlapMax.toFixed(1)}.`);
+        }
+      }
+    }
+
+    // 4. Species-specific behavior.
+    const hasBetta = slug1 === 'betta-fish' || slug2 === 'betta-fish';
+    if (hasBetta) {
+      const other = slug1 === 'betta-fish' ? f2 : f1;
+
+      if (other.slug === 'guppy') {
+        setStatus('🟠 Use Caution', 'orange');
+        reasons.push(
+          'Betta + Guppy: this combination can work in some community aquariums, but a Betta may react aggressively to a colorful or long-finned Guppy.'
+        );
+        warnings.push(
+          'Do not treat this as guaranteed compatibility; provide cover and be prepared to separate the fish if chasing, fin damage, or persistent stress occurs.'
+        );
+      } else if (other.slug === 'neon-tetra') {
+        setStatus('🟠 Use Caution', 'orange');
+        reasons.push(
+          'Betta + Neon Tetra: the water ranges can overlap, but the Betta is territorial and individual behavior varies.'
+        );
+        warnings.push(
+          'Use a suitably sized, planted aquarium with cover and monitor the Betta closely for chasing or harassment.'
+        );
+      } else if (
+        other.slug === 'corydoras-catfish' ||
+        other.slug === 'harlequin-rasbora'
+      ) {
+        reasons.push(
+          `Betta + ${other.name}: ${other.name} is generally peaceful, but the Betta's individual temperament remains the deciding behavioral risk.`
+        );
+        warnings.push(
+          'Provide cover and enough space for the species to use different areas of the aquarium.'
+        );
+        setStatus('🟡 Usually Compatible with Conditions', 'amber');
+      } else {
+        if (other.temperament === 'Aggressive' || other.temperament === 'Semi-Aggressive') {
+          return {
+            status: '🔴 Not Recommended',
+            message:
+              `Territorial conflict risk: ${other.name} is listed as ${other.temperament}, while Bettas are territorial. Combining two territorial fish with overlapping space can create persistent aggression and stress.`,
+            colorTheme: 'red',
+          };
+        }
+
+        setStatus('🟠 Use Caution', 'orange');
+        reasons.push(
+          `Betta + ${other.name}: a peaceful label does not guarantee compatibility because Betta temperament varies between individuals.`
+        );
+        warnings.push(
+          'Use a suitably sized aquarium, visual cover, and a plan to separate fish if aggression develops.'
+        );
+      }
+    }
+
+    // Adult Angelfish can prey on small, slender fish. Neon Tetra is a
+    // specific high-risk example and should not be presented as a normal
+    // community pairing.
     const hasAngelfish = slug1 === 'angelfish' || slug2 === 'angelfish';
     const hasNeonTetra = slug1 === 'neon-tetra' || slug2 === 'neon-tetra';
+
     if (hasAngelfish && hasNeonTetra) {
       return {
         status: '🔴 Not Recommended',
-        message: 'Predation hazard: Adult Angelfish are natural predators of Neon Tetras in the wild. While young Angelfish may coexist briefly, mature Angelfish will swallow small, slender fish like Neon Tetras.',
-        colorTheme: 'red'
+        message:
+          'Predation risk: adult freshwater Angelfish are large enough to treat small, slender fish such as Neon Tetras as prey. This is not a reliable community combination as the Angelfish mature.',
+        colorTheme: 'red',
       };
     }
 
-    // Goldfish vs Tropical Fish
-    const isGoldfish1 = slug1.includes('goldfish');
-    const isGoldfish2 = slug2.includes('goldfish');
-    if ((isGoldfish1 && !isGoldfish2) || (isGoldfish2 && !isGoldfish1)) {
-      const goldfish = isGoldfish1 ? f1 : f2;
-      const tropical = isGoldfish1 ? f2 : f1;
-      return {
-        status: '🔴 Not Recommended',
-        message: `Husbandry mismatch: ${goldfish.name} is a coldwater/subtropical fish that requires lower temperatures and creates high bioloads, whereas ${tropical.name} is a tropical fish requiring higher water temperatures and stable environments.`,
-        colorTheme: 'red'
-      };
-    }
+    // Large known predators should not be paired with fish small enough to
+    // plausibly become prey. Do not classify every omnivore as a predator.
+    const predator = [f1, f2].find(f => knownPredatorySpecies.has(f.slug || ''));
+    const prey = predator === f1 ? f2 : f1;
 
-    // Tang vs Tang
-    const isTang1 = slug1.includes('tang');
-    const isTang2 = slug2.includes('tang');
-    if (isTang1 && isTang2) {
-      status = '🟠 Use Caution';
-      colorTheme = 'orange';
-      reasons.push("Intra-species conflict: Marine Tangs are highly aggressive toward other Tangs of similar shape or species. Keeping them together requires a large tank (120+ Gallons) with multiple grazing spots.");
-    }
+    if (predator) {
+      const predatorSize = predator.maxSize || 0;
+      const preySize = prey.maxSize || 0;
 
-    // 8. General Temperament Compatibility Mapping (Fallback if not overridden)
-    if (status !== '🔴 Not Recommended') {
-      const t1 = f1.temperament;
-      const t2 = f2.temperament;
-
-      if ((t1 === 'Aggressive' && t2 === 'Peaceful') || (t2 === 'Aggressive' && t1 === 'Peaceful')) {
-        const aggr = t1 === 'Aggressive' ? f1 : f2;
-        const peaceful = t1 === 'Aggressive' ? f2 : f1;
+      if (preySize > 0 && preySize <= 3 && predatorSize / preySize >= 3) {
         return {
           status: '🔴 Not Recommended',
-          message: `Temperament clash: Highly aggressive territory-holders like ${aggr.name} will constantly bully, injure, or stress peaceful community species like ${peaceful.name}.`,
-          colorTheme: 'red'
+          message:
+            `Predation risk: ${predator.name} reaches about ${predatorSize}" while ${prey.name} reaches about ${preySize}". Their size difference makes the smaller fish an unsafe tankmate as the predator matures.`,
+          colorTheme: 'red',
         };
-      } else if (t1 === 'Aggressive' && t2 === 'Aggressive') {
-        if (colorTheme !== 'orange') {
-          status = '🟠 Use Caution';
-          colorTheme = 'orange';
-        }
-        reasons.push("Double Aggression warning: Both species are aggressive territory holders. Coexistence requires a very large tank with clear territorial visual barriers.");
-      } else if ((t1 === 'Semi-Aggressive' && t2 === 'Peaceful') || (t2 === 'Semi-Aggressive' && t1 === 'Peaceful')) {
-        const semi = t1 === 'Semi-Aggressive' ? f1 : f2;
-        const peaceful = t1 === 'Semi-Aggressive' ? f2 : f1;
-        if (isExplicitlyCompatible) {
-          status = '🟡 Usually Compatible with Conditions';
-          colorTheme = 'amber';
-          reasons.push(`Standard compatibility: The semi-aggressive ${semi.name} is generally compatible with the peaceful ${peaceful.name} when kept with proper school sizes and hiding spaces.`);
-        } else {
-          status = '🟠 Use Caution';
-          colorTheme = 'orange';
-          reasons.push(`Behavioral risk: The semi-aggressive ${semi.name} may chase, bully, or nip the fins of the peaceful ${peaceful.name}.`);
-        }
+      }
+
+      setStatus('🟠 Use Caution', 'orange');
+      reasons.push(
+        `${predator.name} is a large predatory species, so tankmates must be too large to be swallowed and must tolerate its behavior and bioload.`
+      );
+    }
+
+    // 5. Generic adult-size risk. This is intentionally a warning, not a
+    // mathematical "compatibility formula": size alone cannot predict every
+    // interaction, but a very large difference deserves attention.
+    const size1 = f1.maxSize || 0;
+    const size2 = f2.maxSize || 0;
+
+    if (size1 > 0 && size2 > 0) {
+      const larger = size1 >= size2 ? f1 : f2;
+      const smaller = size1 >= size2 ? f2 : f1;
+      const ratio = Math.max(size1, size2) / Math.min(size1, size2);
+
+      if (ratio >= 4 && (smaller.maxSize || 0) <= 2.5) {
+        setStatus('🟠 Use Caution', 'orange');
+        reasons.push(
+          `Large adult-size difference: ${larger.name} (${larger.maxSize}") is much larger than ${smaller.name} (${smaller.maxSize}").`
+        );
+        warnings.push(
+          'Adult size matters more than juvenile size; monitor for chasing, predation, or food competition as the fish mature.'
+        );
       }
     }
 
-    // Schooling warning note
-    const schooling1 = f1.slug === 'neon-tetra' || f1.slug === 'zebra-danio' || f1.slug === 'cherry-barb' || f1.slug === 'harlequin-rasbora' || f1.slug === 'neon-dwarf-rainbowfish' || f1.slug === 'corydoras-catfish';
-    const schooling2 = f2.slug === 'neon-tetra' || f2.slug === 'zebra-danio' || f2.slug === 'cherry-barb' || f2.slug === 'harlequin-rasbora' || f2.slug === 'neon-dwarf-rainbowfish' || f2.slug === 'corydoras-catfish';
-    
-    if (schooling1) {
-      warnings.push(`Keep ${f1.name} in an appropriate group (minimum 6) to reduce stress and support schooling.`);
-    }
-    if (schooling2) {
-      warnings.push(`Keep ${f2.name} in an appropriate group (minimum 6) to reduce stress and support schooling.`);
+    // 6. Species-specific territorial combinations.
+    const tang1 = slug1.includes('tang');
+    const tang2 = slug2.includes('tang');
+
+    if (tang1 && tang2) {
+      return {
+        status: '🟠 Use Caution',
+        message:
+          'Tang + Tang: tangs can be highly territorial toward other surgeonfish, especially similar-shaped species. This requires a large marine aquarium, careful species selection, and deliberate introduction; it is not a default community pairing.',
+        colorTheme: 'orange',
+      };
     }
 
-    // Tank Size logic
-    let recommendedTank = Math.max(f1.minTankSize || 0, f2.minTankSize || 0);
-    // Add extra bioload buffer
-    const totalMax = (f1.maxSize || 0) + (f2.maxSize || 0);
-    if (totalMax > 15) {
-      recommendedTank += 20;
-    } else if (totalMax > 6) {
-      recommendedTank += 10;
-    } else {
-      recommendedTank += 5;
-    }
-    
-    reasons.push(`A combined tank size of at least ${recommendedTank} gallons is recommended to support their swimming spaces and biological filtration.`);
+    const territorialPair = [f1, f2].filter(f => {
+      const social = socialTraits[f.slug || ''];
+      return social === 'solitary-territorial' || social === 'territorial';
+    });
 
-    // Fallback default reasons
+    if (territorialPair.length === 2) {
+      setStatus('🟠 Use Caution', 'orange');
+      reasons.push(
+        `Both ${f1.name} and ${f2.name} have meaningful territorial behavior, so aquarium footprint, rockwork/cover, and introduction order matter.`
+      );
+    } else if (territorialPair.length === 1) {
+      const territorialFish = territorialPair[0];
+      const other = territorialFish === f1 ? f2 : f1;
+
+      if (other.temperament === 'Aggressive') {
+        return {
+          status: '🔴 Not Recommended',
+          message:
+            `Behavioral conflict: ${territorialFish.name} is territorial and ${other.name} is listed as aggressive. Without species-specific evidence for this pairing, it should not be treated as a safe community combination.`,
+          colorTheme: 'red',
+        };
+      }
+
+      setStatus('🟡 Usually Compatible with Conditions', 'amber');
+      reasons.push(
+        `${territorialFish.name} has territorial behavior, while ${other.name} is not strongly territorial.`
+      );
+      warnings.push(
+        'Provide adequate territory/cover and monitor the first days after introduction for chasing or exclusion.'
+      );
+    }
+
+    // 7. General temperament is only a supporting signal. It no longer
+    // overrides species-specific evidence or assumes every "semi-aggressive"
+    // fish will attack every peaceful fish.
+    const t1 = f1.temperament;
+    const t2 = f2.temperament;
+
+    if (t1 === 'Aggressive' && t2 === 'Aggressive') {
+      setStatus('🟠 Use Caution', 'orange');
+      reasons.push(
+        'Both fish are listed as aggressive, so territorial conflict is a significant risk.'
+      );
+    } else if (
+      (t1 === 'Aggressive' && t2 === 'Peaceful') ||
+      (t2 === 'Aggressive' && t1 === 'Peaceful')
+    ) {
+      const aggressive = t1 === 'Aggressive' ? f1 : f2;
+      const peaceful = t1 === 'Aggressive' ? f2 : f1;
+
+      return {
+        status: '🔴 Not Recommended',
+        message:
+          `Temperament conflict: ${aggressive.name} is listed as aggressive while ${peaceful.name} is listed as peaceful. Without species-specific evidence that this pair is safe, it should not be recommended as a community combination.`,
+        colorTheme: 'red',
+      };
+    } else if (
+      (t1 === 'Semi-Aggressive' && t2 === 'Peaceful') ||
+      (t2 === 'Semi-Aggressive' && t1 === 'Peaceful')
+    ) {
+      const semi = t1 === 'Semi-Aggressive' ? f1 : f2;
+      const peaceful = t1 === 'Semi-Aggressive' ? f2 : f1;
+
+      setStatus('🟡 Usually Compatible with Conditions', 'amber');
+      reasons.push(
+        `${semi.name} is listed as semi-aggressive while ${peaceful.name} is listed as peaceful; compatibility depends on space, territory, and individual behavior.`
+      );
+    }
+
+    // 8. Social/group requirements.
+    for (const fish of [f1, f2]) {
+      const social = socialTraits[fish.slug || ''];
+
+      if (social === 'schooling') {
+        warnings.push(
+          `${fish.name} should be kept in an appropriate group rather than as a solitary fish; the exact group size depends on the species and aquarium size.`
+        );
+      }
+
+      if (social === 'small-school') {
+        warnings.push(
+          `${fish.name} is social and is generally better kept in a small group when the aquarium is appropriately sized.`
+        );
+      }
+    }
+
+    // 9. Known compatibility mapping is supporting evidence only.
+    // It must NEVER turn a biologically unsuitable pair green. The previous
+    // implementation used one-sided lists as if they were proof of safety.
+    const explicitlyListedByBoth =
+      Boolean(f1.compatibleWith?.includes(slug2)) &&
+      Boolean(f2.compatibleWith?.includes(slug1));
+
+    if (explicitlyListedByBoth) {
+      reasons.push(
+        'The pair is also explicitly listed as compatible by both fish records in the current database.'
+      );
+    } else if (
+      f1.compatibleWith?.includes(slug2) ||
+      f2.compatibleWith?.includes(slug1)
+    ) {
+      reasons.push(
+        'One fish record lists the other as a compatible tankmate; this is treated only as supporting evidence because compatibility lists are not guarantees.'
+      );
+    }
+
+    // 10. Tank size: never invent a "combined gallons" formula from adult
+    // length. Use the larger listed minimum only as a starting reference and
+    // clearly state that stocking/group requirements can make the real need
+    // higher.
+    const largerMinimum = Math.max(f1.minTankSize || 0, f2.minTankSize || 0);
+
+    if (largerMinimum > 0) {
+      reasons.push(
+        `Tank-size starting point: at least ${largerMinimum} gallons based on the larger listed species minimum; actual requirements can be higher because group size, footprint, filtration, aquascape, and total stocking also matter.`
+      );
+    }
+
     if (reasons.length === 0) {
-      reasons.push("Both species share matching water environments, temperature overlaps, pH ranges, and peaceful temperaments.");
+      reasons.push(
+        'The available records show compatible environments and no major species-specific conflict was identified. Compatibility is still conditional on proper stocking, space, filtration, and individual behavior.'
+      );
     }
 
-    // Build final message
-    let finalMessage = reasons.join(" ");
-    if (warnings.length > 0) {
-      finalMessage += " NOTE: " + warnings.join(" ");
-    }
+    const finalMessage =
+      reasons.join(' ') +
+      (warnings.length > 0 ? ` NOTE: ${warnings.join(' ')}` : '');
 
     return {
       status,
       message: finalMessage,
-      colorTheme
+      colorTheme,
     };
   };
 
@@ -383,10 +645,10 @@ export default function FishCompatibility() {
         </div>
 
         <div className="bg-slate-900/90 dark:bg-slate-950/90 backdrop-blur-xl border border-slate-800 rounded-3xl p-6 md:p-10 shadow-2xl relative overflow-hidden">
-          
+
           {/* Main matchup grid */}
           <div className="grid grid-cols-1 md:grid-cols-7 gap-8 items-center relative z-10">
-            
+
             {/* Fish 1 Column */}
             <div className="md:col-span-3 flex flex-col items-center">
               <div className={`w-36 h-36 rounded-full overflow-hidden mb-6 border-4 bg-slate-950 relative transition-all duration-500 ${themeClasses.border} ${themeClasses.glow}`}>
@@ -397,8 +659,8 @@ export default function FishCompatibility() {
                 )}
               </div>
               <label className="text-xs uppercase font-bold tracking-wider text-slate-400 mb-2 block">Select Species 1</label>
-              <select 
-                value={fish1} 
+              <select
+                value={fish1}
                 onChange={(e) => setFish1(e.target.value)}
                 className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-slate-200 font-semibold focus:outline-none focus:ring-2 focus:ring-cyan-500 hover:border-slate-700 transition-colors"
               >
@@ -425,8 +687,8 @@ export default function FishCompatibility() {
                 )}
               </div>
               <label className="text-xs uppercase font-bold tracking-wider text-slate-400 mb-2 block">Select Species 2</label>
-              <select 
-                value={fish2} 
+              <select
+                value={fish2}
                 onChange={(e) => setFish2(e.target.value)}
                 className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-slate-200 font-semibold focus:outline-none focus:ring-2 focus:ring-cyan-500 hover:border-slate-700 transition-colors"
               >
@@ -457,9 +719,9 @@ export default function FishCompatibility() {
             <h4 className="text-lg font-bold font-poppins text-slate-200 mb-6 text-center md:text-left flex items-center gap-2 justify-center md:justify-start">
               <Layers className="w-5 h-5 text-cyan-400" /> Species Parameters Matchup
             </h4>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              
+
               {/* Fish 1 details */}
               <div className="bg-slate-950/40 border border-slate-850 p-5 rounded-2xl">
                 <div className="flex items-center gap-3 mb-4 pb-3 border-b border-slate-800/50">
