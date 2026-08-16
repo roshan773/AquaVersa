@@ -2,17 +2,17 @@
 
 import { useState, useEffect } from "react";
 import { GuideStep } from "@/lib/types";
-import { 
-  CheckCircle2, 
-  AlertTriangle, 
-  ArrowRight, 
-  ChevronLeft, 
-  ChevronRight, 
-  ShoppingBag, 
-  Info, 
-  Sparkles, 
-  Check, 
-  RotateCcw, 
+import {
+  CheckCircle2,
+  AlertTriangle,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  ShoppingBag,
+  Info,
+  Sparkles,
+  Check,
+  RotateCcw,
   HelpCircle,
   Activity,
   Award
@@ -122,7 +122,7 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
       setShowCelebration(false);
       try {
         localStorage.removeItem("aquaversa_start_guide_progress");
-      } catch (e) {}
+      } catch (e) { }
     }
   };
 
@@ -137,10 +137,10 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
       <div className="flex justify-between items-center relative">
         {/* Progress Line Background */}
         <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[3px] bg-muted dark:bg-slate-800 z-0" />
-        
+
         {/* Active Progress Line */}
-        <div 
-          className="absolute left-0 top-1/2 -translate-y-1/2 h-[3px] bg-gradient-to-r from-cyan-500 to-emerald-500 transition-all duration-500 z-0" 
+        <div
+          className="absolute left-0 top-1/2 -translate-y-1/2 h-[3px] bg-gradient-to-r from-cyan-500 to-emerald-500 transition-all duration-500 z-0"
           style={{ width: `${(currentStepIndex / (starterGuideSteps.length - 1)) * 100}%` }}
         />
 
@@ -158,16 +158,15 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
               }}
               className="flex flex-col items-center relative z-10 focus:outline-none group cursor-pointer"
             >
-              <div 
-                className={`w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-300 border-2 ${
-                  isActive 
-                    ? "bg-cyan-500 text-slate-950 border-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.5)] scale-110" 
+              <div
+                className={`w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-300 border-2 ${isActive
+                    ? "bg-cyan-500 text-slate-950 border-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.5)] scale-110"
                     : isDone
                       ? "bg-emerald-500 text-slate-950 border-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.3)]"
                       : isVisited
                         ? "bg-background text-cyan-500 border-cyan-500 dark:border-cyan-400"
                         : "bg-muted dark:bg-slate-900 text-muted-foreground border-border dark:border-slate-800"
-                }`}
+                  }`}
               >
                 {isDone ? (
                   <Check className="w-6 h-6 stroke-[3]" />
@@ -175,13 +174,12 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
                   <span className="text-base font-bold">{step.step}</span>
                 )}
               </div>
-              <span className={`text-xs md:text-sm font-semibold mt-3 transition-colors ${
-                isActive 
-                  ? "text-cyan-500 dark:text-cyan-400" 
+              <span className={`text-xs md:text-sm font-semibold mt-3 transition-colors ${isActive
+                  ? "text-cyan-500 dark:text-cyan-400"
                   : isDone
                     ? "text-emerald-500"
                     : "text-muted-foreground group-hover:text-foreground"
-              }`}>
+                }`}>
                 {idx === 0 ? "1. Tank" : idx === 1 ? "2. Water" : "3. Cycle"}
               </span>
             </button>
@@ -193,7 +191,7 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
       <div className="mt-8 glass rounded-full p-1 border border-border flex items-center gap-4 px-4 py-2 text-xs md:text-sm shadow-inner">
         <span className="font-semibold text-muted-foreground shrink-0">Setup Progress:</span>
         <div className="flex-1 bg-muted/60 dark:bg-slate-800 rounded-full h-3 overflow-hidden">
-          <div 
+          <div
             className="h-full bg-gradient-to-r from-cyan-500 via-teal-500 to-emerald-500 rounded-full transition-all duration-500"
             style={{ width: `${progressPercent}%` }}
           />
@@ -205,27 +203,27 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
 
   return (
     <div className="w-full bg-background min-h-screen pb-20">
-      
+
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-cyan-950 text-white border-b border-cyan-950 shadow-2xl rounded-b-[2rem] md:rounded-b-[3.5rem]">
         {/* Subtle grid pattern overlay */}
         <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#082f49_1px,transparent_1px),linear-gradient(to_bottom,#082f49_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-30" />
-        
+
         <div className="container mx-auto px-4 relative z-10 text-center max-w-4xl">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs md:text-sm font-semibold mb-6 animate-pulse">
             <Award className="w-4 h-4" /> Interactive Beginner Checklist
           </div>
-          
+
           <h1 className="text-4xl md:text-6xl font-poppins font-extrabold mb-6 tracking-tight bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400 bg-clip-text text-transparent leading-tight">
-            Your First Aquarium, <br className="hidden md:block"/> Step by Step.
+            Your First Aquarium, <br className="hidden md:block" /> Step by Step.
           </h1>
-          
+
           <p className="text-base md:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed font-sans">
             A foolproof guide to setting up a healthy, thriving ecosystem. Avoid the common mistakes that kill fish and frustrate beginners. Track your progress with our step-by-step checklist.
           </p>
 
           {checkedCount > 0 && (
-            <button 
+            <button
               onClick={handleReset}
               className="mt-6 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors border border-slate-700/50"
             >
@@ -269,8 +267,8 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
 
               <div className="grid gap-6 md:grid-cols-2 max-w-2xl mx-auto text-left">
                 {/* Path 1: Fish */}
-                <Link 
-                  href="/fish" 
+                <Link
+                  href="/fish"
                   className="group p-6 rounded-2xl bg-card border border-border hover:border-cyan-500/40 hover:shadow-lg transition-all flex flex-col justify-between"
                 >
                   <div>
@@ -288,8 +286,8 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
                 </Link>
 
                 {/* Path 2: Plants */}
-                <Link 
-                  href="/plants" 
+                <Link
+                  href="/plants"
                   className="group p-6 rounded-2xl bg-card border border-border hover:border-emerald-500/40 hover:shadow-lg transition-all flex flex-col justify-between"
                 >
                   <div>
@@ -331,7 +329,7 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
               {/* Left Column: Details & Interactive Checkbox list */}
               <div className="lg:col-span-8 space-y-6">
                 <div className="glass rounded-3xl p-6 md:p-8 border border-white/10 dark:border-white/5 shadow-xl relative overflow-hidden">
-                  
+
                   {/* Step Badge */}
                   <div className="flex items-center justify-between mb-4">
                     <span className="px-3.5 py-1 rounded-full bg-cyan-500/10 text-cyan-500 dark:text-cyan-400 text-xs font-bold uppercase tracking-wider">
@@ -346,38 +344,35 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
 
                   <h2 className="text-2xl md:text-3xl font-poppins font-bold mb-4">{currentStep.title}</h2>
                   <p className="text-muted-foreground text-base md:text-lg mb-8 leading-relaxed">{currentStep.description}</p>
-                  
+
                   {/* Interactive Checklist section */}
                   <div className="p-5 md:p-6 rounded-2xl bg-muted/30 dark:bg-slate-900/30 border border-border mb-8 shadow-inner">
                     <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-4 flex items-center gap-2">
                       <Activity className="w-4 h-4 text-cyan-500" /> Complete these actions:
                     </h3>
-                    
+
                     <div className="space-y-3.5">
                       {currentChecklist.map((item) => {
                         const isChecked = !!checkedItems[item.id];
                         return (
-                          <div 
+                          <div
                             key={item.id}
                             onClick={() => handleToggleCheck(item.id)}
-                            className={`flex gap-3.5 items-start p-4 rounded-xl border cursor-pointer transition-all ${
-                              isChecked 
-                                ? "bg-emerald-500/5 border-emerald-500/30 dark:bg-emerald-500/5 dark:border-emerald-500/20" 
+                            className={`flex gap-3.5 items-start p-4 rounded-xl border cursor-pointer transition-all ${isChecked
+                                ? "bg-emerald-500/5 border-emerald-500/30 dark:bg-emerald-500/5 dark:border-emerald-500/20"
                                 : "bg-card border-border hover:border-cyan-500/30 dark:hover:border-cyan-500/20 hover:shadow-sm"
-                            }`}
+                              }`}
                           >
-                            <div className={`w-5 h-5 rounded border-2 shrink-0 flex items-center justify-center transition-all ${
-                              isChecked 
-                                ? "bg-emerald-500 border-emerald-400 text-slate-950" 
+                            <div className={`w-5 h-5 rounded border-2 shrink-0 flex items-center justify-center transition-all ${isChecked
+                                ? "bg-emerald-500 border-emerald-400 text-slate-950"
                                 : "border-muted-foreground/40 bg-background"
-                            }`}>
+                              }`}>
                               {isChecked && <Check className="w-3.5 h-3.5 stroke-[3]" />}
                             </div>
-                            <span className={`text-sm md:text-base leading-tight select-none transition-colors ${
-                              isChecked 
-                                ? "text-muted-foreground line-through decoration-emerald-500/40" 
+                            <span className={`text-sm md:text-base leading-tight select-none transition-colors ${isChecked
+                                ? "text-muted-foreground line-through decoration-emerald-500/40"
                                 : "text-foreground"
-                            }`}>
+                              }`}>
                               {item.text}
                             </span>
                           </div>
@@ -423,11 +418,10 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
                       }
                     }}
                     disabled={currentStepIndex === 0}
-                    className={`px-5 py-3 rounded-xl border text-sm font-semibold flex items-center gap-1.5 transition-colors ${
-                      currentStepIndex === 0
+                    className={`px-5 py-3 rounded-xl border text-sm font-semibold flex items-center gap-1.5 transition-colors ${currentStepIndex === 0
                         ? "opacity-0 cursor-default"
                         : "border-border hover:bg-muted bg-card cursor-pointer"
-                    }`}
+                      }`}
                   >
                     <ChevronLeft className="w-4 h-4" /> Previous Step
                   </button>
@@ -435,11 +429,10 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
                   {currentStepIndex === starterGuideSteps.length - 1 ? (
                     <button
                       onClick={() => setShowCelebration(true)}
-                      className={`px-6 py-3 rounded-xl font-semibold flex items-center gap-2 transition-all cursor-pointer ${
-                        isStepCompleted(currentStepIndex)
+                      className={`px-6 py-3 rounded-xl font-semibold flex items-center gap-2 transition-all cursor-pointer ${isStepCompleted(currentStepIndex)
                           ? "bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 font-bold hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:brightness-105"
                           : "bg-cyan-500 hover:bg-cyan-400 text-slate-950"
-                      }`}
+                        }`}
                     >
                       Finish Setup Guide <CheckCircle2 className="w-4 h-4 stroke-[2.5]" />
                     </button>
@@ -456,12 +449,12 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
 
               {/* Right Column: Danger Warnings & Pro Recommendations */}
               <div className="lg:col-span-4 space-y-6">
-                
+
                 {/* Warning Callout */}
                 {currentStep.commonMistakes && (
                   <div className="p-6 rounded-3xl bg-amber-500/5 dark:bg-amber-950/10 border border-amber-500/20 shadow-sm relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/[0.02] rounded-full blur-xl" />
-                    
+
                     <div className="flex items-center gap-2 mb-3">
                       <div className="p-1.5 rounded-lg bg-amber-500/10 text-amber-500">
                         <AlertTriangle className="w-5 h-5" />
@@ -470,7 +463,7 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
                         Beginner Pitfall
                       </span>
                     </div>
-                    
+
                     <p className="text-sm text-foreground/80 leading-relaxed font-sans">
                       {currentStep.commonMistakes}
                     </p>
@@ -482,7 +475,7 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
                   <div className="p-6 rounded-3xl bg-cyan-500/5 dark:bg-cyan-950/10 border border-cyan-500/20 shadow-md relative overflow-hidden">
                     {/* Glowing highlight border */}
                     <div className="absolute top-0 left-0 w-1 h-full bg-cyan-500" />
-                    
+
                     <div className="flex items-center gap-2 mb-3">
                       <div className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-500">
                         <Sparkles className="w-4.5 h-4.5" />
@@ -499,7 +492,7 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
                 )}
 
                 {/* Helpful tips panel */}
-                <div className="p-6 rounded-3xl border border-border bg-card shadow-sm">
+                {/* <div className="p-6 rounded-3xl border border-border bg-card shadow-sm">
                   <h4 className="font-bold text-sm mb-3 flex items-center gap-1.5 text-muted-foreground uppercase tracking-wider">
                     <HelpCircle className="w-4 h-4" /> Need Extra Help?
                   </h4>
@@ -520,13 +513,13 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
                       </Link>
                     </li>
                   </ul>
-                </div>
+                </div> */}
               </div>
             </motion.div>
           )}
         </AnimatePresence>
       </section>
-      
+
     </div>
   );
 }
