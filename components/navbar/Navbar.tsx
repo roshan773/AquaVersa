@@ -6,9 +6,13 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Droplets, Fish, Search, Menu, X, Waves, Anchor, Settings } from "lucide-react";
 import Image from "next/image";
+import { fishData } from "@/data/fish";
 
 export default function Navbar() {
   const router = useRouter();
+  const validFish = fishData.filter(f => f.slug && f.category);
+  const fwFish = validFish.filter(f => f.category!.toLowerCase() === "freshwater");
+  const swFish = validFish.filter(f => f.category!.toLowerCase() === "saltwater");
   const [searchQuery, setSearchQuery] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -90,8 +94,8 @@ export default function Navbar() {
                   transition={{ duration: 0.2 }}
                   className="absolute top-16 left-1/2 -translate-x-1/2 w-[800px] bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm grid grid-cols-2 gap-6 z-50 animate-in fade-in zoom-in-95 duration-200"
                 >
-                  <Link href="/fish/freshwater" className="group flex flex-col gap-3 p-4 rounded-xl hover:bg-white/50 dark:hover:bg-black/30 transition-all border border-transparent hover:border-border text-gray-900 dark:text-gray-100">
-                    <div className="relative w-full h-32 rounded-lg overflow-hidden bg-blue-100 dark:bg-blue-950">
+                  <div className="group flex flex-col gap-3 p-4 rounded-xl hover:bg-white/50 dark:hover:bg-black/30 transition-all border border-transparent hover:border-border text-gray-900 dark:text-gray-100">
+                    <Link href="/fish/freshwater" className="block relative w-full h-32 rounded-lg overflow-hidden bg-blue-100 dark:bg-blue-950">
                       <Image 
                         src="/images/betta.png" 
                         alt="Freshwater" 
@@ -101,16 +105,32 @@ export default function Navbar() {
                       <div className="absolute top-3 left-3 bg-white/80 dark:bg-black/80 backdrop-blur-sm p-1.5 rounded-md">
                         <Droplets className="w-4 h-4 text-cyan-500" />
                       </div>
-                    </div>
+                    </Link>
                     <div>
-                      <h3 className="font-semibold text-lg group-hover:text-cyan-600 transition-colors">Freshwater Fish</h3>
+                      <Link href="/fish/freshwater" className="inline-block group-hover:text-cyan-600 transition-colors">
+                        <h3 className="font-semibold text-lg">Freshwater Fish</h3>
+                      </Link>
                       <p className="text-sm text-muted-foreground mt-1">Explore colorful species perfect for planted aquariums.</p>
-                      <p className="text-xs font-medium text-cyan-600 mt-2">150+ Species</p>
+                      <p className="text-xs font-semibold text-cyan-600 mt-2 mb-3">{fwFish.length} Species Available</p>
+                      
+                      {/* Dynamic Species Links */}
+                      <div className="grid grid-cols-2 gap-x-4 gap-y-2 mt-2 pt-2 border-t border-gray-100 dark:border-gray-800">
+                        {fwFish.slice(0, 6).map((fish) => (
+                          <Link
+                            key={fish.id}
+                            href={`/fish/freshwater/${fish.slug}`}
+                            className="text-xs text-gray-500 dark:text-gray-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors truncate"
+                            onClick={() => setActiveDropdown(null)}
+                          >
+                            • {fish.name}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
-                  </Link>
+                  </div>
                   
-                  <Link href="/fish/saltwater" className="group flex flex-col gap-3 p-4 rounded-xl hover:bg-white/50 dark:hover:bg-black/30 transition-all border border-transparent hover:border-border">
-                    <div className="relative w-full h-32 rounded-lg overflow-hidden bg-blue-100 dark:bg-blue-950">
+                  <div className="group flex flex-col gap-3 p-4 rounded-xl hover:bg-white/50 dark:hover:bg-black/30 transition-all border border-transparent hover:border-border text-gray-900 dark:text-gray-100">
+                    <Link href="/fish/saltwater" className="block relative w-full h-32 rounded-lg overflow-hidden bg-blue-100 dark:bg-blue-950">
                       <Image 
                         src="/images/angelfish.png" 
                         alt="Saltwater" 
@@ -120,13 +140,29 @@ export default function Navbar() {
                       <div className="absolute top-3 left-3 bg-white/80 dark:bg-black/80 backdrop-blur-sm p-1.5 rounded-md">
                         <Anchor className="w-4 h-4 text-blue-500" />
                       </div>
-                    </div>
+                    </Link>
                     <div>
-                      <h3 className="font-semibold text-lg group-hover:text-blue-600 transition-colors">Saltwater Fish</h3>
+                      <Link href="/fish/saltwater" className="inline-block group-hover:text-blue-600 transition-colors">
+                        <h3 className="font-semibold text-lg">Saltwater Fish</h3>
+                      </Link>
                       <p className="text-sm text-muted-foreground mt-1">Discover marine life for your reef or fish-only setup.</p>
-                      <p className="text-xs font-medium text-blue-600 mt-2">80+ Species</p>
+                      <p className="text-xs font-semibold text-blue-600 mt-2 mb-3">{swFish.length} Species Available</p>
+                      
+                      {/* Dynamic Species Links */}
+                      <div className="grid grid-cols-2 gap-x-4 gap-y-2 mt-2 pt-2 border-t border-gray-100 dark:border-gray-800">
+                        {swFish.slice(0, 6).map((fish) => (
+                          <Link
+                            key={fish.id}
+                            href={`/fish/saltwater/${fish.slug}`}
+                            className="text-xs text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors truncate"
+                            onClick={() => setActiveDropdown(null)}
+                          >
+                            • {fish.name}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
-                  </Link>
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -190,10 +226,10 @@ export default function Navbar() {
                   <span className="text-muted-foreground text-xs uppercase tracking-wider font-bold mb-3 block">Species Library</span>
                   <div className="flex flex-col gap-3 pl-2">
                     <Link href="/fish/freshwater" className="font-semibold text-base hover:text-cyan-500 transition-colors flex items-center gap-2" onClick={toggleMobileMenu}>
-                      <Droplets className="w-5 h-5 text-cyan-500" /> Freshwater Fish
+                      <Droplets className="w-5 h-5 text-cyan-500" /> Freshwater Fish <span className="text-xs font-normal text-muted-foreground">({fwFish.length})</span>
                     </Link>
                     <Link href="/fish/saltwater" className="font-semibold text-base hover:text-blue-500 transition-colors flex items-center gap-2" onClick={toggleMobileMenu}>
-                      <Anchor className="w-5 h-5 text-blue-500" /> Saltwater Fish
+                      <Anchor className="w-5 h-5 text-blue-500" /> Saltwater Fish <span className="text-xs font-normal text-muted-foreground">({swFish.length})</span>
                     </Link>
                   </div>
                 </div>
