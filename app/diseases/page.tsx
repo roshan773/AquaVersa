@@ -274,12 +274,6 @@ export default function Diseases() {
                         >
                           View Treatment Details <ArrowRight className="w-4 h-4" />
                         </Link>
-                        <Link
-                          href={`/search?q=${encodeURIComponent(d.name.split(" ")[0])}`}
-                          className="w-full py-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800/80 dark:hover:bg-slate-800 text-foreground font-medium rounded-xl transition-colors text-center text-xs border border-border/40"
-                        >
-                          Find Susceptible Fish
-                        </Link>
                       </div>
                     </div>
                   ))}

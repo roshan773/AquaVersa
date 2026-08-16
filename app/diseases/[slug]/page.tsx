@@ -82,6 +82,17 @@ export default async function DiseaseDetailPage({ params }: PageProps) {
           </div>
         </div>
 
+        {/* Important Warning Banner */}
+        <div className="bg-amber-500/10 border border-amber-500/30 rounded-3xl p-6 flex items-start gap-4 text-sm text-amber-800 dark:text-amber-300 mb-8 shadow-sm">
+          <Info className="w-6 h-6 shrink-0 mt-0.5 text-amber-500" />
+          <div className="space-y-1">
+            <strong className="font-bold text-base block text-amber-900 dark:text-amber-200">Important Health Warning</strong>
+            <p className="leading-relaxed">
+              Before taking any treatment action or applying medications, always refer to the specific care guides and requirements for your fish species. Certain medications (like copper or formalin), aquarium salt, or temperature changes can be highly toxic or fatal to specific fish breeds, live plants, or snails/shrimp in your aquarium.
+            </p>
+          </div>
+        </div>
+
         {/* Key Symptoms & Transmission grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Key Symptoms */}
