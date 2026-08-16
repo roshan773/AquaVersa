@@ -7,14 +7,14 @@ export const equipmentData: Equipment[] = [
     "name": "Canister Filter",
     "category": "Filtration",
     "description": "An external filter that sits beneath the aquarium and provides powerful mechanical, chemical, and biological filtration. Canister filters force water through custom chambers containing media, offering high volume capacity and customizable configurations.",
-    "purpose": "Provides high-capacity, heavy-duty filtration for medium-to-large setups, maintaining pristine water clarity and high biological stability.",
+    "purpose": "Provides high-capacity mechanical, biological, and optional chemical filtration for medium-to-large aquariums, when appropriately sized and maintained.",
     "howItWorks": "Water is siphoned out of the tank via an intake tube, pumped through a sealed canister containing layers of filter sponges, carbon, and ceramic bio-rings, and then returned via an output spray bar or nozzle.",
     "suitableTanks": [
       "Freshwater",
       "Saltwater",
       "Planted"
     ],
-    "maintenance": "Rinse the mechanical sponges and biological media in bucketed tank water (never tap water!) every 2-3 months. Check seals and apply silicone lubricant if needed to prevent leaks.",
+    "maintenance": "Rinse mechanical media and gently clean biological media in removed aquarium water when flow decreases or the media becomes dirty. Follow the manufacturer’s maintenance schedule, and inspect seals and hoses regularly.",
     "beginnerMistakes": "Washing the biological media under chlorinated tap water, which instantly kills the beneficial nitrifying bacteria and crashes the nitrogen cycle.",
     "image": "/images/canister_filter.png"
   },
@@ -23,7 +23,7 @@ export const equipmentData: Equipment[] = [
     "slug": "sponge-filter",
     "name": "Sponge Filter",
     "category": "Filtration",
-    "description": "A simple, highly effective filter consisting of a foam block connected to an air pump. Sponge filters provide excellent biological filtration and gentle water flow, making them a favorite for breeders and shrimp keepers.",
+    "description": "A simple filter consisting of a porous sponge connected to an air pump. Sponge filters provide mechanical and biological filtration with gentle water flow, making them useful for community tanks, breeding setups, and aquariums with shrimp or fry.",
     "purpose": "Offers gentle biological filtration and safety for delicate aquatic life like shrimp, fry (baby fish), and long-finned Bettas.",
     "howItWorks": "An air pump pushes air down into the filter column, and as bubbles rise up, they draw water through the porous sponge block. Nitrifying bacteria colonize the sponge surface and clean the water.",
     "suitableTanks": [
@@ -39,8 +39,8 @@ export const equipmentData: Equipment[] = [
     "slug": "submersible-aquarium-heater",
     "name": "Submersible Aquarium Heater",
     "category": "Heating",
-    "description": "An adjustable glass or polymer heating tube that goes entirely under the water. Heaters are essential for tropical aquariums, keeping water temperatures stable to prevent stress and disease like Ich.",
-    "purpose": "Maintains a constant, warm water temperature (typically 75-80°F) tailored to tropical fish requirements.",
+    "description": "An adjustable glass or polymer heating tube that goes entirely under the water. Heaters are commonly used for tropical aquariums to maintain a stable species-appropriate temperature and reduce temperature-related stress.",
+    "purpose": "Maintains a stable, adjustable water temperature appropriate for the species being kept.",
     "howItWorks": "Uses an internal thermostat to monitor water temperature, cycling a resistive metal heating element on and off to maintain the dial setting.",
     "suitableTanks": [
       "Freshwater",
@@ -56,8 +56,8 @@ export const equipmentData: Equipment[] = [
     "slug": "full-spectrum-led-plant-light",
     "name": "Full Spectrum LED Plant Light",
     "category": "Lighting",
-    "description": "A slim, modern LED fixture emitting light in the blue, red, and green spectrums. Full spectrum LEDs simulate natural sunlight, which is essential for photosynthesis in live aquatic plants.",
-    "purpose": "Promotes healthy, dense growth in live aquatic plants while bringing out the natural, vibrant coloration of fish.",
+    "description": "An LED fixture designed to provide a broad spectrum of light suitable for aquarium plants. Plant growth depends on appropriate light intensity and duration, not simply on a specific color spectrum.",
+    "purpose": "Provides aquarium lighting suitable for plant growth when intensity, photoperiod, and spectrum are appropriate, while also illuminating the aquarium for viewing.",
     "howItWorks": "Utilizes rows of specialized diodes that emit light at targeted wavelengths (PAR) needed by plants, controllable via built-in timers or smartphone apps.",
     "suitableTanks": [
       "Freshwater",
@@ -72,14 +72,14 @@ export const equipmentData: Equipment[] = [
     "slug": "protein-skimmer",
     "name": "Protein Skimmer",
     "category": "Filtration",
-    "description": "A core filtration piece for marine systems. Protein skimmers remove dissolved organic waste products from the water column before they break down into toxic ammonia and nitrates.",
-    "purpose": "Maintains ultra-clean, low-nutrient water required by delicate saltwater corals and fish.",
+    "description": "A filtration device commonly used in marine aquariums to remove dissolved and particulate organic compounds before they are broken down by biological processes.",
+    "purpose": "Helps export dissolved organic compounds and can support nutrient management in marine aquariums, especially reef systems.",
     "howItWorks": "Injects thousands of micro-bubbles into a reaction chamber. Organic waste molecules stick to the bubbles and rise to the top, forming a dirty foam that spills into a collection cup.",
     "suitableTanks": [
       "Saltwater"
     ],
     "maintenance": "Empty and rinse the collection cup weekly. Wipe down the neck of the reaction chamber to ensure smooth bubble rise.",
-    "beginnerMistakes": "Attempting to use a protein skimmer in a freshwater tank, where water chemistry prevents micro-bubbles from forming and the device fails to produce foam.",
+    "beginnerMistakes": "Using a standard marine protein skimmer in freshwater without confirming that the model is designed for it; foam fractionation is generally much more effective in saltwater.",
     "image": "/images/protein_skimmer.png"
   },
   {
@@ -95,7 +95,7 @@ export const equipmentData: Equipment[] = [
       "Planted"
     ],
     "maintenance": "Rinse the cartridge in tank water monthly, or replace the mechanical floss block. Keep bio-sponges in the chamber untouched to preserve bacteria.",
-    "beginnerMistakes": "Replacing the entire cartridge with a brand new one every month, which throws away the main colony of beneficial bacteria, triggering ammonia spikes.",
+    "beginnerMistakes": "Replacing the entire filter cartridge on a fixed schedule without preserving established biological media can remove beneficial bacteria and may contribute to ammonia or nitrite spikes.",
     "image": "/images/hang_on_back_filter.png"
   },
   {
@@ -120,13 +120,13 @@ export const equipmentData: Equipment[] = [
     "name": "Undergravel Filter",
     "category": "Filtration",
     "description": "An older filtration style consisting of a slotted plastic plate beneath the gravel substrate, connected to vertical uplift tubes powered by air bubbles or powerheads.",
-    "purpose": "Uses the entire gravel bed as a massive biological filter, keeping the water clear and biological activity high.",
+    "purpose": "Uses the gravel bed as a biological filtration surface while drawing water through the substrate.",
     "howItWorks": "Draws water down through the gravel bed, where nitrifying bacteria consume waste, and pushes the filtered water back up through the vertical tubes.",
     "suitableTanks": [
       "Freshwater"
     ],
     "maintenance": "Requires regular, thorough gravel vacuuming to prevent detritus and fish waste from clogging the gravel bed and choking biological filtration.",
-    "beginnerMistakes": "Using this filter in heavily planted tanks. Root structures will clog the plates, and the downward water draw deprives plant roots of nutrients.",
+    "beginnerMistakes": "Using this filter without considering the needs of a heavily planted substrate; dense roots can complicate maintenance and some planted layouts are better served by other filtration methods.",
     "image": "/images/undergravel_filter.png"
   },
   {
@@ -151,14 +151,14 @@ export const equipmentData: Equipment[] = [
     "name": "UV Sterilizer",
     "category": "Filtration",
     "description": "A sealed tube containing a ultraviolet-C emitting bulb. Water is pumped slowly through the tube, exposing suspended pathogens and algae spores to UV light.",
-    "purpose": "Eliminates green water blooms (unicellular algae) and controls waterborne parasites, bacteria, and pathogens without chemicals.",
+    "purpose": "Can help reduce free-floating algae and some waterborne microorganisms when the UV dose, flow rate, and exposure time are appropriate. It does not sterilize an aquarium or replace normal disease prevention and treatment.",
     "howItWorks": "UV-C radiation disrupts the DNA of microscopic cells passing through the sterilizer chamber, neutralizing algae and disease-causing pathogens.",
     "suitableTanks": [
       "Freshwater",
       "Saltwater",
       "Planted"
     ],
-    "maintenance": "Replace the UV bulb every 9-12 months, as the UV output drops over time. Clean the quartz sleeve to remove mineral buildups.",
+    "maintenance": "Replace the UV lamp according to the manufacturer’s recommended service interval and clean the quartz sleeve as needed to maintain UV transmission.",
     "beginnerMistakes": "Running water through the sterilizer at too high of a flow rate, which does not allow enough exposure time to kill target parasites.",
     "image": "/images/UV Sterilizer.png"
   },
@@ -167,8 +167,8 @@ export const equipmentData: Equipment[] = [
     "slug": "titanium-heater",
     "name": "Titanium Heater",
     "category": "Heating",
-    "description": "A highly durable heater made of corrosion-resistant titanium, connected to an external temperature controller. It is shatterproof and highly reliable.",
-    "purpose": "Provides highly accurate and safe water heating for large saltwater reef systems or aggressive fish tanks.",
+    "description": "A durable aquarium heater that uses a titanium heating element and is commonly paired with an external temperature controller for precise temperature management.",
+    "purpose": "Provides durable heating for aquariums where a titanium heater and external temperature controller are appropriate, including many larger or marine systems.",
     "howItWorks": "The titanium probe heats the water, while an external digital controller monitors temperature via a separate sensor probe, cutting power if safety thresholds are crossed.",
     "suitableTanks": [
       "Saltwater",
@@ -198,9 +198,9 @@ export const equipmentData: Equipment[] = [
     "id": "e-12",
     "slug": "aquarium-chiller",
     "name": "Aquarium Chiller",
-    "category": "Heating",
-    "description": "A refrigeration unit that cools water. Chillers are critical in warm climates or for setups with high-heat lighting, preventing lethal heat spikes.",
-    "purpose": "Cools down tank water to maintain stable temperatures for coldwater species or delicate reef corals.",
+    "category": "Cooling",
+    "description": "A refrigeration unit that cools aquarium water. Chillers can be useful when ambient temperatures or equipment heat make it difficult to maintain the required temperature.",
+    "purpose": "Cools aquarium water to maintain a stable temperature when ambient conditions or equipment heat cause the aquarium to run too warm.",
     "howItWorks": "Pumps aquarium water through a titanium cooling loop inside the unit, cooling the water before returning it to the tank.",
     "suitableTanks": [
       "Saltwater",
@@ -216,7 +216,7 @@ export const equipmentData: Equipment[] = [
     "name": "T5 Fluorescent Fixture",
     "category": "Lighting",
     "description": "A high-output fluorescent lighting system that provides excellent, diffuse light spread. Traditionally used for planted tanks and marine reef systems.",
-    "purpose": "Delivers uniform, shadowless light coverage that stimulates deep photosynthesis in corals and plants.",
+    "purpose": "Provides broad, even light coverage for planted aquariums and some marine applications, depending on the bulb and fixture.",
     "howItWorks": "Electricity excites gas inside T5 fluorescent tubes, causing them to emit light, modified by polished reflectors to focus light downward.",
     "suitableTanks": [
       "Planted",
@@ -247,7 +247,7 @@ export const equipmentData: Equipment[] = [
     "name": "LED Reef Light",
     "category": "Lighting",
     "description": "A specialized LED fixture emitting intense blue and UV light wavelengths. It is designed specifically to stimulate photosynthesis and fluorescence in marine corals.",
-    "purpose": "Provides corals with the exact light spectrum required for growth (zooxanthellae photosynthesis) while highlighting coral colors.",
+    "purpose": "Provides high-output, reef-oriented lighting with blue, violet, and other wavelengths selected to support photosynthetic corals and enhance coral coloration.",
     "howItWorks": "Combines deep blue, royal blue, violet, and UV LED diodes to create an optimized 'actinic' spectrum.",
     "suitableTanks": [
       "Saltwater"
@@ -262,8 +262,8 @@ export const equipmentData: Equipment[] = [
     "name": "Moonlight LEDs",
     "category": "Lighting",
     "description": "Low-intensity blue LED lights that simulate the gentle glow of the moon, allowing for night-time observation of nocturnal aquatic species.",
-    "purpose": "Permits viewing of nocturnal behaviors (like catfish feeding or coral spawning) without disturbing species' natural sleep cycles.",
-    "howItWorks": "Emits low-lumen, deep blue light (typically 450-460nm) to simulate moon phases.",
+    "purpose": "Provides low-intensity viewing light for observing nocturnal aquarium activity. It should be used sparingly and turned off for a regular period of darkness.",
+    "howItWorks": "Emits low-intensity blue light for optional nighttime viewing; it should not be treated as a replacement for a normal day/night lighting cycle.",
     "suitableTanks": [
       "Freshwater",
       "Saltwater"
@@ -277,7 +277,7 @@ export const equipmentData: Equipment[] = [
     "slug": "air-pump",
     "name": "Air Pump",
     "category": "Aeration",
-    "description": "An external electronic pump that pushes atmospheric air through airline tubing into the aquarium. It is essential for sponge filters and air stones.",
+    "description": "An external pump that pushes atmospheric air through airline tubing. It powers air-driven equipment such as sponge filters and air stones and can increase surface agitation and gas exchange.",
     "purpose": "Powers sponge filters, undergravel filters, and air stones, increasing surface agitation to facilitate oxygen exchange.",
     "howItWorks": "Uses a vibrating electromagnetic diaphragm to compress air and push it out through nozzle ports.",
     "suitableTanks": [
@@ -294,14 +294,14 @@ export const equipmentData: Equipment[] = [
     "slug": "air-stone",
     "name": "Air Stone",
     "category": "Aeration",
-    "description": "A porous limestones or sand compound block connected to an air pump, producing a steady stream of fine, bubbling air.",
+    "description": "A porous aquarium diffuser connected to an air pump that breaks incoming air into bubbles, increasing surface agitation and gas exchange.",
     "purpose": "Breaks compressed air into thousands of tiny bubbles, increasing surface area contact and water circulation.",
     "howItWorks": "Forces air through microscopic pores in the stone, creating bubbles that rise to the surface, creating upward water current.",
     "suitableTanks": [
       "Freshwater",
       "Planted"
     ],
-    "maintenance": "Soak in a dilute bleach solution or vinegar every few months to remove organic films or calcium clogging, restoring bubble output.",
+    "maintenance": "Clean or replace the air stone when it becomes clogged. If disinfecting with bleach, use an appropriate dilute solution and thoroughly rinse and dechlorinate the stone before returning it to the aquarium.",
     "beginnerMistakes": "Allowing the air stone to get buried deep in substrate without cleaning, causing flow back-pressure that tears the air pump diaphragm.",
     "image": "/images/Air Stone.png"
   },
@@ -312,7 +312,7 @@ export const equipmentData: Equipment[] = [
     "category": "Aeration",
     "description": "A tiny, one-way plastic valve spliced into the air pump airline tubing, allowing air to flow forward but preventing water from flowing backward.",
     "purpose": "Protects air pumps from water damage and prevents tank water from siphoning onto the floor during power outages.",
-    "howItWorks": "Utilizes a spring or rubber flapper that opens under air pressure, but immediately seals shut if water pressure flows backward.",
+    "howItWorks": "Uses a one-way internal mechanism that allows air to travel toward the aquarium while preventing water from flowing backward through the airline.",
     "suitableTanks": [
       "Freshwater",
       "Planted",

@@ -82,6 +82,7 @@ export interface Disease {
   id: string;
   slug: string;
   name: string;
+  type: string; // Parasitic, Bacterial, Fungal, etc.
   description: string;
   symptoms: string[];
   transmission: string;

@@ -1,13 +1,14 @@
 import { Food } from "../lib/types";
 
+
 export const foodData: Food[] = [
   {
     id: "fo-0",
     slug: "tropical-flakes",
     name: "Tropical Flakes",
     category: "Dry Food",
-    description: "The most popular general-purpose fish food. Specially formulated to float at the surface, making it ideal for top and mid-water feeders.",
-    benefits: ["Balanced nutrition", "Enhances natural coloration", "Highly digestible, minimizes waste"],
+    description: "A common staple food for many tropical community fish. Floating flakes are especially useful for fish that feed near the surface and mid-water.",
+    benefits: ["Convenient staple food", "Supports everyday nutrition when appropriately formulated", "Easy to portion for small fish"],
     frequency: "Daily (1-2 times)",
     suitableFor: ["Tetras", "Guppies", "Mollies", "Barbs", "Danios"],
     image: "/images/Tropical Flakes.png"
@@ -17,9 +18,9 @@ export const foodData: Food[] = [
     slug: "sinking-pellets",
     name: "Sinking Pellets",
     category: "Dry Food",
-    description: "Dense, slow-dissolving pellets that quickly sink to the bottom. Formulated to resist falling apart in the water, giving substrate feeders ample time to graze.",
-    benefits: ["Targeted bottom feeding", "High protein concentration", "Supports shell health for snails and shrimp"],
-    frequency: "Daily (Once at night)",
+    description: "Dense pellets designed to sink through the water column, making them useful for bottom-feeding fish and invertebrates when the pellet size and formulation are appropriate.",
+    benefits: ["Useful for bottom feeders", "Allows food to reach lower areas of the aquarium", "Available in formulations for different dietary needs"],
+    frequency: "Daily (1-2 times)",
     suitableFor: ["Corydoras Catfish", "Loaches", "Plecos", "Shrimp", "Snails"],
     image: "/images/Sinking Pellets.png"
   },
@@ -28,9 +29,9 @@ export const foodData: Food[] = [
     slug: "freeze-dried-bloodworms",
     name: "Freeze-Dried Bloodworms",
     category: "Treats",
-    description: "Pure, high-protein bloodworms that have been freeze-dried to lock in nutrients and flavor while eliminating potential parasites found in live cultures.",
-    benefits: ["Extremely high protein", "Stimulates natural hunting behaviors", "Great for conditioning breeding pairs"],
-    frequency: "Occasional (2-3 times a week)",
+    description: "Freeze-dried bloodworms that provide a palatable, protein-rich food that can be offered as an occasional part of a varied diet. Freeze-dried foods should be fed appropriately and should not replace a complete staple diet.",
+    benefits: ["Highly palatable for many fish", "Provides a protein-rich supplemental food", "Useful as an occasional treat or conditioning food"],
+    frequency: "Occasional (1-2 times a week)",
     suitableFor: ["Betta Fish", "Angelfish", "Discus", "Gouramis", "Tetras"],
     image: "/images/Freeze-Dried Bloodworms.png"
   },
@@ -39,9 +40,9 @@ export const foodData: Food[] = [
     slug: "algae-wafers",
     name: "Algae Wafers",
     category: "Fresh Food",
-    description: "Hard-pressed discs containing high concentrations of spirulina and vegetable matter. Perfect for herbivorous bottom dwellers that scrape or rasp their food.",
-    benefits: ["Rich in natural vegetable fibers", "Promotes healthy digestion", "Long-lasting stability prevents water clouding"],
-    frequency: "Daily (Once at night)",
+    description: "Sinking wafers commonly formulated with algae and vegetable ingredients for herbivorous and omnivorous bottom feeders. The exact nutritional value depends on the product formulation.",
+    benefits: ["Provides vegetable and algae-based ingredients", "Convenient sinking food for bottom feeders", "Can supplement the diets of suitable herbivorous and omnivorous fish and invertebrates"],
+    frequency: "Daily or as needed, depending on species and other foods offered",
     suitableFor: ["Plecostomus", "Otocinclus", "Snails", "Amano Shrimp", "Mollies"],
     image: "/images/Algae Wafers.png"
   },
@@ -50,8 +51,8 @@ export const foodData: Food[] = [
     slug: "live-brine-shrimp",
     name: "Live Brine Shrimp",
     category: "Live Food",
-    description: "Freshly hatched or adult brine shrimp (Artemia). Providing live movement triggering predatory feeding instincts and offering vitamins.",
-    benefits: ["Stimulates appetite in picky eaters", "High concentrations of essential amino acids", "Improves fry survival rates"],
+    description: "Live brine shrimp (Artemia) that can stimulate feeding behavior and provide a useful supplemental food, particularly for fry and fish that readily accept live foods.",
+    benefits: ["Highly palatable to many fish", "Useful supplemental source of protein and nutrients", "Can be particularly useful for feeding fry and conditioning fish"],
     frequency: "Treat (1-2 times a week)",
     suitableFor: ["Betta Fish", "Arowana", "Discus", "Cichlids", "Clownfish"],
     image: "/images/Live Brine Shrimp.png"
@@ -61,9 +62,9 @@ export const foodData: Food[] = [
     slug: "gel-food",
     name: "Gel Food Mix",
     category: "Custom",
-    description: "A powder that forms a nutrient-dense, moisture-rich gel when mixed with hot water. Easily customizable with veggies, vitamins, or medicine.",
-    benefits: ["Highest hydration level", "Perfect carrier for medications", "Gentle on sensitive digestive tracts"],
-    frequency: "Daily or alternate days",
+    description: "A powdered food mix that forms a soft, moisture-rich gel when prepared according to the product instructions. Gel foods can be customized with suitable ingredients and are available in formulations for different fish diets.",
+    benefits: ["Moist food texture", "Can be shaped into portions for different feeding habits", "Some formulations can be customized or used as a carrier for supplements or medication when appropriate"],
+    frequency: "Daily or alternate days, depending on formulation and species",
     suitableFor: ["Goldfish", "Plecos", "Mollies", "Snails", "Cichlids"],
     image: "/images/Gel Food Mix.png"
   }

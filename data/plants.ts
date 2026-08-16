@@ -35,7 +35,7 @@ export const plantData: Plant[] = [
     "id": "p3",
     "slug": "amazon-sword",
     "name": "Amazon Sword",
-    "scientificName": "Echinodorus bleheri",
+    "scientificName": "Echinodorus grisebachii",
     "difficulty": "Easy",
     "growthRate": "Fast",
     "light": "Medium",
@@ -54,7 +54,7 @@ export const plantData: Plant[] = [
     "difficulty": "Intermediate",
     "growthRate": "Moderate",
     "light": "Medium to High",
-    "co2": "Required",
+    "co2": "Recommended",
     "placement": "Foreground (Carpet)",
     "temperature": "68–77°F (20–25°C)",
     "ph": "6.0–7.5",
@@ -95,7 +95,7 @@ export const plantData: Plant[] = [
     "id": "p-6",
     "slug": "dwarf-baby-tears",
     "name": "Dwarf Baby Tears",
-    "scientificName": "Hemianthus callitrichoides",
+    "scientificName": "Micranthemum callitrichoides",
     "difficulty": "Advanced",
     "growthRate": "Fast",
     "light": "High",
@@ -164,7 +164,7 @@ export const plantData: Plant[] = [
     "temperature": "70-82°F (21-28°C)",
     "ph": "6.5-7.5",
     "image": "/images/Water Wisteria.png",
-    "description": "An exceptionally fast-growing, hardy stem plant with highly variable, lace-like leaves. Water Wisteria is excellent for beginners, as it absorbs excess nitrates from the water column rapidly, helping control algae growth. Can be planted or floated."
+    "description": "An exceptionally fast-growing, hardy stem plant with highly variable, lace-like leaves. Water Wisteria is useful for beginners and can take up nutrients from the water column, helping compete with algae when growth is healthy. It can be planted or floated."
   },
   {
     "id": "p-11",
@@ -194,13 +194,13 @@ export const plantData: Plant[] = [
     "temperature": "60-82°F (15-28°C)",
     "ph": "6.0-8.0",
     "image": "/images/Hornwort.png",
-    "description": "Hornwort is a rootless, free-floating plant that is practically indestructible. It grows at a legendary speed, absorbing large amounts of waste nutrients from the water. Because it has no roots, it can be left floating or anchored into gravel. Highly recommended for controlling algae."
+    "description": "Hornwort is a rootless aquatic plant that can be grown floating or loosely anchored. It can grow quickly and take up nutrients from the water column, making it useful in many beginner aquariums. Rapid growth may require regular trimming."
   },
   {
     "id": "p-13",
     "slug": "anacharis",
     "name": "Anacharis",
-    "scientificName": "Elodea densa",
+    "scientificName": "Egeria densa",
     "difficulty": "Easy",
     "growthRate": "Fast",
     "light": "Low to Medium",
@@ -209,7 +209,7 @@ export const plantData: Plant[] = [
     "temperature": "60-78°F (15-25°C)",
     "ph": "6.5-8.0",
     "image": "/images/Anacharis.png",
-    "description": "A popular coldwater and tropical stem plant featuring rows of dark green leaves along a sturdy stem. Anacharis is a rapid oxygenator and nutrient absorber. It is great for goldfish tanks, as it grows fast enough to tolerate grazing."
+    "description": "A popular stem plant with rows of green leaves along a sturdy stem. It can grow quickly under suitable conditions and take up nutrients from the water column. It can be used in many freshwater aquariums, although some herbivorous fish may readily eat it."
   },
   {
     "id": "p-14",
@@ -224,7 +224,7 @@ export const plantData: Plant[] = [
     "temperature": "50-86°F (10-30°C)",
     "ph": "5.0-8.0",
     "image": "/images/Duckweed.png",
-    "description": "A tiny, single-leaved floating plant that multiplies at a breathtaking pace. Duckweed acts as a highly efficient nutrient sponge, stripping nitrate out of the water. However, it can coat the entire surface, blocking light. It is difficult to get rid of once introduced."
+    "description": "A tiny, single-leaved floating plant that can multiply very rapidly. Duckweed takes up nutrients from the water and can provide surface cover, but it may spread across much of the surface and reduce light reaching plants below. It can also be difficult to remove completely once established."
   },
   {
     "id": "p-15",
@@ -254,7 +254,7 @@ export const plantData: Plant[] = [
     "temperature": "64-82°F (18-28°C)",
     "ph": "6.0-7.5",
     "image": "/images/Water Spangles.png",
-    "description": "A floating fern with pairs of small, oval leaves covered in tiny hair-like structures that repel water. Water Spangles grows fast and forms a nice cover on the surface, keeping light levels low and water chemistry clean by absorbing excess nitrates."
+    "description": "A floating fern with pairs of small, oval leaves covered in tiny hair-like structures that repel water. Water Spangles can grow quickly and provide surface cover while taking up nutrients from the water."
   },
   {
     "id": "p-17",
@@ -269,7 +269,7 @@ export const plantData: Plant[] = [
     "temperature": "70-82°F (21-28°C)",
     "ph": "6.5-7.2",
     "image": "/images/Red Root Floater.png",
-    "description": "A gorgeous, floating species native to South America. Under high light, the leaves turn a stunning deep crimson-red, and the hanging roots become bright red. They grow best in setups with calm surface water and plenty of iron nutrients."
+    "description": "A floating species native to South America. Under suitable strong lighting and good nutrient availability, the leaves and roots can develop red coloration. It grows best with relatively calm surface water and enough light to reach the floating leaves."
   },
   {
     "id": "p-18",
@@ -284,13 +284,13 @@ export const plantData: Plant[] = [
     "temperature": "68-82°F (20-28°C)",
     "ph": "6.0-7.5",
     "image": "/images/Ludwigia Repens.png",
-    "description": "A very popular and easy stem plant that adds a splash of red to community aquariums. The leaf undersides turn a lovely red color under medium lighting. It is fast-growing, hardy, and simple to propagate by cutting and replanting stems."
+    "description": "A popular and relatively easy stem plant that can add red coloration to community aquariums. Stronger lighting generally produces better red coloration, while lower light can result in greener growth. It is fast-growing and easy to propagate by cutting and replanting stems."
   },
   {
     "id": "p-19",
     "slug": "ludwigia-super-red",
     "name": "Ludwigia Super Red",
-    "scientificName": "Ludwigia sp. 'Super Red'",
+    "scientificName": "Ludwigia palustris 'Super Red'",
     "difficulty": "Intermediate",
     "growthRate": "Fast",
     "light": "Medium to High",
@@ -299,6 +299,6 @@ export const plantData: Plant[] = [
     "temperature": "70-82°F (21-28°C)",
     "ph": "6.0-7.2",
     "image": "/images/Ludwigia Super Red.png",
-    "description": "A highly popular stem plant that develops an intense, uniform red coloration. Unlike other red plants, it is relatively easy to grow and maintain, though it requires medium-to-high light levels, iron supplementation, and CO2 injection to maintain its deep crimson color."
+    "description": "A popular red stem plant that can develop strong red coloration under suitable lighting and nutrition. It benefits from good light, nutrients, and added CO2 for faster growth and stronger coloration."
   }
 ];
