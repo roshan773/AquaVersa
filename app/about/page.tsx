@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Waves, Heart, Shield, Award, Mail, Phone, MapPin } from "lucide-react";
+import Link from "next/link";
+import { Waves, Heart, Shield, Award, HeartHandshake } from "lucide-react";
 
 export default function AboutUsPage() {
   return (
@@ -109,6 +110,26 @@ export default function AboutUsPage() {
             <div className="p-6 rounded-2xl bg-muted/40 border border-border">
               <span className="text-4xl font-bold text-rose-500 block mb-2">100%</span>
               <span className="text-sm font-semibold text-muted-foreground">Free Education</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Maintain Accuracy Callout */}
+      <section className="py-12 bg-background border-t border-border">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="bg-cyan-500/5 border border-cyan-500/20 p-8 rounded-3xl text-center space-y-4">
+            <h3 className="text-2xl font-bold text-foreground font-poppins">Help Us Maintain Scientific Accuracy</h3>
+            <p className="text-muted-foreground max-w-xl mx-auto text-sm leading-relaxed">
+              Aquarium husbandry is an evolving science. If you notice any incorrect species guidelines, inaccurate water parameters, or outdated equipment specifications in our database, please flag them immediately!
+            </p>
+            <div className="pt-2">
+              <Link 
+                href="/contact" 
+                className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-xl transition-all shadow-md shadow-cyan-500/5 text-sm"
+              >
+                Report Data Inaccuracy
+              </Link>
             </div>
           </div>
         </div>

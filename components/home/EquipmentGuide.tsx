@@ -10,17 +10,60 @@ export default function EquipmentGuide() {
   const [tankType, setTankType] = useState('Freshwater');
 
   const getRecommendedEquipment = () => {
-    let recommended = equipmentData.filter(eq => (eq.suitableTanks || []).some(t => t.includes(tankType) || t.includes('Planted')));
+    const isSmall = tankSize.includes('Small');
+    const isMedium = tankSize.includes('Medium');
+    const isLarge = tankSize.includes('Large');
     
-    if (tankSize.includes('Small')) {
-      recommended = recommended.filter(eq => eq.slug !== 'canister-filter' && eq.slug !== 'protein-skimmer');
+    let slugs: string[] = [];
+    
+    if (tankType === 'Saltwater') {
+      slugs.push('protein-skimmer');
+      slugs.push('led-reef-light');
+      if (isLarge) {
+        slugs.push('titanium-heater');
+        slugs.push('aquarium-chiller');
+      } else {
+        slugs.push('submersible-aquarium-heater');
+        slugs.push('canister-filter');
+      }
+    } else if (tankType === 'Planted') {
+      slugs.push('full-spectrum-led-plant-light');
+      if (isSmall) {
+        slugs.push('sponge-filter');
+        slugs.push('submersible-aquarium-heater');
+        slugs.push('air-pump');
+      } else if (isMedium) {
+        slugs.push('hang-on-back-filter');
+        slugs.push('submersible-aquarium-heater');
+        slugs.push('inline-heater');
+      } else { // Large
+        slugs.push('canister-filter');
+        slugs.push('inline-heater');
+        slugs.push('uv-sterilizer');
+      }
+    } else { // Freshwater
+      if (isSmall) {
+        slugs.push('sponge-filter');
+        slugs.push('submersible-aquarium-heater');
+        slugs.push('air-pump');
+        slugs.push('check-valve');
+      } else if (isMedium) {
+        slugs.push('hang-on-back-filter');
+        slugs.push('submersible-aquarium-heater');
+        slugs.push('air-pump');
+        slugs.push('air-stone');
+      } else { // Large
+        slugs.push('canister-filter');
+        slugs.push('submersible-aquarium-heater');
+        slugs.push('air-pump');
+        slugs.push('uv-sterilizer');
+      }
     }
     
-    if (tankType === 'Freshwater') {
-      recommended = recommended.filter(eq => eq.slug !== 'protein-skimmer');
-    }
-
-    return recommended.slice(0, 4);
+    return slugs
+      .map(slug => equipmentData.find(eq => eq.slug === slug))
+      .filter((eq): eq is typeof equipmentData[0] => !!eq)
+      .slice(0, 4);
   };
 
   const recommendations = getRecommendedEquipment();

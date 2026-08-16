@@ -9,14 +9,47 @@ export default function FishPlantCompatibility() {
 
   const getRecommendedPlants = () => {
     if (fishType === 'Cichlids') {
-      return plantData.filter(p => p.name.includes('Anubias') || p.name.includes('Java Fern'));
+      // Cichlids dig substrate and tear soft plants. Recommend tough epiphytes.
+      return plantData.filter(p => 
+        p.slug === 'java-fern' || 
+        p.slug === 'anubias-nana' || 
+        p.name.includes('Anubias') || 
+        p.name.includes('Java')
+      );
     }
     if (fishType === 'Goldfish') {
-       // Goldfish eat soft plants, recommend tough ones
-       return plantData.filter(p => p.name.includes('Anubias') || p.name.includes('Sword'));
+      // Goldfish dig and consume plants. Recommend tough epiphytes, hardy grass, or fast-growing snacks.
+      return plantData.filter(p => 
+        p.slug === 'java-fern' || 
+        p.slug === 'anubias-nana' || 
+        p.slug === 'vallisneria' || 
+        p.slug === 'hornwort' || 
+        p.slug === 'frogbit' ||
+        p.slug === 'water-spangles'
+      );
     }
-    // Community or Betta
-    return plantData.slice(0, 3);
+    if (fishType === 'Bettas') {
+      // Bettas love broad leaves for resting, and floating plants for shelter/nesting.
+      return plantData.filter(p => 
+        p.slug === 'anubias-nana' || 
+        p.slug === 'amazon-sword' || 
+        p.slug === 'frogbit' || 
+        p.slug === 'water-spangles' || 
+        p.slug === 'red-root-floater' || 
+        p.slug === 'water-sprite'
+      );
+    }
+    // Community tanks: Recommend beginner-friendly, hardy plants of all types
+    return plantData.filter(p => 
+      p.difficulty === 'Easy' && 
+      (p.slug === 'java-fern' || 
+       p.slug === 'anubias-nana' || 
+       p.slug === 'amazon-sword' || 
+       p.slug === 'vallisneria' || 
+       p.slug === 'cryptocoryne-wendtii' ||
+       p.slug === 'water-wisteria' ||
+       p.slug === 'hornwort')
+    );
   };
 
   const recommendations = getRecommendedPlants();

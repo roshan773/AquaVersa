@@ -3,6 +3,28 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Settings, Info, AlertTriangle, CheckCircle } from "lucide-react";
+import { Metadata } from 'next';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const eq = equipmentData.find((e) => e.slug === slug);
+  
+  if (!eq) {
+    return {
+      title: "Aquarium Equipment Guide - AquaGuide",
+      description: "Learn how to choose the right aquarium equipment.",
+    };
+  }
+
+  return {
+    title: `${eq.name} Specification & Maintenance Guide`,
+    description: `Complete ${eq.name} guide. Learn about its purpose, how it works, maintenance instructions, suitable tank types, and common beginner setup mistakes.`,
+  };
+}
 
 export async function generateStaticParams() {
   return equipmentData

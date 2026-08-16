@@ -3,6 +3,28 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Droplets, Thermometer, Info, Leaf, Activity } from "lucide-react";
+import { Metadata } from 'next';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ category: string; slug: string }>;
+}): Promise<Metadata> {
+  const { category, slug } = await params;
+  const fish = fishData.find((f) => f.slug === slug && f.category?.toLowerCase() === category.toLowerCase());
+  
+  if (!fish) {
+    return {
+      title: "Fish Care Guide - AquaGuide",
+      description: "Learn how to care for tropical fish.",
+    };
+  }
+
+  return {
+    title: `${fish.name} Care Guide: Tank Size, Temperament & Water Parameters`,
+    description: `Complete ${fish.name} (${fish.scientificName}) care guide. Learn about minimum tank size (${fish.minTankSize} Gallons), temperament (${fish.temperament}), pH range (${fish.ph}), temperature range (${fish.temperature}), diet, and tank compatibility.`,
+  };
+}
 
 export async function generateStaticParams() {
   return fishData

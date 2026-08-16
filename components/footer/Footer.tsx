@@ -53,8 +53,9 @@ export default function Footer() {
         <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-xs text-slate-500 max-w-3xl text-center md:text-left leading-relaxed">
             <strong className="text-slate-400">Disclaimer:</strong> AquaGuide provides educational information for aquarium hobbyists.
-            Variables such as local water chemistry and individual fish temperament can affect outcomes.
-            Always verify specific requirements before making stocking or treatment decisions.
+            Individual fish temperaments, local source water chemistry, and species requirements can vary significantly.
+            Always verify specific requirements before making stocking, hardware, or treatment decisions.
+            In the event of an animal health crisis, disease outbreak, or aquatic veterinary emergency, professional assistance should be sought immediately.
           </p>
           <p className="text-xs font-semibold text-slate-600 shrink-0">
             © {new Date().getFullYear()} AquaGuide. All rights reserved.

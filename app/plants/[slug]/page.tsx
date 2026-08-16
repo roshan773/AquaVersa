@@ -3,6 +3,28 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Leaf, Info, Activity, ArrowUpRight } from "lucide-react";
+import { Metadata } from 'next';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const plant = plantData.find((p) => p.slug === slug);
+  
+  if (!plant) {
+    return {
+      title: "Aquatic Plant Guide - AquaGuide",
+      description: "Learn how to grow live aquatic plants.",
+    };
+  }
+
+  return {
+    title: `${plant.name} Care Guide: Planting, Lighting & CO2 Requirements`,
+    description: `Complete ${plant.name} (${plant.scientificName}) care guide. Learn about planting placement (${plant.placement}), growth rate (${plant.growthRate}), lighting needs (${plant.light}), CO2 requirements (${plant.co2}), and aquatic care.`,
+  };
+}
 
 export async function generateStaticParams() {
   return plantData
