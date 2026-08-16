@@ -41,34 +41,30 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const linkClass = `text-sm font-medium transition-colors duration-300 ${
-    isScrolled 
-      ? "text-slate-700 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400" 
+  const linkClass = `text-sm font-medium transition-colors duration-300 ${isScrolled
+      ? "text-slate-700 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400"
       : "text-white/95 hover:text-cyan-300"
-  }`;
+    }`;
 
-  const btnClass = `text-sm font-medium transition-colors duration-300 flex items-center gap-1 ${
-    isScrolled 
-      ? "text-slate-700 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400" 
+  const btnClass = `text-sm font-medium transition-colors duration-300 flex items-center gap-1 ${isScrolled
+      ? "text-slate-700 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400"
       : "text-white/95 hover:text-cyan-300"
-  }`;
+    }`;
 
   return (
-    <nav className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-      isScrolled 
-        ? "glass border-b border-border shadow-sm" 
+    <nav className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled
+        ? "glass border-b border-border shadow-sm"
         : "bg-transparent border-transparent shadow-none"
-    }`}>
+      }`}>
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
           <div className="bg-cyan-500 p-1.5 rounded-lg group-hover:bg-cyan-400 transition-colors">
             <Waves className="w-5 h-5 text-slate-900" />
           </div>
-          <span className={`font-poppins font-bold text-xl tracking-tight transition-colors duration-300 ${
-            isScrolled ? "text-slate-900 dark:text-white" : "text-white"
-          }`}>
-            AquaGuide
+          <span className={`font-poppins font-bold text-xl tracking-tight transition-colors duration-300 ${isScrolled ? "text-slate-900 dark:text-white" : "text-white"
+            }`}>
+            AquaVersa
           </span>
         </Link>
 
@@ -76,7 +72,7 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-8">
           <Link href="/" className={linkClass}>Home</Link>
           <Link href="/about" className={linkClass}>About Us</Link>
-          
+
           <div
             className="relative h-16 flex items-center"
             onMouseEnter={() => setActiveDropdown('fish')}
@@ -87,7 +83,7 @@ export default function Navbar() {
             </button>
             <AnimatePresence>
               {activeDropdown === 'fish' && (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 10, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 10, scale: 0.95 }}
@@ -96,10 +92,10 @@ export default function Navbar() {
                 >
                   <div className="group flex flex-col gap-3 p-4 rounded-xl hover:bg-white/50 dark:hover:bg-black/30 transition-all border border-transparent hover:border-border text-gray-900 dark:text-gray-100">
                     <Link href="/fish/freshwater" className="block relative w-full h-32 rounded-lg overflow-hidden bg-blue-100 dark:bg-blue-950">
-                      <Image 
-                        src="/images/betta.png" 
-                        alt="Freshwater" 
-                        fill 
+                      <Image
+                        src="/images/betta.png"
+                        alt="Freshwater"
+                        fill
                         className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute top-3 left-3 bg-white/80 dark:bg-black/80 backdrop-blur-sm p-1.5 rounded-md">
@@ -112,7 +108,7 @@ export default function Navbar() {
                       </Link>
                       <p className="text-sm text-muted-foreground mt-1">Explore colorful species perfect for planted aquariums.</p>
                       <p className="text-xs font-semibold text-cyan-600 mt-2 mb-3">{fwFish.length} Species Available</p>
-                      
+
                       {/* Dynamic Species Links */}
                       <div className="grid grid-cols-2 gap-x-4 gap-y-2 mt-2 pt-2 border-t border-gray-100 dark:border-gray-800">
                         {fwFish.slice(0, 6).map((fish) => (
@@ -128,13 +124,13 @@ export default function Navbar() {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="group flex flex-col gap-3 p-4 rounded-xl hover:bg-white/50 dark:hover:bg-black/30 transition-all border border-transparent hover:border-border text-gray-900 dark:text-gray-100">
                     <Link href="/fish/saltwater" className="block relative w-full h-32 rounded-lg overflow-hidden bg-blue-100 dark:bg-blue-950">
-                      <Image 
-                        src="/images/angelfish.png" 
-                        alt="Saltwater" 
-                        fill 
+                      <Image
+                        src="/images/angelfish.png"
+                        alt="Saltwater"
+                        fill
                         className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute top-3 left-3 bg-white/80 dark:bg-black/80 backdrop-blur-sm p-1.5 rounded-md">
@@ -147,7 +143,7 @@ export default function Navbar() {
                       </Link>
                       <p className="text-sm text-muted-foreground mt-1">Discover marine life for your reef or fish-only setup.</p>
                       <p className="text-xs font-semibold text-blue-600 mt-2 mb-3">{swFish.length} Species Available</p>
-                      
+
                       {/* Dynamic Species Links */}
                       <div className="grid grid-cols-2 gap-x-4 gap-y-2 mt-2 pt-2 border-t border-gray-100 dark:border-gray-800">
                         {swFish.slice(0, 6).map((fish) => (
@@ -174,24 +170,21 @@ export default function Navbar() {
         {/* Modern Search Bar */}
         <div className="flex items-center gap-4">
           <form onSubmit={handleSearchSubmit} className="relative">
-            <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 transition-colors duration-300 ${
-              isScrolled ? "text-slate-400" : "text-white/60"
-            }`} />
+            <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 transition-colors duration-300 ${isScrolled ? "text-slate-400" : "text-white/60"
+              }`} />
             <input
               type="text"
               placeholder="Search..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className={`w-28 sm:w-36 lg:w-48 pl-10 pr-3 py-2 rounded-full border text-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 ${
-                isScrolled 
-                  ? "bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 border-border" 
+              className={`w-28 sm:w-36 lg:w-48 pl-10 pr-3 py-2 rounded-full border text-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 ${isScrolled
+                  ? "bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 border-border"
                   : "bg-white/10 text-white placeholder-white/50 border-white/20 focus:bg-white/20"
-              }`}
+                }`}
             />
           </form>
-          <button className={`lg:hidden p-2 rounded-full transition-colors ${
-            isScrolled ? "hover:bg-muted text-slate-800 dark:text-slate-200" : "hover:bg-white/15 text-white"
-          }`} onClick={toggleMobileMenu}>
+          <button className={`lg:hidden p-2 rounded-full transition-colors ${isScrolled ? "hover:bg-muted text-slate-800 dark:text-slate-200" : "hover:bg-white/15 text-white"
+            }`} onClick={toggleMobileMenu}>
             {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
@@ -202,16 +195,16 @@ export default function Navbar() {
         {isMobileMenuOpen && (
           <>
             {/* Backdrop */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.4 }}
               exit={{ opacity: 0 }}
               onClick={toggleMobileMenu}
               className="fixed inset-0 top-16 bg-black/60 z-30 lg:hidden"
             />
-            
+
             {/* Sidebar */}
-            <motion.div 
+            <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -221,7 +214,7 @@ export default function Navbar() {
               <div className="flex flex-col p-6 gap-6">
                 <Link href="/" className="font-semibold text-lg hover:text-cyan-500 transition-colors" onClick={toggleMobileMenu}>Home</Link>
                 <Link href="/about" className="font-semibold text-lg hover:text-cyan-500 transition-colors" onClick={toggleMobileMenu}>About Us</Link>
-                
+
                 <div className="border-t border-border pt-4">
                   <span className="text-muted-foreground text-xs uppercase tracking-wider font-bold mb-3 block">Species Library</span>
                   <div className="flex flex-col gap-3 pl-2">

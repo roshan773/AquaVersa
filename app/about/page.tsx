@@ -11,7 +11,7 @@ export default function AboutUsPage() {
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-500/20 rounded-full blur-[120px]" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/20 rounded-full blur-[100px]" />
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10 text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-cyan-500/20 text-cyan-400 mb-6 border border-cyan-500/30">
             <Waves className="w-8 h-8" />
@@ -70,8 +70,8 @@ export default function AboutUsPage() {
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative aspect-square rounded-3xl overflow-hidden border border-border">
-              <Image 
-                src="/images/angelfish.png" 
+              <Image
+                src="/images/angelfish.png"
                 alt="Aquarium hobbyist"
                 fill
                 className="object-cover"
@@ -90,31 +90,6 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* Platform Stats */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 max-w-4xl text-center">
-          <h2 className="text-3xl font-bold font-poppins mb-12">AquaGuide by the Numbers</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="p-6 rounded-2xl bg-muted/40 border border-border">
-              <span className="text-4xl font-bold text-cyan-500 block mb-2">120+</span>
-              <span className="text-sm font-semibold text-muted-foreground">Curated Species</span>
-            </div>
-            <div className="p-6 rounded-2xl bg-muted/40 border border-border">
-              <span className="text-4xl font-bold text-emerald-500 block mb-2">50+</span>
-              <span className="text-sm font-semibold text-muted-foreground">Aquatic Plants</span>
-            </div>
-            <div className="p-6 rounded-2xl bg-muted/40 border border-border">
-              <span className="text-4xl font-bold text-amber-500 block mb-2">50+</span>
-              <span className="text-sm font-semibold text-muted-foreground">Equipment Guides</span>
-            </div>
-            <div className="p-6 rounded-2xl bg-muted/40 border border-border">
-              <span className="text-4xl font-bold text-rose-500 block mb-2">100%</span>
-              <span className="text-sm font-semibold text-muted-foreground">Free Education</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Maintain Accuracy Callout */}
       <section className="py-12 bg-background border-t border-border">
         <div className="container mx-auto px-4 max-w-4xl">
@@ -124,8 +99,8 @@ export default function AboutUsPage() {
               Aquarium husbandry is an evolving science. If you notice any incorrect species guidelines, inaccurate water parameters, or outdated equipment specifications in our database, please flag them immediately!
             </p>
             <div className="pt-2">
-              <Link 
-                href="/contact" 
+              <Link
+                href="/contact"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-xl transition-all shadow-md shadow-cyan-500/5 text-sm"
               >
                 Report Data Inaccuracy
