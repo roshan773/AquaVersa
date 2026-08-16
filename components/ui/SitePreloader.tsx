@@ -19,10 +19,10 @@ export default function SitePreloader() {
     const listener = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
     mediaQuery.addEventListener("change", listener);
 
-    // Keep loader visible briefly (500ms) to prevent visual layout flash on fast load
+    // Keep loader visible briefly (500ms) to allow rendering and prevent flash
     const timer = setTimeout(() => {
       setIsLoaded(true);
-    }, 500);
+    }, 550);
 
     return () => {
       mediaQuery.removeEventListener("change", listener);
@@ -42,16 +42,15 @@ export default function SitePreloader() {
     };
   }, [isLoaded]);
 
-  // If component is server-side rendered (SSR), render a static backdrop
-  // to prevent layout flash before React mounts on the client
+  // SSR Static Placeholder to prevent flash of content before mounting
   if (!mounted) {
     return (
       <div className="fixed inset-0 z-[9999] bg-slate-950 flex flex-col items-center justify-center">
         <div className="flex items-center gap-3">
-          <div className="bg-cyan-500 p-2.5 rounded-xl">
-            <Waves className="w-6 h-6 text-slate-900" />
+          <div className="bg-slate-900 border border-slate-800 p-2.5 rounded-xl">
+            <Waves className="w-6 h-6 text-cyan-400" />
           </div>
-          <span className="font-poppins font-extrabold text-2xl tracking-tight text-white">
+          <span className="font-poppins font-bold text-2xl tracking-tight text-white">
             AquaGuide
           </span>
         </div>
@@ -65,47 +64,37 @@ export default function SitePreloader() {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.35, ease: "easeInOut" }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
           aria-busy="true"
-          aria-label="Loading AquaGuide"
+          aria-label="Loading website"
           className="fixed inset-0 z-[9999] bg-slate-950 flex flex-col items-center justify-center overflow-hidden"
         >
           {/* Centered Branded Logo Block */}
           <div className="flex flex-col items-center">
             <motion.div
-              initial={reducedMotion ? { opacity: 1 } : { opacity: 0, scale: 0.95 }}
+              initial={reducedMotion ? { opacity: 1 } : { opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              className="flex items-center gap-3 select-none"
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="flex items-center gap-3.5 select-none"
             >
-              {/* Pulsing Aqua Symbol */}
-              <div className={`bg-cyan-500 p-2.5 rounded-xl shadow-lg shadow-cyan-500/10 ${
-                reducedMotion ? "" : "animate-pulse"
-              }`}>
-                <Waves className="w-6 h-6 text-slate-900" />
+              {/* Premium Subtle Branded Icon */}
+              <div className="bg-slate-900 border border-slate-800 p-2.5 rounded-xl shadow-md">
+                <Waves className="w-6 h-6 text-cyan-400" />
               </div>
-              <span className="font-poppins font-extrabold text-2xl tracking-tight text-white">
+              <span className="font-poppins font-bold text-2xl tracking-tight text-white">
                 AquaGuide
               </span>
             </motion.div>
 
-            {/* Subtle Aquarium-Inspired Ripple/Wave Animation */}
-            {!reducedMotion && (
-              <div className="mt-8 flex gap-1.5 justify-center items-center" aria-hidden="true">
-                <span 
-                  className="w-2 h-2 rounded-full bg-cyan-400/80 shadow-[0_0_6px_rgba(34,211,238,0.4)] animate-[bounce_1.4s_infinite_ease-in-out_0ms]" 
-                />
-                <span 
-                  className="w-2 h-2 rounded-full bg-cyan-400/80 shadow-[0_0_6px_rgba(34,211,238,0.4)] animate-[bounce_1.4s_infinite_ease-in-out_200ms]" 
-                />
-                <span 
-                  className="w-2 h-2 rounded-full bg-cyan-400/80 shadow-[0_0_6px_rgba(34,211,238,0.4)] animate-[bounce_1.4s_infinite_ease-in-out_400ms]" 
-                />
-              </div>
-            )}
+            {/* High-Precision Shimmer Progress Line */}
+            <div className="w-36 h-[1.5px] bg-slate-900 rounded-full overflow-hidden mt-8 relative" aria-hidden="true">
+              {!reducedMotion && (
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-shimmer" />
+              )}
+            </div>
 
-            {/* Subtly Faded Loading Text indicator */}
-            <span className="mt-4 text-[10px] uppercase font-bold tracking-widest text-slate-500 dark:text-slate-500 select-none">
+            {/* Subtly Faded Loading Text */}
+            <span className="mt-4 text-[9px] uppercase font-bold tracking-[0.25em] text-slate-500 select-none">
               Loading
             </span>
           </div>
