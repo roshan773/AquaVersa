@@ -80,7 +80,7 @@ export default function AboutUsPage() {
             <div>
               <h2 className="text-3xl font-bold font-poppins mb-6">How We Started</h2>
               <p className="text-muted-foreground mb-4 leading-relaxed">
-                AquaGuide was founded in 2026 by a frustrated beginner fish and aqua hobbyist who grew tired of the sheer volume of conflicting and confusing misinformation online. Too often, beginners are sold mismatched fish and tiny bowls, leading to failed tanks and unhappy hobbyists.
+                AquaVersa was founded in 2026 by a frustrated beginner fish and aqua hobbyist who grew tired of the sheer volume of conflicting and confusing misinformation online. Too often, beginners are sold mismatched fish and tiny bowls, leading to failed tanks and unhappy hobbyists.
               </p>
               <p className="text-muted-foreground leading-relaxed">
                 We set out to build an educational platform that feels premium, looks stunning, and teaches the core fundamentals—nitrogen cycle, parameters, and plant compatibility—in a simple, visually engaging way.
