@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
   Waves, 
   Mail, 
@@ -9,7 +9,9 @@ import {
   MessageSquare, 
   ArrowRight,
   Sparkles,
-  CheckCircle2
+  CheckCircle2,
+  Settings,
+  Info
 } from "lucide-react";
 
 function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -31,37 +33,118 @@ function TwitterIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 
 export default function ContactPage() {
-  // Form state
+  // Reporter details
+  const [reporterName, setReporterName] = useState("");
+  const [reporterEmail, setReporterEmail] = useState("");
+  
+  // Form fields
   const [itemName, setItemName] = useState("");
   const [incorrectDetail, setIncorrectDetail] = useState("");
   const [correction, setCorrection] = useState("");
   const [sources, setSources] = useState("");
+  
+  // Settings & Status
+  const [sheetUrl, setSheetUrl] = useState("");
+  const [showSettings, setShowSettings] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+  
   const [isCopied, setIsCopied] = useState(false);
+  const [isAppsScriptCopied, setIsAppsScriptCopied] = useState(false);
 
   const emailTo = "pakhreroshan@gmail.com";
 
-  // Build body template
-  const mailBody = `AquaVersa Inaccuracy Report
------------------------------------------
-Item / Species Name:
-${itemName || "[Enter Name, e.g. Neon Tetra]"}
+  // Load spreadsheet URL from local storage
+  useEffect(() => {
+    const savedUrl = localStorage.getItem("aquaversa_sheet_url") || "";
+    setSheetUrl(savedUrl);
+  }, []);
 
-Incorrect Detail Displayed:
-${incorrectDetail || "[What is currently wrong on the page?]"}
-
-Suggested Correction:
-${correction || "[What is the correct information?]"}
-
-Scientific Sources / References:
-${sources || "[Optional links or references]"}
-`;
-
-  const mailtoUrl = `mailto:${emailTo}?subject=${encodeURIComponent("AquaVersa Inaccuracy Report")}&body=${encodeURIComponent(mailBody)}`;
+  const handleSaveSheetUrl = (url: string) => {
+    setSheetUrl(url);
+    localStorage.setItem("aquaversa_sheet_url", url);
+  };
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(emailTo);
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), 2000);
+  };
+
+  const appsScriptCode = `function doPost(e) {
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var data = JSON.parse(e.postData.contents);
+    sheet.appendRow([
+      new Date(), 
+      data.name, 
+      data.email, 
+      data.itemName, 
+      data.incorrectDetail, 
+      data.correction, 
+      data.sources
+    ]);
+    return ContentService.createTextOutput(JSON.stringify({ success: true }))
+      .setMimeType(ContentService.MimeType.JSON)
+      .setHeader('Access-Control-Allow-Origin', '*');
+  } catch (err) {
+    return ContentService.createTextOutput(JSON.stringify({ error: err.toString() }))
+      .setMimeType(ContentService.MimeType.JSON)
+      .setHeader('Access-Control-Allow-Origin', '*');
+  }
+}`;
+
+  const handleCopyAppsScript = () => {
+    navigator.clipboard.writeText(appsScriptCode);
+    setIsAppsScriptCopied(true);
+    setTimeout(() => setIsAppsScriptCopied(false), 2000);
+  };
+
+  const handleSubmitReport = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/report", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: reporterName,
+          email: reporterEmail,
+          itemName,
+          incorrectDetail,
+          correction,
+          sources,
+          sheetUrl
+        }),
+      });
+
+      const resData = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(resData.error || "Failed to log inaccuracy report. Please verify sheets configuration.");
+      }
+
+      setSubmitStatus("success");
+      // Reset details fields
+      setItemName("");
+      setIncorrectDetail("");
+      setCorrection("");
+      setSources("");
+    } catch (err: any) {
+      console.error("Report submit error:", err);
+      setErrorMessage(err.message || "An unexpected error occurred during submission.");
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -218,28 +301,144 @@ ${sources || "[Optional links or references]"}
             </motion.div>
           </div>
 
-          {/* RIGHT: Inaccuracy Report Interactive Draft Form */}
+          {/* RIGHT: Inaccuracy Report Interactive Google Sheets Form */}
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="lg:col-span-7 bg-slate-900/30 border border-slate-800/80 backdrop-blur-sm p-6 md:p-8 rounded-3xl shadow-xl flex flex-col justify-between"
           >
-            <div className="space-y-6">
+            <form onSubmit={handleSubmitReport} className="space-y-6">
               
               {/* Header */}
-              <div className="flex items-center gap-2.5 text-cyan-400 font-bold uppercase tracking-wider text-xs border-b border-slate-850 pb-4">
-                <ShieldAlert className="w-4 h-4 text-cyan-400 animate-pulse" />
-                <span>Report Database Inaccuracy</span>
+              <div className="flex items-center justify-between border-b border-slate-850 pb-4">
+                <div className="flex items-center gap-2.5 text-cyan-400 font-bold uppercase tracking-wider text-xs">
+                  <ShieldAlert className="w-4 h-4 text-cyan-400" />
+                  <span>Log Database Inaccuracy</span>
+                </div>
+                
+                {/* Configuration Gear Toggle */}
+                <button
+                  type="button"
+                  onClick={() => setShowSettings(!showSettings)}
+                  className={`p-1.5 rounded-lg border transition-all duration-300 flex items-center justify-center gap-1 text-[11px] font-bold ${
+                    showSettings 
+                      ? "bg-cyan-500/10 border-cyan-500/30 text-cyan-400" 
+                      : "bg-slate-950 border-slate-800 text-slate-400 hover:border-slate-700"
+                  }`}
+                >
+                  <Settings className={`w-3.5 h-3.5 ${showSettings ? "rotate-45" : ""}`} />
+                  Sheets Config
+                </button>
               </div>
 
-              <p className="text-slate-400 text-sm font-light leading-relaxed">
-                Aquarium keeping parameters can evolve. If you notice incorrect compatibility listings, outdated hardware requirements, or biology typos, use this dynamic form to auto-draft a report.
-              </p>
+              {/* Status Alert Banners */}
+              {submitStatus === "success" && (
+                <div className="p-4 rounded-xl bg-emerald-950/40 border border-emerald-800/40 text-emerald-400 text-xs flex items-start gap-3">
+                  <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="block font-semibold mb-1">Log Recorded Successfully!</strong>
+                    The inaccuracy data has been appended directly to your configured Google Spreadsheet. Thank you for keeping our data clean.
+                  </div>
+                </div>
+              )}
+
+              {submitStatus === "error" && (
+                <div className="p-4 rounded-xl bg-rose-950/40 border border-rose-800/40 text-rose-400 text-xs flex items-start gap-3">
+                  <Info className="w-4 h-4 shrink-0 mt-0.5 text-rose-400" />
+                  <div>
+                    <strong className="block font-semibold mb-1">Failed to Record Log</strong>
+                    {errorMessage}
+                  </div>
+                </div>
+              )}
+
+              {/* Toggleable Settings Panel */}
+              <AnimatePresence>
+                {showSettings && (
+                  <motion.div 
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="overflow-hidden border border-slate-800 bg-slate-950/80 p-5 rounded-2xl space-y-4 text-xs leading-relaxed"
+                  >
+                    <div className="flex items-center gap-2 text-cyan-400 font-bold uppercase tracking-wider text-[10px]">
+                      <Info className="w-3.5 h-3.5" />
+                      <span>Spreadsheet Web App Setup Guide</span>
+                    </div>
+                    
+                    <ol className="list-decimal list-inside space-y-2 text-slate-400 font-light">
+                      <li>Create a new Google Sheet.</li>
+                      <li>Go to <strong>Extensions &gt; Apps Script</strong>.</li>
+                      <li>Click copy below and paste the code into the script editor:</li>
+                    </ol>
+
+                    <div className="relative rounded-lg bg-slate-900 border border-slate-800 p-3 font-mono text-[10px] text-slate-300">
+                      <pre className="overflow-x-auto max-h-36 font-light">{appsScriptCode}</pre>
+                      <button
+                        type="button"
+                        onClick={handleCopyAppsScript}
+                        className="absolute top-2 right-2 px-2 py-1 bg-slate-950 hover:bg-slate-850 rounded border border-slate-800 text-[9px] font-semibold transition-colors"
+                      >
+                        {isAppsScriptCopied ? "Copied!" : "Copy Code"}
+                      </button>
+                    </div>
+
+                    <ol start={4} className="list-decimal list-inside space-y-2 text-slate-400 font-light">
+                      <li>Click <strong>Deploy &gt; New Deployment</strong>.</li>
+                      <li>Select type <strong>Web App</strong>. Set Who has access to <strong>"Anyone"</strong>.</li>
+                      <li>Deploy, authorize permissions, and paste the <strong>Web App URL</strong> below:</li>
+                    </ol>
+
+                    <div className="space-y-1.5 pt-2">
+                      <label className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                        Google Apps Script Web App URL
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="https://script.google.com/macros/s/.../exec"
+                        value={sheetUrl}
+                        onChange={(e) => handleSaveSheetUrl(e.target.value)}
+                        className="w-full px-3 py-2 rounded-lg border border-slate-850 bg-slate-900 text-slate-200 text-xs focus:outline-none focus:border-cyan-500 placeholder-slate-700"
+                      />
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
               {/* Form Input fields */}
               <div className="space-y-4 pt-2">
                 
+                {/* Reporter Info Row */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                      Your Name
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. John Doe"
+                      value={reporterName}
+                      onChange={(e) => setReporterName(e.target.value)}
+                      className="w-full px-4 py-3 rounded-xl border border-slate-800/80 bg-slate-955/60 focus:bg-slate-955 text-slate-100 text-sm transition-all focus:outline-none focus:border-cyan-500 placeholder-slate-650"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                      Your Email Address
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="e.g. johndoe@gmail.com"
+                      value={reporterEmail}
+                      onChange={(e) => setReporterEmail(e.target.value)}
+                      className="w-full px-4 py-3 rounded-xl border border-slate-800/80 bg-slate-955/60 focus:bg-slate-955 text-slate-100 text-sm transition-all focus:outline-none focus:border-cyan-500 placeholder-slate-650"
+                    />
+                  </div>
+                </div>
+
                 {/* Species / Item Name */}
                 <div className="space-y-1.5">
                   <label className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
@@ -247,10 +446,11 @@ ${sources || "[Optional links or references]"}
                   </label>
                   <input
                     type="text"
+                    required
                     placeholder="e.g. Neon Tetra, Java Fern, Canister Filter"
                     value={itemName}
                     onChange={(e) => setItemName(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-800/80 bg-slate-950/60 focus:bg-slate-950 text-slate-100 text-sm transition-all focus:outline-none focus:border-cyan-500 placeholder-slate-600"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-800/80 bg-slate-955/60 focus:bg-slate-955 text-slate-100 text-sm transition-all focus:outline-none focus:border-cyan-500 placeholder-slate-650"
                   />
                 </div>
 
@@ -261,10 +461,11 @@ ${sources || "[Optional links or references]"}
                   </label>
                   <textarea
                     rows={2}
+                    required
                     placeholder="e.g. Minimum tank size says 5 Gallons, should be 10 Gallons."
                     value={incorrectDetail}
                     onChange={(e) => setIncorrectDetail(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-800/80 bg-slate-950/60 focus:bg-slate-950 text-slate-100 text-sm transition-all focus:outline-none focus:border-cyan-500 placeholder-slate-600 resize-none"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-800/80 bg-slate-955/60 focus:bg-slate-955 text-slate-100 text-sm transition-all focus:outline-none focus:border-cyan-500 placeholder-slate-650 resize-none"
                   />
                 </div>
 
@@ -275,10 +476,11 @@ ${sources || "[Optional links or references]"}
                   </label>
                   <textarea
                     rows={2}
+                    required
                     placeholder="e.g. Change to 10 Gallons because Tetras need active swimming space."
                     value={correction}
                     onChange={(e) => setCorrection(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-800/80 bg-slate-950/60 focus:bg-slate-950 text-slate-100 text-sm transition-all focus:outline-none focus:border-cyan-500 placeholder-slate-600 resize-none"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-800/80 bg-slate-955/60 focus:bg-slate-955 text-slate-100 text-sm transition-all focus:outline-none focus:border-cyan-500 placeholder-slate-650 resize-none"
                   />
                 </div>
 
@@ -292,27 +494,33 @@ ${sources || "[Optional links or references]"}
                     placeholder="e.g. Scientific paper link or experienced breeder guide"
                     value={sources}
                     onChange={(e) => setSources(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-800/80 bg-slate-950/60 focus:bg-slate-950 text-slate-100 text-sm transition-all focus:outline-none focus:border-cyan-500 placeholder-slate-600"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-800/80 bg-slate-955/60 focus:bg-slate-955 text-slate-100 text-sm transition-all focus:outline-none focus:border-cyan-500 placeholder-slate-650"
                   />
                 </div>
               </div>
 
-            </div>
+              {/* Submit Buttons */}
+              <div className="pt-6 mt-6 border-t border-slate-850">
+                <button 
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full py-4 bg-cyan-500 hover:bg-cyan-400 disabled:bg-slate-800 disabled:text-slate-600 text-slate-950 font-bold rounded-xl transition-all duration-300 shadow-lg shadow-cyan-500/10 hover:shadow-cyan-500/20 text-sm flex items-center justify-center gap-2 group cursor-pointer"
+                >
+                  {isSubmitting ? (
+                    <span>Submitting to Spreadsheet...</span>
+                  ) : (
+                    <>
+                      <span>Submit Inaccuracy Log</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                    </>
+                  )}
+                </button>
+                <p className="text-[10px] text-slate-500 text-center mt-3 font-light">
+                  Forms submit directly to your Google Spreadsheet via proxy. Click the <strong>Sheets Config</strong> button to set up.
+                </p>
+              </div>
 
-            {/* Form Actions */}
-            <div className="pt-8 mt-6 border-t border-slate-850">
-              <a 
-                href={mailtoUrl}
-                className="inline-flex w-full py-4 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-xl transition-all duration-300 shadow-lg shadow-cyan-500/10 hover:shadow-cyan-500/20 text-sm justify-center items-center gap-2 group"
-              >
-                <Mail className="w-4 h-4" />
-                <span>Launch Email Draft Report</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </a>
-              <p className="text-[10px] text-slate-500 text-center mt-3 font-light">
-                Clicking launches your email client with a pre-formatted template using the values above.
-              </p>
-            </div>
+            </form>
           </motion.div>
 
         </div>
