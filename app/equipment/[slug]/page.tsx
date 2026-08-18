@@ -15,7 +15,7 @@ export async function generateMetadata({
   
   if (!eq) {
     return {
-      title: "Aquarium Equipment Guide - AquaGuide",
+      title: "Aquarium Equipment Guide - AquaVersa",
       description: "Learn how to choose the right aquarium equipment.",
     };
   }

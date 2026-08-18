@@ -15,7 +15,7 @@ export async function generateMetadata({
   
   if (!plant) {
     return {
-      title: "Aquatic Plant Guide - AquaGuide",
+      title: "Aquatic Plant Guide - AquaVersa",
       description: "Learn how to grow live aquatic plants.",
     };
   }

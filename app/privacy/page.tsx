@@ -10,7 +10,7 @@ export default function PrivacyPage() {
           </div>
           <h1 className="text-4xl md:text-5xl font-poppins font-bold mb-4">Privacy Policy</h1>
           <p className="text-lg text-slate-300">
-            How we handle and protect your data at AquaGuide.
+            How we handle and protect your data at AquaVersa.
           </p>
         </div>
       </section>
@@ -19,7 +19,7 @@ export default function PrivacyPage() {
         <div className="container mx-auto px-4 max-w-3xl prose dark:prose-invert">
           <h2>1. Information We Collect</h2>
           <p>
-            At AquaGuide, we prioritize your privacy. We only collect the minimal amount of data necessary to provide you with the best aquarium guidance. This may include your IP address for analytics purposes and any information you voluntarily submit through our contact forms.
+            At AquaVersa, we prioritize your privacy. We only collect the minimal amount of data necessary to provide you with the best aquarium guidance. This may include your IP address for analytics purposes and any information you voluntarily submit through our contact forms.
           </p>
           
           <h2>2. How We Use Your Data</h2>

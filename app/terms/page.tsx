@@ -10,7 +10,7 @@ export default function TermsPage() {
           </div>
           <h1 className="text-4xl md:text-5xl font-poppins font-bold mb-4">Terms of Service</h1>
           <p className="text-lg text-slate-300">
-            The rules and guidelines for using the AquaGuide platform.
+            The rules and guidelines for using the AquaVersa platform.
           </p>
         </div>
       </section>
@@ -19,12 +19,12 @@ export default function TermsPage() {
         <div className="container mx-auto px-4 max-w-3xl prose dark:prose-invert">
           <h2>1. Acceptance of Terms</h2>
           <p>
-            By accessing and using AquaGuide, you accept and agree to be bound by the terms and provision of this agreement.
+            By accessing and using AquaVersa, you accept and agree to be bound by the terms and provision of this agreement.
           </p>
           
           <h2>2. Educational Purposes Only</h2>
           <p>
-            All information provided on AquaGuide is for educational and informational purposes only. While we strive to provide accurate, up-to-date guidance on aquarium keeping, variables such as local water chemistry and individual fish temperament mean we cannot guarantee specific outcomes.
+            All information provided on AquaVersa is for educational and informational purposes only. While we strive to provide accurate, up-to-date guidance on aquarium keeping, variables such as local water chemistry and individual fish temperament mean we cannot guarantee specific outcomes.
           </p>
 
           <h2>3. User Conduct</h2>

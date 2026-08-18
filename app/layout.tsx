@@ -10,7 +10,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "AquaGuide - Build an Aquarium That Thrives",
+  title: "AquaVersa - Build an Aquarium That Thrives",
   description: "Discover the right fish, equipment, and plants to create a healthy aquarium.",
 };
 

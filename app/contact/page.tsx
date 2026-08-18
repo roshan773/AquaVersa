@@ -35,21 +35,21 @@ export default function ContactPage() {
                 <h2 className="text-xl font-bold text-cyan-400 font-poppins">Join Our Community</h2>
                 <p className="text-slate-300 text-sm leading-relaxed">
                   Discuss tank builds and parameters on Discord: <br/>
-                  <a href="https://discord.gg/aquaguide" className="underline hover:text-cyan-300 font-bold block mt-1">discord.gg/aquaguide</a>
+                  <a href="https://discord.gg/aquaversa" className="underline hover:text-cyan-300 font-bold block mt-1">discord.gg/aquaversa</a>
                 </p>
               </div>
 
               <div className="space-y-2 border-t border-slate-800 pt-6">
                 <h2 className="text-xl font-bold text-cyan-400 font-poppins">Follow Us</h2>
                 <p className="text-slate-300 text-sm leading-relaxed">
-                  Stay updated via <a href="https://instagram.com/aquaguide" className="underline hover:text-cyan-300">Instagram</a> and <a href="https://twitter.com/aquaguide" className="underline hover:text-cyan-300">Twitter</a> for daily care tips.
+                  Stay updated via <a href="https://instagram.com/aquaversa" className="underline hover:text-cyan-300">Instagram</a> and <a href="https://twitter.com/aquaversa" className="underline hover:text-cyan-300">Twitter</a> for daily care tips.
                 </p>
               </div>
             </div>
 
             <div className="space-y-2 border-t border-slate-800 pt-6 text-xs text-slate-500">
               <p>
-                AquaGuide Team<br/>
+                AquaVersa Team<br/>
                 123 Ocean Drive<br/>
                 Seaside, CA 94000<br/>
                 USA
@@ -74,7 +74,7 @@ export default function ContactPage() {
                 </p>
                 <div className="text-center py-2 bg-slate-900 border border-slate-800 rounded-xl">
                   <a 
-                    href="mailto:pakhreroshan@gmail.com?subject=AquaGuide Inaccuracy Report" 
+                    href="mailto:pakhreroshan@gmail.com?subject=AquaVersa Inaccuracy Report" 
                     className="font-poppins font-bold text-lg text-cyan-400 hover:text-cyan-300 hover:underline transition-all block"
                   >
                     pakhreroshan@gmail.com
@@ -93,7 +93,7 @@ export default function ContactPage() {
               </div>
 
               <a 
-                href="mailto:pakhreroshan@gmail.com?subject=AquaGuide Inaccuracy Report"
+                href="mailto:pakhreroshan@gmail.com?subject=AquaVersa Inaccuracy Report"
                 className="inline-flex w-full py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-xl transition-all shadow-md shadow-cyan-500/10 text-sm justify-center items-center gap-2"
               >
                 <Mail className="w-4 h-4" /> Email Inaccuracy Report

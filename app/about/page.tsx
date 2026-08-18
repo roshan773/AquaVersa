@@ -16,7 +16,7 @@ export default function AboutUsPage() {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-cyan-500/20 text-cyan-400 mb-6 border border-cyan-500/30">
             <Waves className="w-8 h-8" />
           </div>
-          <h1 className="text-4xl md:text-6xl font-poppins font-bold mb-6">Our Mission: AquaGuide</h1>
+          <h1 className="text-4xl md:text-6xl font-poppins font-bold mb-6">Our Mission: AquaVersa</h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
             Helping hobbyists start and maintain healthy, thriving aquatic ecosystems through accurate, science-based, and easy-to-understand education.
           </p>

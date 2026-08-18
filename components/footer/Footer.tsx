@@ -12,7 +12,7 @@ export default function Footer() {
               <div className="bg-cyan-500 p-2 rounded-xl group-hover:bg-cyan-400 transition-colors shadow-lg shadow-cyan-500/20">
                 <Waves className="w-6 h-6 text-slate-900" />
               </div>
-              <span className="font-poppins font-bold text-2xl text-white tracking-tight">AquaGuide</span>
+              <span className="font-poppins font-bold text-2xl text-white tracking-tight">AquaVersa</span>
             </Link>
             <p className="text-sm text-slate-400 mb-8 max-w-sm leading-relaxed">
               The premier destination for aquarium enthusiasts. We simplify aquatic science so you can build beautiful, thriving underwater ecosystems with confidence.
@@ -52,13 +52,13 @@ export default function Footer() {
 
         <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-xs text-slate-500 max-w-3xl text-center md:text-left leading-relaxed">
-            <strong className="text-slate-400">Disclaimer:</strong> AquaGuide provides educational information for aquarium hobbyists.
+            <strong className="text-slate-400">Disclaimer:</strong> AquaVersa provides educational information for aquarium hobbyists.
             Individual fish temperaments, local source water chemistry, and species requirements can vary significantly.
             Always verify specific requirements before making stocking, hardware, or treatment decisions.
             In the event of an animal health crisis, disease outbreak, or aquatic veterinary emergency, professional assistance should be sought immediately.
           </p>
           <p className="text-xs font-semibold text-slate-600 shrink-0">
-            © {new Date().getFullYear()} AquaGuide. All rights reserved.
+            © {new Date().getFullYear()} AquaVersa. All rights reserved.
           </p>
         </div>
       </div>

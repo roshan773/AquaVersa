@@ -67,7 +67,7 @@ function SearchResults() {
                 {normalizedQuery ? (
                   <>Showing {totalResults} matches for <span className="text-cyan-600 dark:text-cyan-400 font-semibold">"{query}"</span></>
                 ) : (
-                  "Explore AquaGuide's library database"
+                  "Explore AquaVersa's library database"
                 )}
               </p>
             </div>

@@ -15,7 +15,7 @@ export async function generateMetadata({
   
   if (!fish) {
     return {
-      title: "Fish Care Guide - AquaGuide",
+      title: "Fish Care Guide - AquaVersa",
       description: "Learn how to care for tropical fish.",
     };
   }

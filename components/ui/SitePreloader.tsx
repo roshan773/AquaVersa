@@ -51,7 +51,7 @@ export default function SitePreloader() {
             <Waves className="w-6 h-6 text-cyan-400" />
           </div>
           <span className="font-poppins font-bold text-2xl tracking-tight text-white">
-            AquaGuide
+            AquaVersa
           </span>
         </div>
       </div>
@@ -82,7 +82,7 @@ export default function SitePreloader() {
                 <Waves className="w-6 h-6 text-cyan-400" />
               </div>
               <span className="font-poppins font-bold text-2xl tracking-tight text-white">
-                AquaGuide
+                AquaVersa
               </span>
             </motion.div>
 
