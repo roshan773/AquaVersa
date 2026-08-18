@@ -12,8 +12,12 @@ import {
   BookOpen, 
   Compass, 
   ArrowRight,
-  TrendingUp
+  TrendingUp,
+  Fish,
+  Leaf,
+  Settings
 } from "lucide-react";
+import { useStats } from "@/components/home/StatsContext";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -29,35 +33,15 @@ const staggerContainer = {
   }
 };
 
-const stats = [
-  { label: "Species Cataloged", value: "150+", icon: FishIcon },
-  { label: "Community Members", value: "10K+", icon: UsersIcon },
-  { label: "Stocking Profiles Check", value: "99.8%", icon: TrendingUp },
-  { label: "Science-Backed Guides", value: "100%", icon: BookOpen }
-];
-
-function FishIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <path d="M18 8.5C18 5.5 15.5 3 12.5 3S7 5.5 7 8.5c0 1.5.5 2.5 1.5 3.5S10 14 10 16c0 1-.5 1.5-1.5 2C6.5 19 6 21 6 21h12s-.5-2-2.5-3c-1-.5-1.5-1-1.5-2 0-2 1.5-3 2.5-4s1.5-2 1.5-3.5Z" />
-      <path d="M12 13h.01" />
-      <path d="M12 10h.01" />
-    </svg>
-  );
-}
-
-function UsersIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-      <circle cx="9" cy="7" r="4" />
-      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-    </svg>
-  );
-}
-
 export default function AboutUsPage() {
+  const { fish, plants, equipment, careTopics } = useStats();
+
+  const stats = [
+    { label: "Fish Species", value: `${fish}+`, icon: Fish },
+    { label: "Live Plants", value: `${plants}+`, icon: Leaf },
+    { label: "Gear Profiles", value: `${equipment}+`, icon: Settings },
+    { label: "Total Guides", value: `${careTopics}+`, icon: BookOpen }
+  ];
   return (
     <div className="w-full bg-[#020617] text-slate-100 min-h-screen relative overflow-hidden pb-24">
       {/* Background ambient lighting */}
