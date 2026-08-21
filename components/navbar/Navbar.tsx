@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Droplets, Search, Menu, X, Waves, Anchor } from "lucide-react";
+import { Droplets, Search, Menu, X, Waves, Anchor, Leaf as LeafIcon, Settings as SettingsIcon } from "lucide-react";
 import Image from "next/image";
 import { fishData } from "@/data/fish";
 
