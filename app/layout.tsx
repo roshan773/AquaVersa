@@ -10,8 +10,37 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "AquaVersa - Build an Aquarium That Thrives",
-  description: "Discover the right fish, equipment, and plants to create a healthy aquarium.",
+  title: "AquaVersa - Build an Aquarium That Thrives | Interactive Aquarium Planner",
+  description: "Evolve your hobby with AquaVersa. Plan stocking compatible fish, calculate equipment, design custom planted setups, analyze water chemistry parameters, and unlock progress achievements.",
+  keywords: [
+    "AquaVersa",
+    "aquaversa",
+    "aquaVersa",
+    "AquaVersa Aquarium",
+    "aquaversa.vercel.app",
+    "Aquarium Planner",
+    "Fish Compatibility Builder",
+    "Stocking Calculator",
+    "Aquascape Canvas Builder",
+    "Water parameter analyzer"
+  ],
+  authors: [{ name: "AquaVersa Team" }],
+  openGraph: {
+    title: "AquaVersa - Build an Aquarium That Thrives",
+    description: "Discover compatible fish, plants, and equipment specs. Plan your setups visually using the Interactive Aquarium Toolkit.",
+    url: "https://aquaversa.vercel.app",
+    siteName: "AquaVersa",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AquaVersa - Interactive Aquarium Toolkit",
+    description: "Plan your fish, plants, equipment, and water parameter checks on a frontend-only platform.",
+  },
+  alternates: {
+    canonical: "https://aquaversa.vercel.app",
+  }
 };
 
 import Navbar from "@/components/navbar/Navbar";
@@ -43,6 +72,24 @@ export default function RootLayout({
                 });
               }
             `,
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "AquaVersa",
+              "alternateName": ["aquaVersa", "Aqua Versa"],
+              "url": "https://aquaversa.vercel.app/",
+              "description": "Interactive toolkit for aquarists including compatibility check builders, volume calculators, and water parameters diagnostics.",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://aquaversa.vercel.app/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            })
           }}
         />
       </head>
