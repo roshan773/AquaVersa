@@ -1,6 +1,7 @@
 'use client';
-import { useState } from 'react';
-import { Check, ClipboardList, Droplets, Waves, Info } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Check, ClipboardList, Droplets, Waves, Info, RotateCcw } from 'lucide-react';
+import { storage, KEYS, unlockAchievement } from '@/lib/storage';
 
 interface ChecklistItem {
   name: string;
@@ -40,22 +41,59 @@ const saltwaterList: ChecklistItem[] = [
   { name: "Reef-Capable LED Light", type: "dependent", desc: "Mandatory to support photosynthetic corals, optional for fish-only tanks." }
 ];
 
+interface ChecklistState {
+  fresh: string[];
+  salt: string[];
+}
+
 export default function ChecklistSection() {
   const [activeTab, setActiveTab] = useState<'fresh' | 'salt'>('fresh');
-  const [checkedItems, setCheckedItems] = useState<number[]>([]);
+  const [checkedState, setCheckedState] = useState<ChecklistState>({ fresh: [], salt: [] });
+  const [isMounted, setIsMounted] = useState(false);
 
-  const toggleCheck = (index: number) => {
-    setCheckedItems(prev => 
-      prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
-    );
-  };
+  // Load from localStorage on mount
+  useEffect(() => {
+    setCheckedState(storage.get<ChecklistState>(KEYS.CHECKLIST, { fresh: [], salt: [] }));
+    setIsMounted(true);
+  }, []);
 
   const list = activeTab === 'fresh' ? freshwaterList : saltwaterList;
+  const currentChecked = activeTab === 'fresh' ? checkedState.fresh : checkedState.salt;
 
-  const handleTabSwitch = (tab: 'fresh' | 'salt') => {
-    setActiveTab(tab);
-    setCheckedItems([]);
+  const toggleCheck = (name: string) => {
+    const isChecked = currentChecked.includes(name);
+    let updatedList: string[];
+    
+    if (isChecked) {
+      updatedList = currentChecked.filter(item => item !== name);
+    } else {
+      updatedList = [...currentChecked, name];
+    }
+
+    const newState = {
+      ...checkedState,
+      [activeTab === 'fresh' ? 'fresh' : 'salt']: updatedList
+    };
+
+    setCheckedState(newState);
+    storage.set(KEYS.CHECKLIST, newState);
+
+    // Check achievement unlock
+    if (updatedList.length === list.length) {
+      unlockAchievement('first-setup');
+    }
   };
+
+  const handleReset = () => {
+    const newState = {
+      ...checkedState,
+      [activeTab === 'fresh' ? 'fresh' : 'salt']: []
+    };
+    setCheckedState(newState);
+    storage.set(KEYS.CHECKLIST, newState);
+  };
+
+  const percent = list.length > 0 ? Math.round((currentChecked.length / list.length) * 100) : 0;
 
   const getBadge = (type: ChecklistItem['type']) => {
     switch (type) {
@@ -67,6 +105,16 @@ export default function ChecklistSection() {
         return <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 shrink-0">Optional</span>;
     }
   };
+
+  if (!isMounted) {
+    return (
+      <section className="py-24 bg-background border-y border-border">
+        <div className="container mx-auto px-4 max-w-5xl text-center">
+          <p className="text-muted-foreground">Loading checklist...</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-24 bg-background border-y border-border">
@@ -87,7 +135,7 @@ export default function ChecklistSection() {
           {/* Tabs */}
           <div className="flex border-b border-border">
             <button 
-              onClick={() => handleTabSwitch('fresh')}
+              onClick={() => setActiveTab('fresh')}
               className={`flex-1 flex items-center justify-center gap-2 py-5 text-lg font-bold transition-colors ${
                 activeTab === 'fresh' 
                   ? 'bg-cyan-500/10 text-cyan-700 dark:text-cyan-400 border-b-2 border-cyan-500' 
@@ -97,7 +145,7 @@ export default function ChecklistSection() {
               <Droplets className="w-5 h-5" /> Freshwater Setup
             </button>
             <button 
-              onClick={() => handleTabSwitch('salt')}
+              onClick={() => setActiveTab('salt')}
               className={`flex-1 flex items-center justify-center gap-2 py-5 text-lg font-bold transition-colors ${
                 activeTab === 'salt' 
                   ? 'bg-blue-500/10 text-blue-700 dark:text-blue-400 border-b-2 border-blue-500' 
@@ -110,55 +158,81 @@ export default function ChecklistSection() {
 
           {/* List */}
           <div className="p-6 md:p-10">
-            <div className="mb-8 flex flex-col sm:flex-row justify-between sm:items-center gap-4 text-sm font-semibold text-muted-foreground border-b border-border/50 pb-4">
-              <span>{checkedItems.length} of {list.length} items checked off</span>
-              {checkedItems.length === list.length ? (
-                <span className="text-emerald-500 animate-pulse flex items-center gap-1">
-                  <Check className="w-4 h-4 font-bold" /> You are fully prepared to start!
+            {/* Progress Bar Container */}
+            <div className="mb-8">
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-sm font-semibold text-muted-foreground">
+                  Progress: {currentChecked.length} of {list.length} completed ({percent}%)
                 </span>
-              ) : (
-                <span className="text-xs font-normal text-slate-400 flex items-center gap-1.5 bg-muted px-3 py-1.5 rounded-lg border border-border">
-                  <Info className="w-4 h-4 text-cyan-400 shrink-0" /> Optional & Dependent items are not mandatory for all aquariums.
-                </span>
-              )}
+                {currentChecked.length > 0 && (
+                  <button 
+                    onClick={handleReset}
+                    className="flex items-center gap-1 text-xs text-muted-foreground hover:text-destructive transition-colors font-medium cursor-pointer"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" /> Reset active checklist
+                  </button>
+                )}
+              </div>
+              
+              <div className="w-full bg-slate-200 dark:bg-slate-800 h-3 rounded-full overflow-hidden shadow-inner">
+                <div 
+                  className="bg-gradient-to-r from-cyan-500 to-emerald-500 h-full transition-all duration-500 ease-out" 
+                  style={{ width: `${percent}%` }}
+                ></div>
+              </div>
+
+              <div className="flex items-center justify-between text-xs text-muted-foreground mt-2">
+                {currentChecked.length === list.length ? (
+                  <span className="text-emerald-500 font-bold animate-pulse flex items-center gap-1">
+                    <Check className="w-4 h-4" /> You are fully prepared to start! (Achievement Unlocked)
+                  </span>
+                ) : (
+                  <span className="text-slate-400 flex items-center gap-1.5 bg-muted px-2.5 py-1 rounded-lg border border-border">
+                    <Info className="w-3.5 h-3.5 text-cyan-400 shrink-0" /> Optional & Dependent items are not mandatory for all setups.
+                  </span>
+                )}
+              </div>
             </div>
             
             <div className="grid md:grid-cols-2 gap-6">
-              {list.map((item, idx) => (
-                <div
-                  key={idx}
-                  onClick={() => toggleCheck(idx)}
-                  className={`flex items-start text-left gap-4 p-5 rounded-2xl border transition-all cursor-pointer select-none group h-full ${
-                    checkedItems.includes(idx)
-                      ? 'bg-emerald-500/5 dark:bg-emerald-500/10 border-emerald-500/40 shadow-sm'
-                      : 'bg-background border-border hover:border-cyan-500/40 hover:shadow-sm'
-                  }`}
-                >
-                  <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors mt-0.5 ${
-                    checkedItems.includes(idx)
-                      ? 'bg-emerald-500 border-emerald-500 text-white'
-                      : 'border-muted-foreground/30 group-hover:border-cyan-500'
-                  }`}>
-                    {checkedItems.includes(idx) && <Check className="w-4 h-4" />}
-                  </div>
-                  
-                  <div className="space-y-1.5 min-w-0 flex-1">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className={`font-bold transition-all text-base leading-tight ${
-                        checkedItems.includes(idx) ? 'text-muted-foreground line-through' : 'text-foreground'
-                      }`}>
-                        {item.name}
-                      </span>
-                      {getBadge(item.type)}
-                    </div>
-                    <p className={`text-xs leading-relaxed transition-all ${
-                      checkedItems.includes(idx) ? 'text-muted-foreground/60 line-through' : 'text-muted-foreground'
+              {list.map((item, idx) => {
+                const isItemChecked = currentChecked.includes(item.name);
+                return (
+                  <div
+                    key={idx}
+                    onClick={() => toggleCheck(item.name)}
+                    className={`flex items-start text-left gap-4 p-5 rounded-2xl border transition-all cursor-pointer select-none group h-full ${
+                      isItemChecked
+                        ? 'bg-emerald-500/5 dark:bg-emerald-500/10 border-emerald-500/40 shadow-sm'
+                        : 'bg-background border-border hover:border-cyan-500/40 hover:shadow-sm'
+                    }`}
+                  >
+                    <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors mt-0.5 ${
+                      isItemChecked
+                        ? 'bg-emerald-500 border-emerald-500 text-white'
+                        : 'border-muted-foreground/30 group-hover:border-cyan-500'
                     }`}>
-                      {item.desc}
-                    </p>
+                      {isItemChecked && <Check className="w-4 h-4" />}
+                    </div>
+                    
+                    <div className="space-y-1.5 min-w-0 flex-1">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className={`font-bold transition-all text-base leading-tight ${
+                          isItemChecked ? 'text-muted-foreground line-through' : 'text-foreground'
+                        }`}>
+                          {item.name}
+                        </span>
+                        {getBadge(item.type)}
+                      </div>
+                      <p className={`text-xs leading-relaxed transition-all ${
+                        isItemChecked ? 'text-muted-foreground/60 line-through' : 'text-muted-foreground'
+                      }`}>
+                        {item.desc}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
@@ -166,3 +240,4 @@ export default function ChecklistSection() {
     </section>
   );
 }
+

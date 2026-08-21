@@ -1,13 +1,49 @@
-import { CalendarDays, Droplets, Scissors, FlaskConical, Filter } from 'lucide-react';
+'use client';
+
+import { useState, useEffect } from 'react';
+import { CalendarDays, Droplets, Scissors, FlaskConical, Filter, Check, RotateCcw } from 'lucide-react';
+import { storage, KEYS, unlockAchievement } from '@/lib/storage';
+
+interface MaintenanceTask {
+  name: string;
+  icon: React.ReactNode;
+}
+
+interface PeriodSchedule {
+  period: 'Daily' | 'Weekly' | 'Monthly';
+  tasks: MaintenanceTask[];
+}
+
+interface MaintenanceState {
+  Daily: string[];
+  Weekly: string[];
+  Monthly: string[];
+}
 
 export default function MaintenanceSection() {
-  const schedule = [
+  const [checkedState, setCheckedState] = useState<MaintenanceState>({
+    Daily: [],
+    Weekly: [],
+    Monthly: []
+  });
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setCheckedState(storage.get<MaintenanceState>(KEYS.MAINTENANCE, {
+      Daily: [],
+      Weekly: [],
+      Monthly: []
+    }));
+    setIsMounted(true);
+  }, []);
+
+  const schedule: PeriodSchedule[] = [
     {
       period: 'Daily',
       tasks: [
-        { name: 'Feed fish (1-2 times, only what they eat in 2 mins)', icon: <FishIcon className="w-4 h-4" /> },
-        { name: 'Check temperature and filter flow', icon: <ThermometerIcon className="w-4 h-4" /> },
-        { name: 'Observe fish behavior and health', icon: <Eye className="w-4 h-4" /> }
+        { name: 'Feed fish (1-2 times, only what they eat in 2 mins)', icon: <FishIcon className="w-4 h-4 text-cyan-500" /> },
+        { name: 'Check temperature and filter flow', icon: <ThermometerIcon className="w-4 h-4 text-orange-500" /> },
+        { name: 'Observe fish behavior and health', icon: <Eye className="w-4 h-4 text-emerald-500" /> }
       ]
     },
     {
@@ -15,7 +51,7 @@ export default function MaintenanceSection() {
       tasks: [
         { name: 'Change 20-30% of water', icon: <Droplets className="w-4 h-4 text-blue-500" /> },
         { name: 'Siphon gravel to remove waste', icon: <Droplets className="w-4 h-4 text-blue-500" /> },
-        { name: 'Scrape algae from glass', icon: <Scissors className="w-4 h-4 text-emerald-500" /> },
+        { name: 'Scrape algae from glass', icon: <Scissors className="w-4 h-4 text-purple-500" /> },
         { name: 'Test water parameters', icon: <FlaskConical className="w-4 h-4 text-amber-500" /> }
       ]
     },
@@ -24,10 +60,57 @@ export default function MaintenanceSection() {
       tasks: [
         { name: 'Rinse filter media in old tank water', icon: <Filter className="w-4 h-4 text-indigo-500" /> },
         { name: 'Trim overgrown plants', icon: <Scissors className="w-4 h-4 text-emerald-500" /> },
-        { name: 'Check expiration on test kits & food', icon: <CalendarDays className="w-4 h-4" /> }
+        { name: 'Check expiration on test kits & food', icon: <CalendarDays className="w-4 h-4 text-rose-500" /> }
       ]
     }
   ];
+
+  const toggleTask = (period: 'Daily' | 'Weekly' | 'Monthly', taskName: string) => {
+    const current = checkedState[period];
+    const isChecked = current.includes(taskName);
+    let updated: string[];
+
+    if (isChecked) {
+      updated = current.filter(t => t !== taskName);
+    } else {
+      updated = [...current, taskName];
+    }
+
+    const newState = {
+      ...checkedState,
+      [period]: updated
+    };
+
+    setCheckedState(newState);
+    storage.set(KEYS.MAINTENANCE, newState);
+
+    // Calculate total checked across all periods to trigger achievement
+    const totalTasks = schedule.reduce((sum, p) => sum + p.tasks.length, 0);
+    const totalChecked = newState.Daily.length + newState.Weekly.length + newState.Monthly.length;
+
+    if (totalChecked === totalTasks) {
+      unlockAchievement('maintenance-checklist');
+    }
+  };
+
+  const handleResetPeriod = (period: 'Daily' | 'Weekly' | 'Monthly') => {
+    const newState = {
+      ...checkedState,
+      [period]: []
+    };
+    setCheckedState(newState);
+    storage.set(KEYS.MAINTENANCE, newState);
+  };
+
+  if (!isMounted) {
+    return (
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-4 text-center text-muted-foreground">
+          Loading maintenance schedule...
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-24 bg-background">
@@ -45,24 +128,82 @@ export default function MaintenanceSection() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {schedule.map((item, idx) => (
-            <div key={idx} className="bg-card border border-border rounded-3xl p-8 hover:shadow-xl transition-shadow relative overflow-hidden group">
-              <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:scale-110">
-                <CalendarDays className="w-32 h-32" />
-              </div>
-              <h3 className="text-2xl font-bold mb-6 text-foreground relative z-10">{item.period}</h3>
-              <ul className="space-y-4 relative z-10">
-                {item.tasks.map((task, tIdx) => (
-                  <li key={tIdx} className="flex items-start gap-3">
-                    <div className="mt-1 p-1.5 bg-muted rounded-lg shrink-0">
-                      {task.icon}
+          {schedule.map((item, idx) => {
+            const periodChecked = checkedState[item.period];
+            const percent = Math.round((periodChecked.length / item.tasks.length) * 100);
+            
+            return (
+              <div key={idx} className="bg-card border border-border rounded-3xl p-8 hover:shadow-xl transition-shadow relative overflow-hidden group flex flex-col justify-between">
+                <div className="absolute -top-6 -right-6 p-6 opacity-[0.02] group-hover:opacity-[0.05] transition-opacity transform group-hover:scale-110 pointer-events-none">
+                  <CalendarDays className="w-32 h-32 text-foreground" />
+                </div>
+                
+                <div>
+                  <div className="flex justify-between items-center mb-4">
+                    <h3 className="text-2xl font-bold text-foreground">{item.period} Tasks</h3>
+                    {periodChecked.length > 0 && (
+                      <button 
+                        onClick={() => handleResetPeriod(item.period)}
+                        className="text-xs text-muted-foreground hover:text-destructive flex items-center gap-0.5 cursor-pointer"
+                        title="Reset category tasks"
+                      >
+                        <RotateCcw className="w-3.5 h-3.5" />
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Progress bar */}
+                  <div className="mb-6">
+                    <div className="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden mb-2">
+                      <div 
+                        className="bg-cyan-500 h-full transition-all duration-500" 
+                        style={{ width: `${percent}%` }}
+                      ></div>
                     </div>
-                    <span className="text-muted-foreground font-medium">{task.name}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+                    <span className="text-xs text-muted-foreground font-semibold">
+                      {periodChecked.length} of {item.tasks.length} completed
+                    </span>
+                  </div>
+
+                  <ul className="space-y-4">
+                    {item.tasks.map((task, tIdx) => {
+                      const isTaskChecked = periodChecked.includes(task.name);
+                      return (
+                        <li 
+                          key={tIdx} 
+                          onClick={() => toggleTask(item.period, task.name)}
+                          className={`flex items-start gap-3 cursor-pointer p-2 rounded-xl border transition-colors select-none ${
+                            isTaskChecked 
+                              ? 'bg-emerald-500/5 dark:bg-emerald-500/10 border-emerald-500/20' 
+                              : 'border-transparent hover:bg-muted/40'
+                          }`}
+                        >
+                          <div className={`mt-0.5 w-5 h-5 rounded-md border flex items-center justify-center shrink-0 transition-colors ${
+                            isTaskChecked 
+                              ? 'bg-emerald-500 border-emerald-500 text-white' 
+                              : 'border-muted-foreground/30'
+                          }`}>
+                            {isTaskChecked && <Check className="w-3.5 h-3.5" />}
+                          </div>
+                          
+                          <div className="flex items-start gap-2.5 min-w-0 flex-1">
+                            <div className="mt-0.5 p-1 bg-muted rounded shrink-0">
+                              {task.icon}
+                            </div>
+                            <span className={`text-sm font-medium transition-all ${
+                              isTaskChecked ? 'text-muted-foreground line-through' : 'text-slate-700 dark:text-slate-350'
+                            }`}>
+                              {task.name}
+                            </span>
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -92,3 +233,4 @@ function Eye(props: any) {
     </svg>
   );
 }
+
