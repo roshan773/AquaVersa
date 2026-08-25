@@ -1,13 +1,35 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useStats } from '@/components/home/StatsContext';
 import { Fish, Leaf, Settings } from 'lucide-react';
 
 const AnimatedCounter = ({ value, duration = 1200 }: { value: number; duration?: number }) => {
   const [count, setCount] = useState(0);
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const elementRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsIntersecting(true);
+          observer.disconnect(); // Animate only once
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isIntersecting) return;
+
     let startTimestamp: number | null = null;
     let animationFrameId: number;
 
@@ -22,9 +44,9 @@ const AnimatedCounter = ({ value, duration = 1200 }: { value: number; duration?:
 
     animationFrameId = window.requestAnimationFrame(step);
     return () => window.cancelAnimationFrame(animationFrameId);
-  }, [value, duration]);
+  }, [isIntersecting, value, duration]);
 
-  return <>{count}</>;
+  return <span ref={elementRef}>{count}</span>;
 };
 
 export default function StatsStrip() {
