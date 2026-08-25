@@ -84,7 +84,8 @@ export default function ContactPage() {
       data.incorrectDetail, 
       data.correction, 
       data.sources,
-      data.token || ""
+      data.token || "",
+      data.site || ""
     ]);
     return ContentService.createTextOutput(JSON.stringify({ success: true }))
       .setMimeType(ContentService.MimeType.JSON)
@@ -124,7 +125,8 @@ export default function ContactPage() {
           correction,
           sources,
           sheetUrl,
-          token: "2d7e12ea-1240-4d9f-acbe-db75c3fbbae2"
+          token: "2d7e12ea-1240-4d9f-acbe-db75c3fbbae2",
+          site: "https://aquaversa.vercel.app/"
         }),
       });
 
@@ -312,6 +314,7 @@ export default function ContactPage() {
           >
             <form onSubmit={handleSubmitReport} className="space-y-6">
               <input type="hidden" name="token" value="2d7e12ea-1240-4d9f-acbe-db75c3fbbae2" />
+              <input type="hidden" name="site" value="https://aquaversa.vercel.app/" />
               
               {/* Header */}
               <div className="flex items-center justify-between border-b border-slate-850 pb-4">

@@ -11,7 +11,8 @@ export async function POST(request: Request) {
       correction, 
       sources,
       sheetUrl,
-      token 
+      token,
+      site 
     } = body;
 
     // Basic Validation
@@ -54,7 +55,8 @@ export async function POST(request: Request) {
         incorrectDetail,
         correction,
         sources: sources || "None",
-        token: token || "2d7e12ea-1240-4d9f-acbe-db75c3fbbae2"
+        token: token || "2d7e12ea-1240-4d9f-acbe-db75c3fbbae2",
+        site: site || "https://aquaversa.vercel.app/"
       }),
     });
 
