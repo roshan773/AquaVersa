@@ -10,38 +10,35 @@ export default function FeaturedFish() {
   const { setFishCount } = useStats();
 
   useEffect(() => {
-    // Initialize fish count based on featured fish displayed
     if (typeof setFishCount === 'function') {
       setFishCount(fishData.length);
     }
   }, []);
 
   return (
-    <section className="py-24 bg-black relative overflow-hidden border-b border-red-500/10">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(239,68,68,0.02),transparent_70%)] pointer-events-none" />
+    <section className="py-24 bg-slate-50 dark:bg-slate-905 border-b border-slate-200/30 dark:border-slate-900 relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
-        <h2 className="text-3xl md:text-5xl font-poppins font-bold text-center mb-16 text-white">Featured Fish</h2>
+        <h2 className="text-3xl md:text-5xl font-poppins font-bold text-center mb-16 text-slate-900 dark:text-white font-poppins">Featured Species</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {fishData.slice(0, 6).map((fish) => (
-            <div key={fish.id} className="group rounded-2xl overflow-hidden border border-red-500/10 bg-black/40 hover:border-red-500/35 hover:shadow-[0_8px_30px_rgba(239,68,68,0.1)] transition-all duration-300 flex flex-col hover:-translate-y-1">
-              <div className="relative overflow-hidden h-48 w-full bg-black">
+            <div key={fish.id} className="group rounded-xl overflow-hidden border border-slate-200/60 dark:border-slate-850 bg-white dark:bg-slate-950 hover:border-slate-350 dark:hover:border-slate-700 transition-all duration-350 flex flex-col hover:-translate-y-0.5 shadow-[0_2px_8px_rgba(0,0,0,0.01)]">
+              <div className="relative overflow-hidden h-44 w-full bg-slate-100 dark:bg-slate-900">
                 <Image 
                   src={fish.image} 
                   alt={fish.name} 
                   fill
-                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500 opacity-80" 
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover w-full h-full group-hover:scale-102 transition-transform duration-500" 
+                  sizes="(max-width: 768px) 100vw, 320px"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
               </div>
-              <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-xl font-bold mb-2 text-white group-hover:text-red-500 transition-colors">{fish.name}</h3>
-                <p className="text-sm text-slate-400 font-light mb-6 line-clamp-2 flex-grow leading-relaxed">{fish.description}</p>
+              <div className="p-6 flex flex-col flex-grow text-left">
+                <h3 className="text-base sm:text-lg font-poppins font-bold mb-1.5 text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">{fish.name}</h3>
+                <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-light mb-6 line-clamp-2 flex-grow leading-relaxed">{fish.description}</p>
                 <Link 
                   href={`/fish/${fish.category?.toLowerCase() || 'unknown'}/${fish.slug}`} 
-                  className="inline-flex items-center gap-2 text-red-500 hover:text-red-400 font-bold text-xs tracking-wider uppercase mt-auto group cursor-pointer"
+                  className="inline-flex items-center gap-1.5 text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 font-semibold text-xs tracking-wider uppercase mt-auto group cursor-pointer"
                 >
-                  <span>Learn More</span> <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <span>Learn More</span> <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                 </Link>
               </div>
             </div>
