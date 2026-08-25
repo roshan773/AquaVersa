@@ -707,7 +707,7 @@ export default function FishCompatibility() {
               <h3 className={`text-2xl font-bold font-poppins mb-1.5 ${themeClasses.text}`}>
                 {compResult.status}
               </h3>
-              <p className="text-slate-350 leading-relaxed text-sm md:text-base font-light">
+              <p className="text-slate-200 leading-relaxed text-sm md:text-base font-light">
                 {compResult.message}
               </p>
             </div>
