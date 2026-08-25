@@ -9,38 +9,38 @@ export default function StatsStrip() {
     {
       label: 'Fish Species',
       value: fish,
-      icon: <Fish className="w-6 h-6 text-red-500" />,
-      bgGlow: 'from-red-500/5 to-transparent',
+      icon: <Fish className="w-6 h-6 text-blue-500" />,
+      bgGlow: 'from-blue-500/5 to-transparent',
     },
     {
       label: 'Live Plants',
       value: plants,
-      icon: <Leaf className="w-6 h-6 text-red-500" />,
-      bgGlow: 'from-red-500/5 to-transparent',
+      icon: <Leaf className="w-6 h-6 text-blue-500" />,
+      bgGlow: 'from-blue-500/5 to-transparent',
     },
     {
       label: 'Equipment Guides',
       value: equipment,
-      icon: <Settings className="w-6 h-6 text-red-500" />,
-      bgGlow: 'from-red-500/5 to-transparent',
+      icon: <Settings className="w-6 h-6 text-blue-500" />,
+      bgGlow: 'from-blue-500/5 to-transparent',
     },
   ];
 
   return (
-    <section className="w-full bg-[#030303] border-y border-red-500/10 py-10 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(239,68,68,0.02),transparent_70%)]" />
+    <section className="w-full bg-[#030303] border-y border-blue-500/10 py-10 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.02),transparent_70%)]" />
       <div className="container mx-auto px-4 max-w-6xl relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {statsItems.map((stat, i) => (
             <div 
               key={i} 
-              className="relative overflow-hidden group flex items-center gap-5 p-6 rounded-2xl bg-black/40 border border-red-500/10 hover:bg-black/60 transition-all duration-500 shadow-sm hover:shadow-lg hover:border-red-500/30 transform hover:-translate-y-1"
+              className="relative overflow-hidden group flex items-center gap-5 p-6 rounded-2xl bg-black/40 border border-blue-500/10 hover:bg-black/60 transition-all duration-500 shadow-sm hover:shadow-lg hover:border-blue-500/30 transform hover:-translate-y-1"
             >
               {/* Background Glow Effect */}
               <div className={`absolute inset-0 bg-gradient-to-br ${stat.bgGlow} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} />
               
               {/* Icon Wrapper */}
-              <div className="relative z-10 p-3.5 rounded-xl bg-black border border-red-500/15 group-hover:border-red-500/40 flex items-center justify-center transition-all duration-500 group-hover:rotate-[12deg] shrink-0">
+              <div className="relative z-10 p-3.5 rounded-xl bg-black border border-blue-500/15 group-hover:border-blue-500/40 flex items-center justify-center transition-all duration-500 group-hover:rotate-[12deg] shrink-0">
                 {stat.icon}
               </div>
 

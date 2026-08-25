@@ -22,31 +22,31 @@ export default function Footer() {
           <div className="text-left">
             <h4 className="text-white font-bold mb-6 text-lg tracking-wide">Ecosystem</h4>
             <ul className="space-y-4 text-sm font-medium">
-              <li><Link href="/fish/freshwater" className="text-slate-400 hover:text-red-500 transition-colors">Freshwater Fish</Link></li>
-              <li><Link href="/fish/saltwater" className="text-slate-400 hover:text-red-500 transition-colors">Saltwater Fish</Link></li>
-              <li><Link href="/plants" className="text-slate-400 hover:text-red-500 transition-colors">Aquatic Plants</Link></li>
-              <li><Link href="/equipment" className="text-slate-400 hover:text-red-500 transition-colors">Equipment Guide</Link></li>
-              <li><Link href="/food" className="text-slate-400 hover:text-red-500 transition-colors">Fish Food</Link></li>
+              <li><Link href="/fish/freshwater" className="text-slate-400 hover:text-blue-500 transition-colors">Freshwater Fish</Link></li>
+              <li><Link href="/fish/saltwater" className="text-slate-400 hover:text-blue-500 transition-colors">Saltwater Fish</Link></li>
+              <li><Link href="/plants" className="text-slate-400 hover:text-blue-500 transition-colors">Aquatic Plants</Link></li>
+              <li><Link href="/equipment" className="text-slate-400 hover:text-blue-500 transition-colors">Equipment Guide</Link></li>
+              <li><Link href="/food" className="text-slate-400 hover:text-blue-500 transition-colors">Fish Food</Link></li>
             </ul>
           </div>
 
           <div className="text-left">
             <h4 className="text-white font-bold mb-6 text-lg tracking-wide">Resources</h4>
             <ul className="space-y-4 text-sm font-medium">
-              <li><Link href="/start-aquarium" className="text-slate-400 hover:text-red-500 transition-colors">Beginner's Guide</Link></li>
-              <li><Link href="/compatibility" className="text-slate-400 hover:text-red-500 transition-colors">Compatibility Checker</Link></li>
-              <li><Link href="/tank-size" className="text-slate-400 hover:text-red-500 transition-colors">Tank Calculator</Link></li>
-              <li><Link href="/water-params" className="text-slate-400 hover:text-red-500 transition-colors">Water Chemistry</Link></li>
+              <li><Link href="/start-aquarium" className="text-slate-400 hover:text-blue-500 transition-colors">Beginner's Guide</Link></li>
+              <li><Link href="/compatibility" className="text-slate-400 hover:text-blue-500 transition-colors">Compatibility Checker</Link></li>
+              <li><Link href="/tank-size" className="text-slate-400 hover:text-blue-500 transition-colors">Tank Calculator</Link></li>
+              <li><Link href="/water-params" className="text-slate-400 hover:text-blue-500 transition-colors">Water Chemistry</Link></li>
             </ul>
           </div>
 
           <div className="text-left">
             <h4 className="text-white font-bold mb-6 text-lg tracking-wide">Company</h4>
             <ul className="space-y-4 text-sm font-medium">
-              <li><Link href="/about" className="text-slate-400 hover:text-red-500 transition-colors">About Us</Link></li>
-              <li><Link href="/contact" className="text-slate-400 hover:text-red-500 transition-colors">Contact Page</Link></li>
-              <li><Link href="/privacy" className="text-slate-400 hover:text-red-500 transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="text-slate-400 hover:text-red-500 transition-colors">Terms of Service</Link></li>
+              <li><Link href="/about" className="text-slate-400 hover:text-blue-500 transition-colors">About Us</Link></li>
+              <li><Link href="/contact" className="text-slate-400 hover:text-blue-500 transition-colors">Contact Page</Link></li>
+              <li><Link href="/privacy" className="text-slate-400 hover:text-blue-500 transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="text-slate-400 hover:text-blue-500 transition-colors">Terms of Service</Link></li>
             </ul>
           </div>
         </div>
