@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from "react";
+import Image from "next/image";
 import { Mail, ArrowRight, CheckCircle2, AlertTriangle, User, FileText, Phone, MessageSquare, Compass } from "lucide-react";
 
 export default function ContactPage() {
@@ -75,6 +76,15 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-black text-slate-100 py-24 px-4 flex items-center relative overflow-hidden font-sans">
+      {/* Background Image */}
+      <Image
+        src="/betta_bg.png"
+        alt="Lush planted aquarium with tropical fish"
+        fill
+        className="object-cover opacity-10 mix-blend-luminosity pointer-events-none"
+        priority
+        sizes="100vw"
+      />
       {/* Background ambient lighting */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-blue-955/20 rounded-full blur-[140px]" />

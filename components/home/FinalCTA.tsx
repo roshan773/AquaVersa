@@ -7,7 +7,7 @@ export default function FinalCTA() {
     <section className="relative py-32 bg-slate-900 overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 z-0">
-        <Image src="/hero_aquarium.jpg" alt="Dark Aquarium" fill className="object-cover opacity-20 hue-rotate-[190deg] brightness-50" />
+        <Image src="/betta_bg.png" alt="Dark Aquarium" fill className="object-cover opacity-15 mix-blend-luminosity brightness-50" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/80 to-slate-900/40"></div>
       </div>
 
