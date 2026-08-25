@@ -1,6 +1,31 @@
 'use client';
+
+import { useState, useEffect } from 'react';
 import { useStats } from '@/components/home/StatsContext';
 import { Fish, Leaf, Settings } from 'lucide-react';
+
+const AnimatedCounter = ({ value, duration = 1200 }: { value: number; duration?: number }) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let startTimestamp: number | null = null;
+    let animationFrameId: number;
+
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      setCount(Math.floor(progress * value));
+      if (progress < 1) {
+        animationFrameId = window.requestAnimationFrame(step);
+      }
+    };
+
+    animationFrameId = window.requestAnimationFrame(step);
+    return () => window.cancelAnimationFrame(animationFrameId);
+  }, [value, duration]);
+
+  return <>{count}</>;
+};
 
 export default function StatsStrip() {
   const { fish, plants, equipment } = useStats();
@@ -47,7 +72,7 @@ export default function StatsStrip() {
               {/* Content */}
               <div className="relative z-10 min-w-0 text-left">
                 <span className="text-3xl md:text-4xl font-poppins font-extrabold block leading-none tracking-tight text-white group-hover:scale-105 origin-left transition-transform duration-500">
-                  {stat.value}+
+                  <AnimatedCounter value={stat.value} />+
                 </span>
                 <span className="text-xs font-bold tracking-widest text-slate-400 group-hover:text-slate-350 transition-colors uppercase mt-1.5 block truncate">
                   {stat.label}
