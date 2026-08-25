@@ -41,20 +41,20 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const linkClass = `text-sm font-medium transition-colors duration-300 ${isScrolled
-      ? "text-slate-700 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400"
-      : "text-white/95 hover:text-cyan-300"
+  const linkClass = `text-sm font-semibold tracking-wide transition-all duration-300 hover:text-red-500 dark:hover:text-red-500 ${isScrolled
+      ? "text-slate-700 dark:text-slate-200"
+      : "text-white/90"
     }`;
 
-  const btnClass = `text-sm font-medium transition-colors duration-300 flex items-center gap-1 ${isScrolled
-      ? "text-slate-700 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400"
-      : "text-white/95 hover:text-cyan-300"
+  const btnClass = `text-sm font-semibold tracking-wide transition-all duration-300 flex items-center gap-1 hover:text-red-500 dark:hover:text-red-500 ${isScrolled
+      ? "text-slate-700 dark:text-slate-200"
+      : "text-white/90"
     }`;
 
   return (
     <nav className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled
-        ? "glass border-b border-border shadow-sm"
-        : "bg-transparent border-transparent shadow-none"
+        ? "bg-black/85 backdrop-blur-md border-b border-red-500/20 shadow-[0_4px_20px_rgba(239,68,68,0.05)] py-2"
+        : "bg-transparent border-transparent shadow-none py-4"
       }`}>
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
@@ -88,7 +88,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 10, scale: 0.95 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute top-16 left-1/2 -translate-x-1/2 w-[800px] bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm grid grid-cols-2 gap-6 z-50 animate-in fade-in zoom-in-95 duration-200"
+                  className="absolute top-16 left-1/2 -translate-x-1/2 w-[800px] bg-black/90 backdrop-blur-md border border-red-500/25 rounded-2xl p-6 shadow-[0_10px_40px_rgba(239,68,68,0.15)] grid grid-cols-2 gap-6 z-50 animate-in fade-in zoom-in-95 duration-200"
                 >
                   <div className="group flex flex-col gap-3 p-4 rounded-xl hover:bg-white/50 dark:hover:bg-black/30 transition-all border border-transparent hover:border-border text-gray-900 dark:text-gray-100 text-left">
                     <Link href="/fish/freshwater" className="block relative w-full h-32 rounded-lg overflow-hidden bg-blue-100 dark:bg-blue-950">
@@ -179,7 +179,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 10, scale: 0.95 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute top-16 left-1/2 -translate-x-1/2 w-48 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-lg p-3 shadow-sm z-50 text-left flex flex-col gap-1.5"
+                  className="absolute top-16 left-1/2 -translate-x-1/2 w-48 bg-black/90 backdrop-blur-md border border-red-500/25 rounded-2xl p-3 shadow-[0_10px_40px_rgba(239,68,68,0.15)] z-50 text-left flex flex-col gap-1.5"
                 >
                   <Link href="/guides" className="px-3 py-2 text-xs font-semibold text-gray-700 dark:text-gray-200 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg" onClick={() => setActiveDropdown(null)}>All Guides</Link>
                   <Link href="/start-aquarium" className="px-3 py-2 text-xs font-semibold text-gray-700 dark:text-gray-200 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg" onClick={() => setActiveDropdown(null)}>First Aquarium Setup</Link>
@@ -206,7 +206,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 10, scale: 0.95 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute top-16 right-0 w-[480px] bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-lg p-5 shadow-sm z-50 text-left grid grid-cols-2 gap-x-6 gap-y-1.5"
+                  className="absolute top-16 right-0 w-[480px] bg-black/90 backdrop-blur-md border border-red-500/25 rounded-2xl p-5 shadow-[0_10px_40px_rgba(239,68,68,0.15)] z-50 text-left grid grid-cols-2 gap-x-6 gap-y-1.5"
                 >
                   <div className="col-span-2 border-b border-border pb-2 mb-2 font-bold text-xs text-cyan-600 dark:text-cyan-400 uppercase tracking-wider">
                     Interactive Toolkit
@@ -238,8 +238,8 @@ export default function Navbar() {
               placeholder="Search..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className={`w-28 sm:w-36 lg:w-48 pl-10 pr-3 py-2 rounded-full border text-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 ${isScrolled
-                  ? "bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 border-border"
+              className={`w-28 sm:w-36 lg:w-48 pl-10 pr-4 py-2 rounded-full border text-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-red-500 ${isScrolled
+                  ? "bg-black/40 border-red-500/20 text-white placeholder-slate-500 focus:bg-black/60"
                   : "bg-white/10 text-white placeholder-white/50 border-white/20 focus:bg-white/20"
                 }`}
             />

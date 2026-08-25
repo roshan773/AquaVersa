@@ -630,28 +630,27 @@ export default function FishCompatibility() {
   }[compResult.colorTheme as 'emerald' | 'amber' | 'orange' | 'red' | 'blue'];
 
   return (
-    <section className="py-24 bg-slate-950/10 dark:bg-slate-950/40 border-b border-slate-900/80">
-      <div className="container mx-auto px-4 max-w-5xl">
+    <section className="py-24 bg-black border-b border-red-500/10 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(239,68,68,0.02),transparent_60%)] pointer-events-none" />
+      <div className="container mx-auto px-4 max-w-5xl relative z-10">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 text-cyan-400 font-semibold mb-4 border border-cyan-500/20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 text-red-500 font-bold mb-4 border border-red-500/20 text-xs uppercase tracking-wider animate-float">
             <ShieldAlert className="w-4 h-4" /> Compatibility Tool
           </div>
-          <h2 className="text-3xl md:text-5xl font-poppins font-bold mb-4 text-foreground">
+          <h2 className="text-3xl md:text-5xl font-poppins font-bold mb-4 text-white">
             Fish Compatibility Checker
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
             Ensure your fish co-exist peacefully. Select two species to verify water chemistry, size compatibility, and temperaments.
           </p>
         </div>
 
-        <div className="bg-slate-900/90 dark:bg-slate-950/90 backdrop-blur-xl border border-slate-800 rounded-3xl p-6 md:p-10 shadow-2xl relative overflow-hidden">
-
+        <div className="bg-black/40 border border-red-500/10 rounded-3xl p-6 md:p-10 shadow-2xl relative overflow-hidden">
           {/* Main matchup grid */}
           <div className="grid grid-cols-1 md:grid-cols-7 gap-8 items-center relative z-10">
-
             {/* Fish 1 Column */}
             <div className="md:col-span-3 flex flex-col items-center">
-              <div className={`w-36 h-36 rounded-full overflow-hidden mb-6 border-4 bg-slate-950 relative transition-all duration-500 ${themeClasses.border} ${themeClasses.glow}`}>
+              <div className={`w-36 h-36 rounded-full overflow-hidden mb-6 border-4 bg-black relative transition-all duration-500 ${themeClasses.border} ${themeClasses.glow}`}>
                 {f1Data?.image ? (
                   <Image src={f1Data.image} alt={f1Data.name} fill className="object-cover scale-105" sizes="144px" />
                 ) : (
@@ -662,24 +661,24 @@ export default function FishCompatibility() {
               <select
                 value={fish1}
                 onChange={(e) => setFish1(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-slate-200 font-semibold focus:outline-none focus:ring-2 focus:ring-cyan-500 hover:border-slate-700 transition-colors"
+                className="w-full bg-black border border-red-500/15 rounded-xl px-4 py-3 text-slate-200 font-semibold focus:outline-none focus:ring-2 focus:ring-red-500 hover:border-red-500/30 transition-colors"
               >
                 {fishData.map(f => (
-                  <option key={f.id} value={f.id}>{f.name} ({f.category})</option>
+                  <option key={f.id} value={f.id} className="bg-black text-slate-200">{f.name} ({f.category})</option>
                 ))}
               </select>
             </div>
 
             {/* VS Badge */}
             <div className="md:col-span-1 flex justify-center py-4 md:py-0">
-              <div className="w-14 h-14 rounded-full bg-slate-950 border border-slate-800 flex items-center justify-center text-lg font-extrabold text-cyan-400 shadow-md">
+              <div className="w-14 h-14 rounded-full bg-black border border-red-500/25 flex items-center justify-center text-lg font-extrabold text-red-500 shadow-md shadow-red-500/10">
                 VS
               </div>
             </div>
 
             {/* Fish 2 Column */}
             <div className="md:col-span-3 flex flex-col items-center">
-              <div className={`w-36 h-36 rounded-full overflow-hidden mb-6 border-4 bg-slate-950 relative transition-all duration-500 ${themeClasses.border} ${themeClasses.glow}`}>
+              <div className={`w-36 h-36 rounded-full overflow-hidden mb-6 border-4 bg-black relative transition-all duration-500 ${themeClasses.border} ${themeClasses.glow}`}>
                 {f2Data?.image ? (
                   <Image src={f2Data.image} alt={f2Data.name} fill className="object-cover scale-105" sizes="144px" />
                 ) : (
@@ -690,10 +689,10 @@ export default function FishCompatibility() {
               <select
                 value={fish2}
                 onChange={(e) => setFish2(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-slate-200 font-semibold focus:outline-none focus:ring-2 focus:ring-cyan-500 hover:border-slate-700 transition-colors"
+                className="w-full bg-black border border-red-500/15 rounded-xl px-4 py-3 text-slate-200 font-semibold focus:outline-none focus:ring-2 focus:ring-red-500 hover:border-red-500/30 transition-colors"
               >
                 {fishData.map(f => (
-                  <option key={f.id} value={f.id}>{f.name} ({f.category})</option>
+                  <option key={f.id} value={f.id} className="bg-black text-slate-200">{f.name} ({f.category})</option>
                 ))}
               </select>
             </div>
@@ -701,32 +700,31 @@ export default function FishCompatibility() {
 
           {/* Compatibility Status Banner */}
           <div className={`mt-10 rounded-2xl p-6 flex flex-col md:flex-row items-center gap-5 border transition-all duration-500 ${themeClasses.bg}`}>
-            <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 shadow-md shrink-0">
+            <div className="p-3 bg-black rounded-xl border border-red-500/20 shadow-md shrink-0">
               {themeClasses.icon}
             </div>
             <div className="text-center md:text-left">
               <h3 className={`text-2xl font-bold font-poppins mb-1.5 ${themeClasses.text}`}>
                 {compResult.status}
               </h3>
-              <p className="text-slate-300 leading-relaxed text-sm md:text-base">
+              <p className="text-slate-350 leading-relaxed text-sm md:text-base font-light">
                 {compResult.message}
               </p>
             </div>
           </div>
 
           {/* Parameters Comparison Section */}
-          <div className="mt-12 border-t border-slate-800/80 pt-8">
-            <h4 className="text-lg font-bold font-poppins text-slate-200 mb-6 text-center md:text-left flex items-center gap-2 justify-center md:justify-start">
-              <Layers className="w-5 h-5 text-cyan-400" /> Species Parameters Matchup
+          <div className="mt-12 border-t border-red-500/10 pt-8">
+            <h4 className="text-lg font-bold font-poppins text-white mb-6 text-center md:text-left flex items-center gap-2 justify-center md:justify-start">
+              <Layers className="w-5 h-5 text-red-500" /> Species Parameters Matchup
             </h4>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Fish 1 details */}
-              <div className="bg-slate-950/40 border border-slate-850 p-5 rounded-2xl">
-                <div className="flex items-center gap-3 mb-4 pb-3 border-b border-slate-800/50">
-                  <span className="text-xs uppercase font-bold px-2 py-1 rounded bg-cyan-500/10 text-cyan-400">Species 1</span>
-                  <span className="text-base font-bold text-slate-200">{f1Data.name}</span>
+              <div className="bg-black border border-red-500/10 p-5 rounded-2xl">
+                <div className="flex items-center gap-3 mb-4 pb-3 border-b border-red-500/10">
+                  <span className="text-xs uppercase font-bold px-2 py-0.5 rounded bg-red-500/10 text-red-500">Species 1</span>
+                  <span className="text-base font-bold text-white">{f1Data.name}</span>
                 </div>
                 <div className="space-y-3.5">
                   <div className="flex justify-between items-center text-sm">
@@ -757,15 +755,15 @@ export default function FishCompatibility() {
               </div>
 
               {/* Fish 2 details */}
-              <div className="bg-slate-950/40 border border-slate-850 p-5 rounded-2xl">
-                <div className="flex items-center gap-3 mb-4 pb-3 border-b border-slate-800/50">
-                  <span className="text-xs uppercase font-bold px-2 py-1 rounded bg-blue-500/10 text-blue-400">Species 2</span>
-                  <span className="text-base font-bold text-slate-200">{f2Data.name}</span>
+              <div className="bg-black border border-red-500/10 p-5 rounded-2xl">
+                <div className="flex items-center gap-3 mb-4 pb-3 border-b border-red-500/10">
+                  <span className="text-xs uppercase font-bold px-2 py-0.5 rounded bg-red-500/10 text-red-500">Species 2</span>
+                  <span className="text-base font-bold text-white">{f2Data.name}</span>
                 </div>
                 <div className="space-y-3.5">
                   <div className="flex justify-between items-center text-sm">
                     <span className="text-slate-400">Environment</span>
-                    <span className={`font-semibold ${f1Data.category !== f2Data.category ? 'text-red-400 font-bold' : 'text-slate-200'}`}>
+                    <span className={`font-semibold ${f1Data.category !== f2Data.category ? 'text-red-500 font-bold' : 'text-slate-200'}`}>
                       {f2Data.category}
                     </span>
                   </div>
@@ -791,10 +789,8 @@ export default function FishCompatibility() {
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
-
         </div>
       </div>
     </section>

@@ -17,29 +17,31 @@ export default function FeaturedFish() {
   }, []);
 
   return (
-    <section className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8 text-foreground">Featured Fish</h2>
-        <div className="grid md:grid-cols-3 gap-8">
+    <section className="py-24 bg-black relative overflow-hidden border-b border-red-500/10">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(239,68,68,0.02),transparent_70%)] pointer-events-none" />
+      <div className="container mx-auto px-4 max-w-7xl relative z-10">
+        <h2 className="text-3xl md:text-5xl font-poppins font-bold text-center mb-16 text-white">Featured Fish</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {fishData.slice(0, 6).map((fish) => (
-            <div key={fish.id} className="group rounded-2xl overflow-hidden border border-border bg-card hover:shadow-xl transition-all flex flex-col">
-              <div className="relative overflow-hidden h-48 w-full bg-muted">
+            <div key={fish.id} className="group rounded-2xl overflow-hidden border border-red-500/10 bg-black/40 hover:border-red-500/35 hover:shadow-[0_8px_30px_rgba(239,68,68,0.1)] transition-all duration-300 flex flex-col hover:-translate-y-1">
+              <div className="relative overflow-hidden h-48 w-full bg-black">
                 <Image 
                   src={fish.image} 
                   alt={fish.name} 
                   fill
-                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" 
+                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500 opacity-80" 
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
               </div>
-              <div className="p-5 flex flex-col flex-grow">
-                <h3 className="text-xl font-semibold mb-2 text-foreground group-hover:text-cyan-600 transition-colors">{fish.name}</h3>
-                <p className="text-sm text-muted-foreground mb-4 line-clamp-2 flex-grow">{fish.description}</p>
+              <div className="p-6 flex flex-col flex-grow">
+                <h3 className="text-xl font-bold mb-2 text-white group-hover:text-red-500 transition-colors">{fish.name}</h3>
+                <p className="text-sm text-slate-400 font-light mb-6 line-clamp-2 flex-grow leading-relaxed">{fish.description}</p>
                 <Link 
                   href={`/fish/${fish.category?.toLowerCase() || 'unknown'}/${fish.slug}`} 
-                  className="inline-flex items-center gap-2 text-cyan-600 dark:text-cyan-400 font-medium mt-auto group-hover:text-cyan-500"
+                  className="inline-flex items-center gap-2 text-red-500 hover:text-red-400 font-bold text-xs tracking-wider uppercase mt-auto group cursor-pointer"
                 >
-                  Learn More <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <span>Learn More</span> <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </div>
