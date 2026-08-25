@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { Mail, MessageSquare, ArrowRight, CheckCircle2, AlertTriangle, Compass } from "lucide-react";
+import { Mail, ArrowRight, CheckCircle2, AlertTriangle } from "lucide-react";
 
 export default function ContactPage() {
   // Form fields
@@ -72,112 +72,108 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-24 px-4 flex items-center relative overflow-hidden font-sans">
-      {/* Subtle background glow */}
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none" />
+    <div className="min-h-screen bg-black text-slate-100 py-24 px-4 flex items-center relative overflow-hidden font-sans">
+      {/* Background ambient lighting */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-red-950/20 rounded-full blur-[140px]" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-slate-900/10 rounded-full blur-[120px]" />
+      </div>
 
-      <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div className="container mx-auto max-w-5xl relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           
-          {/* LEFT: Clean Editorial Copy */}
-          <div className="lg:col-span-5 flex flex-col justify-between h-full text-left">
-            <div>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 font-poppins text-xs font-semibold tracking-wider uppercase mb-6">
-                Connect
-              </span>
-              
-              <h1 className="font-poppins font-bold text-4xl sm:text-5xl text-slate-900 dark:text-white leading-[1.15] mb-6 tracking-tight">
-                Let's talk about <br />
-                your aquarium.
-              </h1>
-              
-              <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 font-light leading-relaxed mb-10 max-w-md">
-                Have questions about tank stocking, layout parameters, or calculations? Spotted a database inaccuracy or want to propose a partnership? Send us a note.
-              </p>
+          {/* LEFT: Info Column (Discord Card removed) */}
+          <div className="lg:col-span-5 flex flex-col justify-between gap-6 text-left">
+            <div className="flex flex-col gap-6">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-950/50 border border-red-800/40 backdrop-blur-md mb-6 text-red-500 text-xs font-semibold uppercase tracking-wider">
+                  <span>Connect & Support</span>
+                </div>
+                
+                <h1 className="text-4xl md:text-5xl font-poppins font-extrabold tracking-tight mb-4 text-white">
+                  Let's talk about <br />
+                  your aquarium.
+                </h1>
+                
+                <p className="text-sm text-slate-400 font-light leading-relaxed mb-6">
+                  Have setup questions, partnership ideas, feedback, or need help with a tank calculation? Reach out to our team. We love collaborating with the community.
+                </p>
+              </div>
 
-              {/* Muted info links */}
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-9 h-9 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-600 shrink-0">
-                    <Mail className="w-4 h-4 text-cyan-500" />
+              {/* Direct Support Email Card */}
+              <div className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800/60 backdrop-blur-sm shadow-xl flex flex-col gap-4 relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full blur-xl pointer-events-none" />
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-red-950/85 border border-red-800/30 flex items-center justify-center text-red-400">
+                    <Mail className="w-5 h-5 text-red-500" />
                   </div>
                   <div>
-                    <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-400 font-poppins mb-0.5">Email Support</h4>
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Direct Support</h3>
                     <button 
                       onClick={handleCopyEmail}
-                      className="text-sm font-semibold text-slate-800 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-455 transition-colors cursor-pointer"
+                      className="text-base font-bold text-white hover:text-red-500 transition-colors cursor-pointer text-left"
                     >
                       {emailTo}
                     </button>
                   </div>
                 </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-9 h-9 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-600 shrink-0">
-                    <MessageSquare className="w-4 h-4 text-cyan-500" />
-                  </div>
-                  <div>
-                    <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-400 font-poppins mb-0.5">Community Discord</h4>
-                    <a 
-                      href="https://discord.gg/aquaversa" 
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm font-semibold text-slate-800 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-455 transition-colors inline-flex items-center gap-1 group"
-                    >
-                      <span>Join Discord Channel</span>
-                      <ArrowRight className="w-3.5 h-3.5 opacity-60 group-hover:translate-x-0.5 transition-transform" />
-                    </a>
-                  </div>
-                </div>
+                <button
+                  onClick={handleCopyEmail}
+                  className="w-full mt-2 py-2.5 bg-slate-950 hover:bg-slate-900 border border-slate-800 hover:border-slate-750 text-xs font-semibold rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <span>Copy Support Email</span>
+                </button>
               </div>
             </div>
 
-            {/* Address Footer info */}
-            <div className="mt-16 pt-8 border-t border-slate-200/50 dark:border-slate-900 hidden lg:block text-xs font-light text-slate-400 leading-relaxed">
-              <span className="font-bold text-[10px] tracking-widest uppercase block mb-1.5 font-poppins">AquaVersa Info</span>
+            {/* Signature Team Info */}
+            <div className="p-6 text-xs text-slate-500 font-light border-t border-slate-900/80 leading-relaxed hidden lg:block">
+              <p className="font-bold text-slate-400 uppercase tracking-wider mb-2">AquaVersa HQ</p>
               <p>
-                AquaVersa Support Team<br />
-                123 Ocean Drive, Suite 400<br />
+                AquaVersa Support Team<br/>
+                123 Ocean Drive, Suite 400<br/>
                 Seaside, CA 94000
               </p>
             </div>
           </div>
 
-          {/* RIGHT: Minimal Premium Form */}
-          <div className="lg:col-span-7 w-full">
-            <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-8 rounded-2xl shadow-[0_4px_24px_rgba(0,0,0,0.01)] text-left">
-              <h2 className="font-poppins font-bold text-lg text-slate-900 dark:text-white mb-6 border-b border-slate-100 dark:border-slate-800 pb-4">
-                Send a Message
-              </h2>
+          {/* RIGHT: Contact Form (Web3Forms client-side submit) */}
+          <div className="lg:col-span-7 bg-slate-900/30 border border-slate-800/80 backdrop-blur-sm p-6 md:p-8 rounded-3xl shadow-xl flex flex-col justify-between text-left">
+            <form onSubmit={handleFormSubmit} className="space-y-6">
+              
+              <div className="flex items-center justify-between border-b border-slate-850 pb-4">
+                <div className="flex items-center gap-2.5 text-red-500 font-bold uppercase tracking-wider text-xs">
+                  <span>Send a Message</span>
+                </div>
+              </div>
 
-              <form onSubmit={handleFormSubmit} className="space-y-5">
+              {/* Status Alert Banners */}
+              {submitStatus === "success" && (
+                <div className="p-4 rounded-xl bg-emerald-950/40 border border-emerald-800/40 text-emerald-400 text-xs flex items-start gap-3">
+                  <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-400 mt-0.5" />
+                  <div>
+                    <strong className="block font-semibold mb-1">Message sent successfully!</strong>
+                    Thanks for reaching out. We will get back to you soon.
+                  </div>
+                </div>
+              )}
+
+              {submitStatus === "error" && (
+                <div className="p-4 rounded-xl bg-rose-950/40 border border-rose-800/40 text-rose-400 text-xs flex items-start gap-3">
+                  <AlertTriangle className="w-4 h-4 shrink-0 text-rose-450 mt-0.5" />
+                  <div>
+                    <strong className="block font-semibold mb-1">Submission failed</strong>
+                    {errorMessage}
+                  </div>
+                </div>
+              )}
+
+              <div className="space-y-4 pt-2">
                 
-                {/* Status Alert Banners */}
-                {submitStatus === "success" && (
-                  <div className="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900 text-emerald-800 dark:text-emerald-300 text-xs flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600 dark:text-emerald-400 mt-0.5" />
-                    <div>
-                      <strong className="block font-semibold mb-0.5">Message sent successfully!</strong>
-                      Thanks for reaching out. We will get back to you soon.
-                    </div>
-                  </div>
-                )}
-
-                {submitStatus === "error" && (
-                  <div className="p-4 rounded-xl bg-rose-50 dark:bg-rose-950/20 border border-rose-100 dark:border-rose-900/50 text-rose-800 dark:text-rose-300 text-xs flex items-start gap-2.5">
-                    <AlertTriangle className="w-4 h-4 shrink-0 text-rose-600 dark:text-rose-400 mt-0.5" />
-                    <div>
-                      <strong className="block font-semibold mb-0.5">Submission failed</strong>
-                      {errorMessage}
-                    </div>
-                  </div>
-                )}
-
                 {/* Name & Email Row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 block font-poppins">
+                    <label className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
                       Full Name
                     </label>
                     <input
@@ -186,11 +182,11 @@ export default function ContactPage() {
                       placeholder="Your name"
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
-                      className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-200 placeholder-slate-400"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-850 bg-slate-955/60 focus:bg-slate-955 focus:border-red-500 text-slate-100 text-sm transition-all focus:outline-none placeholder-slate-600"
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 block font-poppins">
+                    <label className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
                       Email Address
                     </label>
                     <input
@@ -199,7 +195,7 @@ export default function ContactPage() {
                       placeholder="e.g. johndoe@gmail.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-200 placeholder-slate-400"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-855 bg-slate-955/60 focus:bg-slate-955 focus:border-red-500 text-slate-100 text-sm transition-all focus:outline-none placeholder-slate-600"
                     />
                   </div>
                 </div>
@@ -207,7 +203,7 @@ export default function ContactPage() {
                 {/* Subject & Phone Row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 block font-poppins">
+                    <label className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
                       Subject
                     </label>
                     <input
@@ -216,26 +212,26 @@ export default function ContactPage() {
                       placeholder="e.g. Setup question"
                       value={subject}
                       onChange={(e) => setSubject(e.target.value)}
-                      className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-200 placeholder-slate-400"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-850 bg-slate-955/60 focus:bg-slate-955 focus:border-red-500 text-slate-100 text-sm transition-all focus:outline-none placeholder-slate-600"
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 block font-poppins">
-                      Phone Number (Optional)
+                    <label className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                      Phone (Optional)
                     </label>
                     <input
                       type="tel"
                       placeholder="e.g. +1 (555) 000-0000"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-200 placeholder-slate-400"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-850 bg-slate-955/60 focus:bg-slate-955 focus:border-red-500 text-slate-100 text-sm transition-all focus:outline-none placeholder-slate-600"
                     />
                   </div>
                 </div>
 
                 {/* Message TextArea */}
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 block font-poppins">
+                  <label className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
                     Message
                   </label>
                   <textarea
@@ -244,15 +240,17 @@ export default function ContactPage() {
                     placeholder="Tell us what we can help with..."
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="w-full bg-slate-50 dark:bg-slate-955 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-200 placeholder-slate-400 resize-none"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-850 bg-slate-955/60 focus:bg-slate-955 focus:border-red-500 text-slate-100 text-sm transition-all focus:outline-none placeholder-slate-600 resize-none"
                   />
                 </div>
+              </div>
 
-                {/* Submit button */}
-                <button
+              {/* Submit Buttons */}
+              <div className="pt-6 mt-6 border-t border-slate-850">
+                <button 
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full mt-4 py-3.5 bg-cyan-500 hover:bg-cyan-600 disabled:bg-slate-200 dark:disabled:bg-slate-800 text-white font-semibold rounded-xl transition-all flex items-center justify-center gap-2 group cursor-pointer shadow-sm hover:shadow"
+                  className="w-full py-4 bg-red-600 hover:bg-red-500 disabled:bg-slate-800 disabled:text-slate-650 text-white font-bold rounded-xl transition-all duration-300 shadow-lg shadow-red-500/10 hover:shadow-red-500/20 text-sm flex items-center justify-center gap-2 group cursor-pointer"
                 >
                   {isSubmitting ? (
                     <span>Sending message...</span>
@@ -263,8 +261,9 @@ export default function ContactPage() {
                     </>
                   )}
                 </button>
-              </form>
-            </div>
+              </div>
+
+            </form>
           </div>
 
         </div>

@@ -1,34 +1,37 @@
 import Link from 'next/link';
 import { ArrowRight, Waves } from 'lucide-react';
+import Image from 'next/image';
 
 export default function FinalCTA() {
   return (
-    <section className="relative py-24 bg-slate-50 dark:bg-slate-950 overflow-hidden border-t border-slate-200/30 dark:border-slate-900 text-left">
+    <section className="relative py-32 bg-slate-900 overflow-hidden">
+      {/* Background elements */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none" />
+        <Image src="/hero_aquarium.jpg" alt="Dark Aquarium" fill className="object-cover opacity-20 hue-rotate-[190deg] brightness-50" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/80 to-slate-900/40"></div>
       </div>
 
-      <div className="container relative z-10 mx-auto px-4 text-center max-w-4xl">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20 font-poppins text-xs font-semibold uppercase tracking-wider mb-6">
-          <Waves className="w-3.5 h-3.5" /> Dive In
+      <div className="container relative z-10 mx-auto px-4 text-center">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-950/20 backdrop-blur-md border border-red-500/30 text-red-500 font-semibold mb-8">
+          <Waves className="w-4 h-4" /> Dive In
         </div>
-        <h2 className="text-3xl md:text-5xl font-poppins font-bold text-slate-900 dark:text-white mb-4 leading-tight">
-          Ready to build your <span className="text-cyan-500">dream aquarium?</span>
+        <h2 className="text-4xl md:text-6xl font-poppins font-bold text-white mb-6 max-w-4xl mx-auto leading-tight text-center">
+          Ready to Build Your <span className="text-red-500">Dream Aquarium?</span>
         </h2>
-        <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 max-w-xl mx-auto mb-10 font-light leading-relaxed">
-          Start planning compatible stocking layouts, hardware configurations, and planted environments with confidence today.
+        <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-12 text-center">
+          Start building your aquarium with confidence.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center w-full max-w-md mx-auto">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href="/start-aquarium"
-            className="px-8 py-3.5 bg-cyan-500 hover:bg-cyan-600 text-white font-semibold rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-sm hover:shadow"
+            className="px-8 py-4 bg-red-600 hover:bg-red-500 text-white font-bold rounded-full transition-colors flex items-center justify-center gap-2 text-lg shadow-lg shadow-red-500/20 cursor-pointer"
           >
-            <span>Start Your Journey</span> <ArrowRight className="w-4 h-4 text-white" />
+            Start Your Journey <ArrowRight className="w-5 h-5" />
           </Link>
           <Link
             href="/guides"
-            className="px-8 py-3.5 bg-white hover:bg-slate-100 dark:bg-slate-900 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-850 text-slate-800 dark:text-slate-200 font-semibold rounded-xl transition-colors flex items-center justify-center cursor-pointer"
+            className="px-8 py-4 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white font-bold rounded-full transition-colors flex items-center justify-center text-lg cursor-pointer"
           >
             Browse Guides
           </Link>

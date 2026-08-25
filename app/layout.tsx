@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const outfit = Outfit({
-  weight: ["300", "400", "500", "600", "700", "800"],
+const poppins = Poppins({
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
-  variable: "--font-outfit",
+  variable: "--font-poppins",
 });
 
 export const metadata: Metadata = {
@@ -93,7 +93,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} ${outfit.variable} font-sans antialiased min-h-screen flex flex-col`}>
+      <body className={`${inter.variable} ${poppins.variable} font-sans antialiased min-h-screen flex flex-col`}>
           <SitePreloader />
           <Navbar />
           <StatsProvider>
