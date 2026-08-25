@@ -516,11 +516,11 @@ export default function FishCompatibility() {
       icon: <AlertTriangle className="w-6 h-6 text-orange-400" />,
     },
     red: {
-      border: 'border-red-500/40',
-      glow: 'shadow-[0_0_25px_rgba(239,68,68,0.25)]',
-      bg: 'bg-red-955/25 border-red-500/20 text-red-450',
-      text: 'text-red-400',
-      icon: <XCircle className="w-6 h-6 text-red-400" />,
+      border: 'border-slate-500/40',
+      glow: 'shadow-none',
+      bg: 'bg-slate-950 border-slate-800 text-slate-450',
+      text: 'text-slate-350',
+      icon: <XCircle className="w-6 h-6 text-slate-400" />,
     },
     blue: {
       border: 'border-blue-500/40',
@@ -665,7 +665,7 @@ export default function FishCompatibility() {
                 <div className="space-y-3.5">
                   <div className="flex justify-between items-center text-sm">
                     <span className="text-slate-400">Environment</span>
-                    <span className={`font-semibold ${f1Data.category !== f2Data.category ? 'text-red-500 font-bold' : 'text-slate-200'}`}>
+                    <span className={`font-semibold ${f1Data.category !== f2Data.category ? 'text-blue-500 font-bold' : 'text-slate-200'}`}>
                       {f2Data.category}
                     </span>
                   </div>

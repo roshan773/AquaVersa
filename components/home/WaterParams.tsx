@@ -49,8 +49,8 @@ export default function WaterParams({ showCTA = true }: WaterParamsProps) {
       target: 'Varies by Species',
       danger: 'Sudden Fluctuations',
       desc: 'Tropical species need warm, stable water (usually 75-80°F), while goldfish prefer cooler water (65-72°F). Rapid temperature swings weaken fish immune systems, triggering disease.',
-      icon: <Thermometer className="w-8 h-8 text-red-500" />,
-      color: 'bg-red-500/10 border-red-500/20'
+      icon: <Thermometer className="w-8 h-8 text-blue-500" />,
+      color: 'bg-blue-500/10 border-blue-500/20'
     },
     {
       id: 'gh-kh',

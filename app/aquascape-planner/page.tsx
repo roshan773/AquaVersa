@@ -179,7 +179,7 @@ export default function AquascapePlannerPage() {
         { id: 'wood-1', type: 'wood', name: 'Bonsai Wood', label: '🪵 Centerwood', x: 50, y: 55, color: 'bg-amber-900' },
         { id: 'plant-1', type: 'plant', name: 'Anubias', label: '🌱 Anubias Nana', x: 48, y: 62, color: 'bg-emerald-600' },
         { id: 'plant-2', type: 'plant', name: 'Anubias', label: '🌱 Anubias', x: 55, y: 65, color: 'bg-emerald-600' },
-        { id: 'fish-1', type: 'fish', name: 'Betta', label: '🐠 Betta Fish', x: 30, y: 25, color: 'bg-red-500' }
+        { id: 'fish-1', type: 'fish', name: 'Betta', label: '🐠 Betta Fish', x: 30, y: 25, color: 'bg-blue-500' }
       ];
     } else {
       // Nature style: mixed
@@ -433,10 +433,10 @@ export default function AquascapePlannerPage() {
                         <Plus className="w-3.5 h-3.5 text-orange-400" /> Guppy
                       </button>
                       <button 
-                        onClick={() => handleAddItem('fish', 'betta', '🐠 Betta Fish', 'bg-red-500')}
+                        onClick={() => handleAddItem('fish', 'betta', '🐠 Betta Fish', 'bg-blue-500')}
                         className="py-2 px-3 bg-muted border border-border hover:border-cyan-500/35 rounded-xl text-xs font-bold text-foreground cursor-pointer text-left flex items-center gap-1.5"
                       >
-                        <Plus className="w-3.5 h-3.5 text-red-500" /> Betta Fish
+                        <Plus className="w-3.5 h-3.5 text-blue-500" /> Betta Fish
                       </button>
                     </div>
                   </div>

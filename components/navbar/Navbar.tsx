@@ -224,7 +224,7 @@ export default function Navbar() {
             </AnimatePresence>
           </div>
 
-          <Link href="/contact" className={linkClass}>Contact</Link>
+
         </div>
 
         {/* Search Bar & Mobile Burger */}
@@ -304,7 +304,7 @@ export default function Navbar() {
                     <Link href="/compatibility" className="hover:text-blue-500" onClick={toggleMobileMenu}>⚖️ Compatibility Checker</Link>
                     <Link href="/stocking-planner" className="hover:text-blue-500" onClick={toggleMobileMenu}>📊 Stocking Planner</Link>
                     <Link href="/fish-finder" className="hover:text-blue-500" onClick={toggleMobileMenu}>🔍 Fish Recommendation</Link>
-                    <Link href="/equipment-wizard" className="hover:text-red-500" onClick={toggleMobileMenu}>⚙️ Equipment Wizard</Link>
+                    <Link href="/equipment-wizard" className="hover:text-blue-500" onClick={toggleMobileMenu}>⚙️ Equipment Wizard</Link>
                     <Link href="/budget-calculator" className="hover:text-blue-500" onClick={toggleMobileMenu}>💵 Budget Calculator</Link>
                     <Link href="/aquascape-planner" className="hover:text-blue-500" onClick={toggleMobileMenu}>🪵 Aquascape Planner</Link>
                     <Link href="/symptom-checker" className="hover:text-blue-500" onClick={toggleMobileMenu}>🩺 Symptom Checker</Link>

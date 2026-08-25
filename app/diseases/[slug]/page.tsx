@@ -26,7 +26,7 @@ export default async function DiseaseDetailPage({ params }: PageProps) {
   const getTypeBadgeClass = (type: string) => {
     switch (type) {
       case "Parasitic":
-        return "bg-red-600 text-white border border-red-500/30 shadow-md backdrop-blur-sm";
+        return "bg-sky-600 text-white border border-sky-500/30 shadow-md backdrop-blur-sm";
       case "Bacterial":
         return "bg-purple-600 text-white border border-purple-500/30 shadow-md backdrop-blur-sm";
       case "Fungal":
@@ -40,7 +40,7 @@ export default async function DiseaseDetailPage({ params }: PageProps) {
     <div className="flex flex-col w-full min-h-screen bg-background relative py-12">
       {/* Background glow effects */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/5 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-red-500/5 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/5 blur-3xl pointer-events-none" />
 
       <div className="container mx-auto px-4 max-w-5xl">
         {/* Navigation Breadcrumb */}
@@ -58,7 +58,7 @@ export default async function DiseaseDetailPage({ params }: PageProps) {
               <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${getTypeBadgeClass(disease.type)}`}>
                 {disease.type} Infection
               </span>
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-500 text-xs font-bold border border-red-500/20 uppercase tracking-wider">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-blue-500 text-xs font-bold border border-blue-500/20 uppercase tracking-wider">
                 <ShieldAlert className="w-3.5 h-3.5" /> High Risk Pathogen
               </span>
             </div>
@@ -140,14 +140,14 @@ export default async function DiseaseDetailPage({ params }: PageProps) {
         </div>
 
         {/* Step-by-Step Treatment Plan */}
-        <div className="mt-8 bg-red-500/5 dark:bg-red-950/5 border border-red-500/20 rounded-3xl p-6 md:p-8 shadow-sm">
-          <h2 className="text-2xl font-bold mb-6 flex items-center gap-2 text-red-600 dark:text-red-400">
+        <div className="mt-8 bg-blue-500/5 dark:bg-blue-950/5 border border-blue-500/20 rounded-3xl p-6 md:p-8 shadow-sm">
+          <h2 className="text-2xl font-bold mb-6 flex items-center gap-2 text-blue-600 dark:text-blue-400">
             <Heart className="w-6 h-6 animate-pulse" /> Step-by-Step Clinical Treatment Guide
           </h2>
           <div className="space-y-6">
             {disease.treatment.map((step, i) => (
               <div key={i} className="flex gap-4 items-start">
-                <span className="w-8 h-8 rounded-full bg-red-500 text-white flex items-center justify-center font-bold text-sm shrink-0 border border-white/20 shadow-md">
+                <span className="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-sm shrink-0 border border-white/20 shadow-md">
                   {i + 1}
                 </span>
                 <p className="text-foreground/90 leading-relaxed pt-1 text-sm md:text-base">

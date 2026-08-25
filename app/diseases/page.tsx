@@ -108,7 +108,7 @@ export default function Diseases() {
   const getTypeBadgeClass = (type: string) => {
     switch (type) {
       case "Parasitic":
-        return "bg-red-600 text-white border border-red-500/30 shadow-md backdrop-blur-sm";
+        return "bg-sky-600 text-white border border-sky-500/30 shadow-md backdrop-blur-sm";
       case "Bacterial":
         return "bg-purple-600 text-white border border-purple-500/30 shadow-md backdrop-blur-sm";
       case "Fungal":
@@ -122,8 +122,8 @@ export default function Diseases() {
     <div className="flex flex-col w-full py-12 bg-background min-h-screen">
       {/* Clinically Designed Hero Section */}
       <section className="container mx-auto px-4 text-center mb-16 relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-red-500/5 to-cyan-500/5 blur-3xl pointer-events-none -z-10" />
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 text-red-600 dark:text-red-400 font-semibold mb-4 border border-red-500/20 shadow-sm text-sm">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 blur-3xl pointer-events-none -z-10" />
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 text-blue-650 dark:text-blue-400 font-semibold mb-4 border border-blue-500/20 shadow-sm text-sm">
           <ShieldAlert className="w-4 h-4 animate-pulse" /> Fish Health & Diagnostic Hub
         </div>
         <h1 className="text-4xl md:text-6xl font-poppins font-extrabold mb-6 tracking-tight bg-gradient-to-r from-slate-900 via-slate-800 to-slate-950 dark:from-white dark:via-slate-100 dark:to-slate-300 bg-clip-text text-transparent">
@@ -260,7 +260,7 @@ export default function Diseases() {
                             <span className="font-bold text-muted-foreground uppercase tracking-wider">Affected:</span>{" "}
                             <span className="text-foreground/90">{d.affected.join(", ")}</span>
                           </p>
-                          <div className="bg-red-500/5 dark:bg-red-950/10 p-3 rounded-lg border border-red-500/10 text-red-600 dark:text-red-400 text-xs">
+                           <div className="bg-blue-500/5 dark:bg-blue-950/10 p-3 rounded-lg border border-blue-500/10 text-blue-600 dark:text-blue-400 text-xs">
                             <span className="font-bold">Cure Summary:</span> {d.cure}
                           </div>
                         </div>
@@ -304,7 +304,7 @@ export default function Diseases() {
                   </div>
                   <button
                     onClick={resetChecker}
-                    className="text-xs font-semibold text-red-500 hover:text-red-600 transition-colors bg-red-500/5 hover:bg-red-500/10 px-3 py-1.5 rounded-lg border border-red-500/10"
+                    className="text-xs font-semibold text-blue-500 hover:text-blue-600 transition-colors bg-blue-500/5 hover:bg-blue-500/10 px-3 py-1.5 rounded-lg border border-blue-500/10"
                   >
                     Reset Selected
                   </button>
@@ -401,7 +401,7 @@ export default function Diseases() {
                   <div className="border-t border-border mt-6 pt-4 text-center">
                     <button
                       onClick={resetChecker}
-                      className="text-xs font-bold text-red-500 hover:text-red-600 transition-colors"
+                      className="text-xs font-bold text-blue-500 hover:text-blue-600 transition-colors"
                     >
                       Clear Diagnostics
                     </button>

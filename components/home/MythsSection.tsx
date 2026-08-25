@@ -99,13 +99,13 @@ export default function MythsSection() {
 
                   {/* FRONT */}
                   <div className="absolute w-full h-full rounded-3xl bg-card border border-border p-6 flex flex-col items-center justify-center text-center [backface-visibility:hidden] shadow-sm">
-                    <div className="w-12 h-12 bg-red-500/10 border border-red-500/20 rounded-full flex items-center justify-center mb-4">
-                      <span className="font-bold text-lg text-red-500">
+                    <div className="w-12 h-12 bg-blue-500/10 border border-blue-500/20 rounded-full flex items-center justify-center mb-4">
+                      <span className="font-bold text-lg text-blue-500">
                         ?
                       </span>
                     </div>
 
-                    <span className="text-[10px] font-bold text-red-500 uppercase tracking-widest mb-2">
+                    <span className="text-[10px] font-bold text-blue-500 uppercase tracking-widest mb-2">
                       Common Myth
                     </span>
 
