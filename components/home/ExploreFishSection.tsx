@@ -5,8 +5,8 @@ import { ArrowRight, Droplets, Waves } from 'lucide-react';
 
 export default function ExploreFishSection() {
   return (
-    <section className="py-24 bg-[#030303] border-b border-red-500/10 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(239,68,68,0.01),transparent_60%)] pointer-events-none" />
+    <section className="py-24 bg-[#030303] border-b border-blue-500/10 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.01),transparent_60%)] pointer-events-none" />
       <div className="container mx-auto px-4 relative z-10 max-w-7xl">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-5xl font-poppins font-bold mb-6 text-white">
@@ -19,7 +19,7 @@ export default function ExploreFishSection() {
         
         <div className="grid md:grid-cols-2 gap-8">
           {/* Freshwater Card */}
-          <div className="group relative rounded-3xl overflow-hidden min-h-[420px] flex flex-col justify-end p-8 border border-red-500/10 bg-black">
+          <div className="group relative rounded-3xl overflow-hidden min-h-[420px] flex flex-col justify-end p-8 border border-blue-500/10 bg-black">
             <Image 
               src="/images/neon_tetra.png" 
               alt="Freshwater Aquarium" 
@@ -29,8 +29,8 @@ export default function ExploreFishSection() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
             <div className="relative z-10 text-white text-left">
-              <div className="w-12 h-12 rounded-2xl bg-red-500/10 backdrop-blur-md flex items-center justify-center mb-6 border border-red-500/35">
-                <Droplets className="w-6 h-6 text-red-500" />
+              <div className="w-12 h-12 rounded-2xl bg-blue-500/10 backdrop-blur-md flex items-center justify-center mb-6 border border-blue-500/35">
+                <Droplets className="w-6 h-6 text-blue-500" />
               </div>
               <h3 className="text-3xl font-poppins font-bold mb-3">Freshwater Fish</h3>
               <p className="text-slate-300 font-light text-sm mb-8 max-w-md leading-relaxed">
@@ -38,7 +38,7 @@ export default function ExploreFishSection() {
               </p>
               <Link 
                 href="/fish/freshwater" 
-                className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white font-bold px-7 py-3.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(239,68,68,0.25)] shadow-lg cursor-pointer"
+                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-7 py-3.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(59,130,246,0.25)] shadow-lg cursor-pointer"
               >
                 <span>Browse Freshwater</span> <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -46,7 +46,7 @@ export default function ExploreFishSection() {
           </div>
 
           {/* Saltwater Card */}
-          <div className="group relative rounded-3xl overflow-hidden min-h-[420px] flex flex-col justify-end p-8 border border-red-500/10 bg-black">
+          <div className="group relative rounded-3xl overflow-hidden min-h-[420px] flex flex-col justify-end p-8 border border-blue-500/10 bg-black">
             <Image 
               src="/images/clownfish.png" 
               alt="Saltwater Aquarium" 
@@ -56,8 +56,8 @@ export default function ExploreFishSection() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
             <div className="relative z-10 text-white text-left">
-              <div className="w-12 h-12 rounded-2xl bg-red-500/10 backdrop-blur-md flex items-center justify-center mb-6 border border-red-500/35">
-                <Waves className="w-6 h-6 text-red-500" />
+              <div className="w-12 h-12 rounded-2xl bg-blue-500/10 backdrop-blur-md flex items-center justify-center mb-6 border border-blue-500/35">
+                <Waves className="w-6 h-6 text-blue-500" />
               </div>
               <h3 className="text-3xl font-poppins font-bold mb-3">Saltwater Fish</h3>
               <p className="text-slate-300 font-light text-sm mb-8 max-w-md leading-relaxed">
@@ -65,7 +65,7 @@ export default function ExploreFishSection() {
               </p>
               <Link 
                 href="/fish/saltwater" 
-                className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white font-bold px-7 py-3.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(239,68,68,0.25)] shadow-lg cursor-pointer"
+                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-7 py-3.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(59,130,246,0.25)] shadow-lg cursor-pointer"
               >
                 <span>Browse Saltwater</span> <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>

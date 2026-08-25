@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { CheckCircle2, AlertTriangle, XCircle, Info, Layers, ShieldAlert, Droplet } from 'lucide-react';
+import { CheckCircle2, AlertTriangle, XCircle, Info, Layers, ShieldAlert } from 'lucide-react';
 import Image from 'next/image';
 import { fishData } from '@/data/fish';
 
@@ -339,7 +339,7 @@ export default function FishCompatibility() {
           return {
             status: '🔴 Not Recommended',
             message:
-              `Territorial conflict risk: ${other.name} is listed as ${other.temperament}, while Bettas are territorial. Combining two territorial fish with overlapping space can create persistent aggression and stress.`,
+              `Territorial conflict risk: ${other.name} is listed as ${other.temperament}, while Bettas are territorial. Combining two territorial fish with overlapping space can create severe aggression.`,
             colorTheme: 'red',
           };
         }
@@ -532,11 +532,11 @@ export default function FishCompatibility() {
   }[compResult.colorTheme as 'emerald' | 'amber' | 'orange' | 'red' | 'blue'];
 
   return (
-    <section className="py-24 bg-black border-b border-red-500/10 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(239,68,68,0.02),transparent_60%)] pointer-events-none" />
+    <section className="py-24 bg-black border-b border-blue-500/10 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.02),transparent_60%)] pointer-events-none" />
       <div className="container mx-auto px-4 max-w-5xl relative z-10">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 text-red-500 font-bold mb-4 border border-red-500/20 text-xs uppercase tracking-wider animate-float">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 text-blue-500 font-bold mb-4 border border-blue-500/20 text-xs uppercase tracking-wider animate-float">
             <ShieldAlert className="w-4 h-4" /> Compatibility Tool
           </div>
           <h2 className="text-3xl md:text-5xl font-poppins font-bold mb-4 text-white">
@@ -547,7 +547,7 @@ export default function FishCompatibility() {
           </p>
         </div>
 
-        <div className="bg-black/40 border border-red-500/10 rounded-3xl p-6 md:p-10 shadow-2xl relative overflow-hidden">
+        <div className="bg-black/40 border border-blue-500/10 rounded-3xl p-6 md:p-10 shadow-2xl relative overflow-hidden">
           {/* Main matchup grid */}
           <div className="grid grid-cols-1 md:grid-cols-7 gap-8 items-center relative z-10">
             {/* Fish 1 Column */}
@@ -563,7 +563,7 @@ export default function FishCompatibility() {
               <select
                 value={fish1}
                 onChange={(e) => setFish1(e.target.value)}
-                className="w-full bg-black border border-red-500/15 rounded-xl px-4 py-3 text-slate-200 font-semibold focus:outline-none focus:ring-2 focus:ring-red-500 hover:border-red-500/30 transition-colors"
+                className="w-full bg-black border border-blue-500/15 rounded-xl px-4 py-3 text-slate-200 font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500 hover:border-blue-500/30 transition-colors"
               >
                 {fishData.map(f => (
                   <option key={f.id} value={f.id} className="bg-black text-slate-200">{f.name} ({f.category})</option>
@@ -573,7 +573,7 @@ export default function FishCompatibility() {
 
             {/* VS Badge */}
             <div className="md:col-span-1 flex justify-center py-4 md:py-0">
-              <div className="w-14 h-14 rounded-full bg-black border border-red-500/25 flex items-center justify-center text-lg font-extrabold text-red-500 shadow-md shadow-red-500/10">
+              <div className="w-14 h-14 rounded-full bg-black border border-blue-500/25 flex items-center justify-center text-lg font-extrabold text-blue-500 shadow-md shadow-blue-500/10">
                 VS
               </div>
             </div>
@@ -591,7 +591,7 @@ export default function FishCompatibility() {
               <select
                 value={fish2}
                 onChange={(e) => setFish2(e.target.value)}
-                className="w-full bg-black border border-red-500/15 rounded-xl px-4 py-3 text-slate-200 font-semibold focus:outline-none focus:ring-2 focus:ring-red-500 hover:border-red-500/30 transition-colors"
+                className="w-full bg-black border border-blue-500/15 rounded-xl px-4 py-3 text-slate-200 font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500 hover:border-blue-500/30 transition-colors"
               >
                 {fishData.map(f => (
                   <option key={f.id} value={f.id} className="bg-black text-slate-200">{f.name} ({f.category})</option>
@@ -602,7 +602,7 @@ export default function FishCompatibility() {
 
           {/* Compatibility Status Banner */}
           <div className={`mt-10 rounded-2xl p-6 flex flex-col md:flex-row items-center gap-5 border transition-all duration-500 ${themeClasses.bg}`}>
-            <div className="p-3 bg-black rounded-xl border border-red-500/20 shadow-md shrink-0">
+            <div className="p-3 bg-black rounded-xl border border-blue-500/20 shadow-md shrink-0">
               {themeClasses.icon}
             </div>
             <div className="text-center md:text-left">
@@ -616,16 +616,16 @@ export default function FishCompatibility() {
           </div>
 
           {/* Parameters Comparison Section */}
-          <div className="mt-12 border-t border-red-500/10 pt-8 text-left">
+          <div className="mt-12 border-t border-blue-500/10 pt-8 text-left">
             <h4 className="text-lg font-bold font-poppins text-white mb-6 text-center md:text-left flex items-center gap-2 justify-center md:justify-start">
-              <Layers className="w-5 h-5 text-red-500" /> Species Parameters Matchup
+              <Layers className="w-5 h-5 text-blue-500" /> Species Parameters Matchup
             </h4>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Fish 1 details */}
-              <div className="bg-black border border-red-500/10 p-5 rounded-2xl">
-                <div className="flex items-center gap-3 mb-4 pb-3 border-b border-red-500/10">
-                  <span className="text-xs uppercase font-bold px-2 py-0.5 rounded bg-red-500/10 text-red-500">Species 1</span>
+              <div className="bg-black border border-blue-500/10 p-5 rounded-2xl">
+                <div className="flex items-center gap-3 mb-4 pb-3 border-b border-blue-500/10">
+                  <span className="text-xs uppercase font-bold px-2 py-0.5 rounded bg-blue-500/10 text-blue-500">Species 1</span>
                   <span className="text-base font-bold text-white">{f1Data.name}</span>
                 </div>
                 <div className="space-y-3.5">
@@ -657,9 +657,9 @@ export default function FishCompatibility() {
               </div>
 
               {/* Fish 2 details */}
-              <div className="bg-black border border-red-500/10 p-5 rounded-2xl">
-                <div className="flex items-center gap-3 mb-4 pb-3 border-b border-red-500/10">
-                  <span className="text-xs uppercase font-bold px-2 py-0.5 rounded bg-red-500/10 text-red-500">Species 2</span>
+              <div className="bg-black border border-blue-500/10 p-5 rounded-2xl">
+                <div className="flex items-center gap-3 mb-4 pb-3 border-b border-blue-500/10">
+                  <span className="text-xs uppercase font-bold px-2 py-0.5 rounded bg-blue-500/10 text-blue-500">Species 2</span>
                   <span className="text-base font-bold text-white">{f2Data.name}</span>
                 </div>
                 <div className="space-y-3.5">

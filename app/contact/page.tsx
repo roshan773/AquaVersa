@@ -75,18 +75,18 @@ export default function ContactPage() {
     <div className="min-h-screen bg-black text-slate-100 py-24 px-4 flex items-center relative overflow-hidden font-sans">
       {/* Background ambient lighting */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-red-950/20 rounded-full blur-[140px]" />
+        <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-blue-955/20 rounded-full blur-[140px]" />
         <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-slate-900/10 rounded-full blur-[120px]" />
       </div>
 
       <div className="container mx-auto max-w-5xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           
-          {/* LEFT: Info Column (Discord Card removed) */}
+          {/* LEFT: Info Column */}
           <div className="lg:col-span-5 flex flex-col justify-between gap-6 text-left">
             <div className="flex flex-col gap-6">
               <div>
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-950/50 border border-red-800/40 backdrop-blur-md mb-6 text-red-500 text-xs font-semibold uppercase tracking-wider">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-955/50 border border-blue-800/40 backdrop-blur-md mb-6 text-blue-500 text-xs font-semibold uppercase tracking-wider">
                   <span>Connect & Support</span>
                 </div>
                 
@@ -102,16 +102,16 @@ export default function ContactPage() {
 
               {/* Direct Support Email Card */}
               <div className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800/60 backdrop-blur-sm shadow-xl flex flex-col gap-4 relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full blur-xl pointer-events-none" />
+                <div className="absolute top-0 right-0 w-20 h-20 bg-blue-500/5 rounded-full blur-xl pointer-events-none" />
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-red-950/85 border border-red-800/30 flex items-center justify-center text-red-400">
-                    <Mail className="w-5 h-5 text-red-500" />
+                  <div className="w-10 h-10 rounded-xl bg-blue-955/85 border border-blue-800/30 flex items-center justify-center text-blue-400">
+                    <Mail className="w-5 h-5 text-blue-500" />
                   </div>
                   <div>
                     <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Direct Support</h3>
                     <button 
                       onClick={handleCopyEmail}
-                      className="text-base font-bold text-white hover:text-red-500 transition-colors cursor-pointer text-left"
+                      className="text-base font-bold text-white hover:text-blue-500 transition-colors cursor-pointer text-left"
                     >
                       {emailTo}
                     </button>
@@ -119,7 +119,7 @@ export default function ContactPage() {
                 </div>
                 <button
                   onClick={handleCopyEmail}
-                  className="w-full mt-2 py-2.5 bg-slate-950 hover:bg-slate-900 border border-slate-800 hover:border-slate-750 text-xs font-semibold rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full mt-2 py-2.5 bg-slate-955 hover:bg-slate-900 border border-slate-800 hover:border-slate-750 text-xs font-semibold rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer text-slate-200"
                 >
                   <span>Copy Support Email</span>
                 </button>
@@ -142,7 +142,7 @@ export default function ContactPage() {
             <form onSubmit={handleFormSubmit} className="space-y-6">
               
               <div className="flex items-center justify-between border-b border-slate-850 pb-4">
-                <div className="flex items-center gap-2.5 text-red-500 font-bold uppercase tracking-wider text-xs">
+                <div className="flex items-center gap-2.5 text-blue-500 font-bold uppercase tracking-wider text-xs">
                   <span>Send a Message</span>
                 </div>
               </div>
@@ -159,8 +159,8 @@ export default function ContactPage() {
               )}
 
               {submitStatus === "error" && (
-                <div className="p-4 rounded-xl bg-rose-950/40 border border-rose-800/40 text-rose-400 text-xs flex items-start gap-3">
-                  <AlertTriangle className="w-4 h-4 shrink-0 text-rose-450 mt-0.5" />
+                <div className="p-4 rounded-xl bg-rose-950/40 border border-rose-800/40 text-rose-450 text-xs flex items-start gap-3">
+                  <AlertTriangle className="w-4 h-4 shrink-0 text-rose-455 mt-0.5" />
                   <div>
                     <strong className="block font-semibold mb-1">Submission failed</strong>
                     {errorMessage}
@@ -182,7 +182,7 @@ export default function ContactPage() {
                       placeholder="Your name"
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-850 bg-slate-955/60 focus:bg-slate-955 focus:border-red-500 text-slate-100 text-sm transition-all focus:outline-none placeholder-slate-600"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-850 bg-slate-955/60 focus:bg-slate-955 focus:border-blue-500 text-slate-100 text-sm transition-all focus:outline-none placeholder-slate-600"
                     />
                   </div>
                   <div className="space-y-1.5">
@@ -195,7 +195,7 @@ export default function ContactPage() {
                       placeholder="e.g. johndoe@gmail.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-855 bg-slate-955/60 focus:bg-slate-955 focus:border-red-500 text-slate-100 text-sm transition-all focus:outline-none placeholder-slate-600"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-855 bg-slate-955/60 focus:bg-slate-955 focus:border-blue-500 text-slate-100 text-sm transition-all focus:outline-none placeholder-slate-600"
                     />
                   </div>
                 </div>
@@ -212,7 +212,7 @@ export default function ContactPage() {
                       placeholder="e.g. Setup question"
                       value={subject}
                       onChange={(e) => setSubject(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-850 bg-slate-955/60 focus:bg-slate-955 focus:border-red-500 text-slate-100 text-sm transition-all focus:outline-none placeholder-slate-600"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-850 bg-slate-955/60 focus:bg-slate-955 focus:border-blue-500 text-slate-100 text-sm transition-all focus:outline-none placeholder-slate-600"
                     />
                   </div>
                   <div className="space-y-1.5">
@@ -224,7 +224,7 @@ export default function ContactPage() {
                       placeholder="e.g. +1 (555) 000-0000"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-850 bg-slate-955/60 focus:bg-slate-955 focus:border-red-500 text-slate-100 text-sm transition-all focus:outline-none placeholder-slate-600"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-850 bg-slate-955/60 focus:bg-slate-955 focus:border-blue-500 text-slate-100 text-sm transition-all focus:outline-none placeholder-slate-600"
                     />
                   </div>
                 </div>
@@ -240,7 +240,7 @@ export default function ContactPage() {
                     placeholder="Tell us what we can help with..."
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-850 bg-slate-955/60 focus:bg-slate-955 focus:border-red-500 text-slate-100 text-sm transition-all focus:outline-none placeholder-slate-600 resize-none"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-850 bg-slate-955/60 focus:bg-slate-955 focus:border-blue-500 text-slate-100 text-sm transition-all focus:outline-none placeholder-slate-600 resize-none"
                   />
                 </div>
               </div>
@@ -250,7 +250,7 @@ export default function ContactPage() {
                 <button 
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 bg-red-600 hover:bg-red-500 disabled:bg-slate-800 disabled:text-slate-650 text-white font-bold rounded-xl transition-all duration-300 shadow-lg shadow-red-500/10 hover:shadow-red-500/20 text-sm flex items-center justify-center gap-2 group cursor-pointer"
+                  className="w-full py-4 bg-blue-600 hover:bg-blue-500 disabled:bg-slate-800 disabled:text-slate-650 text-white font-bold rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/10 hover:shadow-blue-500/20 text-sm flex items-center justify-center gap-2 group cursor-pointer"
                 >
                   {isSubmitting ? (
                     <span>Sending message...</span>

@@ -12,11 +12,11 @@ export default function FinalCTA() {
       </div>
 
       <div className="container relative z-10 mx-auto px-4 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-950/20 backdrop-blur-md border border-red-500/30 text-red-500 font-semibold mb-8">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-955/20 backdrop-blur-md border border-blue-500/30 text-blue-500 font-semibold mb-8">
           <Waves className="w-4 h-4" /> Dive In
         </div>
         <h2 className="text-4xl md:text-6xl font-poppins font-bold text-white mb-6 max-w-4xl mx-auto leading-tight text-center">
-          Ready to Build Your <span className="text-red-500">Dream Aquarium?</span>
+          Ready to Build Your <span className="text-blue-500">Dream Aquarium?</span>
         </h2>
         <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-12 text-center">
           Start building your aquarium with confidence.
@@ -25,7 +25,7 @@ export default function FinalCTA() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href="/start-aquarium"
-            className="px-8 py-4 bg-red-600 hover:bg-red-500 text-white font-bold rounded-full transition-colors flex items-center justify-center gap-2 text-lg shadow-lg shadow-red-500/20 cursor-pointer"
+            className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-full transition-colors flex items-center justify-center gap-2 text-lg shadow-lg shadow-blue-500/20 cursor-pointer"
           >
             Start Your Journey <ArrowRight className="w-5 h-5" />
           </Link>
