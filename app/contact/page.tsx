@@ -83,7 +83,8 @@ export default function ContactPage() {
       data.itemName, 
       data.incorrectDetail, 
       data.correction, 
-      data.sources
+      data.sources,
+      data.token || ""
     ]);
     return ContentService.createTextOutput(JSON.stringify({ success: true }))
       .setMimeType(ContentService.MimeType.JSON)
@@ -122,7 +123,8 @@ export default function ContactPage() {
           incorrectDetail,
           correction,
           sources,
-          sheetUrl
+          sheetUrl,
+          token: "2d7e12ea-1240-4d9f-acbe-db75c3fbbae2"
         }),
       });
 
@@ -309,6 +311,7 @@ export default function ContactPage() {
             className="lg:col-span-7 bg-slate-900/30 border border-slate-800/80 backdrop-blur-sm p-6 md:p-8 rounded-3xl shadow-xl flex flex-col justify-between"
           >
             <form onSubmit={handleSubmitReport} className="space-y-6">
+              <input type="hidden" name="token" value="2d7e12ea-1240-4d9f-acbe-db75c3fbbae2" />
               
               {/* Header */}
               <div className="flex items-center justify-between border-b border-slate-850 pb-4">

@@ -10,7 +10,8 @@ export async function POST(request: Request) {
       incorrectDetail, 
       correction, 
       sources,
-      sheetUrl 
+      sheetUrl,
+      token 
     } = body;
 
     // Basic Validation
@@ -52,7 +53,8 @@ export async function POST(request: Request) {
         itemName,
         incorrectDetail,
         correction,
-        sources: sources || "None"
+        sources: sources || "None",
+        token: token || "2d7e12ea-1240-4d9f-acbe-db75c3fbbae2"
       }),
     });
 
