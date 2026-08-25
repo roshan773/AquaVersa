@@ -25,7 +25,7 @@ export default function HeroSection() {
           <span className="text-sm font-medium tracking-wide">THE ULTIMATE AQUARIUM GUIDE</span>
         </div>
         <h1 className="text-5xl md:text-7xl font-poppins font-bold mb-6 max-w-4xl leading-tight">
-          Build an Aquarium That <span className="text-[#00B8D9]">Thrives.</span>
+          Build an Aquarium That <span className="text-[#ef4444]">Thrives.</span>
         </h1>
         <p className="text-lg md:text-xl text-blue-100 max-w-2xl mb-10">
           Find the right fish, choose the right equipment, grow the right plants, and learn how to create a healthy aquarium.

@@ -3,7 +3,7 @@ import { Waves } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#030914] text-slate-300 pt-20 pb-10 border-t border-slate-900 mt-auto">
+    <footer className="w-full bg-[#000000] text-slate-300 pt-20 pb-10 border-t border-slate-900 mt-auto">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
 

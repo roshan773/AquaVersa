@@ -150,7 +150,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#020617] text-slate-100 py-24 px-4 relative overflow-hidden flex items-center">
+    <div className="min-h-screen bg-[#000000] text-slate-100 py-24 px-4 relative overflow-hidden flex items-center">
       {/* Background ambient lighting */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-cyan-955/30 rounded-full blur-[140px]" />

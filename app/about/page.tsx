@@ -43,7 +43,7 @@ export default function AboutUsPage() {
     { label: "Total Guides", value: `${careTopics}+`, icon: BookOpen }
   ];
   return (
-    <div className="w-full bg-[#020617] text-slate-100 min-h-screen relative overflow-hidden pb-24">
+    <div className="w-full bg-[#000000] text-slate-100 min-h-screen relative overflow-hidden pb-24">
       {/* Background ambient lighting */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-cyan-950/45 rounded-full blur-[140px]" />
