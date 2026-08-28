@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Suspense, useMemo } from "react";
 import { fishData } from "@/data/fish";
+import { siteConfig } from "@/config/site";
 import { plantData } from "@/data/plants";
 import { equipmentData } from "@/data/equipment";
 
@@ -166,7 +167,7 @@ function SearchResults() {
                 {normalizedQuery ? (
                   <>Showing {totalResults} matches for <span className="text-cyan-600 dark:text-cyan-400 font-semibold">"{query}"</span></>
                 ) : (
-                  "Explore AquaVersa's library database"
+                  `Explore ${siteConfig.name}'s library database`
                 )}
               </p>
             </div>

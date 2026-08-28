@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Droplets, Search, Menu, X, Waves, Anchor, Leaf as LeafIcon, Settings as SettingsIcon } from "lucide-react";
 import Image from "next/image";
 import { fishData } from "@/data/fish";
+import { siteConfig } from "@/config/site";
 
 export default function Navbar() {
   const router = useRouter();
@@ -26,6 +27,9 @@ export default function Navbar() {
     if (searchQuery.trim()) {
       router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
       setSearchQuery("");
+      setIsMobileMenuOpen(false);
+    } else {
+      router.push("/search");
       setIsMobileMenuOpen(false);
     }
   };
@@ -59,7 +63,7 @@ export default function Navbar() {
             <Waves className="w-5 h-5 text-slate-900" />
           </div>
           <span className="font-poppins font-bold text-xl tracking-tight text-white">
-            AquaVersa
+            {siteConfig.name}
           </span>
         </Link>
 

@@ -2,9 +2,13 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { Mail, ArrowRight, CheckCircle2, AlertTriangle, User, FileText, Phone, MessageSquare, Compass } from "lucide-react";
+import { siteConfig } from "@/config/site";
 
 export default function ContactPage() {
+  const router = useRouter();
+  
   // Form fields
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -16,16 +20,50 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  
+  // Custom Validation Errors
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const emailTo = "pakhreroshan@gmail.com";
+  const emailTo = siteConfig.contactEmail;
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(emailTo);
     alert("Email address copied to clipboard!");
   };
 
+  const validate = () => {
+    const tempErrors: Record<string, string> = {};
+    
+    if (!fullName.trim()) {
+      tempErrors.fullName = "Please enter your name.";
+    } else if (fullName.trim().length < 2) {
+      tempErrors.fullName = "Name must be at least 2 characters.";
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.trim()) {
+      tempErrors.email = "Please enter your email address.";
+    } else if (!emailRegex.test(email)) {
+      tempErrors.email = "Please enter a valid email address.";
+    }
+
+    if (!subject.trim()) {
+      tempErrors.subject = "Please enter a subject.";
+    }
+
+    if (!message.trim()) {
+      tempErrors.message = "Please enter a message.";
+    } else if (message.trim().length < 10) {
+      tempErrors.message = "Message must be at least 10 characters.";
+    }
+
+    setErrors(tempErrors);
+    return Object.keys(tempErrors).length === 0;
+  };
+
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!validate()) return;
     if (isSubmitting) return;
 
     setIsSubmitting(true);
@@ -46,7 +84,7 @@ export default function ContactPage() {
           subject: subject,
           phone: phone,
           message: message,
-          from_name: "AquaVersa Contact Form",
+          from_name: "AquaGuide Contact Form",
         }),
       });
 
@@ -60,6 +98,8 @@ export default function ContactPage() {
         setSubject("");
         setPhone("");
         setMessage("");
+        // Redirect to thank-you page
+        router.push("/thank-you");
       } else {
         throw new Error(resData.message || "Failed to submit contact message.");
       }
@@ -139,12 +179,12 @@ export default function ContactPage() {
 
             {/* Signature Info */}
             <div className="text-xs text-slate-500 font-light leading-relaxed hidden lg:block pt-4 border-t border-slate-900">
-              <p className="font-bold text-slate-400 uppercase tracking-widest mb-1.5 font-poppins">AquaVersa Hub</p>
-              <p>123 Ocean Drive, Suite 400, Seaside, CA 94000</p>
+              <p className="font-bold text-slate-400 uppercase tracking-widest mb-1.5 font-poppins">{siteConfig.name} Hub</p>
+              <p>{siteConfig.contactAddress.full}</p>
             </div>
           </div>
 
-          {/* RIGHT: Contact Form (Premium card container with field icons) */}
+          {/* RIGHT: Contact Form */}
           <div className="lg:col-span-7">
             <div className="glass p-8 md:p-10 rounded-3xl shadow-2xl relative overflow-hidden text-left border border-blue-500/15">
               
@@ -152,7 +192,7 @@ export default function ContactPage() {
                 Send Message
               </h2>
 
-              <form onSubmit={handleFormSubmit} className="space-y-5">
+              <form onSubmit={handleFormSubmit} className="space-y-5" noValidate>
 
                 {/* Status Alert Banners */}
                 {submitStatus === "success" && (
@@ -160,14 +200,14 @@ export default function ContactPage() {
                     <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-400 mt-0.5" />
                     <div>
                       <strong className="block font-semibold mb-1">Message sent successfully!</strong>
-                      Thanks for reaching out. We will get back to you soon.
+                      Thanks for reaching out. Redirecting...
                     </div>
                   </div>
                 )}
 
                 {submitStatus === "error" && (
-                  <div className="p-4 rounded-xl bg-rose-950/40 border border-rose-800/40 text-rose-450 text-xs flex items-start gap-3">
-                    <AlertTriangle className="w-4 h-4 shrink-0 text-rose-455 mt-0.5" />
+                  <div className="p-4 rounded-xl bg-rose-950/40 border border-rose-800/40 text-rose-400 text-xs flex items-start gap-3">
+                    <AlertTriangle className="w-4 h-4 shrink-0 text-rose-500 mt-0.5" />
                     <div>
                       <strong className="block font-semibold mb-1">Submission failed</strong>
                       {errorMessage}
@@ -180,66 +220,91 @@ export default function ContactPage() {
                   {/* Name & Email Row */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 font-poppins block">
+                      <label htmlFor="fullName" className="text-[10px] font-bold uppercase tracking-widest text-slate-400 font-poppins block">
                         Full Name
                       </label>
                       <div className="relative">
                         <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                         <input
+                          id="fullName"
                           type="text"
                           required
                           placeholder="Your name"
                           value={fullName}
-                          onChange={(e) => setFullName(e.target.value)}
-                          className={inputClass}
+                          onChange={(e) => {
+                            setFullName(e.target.value);
+                            if (errors.fullName) setErrors(prev => ({ ...prev, fullName: "" }));
+                          }}
+                          className={`${inputClass} ${errors.fullName ? "border-rose-500 focus:ring-rose-500" : ""}`}
+                          aria-invalid={errors.fullName ? "true" : "false"}
                         />
                       </div>
+                      {errors.fullName && (
+                        <p className="text-xs text-rose-500 pl-1">{errors.fullName}</p>
+                      )}
                     </div>
                     
                     <div className="space-y-1.5">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 font-poppins block">
+                      <label htmlFor="email" className="text-[10px] font-bold uppercase tracking-widest text-slate-400 font-poppins block">
                         Email Address
                       </label>
                       <div className="relative">
                         <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                         <input
+                          id="email"
                           type="email"
                           required
                           placeholder="johndoe@gmail.com"
                           value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          className={inputClass}
+                          onChange={(e) => {
+                            setEmail(e.target.value);
+                            if (errors.email) setErrors(prev => ({ ...prev, email: "" }));
+                          }}
+                          className={`${inputClass} ${errors.email ? "border-rose-500 focus:ring-rose-500" : ""}`}
+                          aria-invalid={errors.email ? "true" : "false"}
                         />
                       </div>
+                      {errors.email && (
+                        <p className="text-xs text-rose-500 pl-1">{errors.email}</p>
+                      )}
                     </div>
                   </div>
 
                   {/* Subject & Phone Row */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 font-poppins block">
+                      <label htmlFor="subject" className="text-[10px] font-bold uppercase tracking-widest text-slate-400 font-poppins block">
                         Subject
                       </label>
                       <div className="relative">
                         <FileText className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                         <input
+                          id="subject"
                           type="text"
                           required
                           placeholder="e.g. Stocking check"
                           value={subject}
-                          onChange={(e) => setSubject(e.target.value)}
-                          className={inputClass}
+                          onChange={(e) => {
+                            setSubject(e.target.value);
+                            if (errors.subject) setErrors(prev => ({ ...prev, subject: "" }));
+                          }}
+                          className={`${inputClass} ${errors.subject ? "border-rose-500 focus:ring-rose-500" : ""}`}
+                          aria-invalid={errors.subject ? "true" : "false"}
                         />
                       </div>
+                      {errors.subject && (
+                        <p className="text-xs text-rose-500 pl-1">{errors.subject}</p>
+                      )}
                     </div>
                     
                     <div className="space-y-1.5">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 font-poppins block">
+                      <label htmlFor="phone" className="text-[10px] font-bold uppercase tracking-widest text-slate-400 font-poppins block">
                         Phone (Optional)
                       </label>
                       <div className="relative">
                         <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                         <input
+                          id="phone"
                           type="tel"
                           placeholder="+1 (555) 000-0000"
                           value={phone}
@@ -252,20 +317,28 @@ export default function ContactPage() {
 
                   {/* Message TextArea */}
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 font-poppins block">
+                    <label htmlFor="message" className="text-[10px] font-bold uppercase tracking-widest text-slate-400 font-poppins block">
                       Message
                     </label>
                     <div className="relative">
                       <MessageSquare className="absolute left-4 top-[18px] w-4 h-4 text-slate-500" />
                       <textarea
+                        id="message"
                         rows={4}
                         required
                         placeholder="Tell us what we can help with..."
                         value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        className="w-full bg-black/60 border border-slate-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl pl-11 pr-4 py-3.5 text-slate-100 text-sm transition-all focus:outline-none placeholder-slate-650 hover:border-slate-700 font-medium resize-none"
+                        onChange={(e) => {
+                          setMessage(e.target.value);
+                          if (errors.message) setErrors(prev => ({ ...prev, message: "" }));
+                        }}
+                        className={`w-full bg-black/60 border border-slate-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl pl-11 pr-4 py-3.5 text-slate-100 text-sm transition-all focus:outline-none placeholder-slate-650 hover:border-slate-700 font-medium resize-none ${errors.message ? "border-rose-500 focus:ring-rose-500" : ""}`}
+                        aria-invalid={errors.message ? "true" : "false"}
                       />
                     </div>
+                    {errors.message && (
+                      <p className="text-xs text-rose-500 pl-1">{errors.message}</p>
+                    )}
                   </div>
                 </div>
 

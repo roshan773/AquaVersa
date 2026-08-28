@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Waves } from "lucide-react";
+import { siteConfig } from "@/config/site";
 
 export default function SitePreloader() {
   const [mounted, setMounted] = useState(false);
@@ -51,7 +52,7 @@ export default function SitePreloader() {
             <Waves className="w-6 h-6 text-blue-500" />
           </div>
           <span className="font-poppins font-bold text-2xl tracking-tight text-white">
-            AquaVersa
+            {siteConfig.name}
           </span>
         </div>
       </div>
@@ -82,7 +83,7 @@ export default function SitePreloader() {
                 <Waves className="w-6 h-6 text-blue-500" />
               </div>
               <span className="font-poppins font-bold text-2xl tracking-tight text-white">
-                AquaVersa
+                {siteConfig.name}
               </span>
             </motion.div>
 

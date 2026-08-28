@@ -32,84 +32,12 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  /* Override standard color palettes to Blue/Black/White theme */
-  --color-cyan-50: #f0f7ff;
-  --color-cyan-100: #e0effe;
-  --color-cyan-200: #bae0fd;
-  --color-cyan-300: #7cc2fc;
-  --color-cyan-400: #38a3f8;
-  --color-cyan-500: #3b82f6;
-  --color-cyan-600: #2563eb;
-  --color-cyan-700: #1d4ed8;
-  --color-cyan-800: #1e40af;
-  --color-cyan-900: #1e3a8a;
-  --color-cyan-950: #0f172a;
-  --color-cyan-955: #0a0f1d;
-
-  --color-blue-50: #f0f7ff;
-  --color-blue-100: #e0effe;
-  --color-blue-200: #bae0fd;
-  --color-blue-300: #7cc2fc;
-  --color-blue-400: #38a3f8;
-  --color-blue-500: #3b82f6;
-  --color-blue-600: #2563eb;
-  --color-blue-750: #1d4ed8;
-  --color-blue-955: #0a0f1d;
-
-  --color-indigo-50: #f0f7ff;
-  --color-indigo-100: #e0effe;
-  --color-indigo-200: #bae0fd;
-  --color-indigo-300: #7cc2fc;
-  --color-indigo-400: #38a3f8;
-  --color-indigo-500: #3b82f6;
-  --color-indigo-600: #2563eb;
-  --color-indigo-700: #1d4ed8;
-  --color-indigo-800: #1e40af;
-  --color-indigo-900: #1e3a8a;
-
-  --color-sky-50: #f0f7ff;
-  --color-sky-100: #e0effe;
-  --color-sky-200: #bae0fd;
-  --color-sky-300: #7cc2fc;
-  --color-sky-400: #38a3f8;
-  --color-sky-500: #3b82f6;
-  --color-sky-600: #2563eb;
-  --color-sky-700: #1d4ed8;
-  --color-sky-800: #1e40af;
-  --color-sky-900: #1e3a8a;
-
-  --color-teal-50: #f0f7ff;
-  --color-teal-100: #e0effe;
-  --color-teal-200: #bae0fd;
-  --color-teal-300: #7cc2fc;
-  --color-teal-400: #38a3f8;
-  --color-teal-500: #3b82f6;
-  --color-teal-600: #2563eb;
-  --color-teal-700: #1d4ed8;
-  --color-teal-800: #1e40af;
-  --color-teal-900: #1e3a8a;
-
-  --color-emerald-50: #f0f7ff;
-  --color-emerald-100: #e0effe;
-  --color-emerald-200: #bae0fd;
-  --color-emerald-300: #7cc2fc;
-  --color-emerald-400: #38a3f8;
-  --color-emerald-500: #3b82f6;
-  --color-emerald-600: #2563eb;
-  --color-emerald-700: #1d4ed8;
-  --color-emerald-800: #1e40af;
-  --color-emerald-900: #1e3a8a;
-
-  --color-amber-50: #f0f7ff;
-  --color-amber-100: #e0effe;
-  --color-amber-200: #bae0fd;
-  --color-amber-300: #7cc2fc;
-  --color-amber-400: #38a3f8;
-  --color-amber-500: #3b82f6;
-  --color-amber-600: #2563eb;
-  --color-amber-700: #1d4ed8;
-  --color-amber-800: #1e40af;
-  --color-amber-900: #1e3a8a;
+  /* Custom dark ambient colors */
+  --color-blue-955: #050b18;
+  --color-cyan-955: #030814;
+  --color-emerald-955: #020b08;
+  --color-amber-955: #0a0702;
+  --color-rose-955: #0d0305;
 }
 
 @layer base {
@@ -194,19 +122,19 @@
   }
 }
 
-/* Glassmorphism Blue styles */
+/* Glassmorphism premium styles */
 .glass {
-  background-color: rgb(4 4 4 / 0.75);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgb(59 130 246 / 0.15);
-  box-shadow: 0 8px 32px 0 rgba(59, 130, 246, 0.12);
+  background-color: rgba(8, 12, 24, 0.65);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35);
 }
 
 .dark .glass {
-  background-color: rgb(4 4 4 / 0.75);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgb(59 130 246 / 0.15);
-  box-shadow: 0 8px 32px 0 rgba(59, 130, 246, 0.12);
+  background-color: rgba(8, 12, 24, 0.65);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35);
 }
 
 /* Accent Blue utilities */

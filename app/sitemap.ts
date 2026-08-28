@@ -2,9 +2,10 @@ import { MetadataRoute } from 'next';
 import { fishData } from '@/data/fish';
 import { plantData } from '@/data/plants';
 import { equipmentData } from '@/data/equipment';
+import { siteConfig } from '@/config/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://aquaversa.vercel.app';
+  const baseUrl = siteConfig.siteUrl;
 
   const staticRoutes = [
     '',
@@ -19,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/diseases',
     '/start-aquarium',
     '/food',
-    '/privacy',
+    '/privacy-policy',
     '/terms',
     '/water-analyzer',
     '/stocking-planner',

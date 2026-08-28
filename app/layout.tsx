@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import { siteConfig } from "@/config/site";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const spaceGrotesk = Space_Grotesk({
@@ -10,36 +11,56 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "AquaVersa - Build an Aquarium That Thrives | Interactive Aquarium Planner",
-  description: "Evolve your hobby with AquaVersa. Plan stocking compatible fish, calculate equipment, design custom planted setups, analyze water chemistry parameters, and unlock progress achievements.",
+  title: siteConfig.fullName,
+  description: siteConfig.description,
   keywords: [
+    "AquaGuide",
+    "aquaguide",
+    "AquvaGuide",
+    "aquvaGuide",
+    "aquva guide",
+    "aquaguide fish care",
+    "aquaguide compatibility",
+    "aquaguide setup",
+    "aquaguide equipment",
+    "aquaguide plants",
     "AquaVersa",
-    "aquaversa",
-    "aquaVersa",
-    "AquaVersa Aquarium",
-    "aquaversa.vercel.app",
     "Aquarium Planner",
     "Fish Compatibility Builder",
     "Stocking Calculator",
     "Aquascape Canvas Builder",
     "Water parameter analyzer"
   ],
-  authors: [{ name: "AquaVersa Team" }],
+  authors: [{ name: "AquaGuide Team" }],
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
-    title: "AquaVersa - Build an Aquarium That Thrives",
-    description: "Discover compatible fish, plants, and equipment specs. Plan your setups visually using the Interactive Aquarium Toolkit.",
-    url: "https://aquaversa.vercel.app",
-    siteName: "AquaVersa",
+    title: siteConfig.fullName,
+    description: siteConfig.description,
+    url: siteConfig.siteUrl,
+    siteName: siteConfig.name,
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: `${siteConfig.siteUrl}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: "AquaGuide - Aquarium & Fish Care Guide",
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "AquaVersa - Interactive Aquarium Toolkit",
-    description: "Plan your fish, plants, equipment, and water parameter checks on a frontend-only platform.",
+    title: siteConfig.fullName,
+    description: siteConfig.description,
+    images: [`${siteConfig.siteUrl}/og-image.png`],
   },
   alternates: {
-    canonical: "https://aquaversa.vercel.app",
+    canonical: siteConfig.siteUrl,
   }
 };
 
@@ -47,6 +68,8 @@ import Navbar from "@/components/navbar/Navbar";
 import { StatsProvider } from '@/components/home/StatsContext';
 import Footer from "@/components/footer/Footer";
 import SitePreloader from "@/components/ui/SitePreloader";
+import CookieBanner from "@/components/ui/CookieBanner";
+import StickyMobileCTA from "@/components/ui/StickyMobileCTA";
 
 export default function RootLayout({
   children,
@@ -80,13 +103,13 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "name": "AquaVersa",
-              "alternateName": ["aquaVersa", "Aqua Versa"],
-              "url": "https://aquaversa.vercel.app/",
-              "description": "Interactive toolkit for aquarists including compatibility check builders, volume calculators, and water parameters diagnostics.",
+              "name": siteConfig.name,
+              "alternateName": siteConfig.alternateNames,
+              "url": `${siteConfig.siteUrl}/`,
+              "description": siteConfig.description,
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://aquaversa.vercel.app/search?q={search_term_string}",
+                "target": `${siteConfig.siteUrl}/search?q={search_term_string}`,
                 "query-input": "required name=search_term_string"
               }
             })
@@ -101,6 +124,8 @@ export default function RootLayout({
               {children}
             </main>
           </StatsProvider>
+          <CookieBanner />
+          <StickyMobileCTA />
           <Footer />
         </body>
       </html>
