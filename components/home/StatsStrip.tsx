@@ -56,18 +56,18 @@ export default function StatsStrip() {
     {
       label: 'Fish Species',
       value: fish,
-      icon: <Fish className="w-6 h-6 text-cyan-400 group-hover:text-cyan-300" />,
-      bgGlow: 'from-cyan-500/10 to-transparent',
-      borderColor: 'group-hover:border-cyan-500/30',
-      iconBorder: 'border-cyan-500/10 group-hover:border-cyan-500/30'
+      icon: <Fish className="w-6 h-6 text-amber-500 group-hover:text-amber-400" />,
+      bgGlow: 'from-amber-500/10 to-transparent',
+      borderColor: 'group-hover:border-amber-500/30',
+      iconBorder: 'border-amber-500/10 group-hover:border-amber-500/30'
     },
     {
       label: 'Live Plants',
       value: plants,
-      icon: <Leaf className="w-6 h-6 text-emerald-450 group-hover:text-emerald-450" />,
-      bgGlow: 'from-emerald-500/10 to-transparent',
-      borderColor: 'group-hover:border-emerald-500/30',
-      iconBorder: 'border-emerald-500/10 group-hover:border-emerald-500/30'
+      icon: <Leaf className="w-6 h-6 text-amber-550 group-hover:text-amber-400" />,
+      bgGlow: 'from-amber-500/10 to-transparent',
+      borderColor: 'group-hover:border-amber-500/30',
+      iconBorder: 'border-amber-500/10 group-hover:border-amber-500/30'
     },
     {
       label: 'Equipment Guides',
@@ -82,8 +82,8 @@ export default function StatsStrip() {
   return (
     <section className="w-full bg-[#000000] border-y border-slate-900 py-12 relative overflow-hidden">
       {/* Soft background ambient blurs */}
-      <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-[350px] h-[350px] bg-cyan-955/20 rounded-full blur-[80px] pointer-events-none" />
-      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[300px] h-[300px] bg-emerald-955/20 rounded-full blur-[80px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-[350px] h-[350px] bg-amber-955/20 rounded-full blur-[80px] pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[300px] h-[300px] bg-amber-955/20 rounded-full blur-[80px] pointer-events-none" />
       
       <div className="container mx-auto px-4 max-w-5xl relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
