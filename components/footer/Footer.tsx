@@ -4,22 +4,22 @@ import { siteConfig } from "@/config/site";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#000000] text-slate-400 pt-20 pb-10 border-t border-slate-900 mt-auto font-sans">
+    <footer className="w-full bg-[#030812] text-slate-400 pt-20 pb-10 border-t border-cyan-950/40 mt-auto font-sans">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
 
           <div className="lg:col-span-2 text-left">
-            <Link href="/" className="flex items-center gap-2 mb-6 group inline-flex">
-              <div className="bg-blue-600 p-2 rounded-xl group-hover:bg-blue-500 transition-colors shadow-lg shadow-blue-500/20">
-                <Waves className="w-6 h-6 text-white" />
+            <Link href="/" className="flex items-center gap-2.5 mb-6 group inline-flex">
+              <div className="bg-gradient-to-br from-cyan-400 via-cyan-500 to-rose-500 p-2 rounded-xl group-hover:scale-105 transition-transform shadow-lg shadow-cyan-500/20">
+                <Waves className="w-6 h-6 text-slate-950" />
               </div>
-              <span className="font-poppins font-bold text-2xl text-white tracking-tight">{siteConfig.name}</span>
+              <span className="font-poppins font-extrabold text-2xl text-white tracking-tight group-hover:text-cyan-200 transition-colors">{siteConfig.name}</span>
             </Link>
-            <p className="text-sm text-slate-500 mb-8 max-w-sm leading-relaxed font-light">
+            <p className="text-sm text-slate-400 mb-8 max-w-sm leading-relaxed font-light">
               The premier destination for aquarium enthusiasts. We simplify aquatic science so you can build beautiful, thriving underwater ecosystems with confidence.
             </p>
-            <div className="text-xs text-slate-600 space-y-1">
-              <p className="font-semibold text-slate-500 uppercase tracking-widest text-[10px]">Headquarters Address</p>
+            <div className="text-xs text-slate-500 space-y-1">
+              <p className="font-semibold text-cyan-400/80 uppercase tracking-widest text-[10px]">Headquarters Address</p>
               <p>{siteConfig.contactAddress.full}</p>
               <p>Email: {siteConfig.contactEmail}</p>
             </div>
@@ -28,32 +28,32 @@ export default function Footer() {
           <div className="text-left">
             <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest font-poppins">Explore</h4>
             <ul className="space-y-4 text-sm font-medium">
-              <li><Link href="/fish" className="text-slate-400 hover:text-blue-500 transition-colors">Fish Catalog</Link></li>
-              <li><Link href="/fish/freshwater" className="text-slate-400 hover:text-blue-500 transition-colors">Freshwater Fish</Link></li>
-              <li><Link href="/fish/saltwater" className="text-slate-400 hover:text-blue-500 transition-colors">Saltwater Fish</Link></li>
-              <li><Link href="/plants" className="text-slate-400 hover:text-blue-500 transition-colors">Aquatic Plants</Link></li>
-              <li><Link href="/equipment" className="text-slate-400 hover:text-blue-500 transition-colors">Equipment Guide</Link></li>
-              <li><Link href="/guides" className="text-slate-400 hover:text-blue-500 transition-colors">All Guides</Link></li>
+              <li><Link href="/fish" className="text-slate-400 hover:text-cyan-400 transition-colors">Fish Catalog</Link></li>
+              <li><Link href="/fish/freshwater" className="text-slate-400 hover:text-cyan-400 transition-colors">Freshwater Fish</Link></li>
+              <li><Link href="/fish/saltwater" className="text-slate-400 hover:text-cyan-400 transition-colors">Saltwater Fish</Link></li>
+              <li><Link href="/plants" className="text-slate-400 hover:text-cyan-400 transition-colors">Aquatic Plants</Link></li>
+              <li><Link href="/equipment" className="text-slate-400 hover:text-cyan-400 transition-colors">Equipment Guide</Link></li>
+              <li><Link href="/guides" className="text-slate-400 hover:text-cyan-400 transition-colors">All Guides</Link></li>
             </ul>
           </div>
 
           <div className="text-left">
             <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest font-poppins">Learn</h4>
             <ul className="space-y-4 text-sm font-medium">
-              <li><Link href="/start-aquarium" className="text-slate-400 hover:text-blue-500 transition-colors">Start Aquarium</Link></li>
-              <li><Link href="/compatibility" className="text-slate-400 hover:text-blue-500 transition-colors">Fish Compatibility</Link></li>
-              <li><Link href="/tank-size" className="text-slate-400 hover:text-blue-500 transition-colors">Tank Size Guide</Link></li>
-              <li><Link href="/guides" className="text-slate-400 hover:text-blue-500 transition-colors">Maintenance Guide</Link></li>
+              <li><Link href="/start-aquarium" className="text-slate-400 hover:text-cyan-400 transition-colors">Start Aquarium</Link></li>
+              <li><Link href="/compatibility" className="text-slate-400 hover:text-cyan-400 transition-colors">Fish Compatibility</Link></li>
+              <li><Link href="/tank-size" className="text-slate-400 hover:text-cyan-400 transition-colors">Tank Size Guide</Link></li>
+              <li><Link href="/guides" className="text-slate-400 hover:text-cyan-400 transition-colors">Maintenance Guide</Link></li>
             </ul>
           </div>
 
           <div className="text-left">
             <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest font-poppins">Company</h4>
             <ul className="space-y-4 text-sm font-medium">
-              <li><Link href="/about" className="text-slate-400 hover:text-blue-500 transition-colors">About Us</Link></li>
-              <li><Link href="/contact" className="text-slate-400 hover:text-blue-500 transition-colors">Contact</Link></li>
-              <li><Link href="/privacy-policy" className="text-slate-400 hover:text-blue-500 transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="text-slate-400 hover:text-blue-500 transition-colors">Terms & Conditions</Link></li>
+              <li><Link href="/about" className="text-slate-400 hover:text-cyan-400 transition-colors">About Us</Link></li>
+              <li><Link href="/contact" className="text-slate-400 hover:text-cyan-400 transition-colors">Contact</Link></li>
+              <li><Link href="/privacy-policy" className="text-slate-400 hover:text-cyan-400 transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="text-slate-400 hover:text-cyan-400 transition-colors">Terms & Conditions</Link></li>
             </ul>
           </div>
         </div>

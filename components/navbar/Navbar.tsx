@@ -47,22 +47,22 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const linkClass = "text-sm font-semibold tracking-wide transition-all duration-300 hover:text-blue-500 text-white/90";
-  const btnClass = "text-sm font-semibold tracking-wide transition-all duration-300 flex items-center gap-1 hover:text-blue-500 text-white/90 focus:outline-none";
+  const linkClass = "text-sm font-semibold tracking-wide transition-all duration-300 hover:text-cyan-400 text-slate-200";
+  const btnClass = "text-sm font-semibold tracking-wide transition-all duration-300 flex items-center gap-1 hover:text-cyan-400 text-slate-200 focus:outline-none";
 
   return (
     <nav className={`sticky top-0 z-50 w-full transition-all duration-300 ${
       isScrolled
-        ? "bg-black/90 backdrop-blur-md border-b border-blue-500/20 shadow-[0_4px_20px_rgba(59,130,246,0.05)] py-2"
+        ? "bg-[#050b14]/90 backdrop-blur-md border-b border-cyan-500/20 shadow-[0_4px_25px_rgba(6,182,212,0.1)] py-2"
         : "bg-transparent border-transparent shadow-none py-4"
     }`}>
       <div className="container mx-auto px-4 max-w-7xl h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="bg-cyan-500 p-1.5 rounded-lg group-hover:bg-cyan-400 transition-colors">
-            <Waves className="w-5 h-5 text-slate-900" />
+        <Link href="/" className="flex items-center gap-2.5 group">
+          <div className="bg-gradient-to-br from-cyan-400 via-cyan-500 to-rose-500 p-1.5 rounded-xl shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
+            <Waves className="w-5 h-5 text-slate-950" />
           </div>
-          <span className="font-poppins font-bold text-xl tracking-tight text-white">
+          <span className="font-poppins font-extrabold text-xl tracking-tight text-white group-hover:text-cyan-200 transition-colors">
             {siteConfig.name}
           </span>
         </Link>

@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Plus_Jakarta_Sans, Outfit } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const spaceGrotesk = Space_Grotesk({
-  weight: ["400", "500", "600", "700"],
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  variable: "--font-plus-jakarta",
+  display: "swap",
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -79,7 +84,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#1b4d3e" />
+        <meta name="theme-color" content="#050b14" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -115,7 +120,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased min-h-screen flex flex-col`}>
+      <body className={`${plusJakarta.variable} ${outfit.variable} font-sans antialiased min-h-screen flex flex-col bg-[#050b14] text-slate-100 selection:bg-cyan-500/30 selection:text-cyan-200`}>
           <SitePreloader />
           <Navbar />
           <StatsProvider>
