@@ -4,13 +4,14 @@ import { ArrowRight, Droplets, Waves, CheckCircle2, AlertTriangle, Leaf, Setting
 import BuildEcosystem from "@/components/home/BuildEcosystem";
 
 import HeroSection from "@/components/home/HeroSection";
+import MarqueeTicker from "@/components/home/MarqueeTicker";
 import StatsStrip from "@/components/home/StatsStrip";
 import JourneySelector from "@/components/home/JourneySelector";
 import FirstAquariumTimeline from "@/components/home/FirstAquariumTimeline";
-import FeaturedFish from "@/components/home/FeaturedFish";
-import ExploreFishSection from "@/components/home/ExploreFishSection";
-import FishCompatibility from "@/components/home/FishCompatibility";
 import AquariumTypes from "@/components/home/AquariumTypes";
+import ExploreFishSection from "@/components/home/ExploreFishSection";
+import FeaturedFish from "@/components/home/FeaturedFish";
+import FishCompatibility from "@/components/home/FishCompatibility";
 import EquipmentSection from "@/components/home/EquipmentSection";
 import EquipmentGuide from "@/components/home/EquipmentGuide";
 import PlantsSection from "@/components/home/PlantsSection";
@@ -28,6 +29,7 @@ export default function Home() {
   return (
     <div className="flex flex-col w-full">
       <HeroSection />
+      <MarqueeTicker />
       <StatsStrip />
       
       <JourneySelector />
