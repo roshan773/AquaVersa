@@ -1,11 +1,11 @@
 /**
- * Centralized Site Configuration for AquaGuide (formerly AquaVersa)
+ * Centralized Site Configuration for Roshan Aquva World
  * Update this file for production settings (such as real address, domain, etc.)
  */
 export const siteConfig = {
-  name: "AquaGuide",
-  fullName: "AquaGuide - Complete Aquarium & Fish Care Guide",
-  alternateNames: ["AquvaGuide", "aquaguide", "aquva guide", "AquaVersa"],
+  name: "Roshan Aquva World",
+  fullName: "Roshan Aquva World - Complete Aquarium & Fish Care Guide",
+  alternateNames: ["Roshan Aquva World", "Roshan Aqua World", "Aquva World", "AquvaGuide", "AquaGuide", "AquaVersa", "aqva versa"],
   description: "Your complete aquarium & fish care guide. Discover species parameters, tank compatibility, aquatic plants, and equipment guides to build a thriving ecosystem.",
   
   // Production site URL (can be overwritten via NEXT_PUBLIC_SITE_URL environment variable)
@@ -26,9 +26,9 @@ export const siteConfig = {
   
   // Social Media Links (No fake placeholders, only clean routes/configs)
   socialLinks: {
-    twitter: "https://twitter.com/aquaguide",
-    facebook: "https://facebook.com/aquaguide",
-    instagram: "https://instagram.com/aquaguide",
+    twitter: "https://twitter.com/roshanaquvaworld",
+    facebook: "https://facebook.com/roshanaquvaworld",
+    instagram: "https://instagram.com/roshanaquvaworld",
   },
   
   // Analytics

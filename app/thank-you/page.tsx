@@ -4,8 +4,8 @@ import { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Thank You | AquaGuide",
-  description: "Thank you for reaching out to AquaGuide. We have received your message.",
+  title: `Thank You | ${siteConfig.name}`,
+  description: `Thank you for reaching out to ${siteConfig.name}. We have received your message.`,
 };
 
 export default function ThankYouPage() {
@@ -39,7 +39,7 @@ export default function ThankYouPage() {
             href="/fish"
             className="px-6 py-3.5 bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-200 hover:text-white rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer"
           >
-            <span>Explore AquaGuide →</span>
+            <span>Explore {siteConfig.name} →</span>
           </Link>
         </div>
       </div>

@@ -3,8 +3,8 @@ import { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | AquaGuide",
-  description: "Terms and conditions for using the AquaGuide / AquvaGuide website.",
+  title: `Terms of Service | ${siteConfig.name}`,
+  description: `Terms and conditions for using the ${siteConfig.name} website.`,
   alternates: {
     canonical: `${siteConfig.siteUrl}/terms`,
   }
@@ -33,7 +33,7 @@ export default function TermsPage() {
               ⚠️ CRITICAL EDUCATIONAL DISCLAIMER
             </h3>
             <p className="text-xs text-slate-350 leading-relaxed font-light">
-              {siteConfig.name} (also referred to as AquvaGuide) provides educational aquarium care and compatibility resources. All information, guidelines, calculator outputs, and diagnostic check suggestions are provided for general hobbyist guidance only. <strong>We do not provide veterinary medicine, professional aquatic consulting, or biological engineering advice.</strong>
+              {siteConfig.name} provides educational aquarium care and compatibility resources. All information, guidelines, calculator outputs, and diagnostic check suggestions are provided for general hobbyist guidance only. <strong>We do not provide veterinary medicine, professional aquatic consulting, or biological engineering advice.</strong>
             </p>
           </div>
 

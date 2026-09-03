@@ -84,7 +84,7 @@ export default function ContactPage() {
           subject: subject,
           phone: phone,
           message: message,
-          from_name: "AquaGuide Contact Form",
+          from_name: `${siteConfig.name} Contact Form`,
         }),
       });
 

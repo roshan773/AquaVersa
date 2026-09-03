@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShieldAlert, X } from "lucide-react";
+import { siteConfig } from "@/config/site";
 import { getCookieConsent, setCookieConsent, initGA } from "@/lib/analytics";
 
 export default function CookieBanner() {
@@ -54,7 +56,7 @@ export default function CookieBanner() {
               <div className="space-y-1">
                 <h3 className="text-sm font-bold text-white tracking-wide font-poppins">Cookie Consent</h3>
                 <p className="text-xs text-slate-400 leading-relaxed font-light">
-                  We use cookies to analyze site traffic, improve usability, and enhance your AquaGuide experience. Choose your preferences below.
+                  We use cookies to analyze site traffic, improve usability, and enhance your {siteConfig.name} experience. Choose your preferences below.
                 </p>
               </div>
               <button 
@@ -93,6 +95,3 @@ export default function CookieBanner() {
     </AnimatePresence>
   );
 }
-
-// Simple fallback Link component in case standard Link is needed
-import Link from "next/link";

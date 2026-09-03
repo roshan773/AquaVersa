@@ -4,16 +4,16 @@ import FishLibraryClient from "./FishLibraryClient";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Aquarium Fish Care Library & Species Catalog | AquaGuide",
-  description: "Browse the complete AquaGuide / AquvaGuide fish species database. Detailed care profiles, water parameter ranges, temperaments, sizing, and compatibility guidelines for freshwater and saltwater fish.",
+  title: `Aquarium Fish Care Library & Species Catalog | ${siteConfig.name}`,
+  description: `Browse the complete ${siteConfig.name} fish species database. Detailed care profiles, water parameter ranges, temperaments, sizing, and compatibility guidelines for freshwater and saltwater fish.`,
   keywords: [
-    "aquaguide fish catalog",
-    "aquaguide fish database",
-    "aquaguide species care",
-    "aquvaGuide fish",
+    "roshan aquva world fish catalog",
+    "roshan aquva world fish database",
+    "roshan aquva world species care",
+    "roshan aquva world fish",
+    "roshan aquva world",
     "aquaguide",
-    "aquvaGuide",
-    "aquaguide compatibility"
+    "aquvaGuide"
   ],
   alternates: {
     canonical: `${siteConfig.siteUrl}/fish`,

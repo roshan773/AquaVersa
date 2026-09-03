@@ -4,15 +4,15 @@ import SaltwaterClient from "./SaltwaterClient";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Saltwater Marine Fish Care, Species & Compatibility | AquaGuide",
-  description: "Detailed care guide library for saltwater marine aquarium fish on AquaGuide / AquvaGuide. Browse clownfish, marine tangs, gobies, and cardinalfish. Learn about salinity, parameters, and compatibility.",
+  title: `Saltwater Marine Fish Care, Species & Compatibility | ${siteConfig.name}`,
+  description: `Detailed care guide library for saltwater marine aquarium fish on ${siteConfig.name}. Browse clownfish, marine tangs, gobies, and cardinalfish. Learn about salinity, parameters, and compatibility.`,
   keywords: [
-    "aquaguide saltwater fish",
+    "roshan aquva world saltwater fish",
     "saltwater marine species guide",
-    "aquvaGuide marine",
+    "roshan aquva world marine",
+    "roshan aquva world",
     "aquaguide",
-    "aquvaGuide",
-    "aquaguide reef safe fish"
+    "aquvaGuide"
   ],
   alternates: {
     canonical: `${siteConfig.siteUrl}/fish/saltwater`,

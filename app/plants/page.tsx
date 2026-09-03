@@ -4,12 +4,12 @@ import PlantsClient from "./PlantsClient";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Aquarium Plants Care Guide & Planting Library | AquaGuide",
-  description: "Detailed care profiles for live aquatic plants. Learn about low-light options, CO2 dosing, planting layouts, and fish compatibility on AquaGuide / AquvaGuide.",
+  title: `Aquarium Plants Care Guide & Planting Library | ${siteConfig.name}`,
+  description: `Detailed care profiles for live aquatic plants. Learn about low-light options, CO2 dosing, planting layouts, and fish compatibility on ${siteConfig.name}.`,
   keywords: [
-    "aquaguide plants",
+    "roshan aquva world plants",
     "live aquarium plants guide",
-    "aquvaGuide plants",
+    "roshan aquva world",
     "aquaguide",
     "aquvaGuide",
     "aquascaping plants low light"

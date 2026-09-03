@@ -155,7 +155,7 @@ export async function POST(request: Request) {
       console.log(`To: ${contactEmail1}, ${contactEmail2}`);
       console.log(`From: ${emailFrom}`);
       console.log(`Reply-To: ${email}`);
-      console.log(`Subject: [AquaVersa Contact] ${finalSubject}`);
+      console.log(`Subject: [Roshan Aquva World Contact] ${finalSubject}`);
       console.log("Body HTML below:\n", finalBody);
       console.log("-----------------------------");
       
@@ -173,7 +173,7 @@ export async function POST(request: Request) {
         from: emailFrom,
         to: [contactEmail1, contactEmail2],
         reply_to: email,
-        subject: `[AquaVersa Contact] ${finalSubject}`,
+        subject: `[Roshan Aquva World Contact] ${finalSubject}`,
         html: finalBody,
       }),
     });

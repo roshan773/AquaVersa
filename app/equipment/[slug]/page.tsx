@@ -17,12 +17,12 @@ export async function generateMetadata({
   if (!eq) {
     return {
       title: `Aquarium Equipment Guide - ${siteConfig.name}`,
-      description: "Learn how to choose the right aquarium equipment on AquaGuide / AquvaGuide.",
+      description: `Learn how to choose the right aquarium equipment on ${siteConfig.name}.`,
     };
   }
 
-  const titleText = `${eq.name} Specification & Maintenance Guide | AquaGuide`;
-  const descText = `Complete ${eq.name} hardware guide. Learn about its purpose, operational details, maintenance instructions, and beginner setup mistakes on AquaGuide / AquvaGuide.`;
+  const titleText = `${eq.name} Specification & Maintenance Guide | ${siteConfig.name}`;
+  const descText = `Complete ${eq.name} hardware guide. Learn about its purpose, operational details, maintenance instructions, and beginner setup mistakes on ${siteConfig.name}.`;
 
   return {
     title: titleText,
@@ -30,8 +30,9 @@ export async function generateMetadata({
     keywords: [
       `${eq.name.toLowerCase()} specs`,
       `aquarium ${eq.name.toLowerCase()}`,
-      `aquaguide ${eq.name.toLowerCase()}`,
-      `aquvaGuide ${eq.slug}`,
+      `roshan aquva world ${eq.name.toLowerCase()}`,
+      `roshan aquva world ${eq.slug}`,
+      "roshan aquva world",
       "aquaguide",
       "aquvaGuide"
     ],

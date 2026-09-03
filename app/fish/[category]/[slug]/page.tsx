@@ -18,12 +18,12 @@ export async function generateMetadata({
   if (!fish) {
     return {
       title: `Fish Care Guide - ${siteConfig.name}`,
-      description: "Learn how to care for tropical fish on AquaGuide / AquvaGuide.",
+      description: `Learn how to care for tropical fish on ${siteConfig.name}.`,
     };
   }
 
-  const titleText = `${fish.name} Care Guide: Tank Size, Temperament & Water Parameters | AquaGuide`;
-  const descText = `Complete ${fish.name} (${fish.scientificName}) care guide. Learn about minimum tank size (${fish.minTankSize} Gallons), temperament (${fish.temperament}), pH (${fish.ph}), temperature (${fish.temperature}), diet, and compatible tank mates on AquaGuide / AquvaGuide.`;
+  const titleText = `${fish.name} Care Guide: Tank Size, Temperament & Water Parameters | ${siteConfig.name}`;
+  const descText = `Complete ${fish.name} (${fish.scientificName}) care guide. Learn about minimum tank size (${fish.minTankSize} Gallons), temperament (${fish.temperament}), pH (${fish.ph}), temperature (${fish.temperature}), diet, and compatible tank mates on ${siteConfig.name}.`;
 
   return {
     title: titleText,
@@ -32,8 +32,9 @@ export async function generateMetadata({
       `${fish.name.toLowerCase()} care`,
       `${fish.name.toLowerCase()} compatibility`,
       `${fish.name.toLowerCase()} tank size`,
-      `aquaguide ${fish.name.toLowerCase()}`,
-      `aquvaGuide ${fish.slug}`,
+      `roshan aquva world ${fish.name.toLowerCase()}`,
+      `roshan aquva world ${fish.slug}`,
+      "roshan aquva world",
       "aquaguide",
       "aquvaGuide"
     ],

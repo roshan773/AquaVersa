@@ -4,12 +4,13 @@ import { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Aquarium Setup & Maintenance Guides | AquaGuide",
-  description: "Read in-depth step-by-step guides on aquarium setup, water parameters, filter media, and plant growth from AquaGuide / AquvaGuide.",
+  title: `Aquarium Setup & Maintenance Guides | ${siteConfig.name}`,
+  description: `Read in-depth step-by-step guides on aquarium setup, water parameters, filter media, and plant growth from ${siteConfig.name}.`,
   keywords: [
-    "aquaguide tutorials",
+    "roshan aquva world tutorials",
     "aquarium maintenance guides",
-    "aquvaGuide setup tutorial",
+    "roshan aquva world setup tutorial",
+    "roshan aquva world",
     "aquaguide",
     "aquvaGuide"
   ],

@@ -14,16 +14,15 @@ export const metadata: Metadata = {
   title: siteConfig.fullName,
   description: siteConfig.description,
   keywords: [
+    "Roshan Aquva World",
+    "roshan aquva world",
+    "Roshan Aqua World",
+    "roshan aqua world",
+    "Aquva World",
+    "aquva world",
     "AquaGuide",
     "aquaguide",
     "AquvaGuide",
-    "aquvaGuide",
-    "aquva guide",
-    "aquaguide fish care",
-    "aquaguide compatibility",
-    "aquaguide setup",
-    "aquaguide equipment",
-    "aquaguide plants",
     "AquaVersa",
     "Aquarium Planner",
     "Fish Compatibility Builder",
@@ -31,7 +30,7 @@ export const metadata: Metadata = {
     "Aquascape Canvas Builder",
     "Water parameter analyzer"
   ],
-  authors: [{ name: "AquaGuide Team" }],
+  authors: [{ name: "Roshan Aquva World Team" }],
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
@@ -49,7 +48,7 @@ export const metadata: Metadata = {
         url: `${siteConfig.siteUrl}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "AquaGuide - Aquarium & Fish Care Guide",
+        alt: "Roshan Aquva World - Aquarium & Fish Care Guide",
       }
     ]
   },

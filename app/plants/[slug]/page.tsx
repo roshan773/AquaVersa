@@ -18,12 +18,12 @@ export async function generateMetadata({
   if (!plant) {
     return {
       title: `Aquatic Plant Care Guide - ${siteConfig.name}`,
-      description: "Learn how to grow live aquatic plants on AquaGuide / AquvaGuide.",
+      description: `Learn how to grow live aquatic plants on ${siteConfig.name}.`,
     };
   }
 
-  const titleText = `${plant.name} Care Guide: Planting, Lighting & CO2 Requirements | AquaGuide`;
-  const descText = `Complete ${plant.name} (${plant.scientificName}) planting profile. Learn about growth rate (${plant.growthRate}), placement (${plant.placement}), lighting requirements (${plant.light}), and CO2 parameters on AquaGuide / AquvaGuide.`;
+  const titleText = `${plant.name} Care Guide: Planting, Lighting & CO2 Requirements | ${siteConfig.name}`;
+  const descText = `Complete ${plant.name} (${plant.scientificName}) planting profile. Learn about growth rate (${plant.growthRate}), placement (${plant.placement}), lighting requirements (${plant.light}), and CO2 parameters on ${siteConfig.name}.`;
 
   return {
     title: titleText,
@@ -31,8 +31,9 @@ export async function generateMetadata({
     keywords: [
       `${plant.name.toLowerCase()} care`,
       `${plant.name.toLowerCase()} aquarium plant`,
-      `aquaguide ${plant.name.toLowerCase()}`,
-      `aquvaGuide ${plant.slug}`,
+      `roshan aquva world ${plant.name.toLowerCase()}`,
+      `roshan aquva world ${plant.slug}`,
+      "roshan aquva world",
       "aquaguide",
       "aquvaGuide"
     ],

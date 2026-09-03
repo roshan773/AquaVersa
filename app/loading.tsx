@@ -1,4 +1,5 @@
 import { Waves } from "lucide-react";
+import { siteConfig } from "@/config/site";
 
 export default function Loading() {
   return (
@@ -14,7 +15,7 @@ export default function Loading() {
         </div>
       </div>
       <div className="space-y-1.5 text-center">
-        <h3 className="text-sm font-bold tracking-widest uppercase font-poppins text-white animate-pulse">Loading AquaGuide</h3>
+        <h3 className="text-sm font-bold tracking-widest uppercase font-poppins text-white animate-pulse">Loading {siteConfig.name}</h3>
         <p className="text-xs text-slate-500 font-light">Creating a healthy environment for your query...</p>
       </div>
     </div>

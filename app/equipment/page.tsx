@@ -4,12 +4,12 @@ import EquipmentClient from "./EquipmentClient";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Aquarium Equipment Spec Guides & Hardware | AquaGuide",
-  description: "Detailed hardware specifications and maintenance tutorials for aquarium filtration, heating, lighting, and aeration systems on AquaGuide / AquvaGuide.",
+  title: `Aquarium Equipment Spec Guides & Hardware | ${siteConfig.name}`,
+  description: `Detailed hardware specifications and maintenance tutorials for aquarium filtration, heating, lighting, and aeration systems on ${siteConfig.name}.`,
   keywords: [
-    "aquaguide equipment",
+    "roshan aquva world equipment",
     "aquarium hardware guide",
-    "aquvaGuide equipment",
+    "roshan aquva world",
     "aquaguide",
     "aquvaGuide",
     "aquarium filtration specs"

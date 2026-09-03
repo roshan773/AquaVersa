@@ -4,15 +4,15 @@ import FreshwaterClient from "./FreshwaterClient";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Freshwater Fish Care, Species & Compatibility | AquaGuide",
-  description: "Learn how to care for freshwater aquarium fish. Browse tetras, bettas, cichlids, guppies, and corydoras profiles on AquaGuide / AquvaGuide. Discover pH, temperature, and tank setup needs.",
+  title: `Freshwater Fish Care, Species & Compatibility | ${siteConfig.name}`,
+  description: `Learn how to care for freshwater aquarium fish. Browse tetras, bettas, cichlids, guppies, and corydoras profiles on ${siteConfig.name}. Discover pH, temperature, and tank setup needs.`,
   keywords: [
-    "aquaguide freshwater fish",
+    "roshan aquva world freshwater fish",
     "freshwater fish care guide",
-    "aquvaGuide freshwater",
+    "roshan aquva world freshwater",
+    "roshan aquva world",
     "aquaguide",
-    "aquvaGuide",
-    "aquaguide setup guide"
+    "aquvaGuide"
   ],
   alternates: {
     canonical: `${siteConfig.siteUrl}/fish/freshwater`,

@@ -3,8 +3,8 @@ import { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | AquaGuide",
-  description: "Learn how we collect, use, and protect your information at AquaGuide / AquvaGuide.",
+  title: `Privacy Policy | ${siteConfig.name}`,
+  description: `Learn how we collect, use, and protect your information at ${siteConfig.name}.`,
   alternates: {
     canonical: `${siteConfig.siteUrl}/privacy-policy`,
   }
@@ -29,7 +29,7 @@ export default function PrivacyPolicyPage() {
         <div className="container mx-auto px-4 max-w-3xl prose prose-invert prose-slate">
           <h2 className="text-xl font-bold text-white mb-4">1. Overview</h2>
           <p className="text-sm text-slate-400 leading-relaxed mb-6 font-light">
-            At {siteConfig.name} (also referred to as AquvaGuide), we value your trust and prioritize your privacy. This privacy policy describes the types of information we collect through our website, how we use it, and the controls you have over your data.
+            At {siteConfig.name}, we value your trust and prioritize your privacy. This privacy policy describes the types of information we collect through our website, how we use it, and the controls you have over your data.
           </p>
           
           <h2 className="text-xl font-bold text-white mb-4">2. Information We Collect</h2>
