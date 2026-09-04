@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowRight, Compass, Droplets, Thermometer, ShieldCheck } from 'lucide-react';
 import { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
+import GlobalCTA from '@/components/ui/GlobalCTA';
 
 export async function generateMetadata({
   params,
@@ -292,6 +293,25 @@ export default async function FishDetailPage({
         )}
 
       </div>
+
+      <GlobalCTA
+        badge="SPECIES COMPATIBILITY & TANK PLANNING"
+        title={
+          <>
+            Planning to house {fish.name}? <br className="hidden sm:inline" />
+            Check your tank parameters.
+          </>
+        }
+        description={`Calculate stocking levels and verify tank mate compatibility for ${fish.name} with our interactive tools.`}
+        primaryAction={{
+          label: 'Open Stocking Planner',
+          href: '/stocking-planner',
+        }}
+        secondaryAction={{
+          label: 'Check Water Parameters',
+          href: '/water-analyzer',
+        }}
+      />
     </div>
   );
 }

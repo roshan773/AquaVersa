@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowLeft, Settings, Info, AlertTriangle, CheckCircle, Sparkles } from "lucide-react";
 import { Metadata } from 'next';
 import { siteConfig } from "@/config/site";
+import GlobalCTA from "@/components/ui/GlobalCTA";
 
 export async function generateMetadata({
   params,
@@ -251,6 +252,25 @@ export default async function EquipmentDetailPage({
 
         </div>
       </div>
+
+      <GlobalCTA
+        badge="HARDWARE & FILTRATION SIZING"
+        title={
+          <>
+            Configure your entire <br className="hidden sm:inline" />
+            hardware system properly.
+          </>
+        }
+        description={`Calculate total turnover flow rates and heater wattages when installing ${eq.name}.`}
+        primaryAction={{
+          label: 'Equipment Selection Wizard',
+          href: '/equipment-wizard',
+        }}
+        secondaryAction={{
+          label: 'Calculate Tank Dimensions',
+          href: '/tank-size',
+        }}
+      />
     </div>
   );
 }

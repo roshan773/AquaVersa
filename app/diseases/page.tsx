@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { Disease as DiseaseType } from "@/lib/types";
 import { diseasesData } from "@/data/diseases";
+import GlobalCTA from "@/components/ui/GlobalCTA";
 
 interface CheckerSymptom {
   id: string;
@@ -484,6 +485,25 @@ export default function Diseases() {
           )}
         </AnimatePresence>
       </main>
+
+      <GlobalCTA
+        badge="FISH HEALTH & QUARANTINE PROTOCOLS"
+        title={
+          <>
+            Prevent disease outbreaks <br className="hidden sm:inline" />
+            with pristine water chemistry.
+          </>
+        }
+        description="Over 80% of freshwater diseases stem from ammonia spikes and pH stress. Monitor your parameters before symptoms arise."
+        primaryAction={{
+          label: 'Test Water Chemistry',
+          href: '/water-analyzer',
+        }}
+        secondaryAction={{
+          label: 'View Symptom Checker',
+          href: '/symptom-checker',
+        }}
+      />
     </div>
   );
 }

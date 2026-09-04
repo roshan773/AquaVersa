@@ -5,6 +5,7 @@ import { Equipment as EquipmentType } from '@/lib/types';
 import { Search, ArrowRight, RotateCcw, SlidersHorizontal, Wrench, Filter } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import GlobalCTA from '@/components/ui/GlobalCTA';
 
 interface EquipmentClientProps {
   eqList: EquipmentType[];
@@ -161,6 +162,25 @@ export default function EquipmentClient({ eqList }: EquipmentClientProps) {
         )}
 
       </div>
+
+      <GlobalCTA
+        badge="HARDWARE & FILTRATION ENGINEERING"
+        title={
+          <>
+            Calculate filtration &amp; heating <br className="hidden sm:inline" />
+            for your exact tank size.
+          </>
+        }
+        description="Determine required turnover rates (GPH/LPH), heater wattages, and canister filter sizing tailored to your bioload."
+        primaryAction={{
+          label: 'Open Equipment Wizard',
+          href: '/equipment-wizard',
+        }}
+        secondaryAction={{
+          label: 'Calculate Tank Dimensions',
+          href: '/tank-size',
+        }}
+      />
     </div>
   );
 }

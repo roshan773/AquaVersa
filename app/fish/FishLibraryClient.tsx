@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Fish as FishType } from '@/lib/types';
+import GlobalCTA from '@/components/ui/GlobalCTA';
 import {
   Search,
   RotateCcw,
@@ -245,6 +246,25 @@ export default function FishLibraryClient({ initialFish }: FishLibraryClientProp
         )}
 
       </div>
+
+      <GlobalCTA
+        badge="SPECIES ATLAS // COMPATIBILITY"
+        title={
+          <>
+            Ready to design your <br className="hidden sm:inline" />
+            community aquarium?
+          </>
+        }
+        description="Verify water parameter overlap, minimum tank volumes, and peaceful schooling temperaments with our interactive stocking calculator."
+        primaryAction={{
+          label: 'Launch Stocking Planner',
+          href: '/stocking-planner',
+        }}
+        secondaryAction={{
+          label: 'Check Compatibility',
+          href: '/compatibility',
+        }}
+      />
     </div>
   );
 }

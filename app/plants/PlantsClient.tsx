@@ -5,6 +5,7 @@ import { Plant as PlantType } from '@/lib/types';
 import { Search, ArrowRight, RotateCcw, SlidersHorizontal, Leaf, Sun, Layers, Sprout } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import GlobalCTA from '@/components/ui/GlobalCTA';
 
 interface PlantsClientProps {
   plantList: PlantType[];
@@ -195,6 +196,25 @@ export default function PlantsClient({ plantList }: PlantsClientProps) {
         )}
 
       </div>
+
+      <GlobalCTA
+        badge="BOTANICAL FLORA // AQUASCAPING"
+        title={
+          <>
+            Design a lush, balanced <br className="hidden sm:inline" />
+            underwater landscape.
+          </>
+        }
+        description="Arrange carpeting plants, midground epiphytes, and background stem forests with our interactive drag-and-drop Aquascape Planner."
+        primaryAction={{
+          label: 'Launch Aquascape Planner',
+          href: '/aquascape-planner',
+        }}
+        secondaryAction={{
+          label: 'Explore CO2 & Lighting Gear',
+          href: '/equipment',
+        }}
+      />
     </div>
   );
 }

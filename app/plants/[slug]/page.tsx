@@ -6,6 +6,7 @@ import { ArrowLeft, Leaf, Info, Activity, ArrowUpRight, Sparkles, HelpCircle } f
 import { Metadata } from 'next';
 import { siteConfig } from "@/config/site";
 import { getFishLink } from "@/lib/linking";
+import GlobalCTA from "@/components/ui/GlobalCTA";
 
 export async function generateMetadata({
   params,
@@ -279,6 +280,25 @@ export default async function PlantDetailPage({
 
         </div>
       </div>
+
+      <GlobalCTA
+        badge="AQUASCAPING & BOTANICAL DESIGN"
+        title={
+          <>
+            Ready to integrate {plant.name} <br className="hidden sm:inline" />
+            into your aquascape?
+          </>
+        }
+        description={`Plan substrate placement and lighting coverage for ${plant.name} with our interactive visual planner.`}
+        primaryAction={{
+          label: 'Open Aquascape Planner',
+          href: '/aquascape-planner',
+        }}
+        secondaryAction={{
+          label: 'Browse All Aquatic Plants',
+          href: '/plants',
+        }}
+      />
     </div>
   );
 }

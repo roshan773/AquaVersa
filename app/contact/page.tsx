@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Mail, CheckCircle2, AlertTriangle, User, FileText, Phone, MessageSquare, Send, RotateCcw } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import GlobalCTA from "@/components/ui/GlobalCTA";
 
 export default function ContactPage() {
   // Form fields
@@ -337,6 +338,25 @@ export default function ContactPage() {
 
         </div>
       </div>
+
+      <GlobalCTA
+        badge="AQUARIUM KNOWLEDGE ARCHIVE"
+        title={
+          <>
+            Explore species parameters, <br className="hidden sm:inline" />
+            live plants, and tank calculators.
+          </>
+        }
+        description="Jump directly into our interactive decision tools designed for every stage of your aquarium journey."
+        primaryAction={{
+          label: 'Explore Fish Species',
+          href: '/fish',
+        }}
+        secondaryAction={{
+          label: 'Start Aquarium Guide',
+          href: '/start-aquarium',
+        }}
+      />
     </div>
   );
 }

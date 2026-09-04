@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Layers, Info, CheckCircle2, AlertTriangle, XCircle, RefreshCw, PlusCircle, Trash2, Minus, Plus } from 'lucide-react';
 import { fishData } from '@/data/fish';
 import { storage, KEYS, unlockAchievement } from '@/lib/storage';
+import GlobalCTA from '@/components/ui/GlobalCTA';
 
 interface StockItem {
   id: string;
@@ -382,6 +383,25 @@ export default function StockingPlannerPage() {
           </div>
         </div>
       </section>
+
+      <GlobalCTA
+        badge="SPECIES COMPATIBILITY & COMMUNITY DESIGN"
+        title={
+          <>
+            Explore full species profiles <br className="hidden sm:inline" />
+            and care requirements.
+          </>
+        }
+        description="Verify individual diet needs, lifespan, geographical origins, and behavior for every freshwater and saltwater fish."
+        primaryAction={{
+          label: 'Browse Species Catalog',
+          href: '/fish',
+        }}
+        secondaryAction={{
+          label: 'Test Water Chemistry',
+          href: '/water-analyzer',
+        }}
+      />
     </div>
   );
 }

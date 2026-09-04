@@ -2,8 +2,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Waves, Heart, Shield, Award, ArrowRight, Fish, Leaf, Wrench, Compass } from 'lucide-react';
+import { Heart, Shield, Award, ArrowRight, Fish, Leaf, Wrench, Compass } from 'lucide-react';
 import { siteConfig } from '@/config/site';
+import GlobalCTA from '@/components/ui/GlobalCTA';
 
 export default function AboutUsClient() {
   const pillars = [
@@ -95,6 +96,25 @@ export default function AboutUsClient() {
         </div>
 
       </div>
+
+      <GlobalCTA
+        badge="JOIN THE ATLAS COMMUNITY"
+        title={
+          <>
+            Explore our open, science-backed <br className="hidden sm:inline" />
+            aquarium encyclopedia.
+          </>
+        }
+        description="Whether setting up your very first 10-gallon nano or planning a 125-gallon planted biotope, we're here to help."
+        primaryAction={{
+          label: 'Start Aquarium Guide',
+          href: '/start-aquarium',
+        }}
+        secondaryAction={{
+          label: 'Contact the Atlas Team',
+          href: '/contact',
+        }}
+      />
     </div>
   );
 }

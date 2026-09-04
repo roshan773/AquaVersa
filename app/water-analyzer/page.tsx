@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { FlaskConical, AlertTriangle, CheckCircle2, XCircle, Info, RefreshCw } from 'lucide-react';
 import { fishData } from '@/data/fish';
 import { unlockAchievement } from '@/lib/storage';
+import GlobalCTA from '@/components/ui/GlobalCTA';
 
 interface ParameterResult {
   name: string;
@@ -553,6 +554,25 @@ export default function WaterAnalyzerPage() {
           </div>
         </div>
       </section>
+
+      <GlobalCTA
+        badge="BIOLOGICAL WATER CHEMISTRY"
+        title={
+          <>
+            Master the aquarium <br className="hidden sm:inline" />
+            nitrogen cycle safely.
+          </>
+        }
+        description="Learn how beneficial nitrifying bacteria convert toxic ammonia into safe nitrate compounds across our step-by-step cycling guide."
+        primaryAction={{
+          label: 'Read Nitrogen Cycle Guide',
+          href: '/guides',
+        }}
+        secondaryAction={{
+          label: 'Check Species Parameters',
+          href: '/fish',
+        }}
+      />
     </div>
   );
 }
