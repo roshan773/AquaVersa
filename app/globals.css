@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -7,7 +7,7 @@
   --font-sans: 'Plus Jakarta Sans', var(--font-plus-jakarta), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-poppins: 'Outfit', var(--font-outfit), sans-serif;
   --font-display: 'Outfit', var(--font-outfit), sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -34,91 +34,87 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  /* Curated Calm Oceanic & Aquatic Color Tokens */
-  --color-ocean-950: #030712;
-  --color-ocean-900: #061224;
-  --color-ocean-850: #0a1b33;
-  --color-ocean-800: #0e2444;
-  --color-ocean-700: #153866;
-  
-  --color-cyan-50: #f0fdfa;
-  --color-cyan-100: #ccfbf1;
-  --color-cyan-200: #99f6e4;
-  --color-cyan-300: #5eead4;
-  --color-cyan-400: #2dd4bf;
-  --color-cyan-500: #0d9488;
-  --color-cyan-600: #0f766e;
-  --color-cyan-700: #115e59;
-  --color-cyan-800: #134e4a;
-  --color-cyan-900: #042f2e;
+  /* NAVY BLUE (#000080) & MUSTARD YELLOW (#FFDB58) PALETTE */
+  --color-navy-950: #02071c;
+  --color-navy-900: #05103b;
+  --color-navy-850: #081854;
+  --color-navy-800: #0c216e;
+  --color-navy-700: #000080;
+  --color-navy-600: #102d8f;
 
-  --color-teal-500: #14b8a6;
-  --color-emerald-500: #10b981;
-  --color-blue-500: #0284c7;
-  --color-coral-500: #f43f5e;
+  --color-mustard-50: #fffef2;
+  --color-mustard-100: #fffbe0;
+  --color-mustard-200: #fff6b8;
+  --color-mustard-300: #ffec85;
+  --color-mustard-400: #ffdb58;
+  --color-mustard-500: #f5c427;
+  --color-mustard-600: #d9a011;
+  --color-mustard-700: #b0790b;
+  --color-mustard-800: #8f5f0f;
+  --color-mustard-900: #764d11;
 }
 
 @layer base {
   :root {
-    --background: 222 47% 4%;
-    --foreground: 210 40% 98%;
+    --background: 231 82% 6%;
+    --foreground: 48 100% 97%;
 
-    --card: 222 47% 7%;
-    --card-foreground: 210 40% 98%;
+    --card: 231 75% 10%;
+    --card-foreground: 48 100% 97%;
 
-    --popover: 222 47% 6%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 231 82% 7%;
+    --popover-foreground: 48 100% 97%;
 
-    --primary: 187 85% 42%;
-    --primary-foreground: 222 47% 4%;
+    --primary: 47 100% 67%;
+    --primary-foreground: 240 100% 25%;
 
-    --secondary: 199 89% 48%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 231 80% 20%;
+    --secondary-foreground: 47 100% 67%;
 
-    --muted: 222 35% 12%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 231 60% 15%;
+    --muted-foreground: 220 30% 70%;
 
-    --accent: 172 66% 40%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 47 100% 67%;
+    --accent-foreground: 240 100% 25%;
 
     --destructive: 345 80% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 222 30% 14%;
-    --input: 222 30% 14%;
-    --ring: 187 85% 42%;
+    --border: 231 60% 18%;
+    --input: 231 60% 18%;
+    --ring: 47 100% 67%;
 
     --radius: 0.875rem;
   }
 
   .dark {
-    --background: 222 47% 4%;
-    --foreground: 210 40% 98%;
+    --background: 231 82% 6%;
+    --foreground: 48 100% 97%;
 
-    --card: 222 47% 7%;
-    --card-foreground: 210 40% 98%;
+    --card: 231 75% 10%;
+    --card-foreground: 48 100% 97%;
 
-    --popover: 222 47% 6%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 231 82% 7%;
+    --popover-foreground: 48 100% 97%;
 
-    --primary: 187 85% 42%;
-    --primary-foreground: 222 47% 4%;
+    --primary: 47 100% 67%;
+    --primary-foreground: 240 100% 25%;
 
-    --secondary: 199 89% 48%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 231 80% 20%;
+    --secondary-foreground: 47 100% 67%;
 
-    --muted: 222 35% 12%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 231 60% 15%;
+    --muted-foreground: 220 30% 70%;
 
-    --accent: 172 66% 40%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 47 100% 67%;
+    --accent-foreground: 240 100% 25%;
 
     --destructive: 345 80% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 222 30% 14%;
-    --input: 222 30% 14%;
-    --ring: 187 85% 42%;
+    --border: 231 60% 18%;
+    --input: 231 60% 18%;
+    --ring: 47 100% 67%;
   }
 
   * {
@@ -126,8 +122,8 @@
   }
   
   body {
-    background-color: #030712;
-    color: #f1f5f9;
+    background-color: #02071c;
+    color: #f8fafc;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     font-size: 0.9375rem;
     line-height: 1.65;
@@ -144,45 +140,39 @@
   }
 }
 
-/* Subtle Natural Water Surface / Glass Surfaces */
+/* Glass & Card Design Tokens */
 .glass {
-  background-color: rgba(6, 18, 36, 0.75);
+  background-color: rgba(5, 16, 59, 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(14, 116, 144, 0.2);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 219, 88, 0.2);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
 }
 
 .glass-card {
-  background-color: rgba(8, 22, 44, 0.6);
+  background-color: rgba(8, 24, 84, 0.6);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 219, 88, 0.15);
+  box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.4);
   transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .glass-card:hover {
-  border-color: rgba(13, 148, 136, 0.4);
-  box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 219, 88, 0.5);
+  box-shadow: 0 12px 30px -8px rgba(0, 0, 128, 0.4);
   transform: translateY(-2px);
 }
 
-/* Elegant Text Accent Utilities */
-.text-gradient-ocean {
-  background: linear-gradient(135deg, #38bdf8 0%, #2dd4bf 100%);
+/* Typography Gradient Utilities */
+.text-gradient-mustard {
+  background: linear-gradient(135deg, #ffffff 30%, #ffdb58 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.text-gradient-cyan {
-  background: linear-gradient(135deg, #ffffff 40%, #22d3ee 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.text-gradient-coral {
-  background: linear-gradient(135deg, #ffffff 40%, #fb7185 100%);
+.text-gradient-gold {
+  background: linear-gradient(135deg, #ffdb58 0%, #f59e0b 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -213,16 +203,6 @@
   animation: preloader-shimmer 1.5s infinite ease-in-out;
 }
 
-/* Gentle subtle float */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-4px); }
-}
-
-.animate-float {
-  animation: float 5s ease-in-out infinite;
-}
-
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
@@ -233,18 +213,18 @@
   }
 }
 
-/* Natural Sleek Aquatic Scrollbar */
+/* Custom Navy & Mustard Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #030712;
+  background: #02071c;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #0c216e;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #0d9488;
+  background: #ffdb58;
 }
