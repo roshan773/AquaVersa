@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Food as FoodType } from "@/lib/types";
 import { Search, Flame, Utensils, Heart } from "lucide-react";
 import Image from "next/image";
+import GlobalCTA from "@/components/ui/GlobalCTA";
 
 export default function FoodPage() {
   const [foodList, setFoodList] = useState<FoodType[]>([]);
@@ -41,7 +42,8 @@ export default function FoodPage() {
   });
 
   return (
-    <div className="container mx-auto px-4 py-12 flex flex-col md:flex-row gap-8">
+    <>
+      <div className="container mx-auto px-4 py-12 flex flex-col md:flex-row gap-8">
       
       {/* Sidebar Filters */}
       <aside className="w-full md:w-64 shrink-0">
@@ -173,5 +175,25 @@ export default function FoodPage() {
       </main>
       
     </div>
+
+    <GlobalCTA
+      badge="NUTRITION & SPECIES DIET"
+      title={
+        <>
+          Match healthy foods with your <br className="hidden sm:inline" />
+          exact species inhabitants.
+        </>
+      }
+      description="Explore herbivore, omnivore, and carnivore dietary profiles across all cataloged tropical species."
+      primaryAction={{
+        label: 'Explore Species Catalog',
+        href: '/fish',
+      }}
+      secondaryAction={{
+        label: 'Check Compatibility',
+        href: '/compatibility',
+      }}
+    />
+    </>
   );
 }

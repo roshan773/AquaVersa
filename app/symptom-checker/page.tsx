@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { HelpCircle, AlertTriangle, CheckCircle2, Info, RefreshCw, ChevronRight, Stethoscope } from 'lucide-react';
 import { diseasesData } from '@/data/diseases';
 import { unlockAchievement } from '@/lib/storage';
+import GlobalCTA from '@/components/ui/GlobalCTA';
 
 interface SymptomGroup {
   category: string;
@@ -314,6 +315,25 @@ export default function SymptomCheckerPage() {
 
         </div>
       </section>
+
+      <GlobalCTA
+        badge="DIAGNOSTIC PATHOLOGY & MEDICATIONS"
+        title={
+          <>
+            Explore full disease profiles <br className="hidden sm:inline" />
+            and safe hospital tank protocols.
+          </>
+        }
+        description="Learn proper medication dosing, temperature adjustment guidelines, and quarantine tank establishment procedures."
+        primaryAction={{
+          label: 'View Disease Archive',
+          href: '/diseases',
+        }}
+        secondaryAction={{
+          label: 'Test Water Chemistry',
+          href: '/water-analyzer',
+        }}
+      />
     </div>
   );
 }

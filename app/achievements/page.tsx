@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { storage, KEYS } from '@/lib/storage';
 import Link from 'next/link';
+import GlobalCTA from '@/components/ui/GlobalCTA';
 
 interface Achievement {
   id: string;
@@ -245,6 +246,25 @@ export default function AchievementsPage() {
 
         </div>
       </section>
+
+      <GlobalCTA
+        badge="AQUARIUM ATLAS MILESTONES"
+        title={
+          <>
+            Ready to unlock your next <br className="hidden sm:inline" />
+            husbandry award?
+          </>
+        }
+        description="Take the science quiz, simulate water parameters, and assemble an aquascape to achieve Master Aquarist ranking."
+        primaryAction={{
+          label: 'Take Aquarium Quiz',
+          href: '/quiz',
+        }}
+        secondaryAction={{
+          label: 'Open Water Analyzer',
+          href: '/water-analyzer',
+        }}
+      />
     </div>
   );
 }

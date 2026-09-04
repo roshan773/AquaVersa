@@ -5,6 +5,7 @@ import { HelpCircle, Check, Sparkles, ArrowRight, ArrowLeft, RefreshCw, Layers, 
 import { fishData } from '@/data/fish';
 import Image from 'next/image';
 import Link from 'next/link';
+import GlobalCTA from '@/components/ui/GlobalCTA';
 
 interface WizardAnswers {
   tankSize: number;
@@ -386,6 +387,25 @@ export default function FishFinderPage() {
           )}
         </div>
       </section>
+
+      <GlobalCTA
+        badge="SPECIES SELECTION & TANK HARMONY"
+        title={
+          <>
+            Calculate community capacity &amp; <br className="hidden sm:inline" />
+            schooling bioload limits.
+          </>
+        }
+        description="Add multiple recommended species to our Stocking Planner to verify zero territorial conflicts or parameter clashes."
+        primaryAction={{
+          label: 'Open Stocking Planner',
+          href: '/stocking-planner',
+        }}
+        secondaryAction={{
+          label: 'Explore Complete Fish Index',
+          href: '/fish',
+        }}
+      />
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { HelpCircle, CheckCircle, XCircle, Award, RotateCcw, ArrowRight, BookOpen, AlertCircle, Info } from 'lucide-react';
 import { unlockAchievement } from '@/lib/storage';
+import GlobalCTA from '@/components/ui/GlobalCTA';
 
 interface Question {
   id: number;
@@ -385,6 +386,25 @@ export default function QuizPage() {
           )}
         </div>
       </section>
+
+      <GlobalCTA
+        badge="AQUARIUM SCIENCE & HUSBANDRY ACHIEVEMENTS"
+        title={
+          <>
+            Track your completed setup <br className="hidden sm:inline" />
+            and water testing milestones.
+          </>
+        }
+        description="Unlock achievement awards as you master nitrogen cycling, build stocking plans, and calculate hardware specs."
+        primaryAction={{
+          label: 'View My Achievements',
+          href: '/achievements',
+        }}
+        secondaryAction={{
+          label: 'Start 5-Step Tank Guide',
+          href: '/start-aquarium',
+        }}
+      />
     </div>
   );
 }

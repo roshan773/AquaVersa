@@ -19,6 +19,7 @@ import {
   FlaskConical,
   LucideIcon,
 } from 'lucide-react';
+import GlobalCTA from '@/components/ui/GlobalCTA';
 
 interface BudgetItem {
   id: string;
@@ -275,6 +276,25 @@ export default function BudgetCalculatorPage() {
 
         </div>
       </div>
+
+      <GlobalCTA
+        badge="AQUARIUM BUDGETING & GEAR SELECTION"
+        title={
+          <>
+            Explore verified hardware <br className="hidden sm:inline" />
+            and filtration reviews.
+          </>
+        }
+        description="Compare prices, flow rates, and power consumption across leading canister filters, heaters, and lighting fixtures."
+        primaryAction={{
+          label: 'Browse Equipment Archive',
+          href: '/equipment',
+        }}
+        secondaryAction={{
+          label: 'Open Volume Calculator',
+          href: '/tank-size',
+        }}
+      />
     </div>
   );
 }

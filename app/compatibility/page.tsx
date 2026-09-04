@@ -5,6 +5,7 @@ import { Waves, Scale, Settings } from "lucide-react";
 import FishCompatibility from "@/components/home/FishCompatibility";
 import FishPlantCompatibility from "@/components/home/FishPlantCompatibility";
 import StockCompatibility from "@/components/home/StockCompatibility";
+import GlobalCTA from "@/components/ui/GlobalCTA";
 
 export default function CompatibilityPage() {
   const [tab, setTab] = useState<'pair' | 'stock'>('pair');
@@ -55,6 +56,25 @@ export default function CompatibilityPage() {
           <StockCompatibility />
         )}
       </div>
+
+      <GlobalCTA
+        badge="SPECIES COMPATIBILITY ENGINE"
+        title={
+          <>
+            Calculate tank dimensions &amp; <br className="hidden sm:inline" />
+            minimum water volume requirements.
+          </>
+        }
+        description="Ensure your community species have sufficient horizontal swimming corridors and biological volume buffer."
+        primaryAction={{
+          label: 'Open Volume Calculator',
+          href: '/tank-size',
+        }}
+        secondaryAction={{
+          label: 'Browse Species Catalog',
+          href: '/fish',
+        }}
+      />
     </div>
   );
 }

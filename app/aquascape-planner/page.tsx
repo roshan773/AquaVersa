@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Layers, HelpCircle, AlertTriangle, CheckCircle2, Trash2, RefreshCw, Sparkles, Plus, Move, Info } from 'lucide-react';
 import { storage, KEYS, unlockAchievement } from '@/lib/storage';
+import GlobalCTA from '@/components/ui/GlobalCTA';
 
 interface PlacedItem {
   id: string;
@@ -464,6 +465,25 @@ export default function AquascapePlannerPage() {
           </div>
         </div>
       </section>
+
+      <GlobalCTA
+        badge="AQUASCAPING & BOTANICAL DESIGN"
+        title={
+          <>
+            Bring your layout to life <br className="hidden sm:inline" />
+            with healthy live flora.
+          </>
+        }
+        description="Explore lighting PAR requirements, fertilizer dosing regimes, and CO2 injection hardware tailored to your planted style."
+        primaryAction={{
+          label: 'Browse Aquatic Plants',
+          href: '/plants',
+        }}
+        secondaryAction={{
+          label: 'Browse Plant Gear & CO2',
+          href: '/equipment',
+        }}
+      />
     </div>
   );
 }

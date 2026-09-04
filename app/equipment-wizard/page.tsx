@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Settings, HelpCircle, CheckCircle2, RefreshCw, Layers, Wrench, ShieldAlert } from 'lucide-react';
+import GlobalCTA from '@/components/ui/GlobalCTA';
 
 interface WizardInputs {
   tankSize: number;

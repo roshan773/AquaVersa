@@ -5,6 +5,7 @@ import { Ruler, Info, Layers, Hammer, Thermometer, Droplets, Filter, Lightbulb, 
 import TankSizeGuide from "@/components/home/TankSizeGuide";
 import AquariumTypes from "@/components/home/AquariumTypes";
 import { unlockAchievement } from '@/lib/storage';
+import GlobalCTA from "@/components/ui/GlobalCTA";
 
 export default function TankSizePage() {
   const [unit, setUnit] = useState<'in' | 'cm'>('in');
@@ -365,6 +366,25 @@ export default function TankSizePage() {
 
       <TankSizeGuide />
       <AquariumTypes />
+
+      <GlobalCTA
+        badge="AQUARIUM VOLUME & HARDWARE SIZING"
+        title={
+          <>
+            Select filtration &amp; heating <br className="hidden sm:inline" />
+            matched to your calculated volume.
+          </>
+        }
+        description="Explore recommended canister filters, sponge filters, and substrate depths based on your dimensions."
+        primaryAction={{
+          label: 'Equipment Selection Wizard',
+          href: '/equipment-wizard',
+        }}
+        secondaryAction={{
+          label: 'Stocking Safety Planner',
+          href: '/stocking-planner',
+        }}
+      />
     </div>
   );
 }
