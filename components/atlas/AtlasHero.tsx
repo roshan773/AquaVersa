@@ -17,11 +17,11 @@ import {
   CheckCircle2
 } from 'lucide-react';
 import { fishData } from '@/data/fish';
-import { plantsData } from '@/data/plants';
+import { plantData } from '@/data/plants';
 
 export default function AtlasHero() {
   const speciesCount = fishData.filter((f) => f.slug).length;
-  const plantsCount = plantsData.filter((p) => p.slug).length;
+  const plantsCount = plantData.filter((p) => p.slug).length;
 
   return (
     <section className="marine-pattern-light relative pt-28 sm:pt-36 lg:pt-40 pb-16 lg:pb-24 bg-[#f7f7ff] text-[#27187e] overflow-hidden text-left">
