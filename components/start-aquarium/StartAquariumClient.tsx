@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import GlobalCTA from "@/components/ui/GlobalCTA";
 
 interface StartAquariumClientProps {
   starterGuideSteps: GuideStep[];
@@ -517,6 +518,24 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
         </AnimatePresence>
       </section>
 
+      <GlobalCTA
+        badge="FIRST AQUARIUM BLUEPRINT"
+        title={
+          <>
+            Pick your hardy starter species <br className="hidden sm:inline" />
+            and live beginner flora.
+          </>
+        }
+        description="Explore resilient freshwater species and easy low-light plants ideal for newly cycled biological ecosystems."
+        primaryAction={{
+          label: 'Browse Starter Fish',
+          href: '/fish',
+        }}
+        secondaryAction={{
+          label: 'Browse Beginner Plants',
+          href: '/plants',
+        }}
+      />
     </div>
   );
 }
