@@ -59,7 +59,7 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
     setMounted(true);
     // Load progress from localStorage if available
     try {
-      const saved = localStorage.getItem("aquaversa_start_guide_progress");
+      const saved = localStorage.getItem("roshanaquva_start_guide_progress");
       if (saved) {
         const parsed = JSON.parse(saved);
         if (parsed.checkedItems) setCheckedItems(parsed.checkedItems);
@@ -76,7 +76,7 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
     if (!mounted) return;
     try {
       localStorage.setItem(
-        "aquaversa_start_guide_progress",
+        "roshanaquva_start_guide_progress",
         JSON.stringify({ checkedItems, currentStepIndex, showCelebration })
       );
     } catch (e) {

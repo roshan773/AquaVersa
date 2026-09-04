@@ -1,10 +1,10 @@
-import { ShieldCheck } from "lucide-react";
+import { ShieldCheck, Mail } from "lucide-react";
 import { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: `Privacy Policy | ${siteConfig.name}`,
-  description: `Learn how we collect, use, and protect your information at ${siteConfig.name}.`,
+  description: `Learn how we collect, process, and protect your information at ${siteConfig.name}.`,
   alternates: {
     canonical: `${siteConfig.siteUrl}/privacy-policy`,
   }
@@ -12,68 +12,94 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="w-full bg-black text-slate-100 min-h-screen pb-24 text-left font-sans">
-      <section className="py-24 bg-slate-950 text-slate-100 border-b border-slate-900">
+    <div className="w-full bg-[#030712] text-slate-100 min-h-screen pb-20 text-left font-sans">
+      
+      {/* Header Banner */}
+      <section className="py-16 bg-[#040a14] border-b border-slate-800/80">
         <div className="container mx-auto px-4 max-w-4xl text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-500/20 text-blue-400 mb-6 border border-blue-500/30">
-            <ShieldCheck className="w-8 h-8" />
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-teal-950/60 text-teal-400 mb-4 border border-teal-500/30">
+            <ShieldCheck className="w-6 h-6" />
           </div>
-          <h1 className="text-4xl md:text-5xl font-poppins font-extrabold mb-4 text-white">Privacy Policy</h1>
-          <p className="text-lg text-slate-400 font-light max-w-2xl mx-auto">
-            How we protect, process, and handle your data at {siteConfig.name}.
+          <h1 className="text-3xl sm:text-4xl font-poppins font-bold text-white mb-2">Privacy Policy</h1>
+          <p className="text-sm text-slate-400 font-normal max-w-xl mx-auto">
+            How we collect, use, and protect information when you visit {siteConfig.name}.
           </p>
         </div>
       </section>
 
-      <section className="py-16">
-        <div className="container mx-auto px-4 max-w-3xl prose prose-invert prose-slate">
-          <h2 className="text-xl font-bold text-white mb-4">1. Overview</h2>
-          <p className="text-sm text-slate-400 leading-relaxed mb-6 font-light">
-            At {siteConfig.name}, we value your trust and prioritize your privacy. This privacy policy describes the types of information we collect through our website, how we use it, and the controls you have over your data.
-          </p>
+      {/* Content */}
+      <section className="py-12">
+        <div className="container mx-auto px-4 max-w-3xl space-y-8 text-slate-300 text-xs sm:text-sm leading-relaxed">
           
-          <h2 className="text-xl font-bold text-white mb-4">2. Information We Collect</h2>
-          <p className="text-sm text-slate-400 leading-relaxed mb-4 font-light">
-            We collect only the minimal data necessary to deliver interactive features and understand general site traffic:
-          </p>
-          <ul className="list-disc pl-6 text-sm text-slate-400 space-y-2 mb-6 font-light">
-            <li>
-              <strong>Contact Form Submissions:</strong> When you send a message through our contact page, we collect your name, email, subject, message, and optional phone number. Submissions are processed securely through <strong>Web3Forms</strong>.
-            </li>
-            <li>
-              <strong>Analytics Data:</strong> If you accept our cookie consent, we collect aggregate, non-personal data through <strong>Google Analytics 4</strong> (such as guides viewed, search inputs used, and button clicks) to help us refine content. IP addresses are anonymized.
-            </li>
-            <li>
-              <strong>Local Browser Storage:</strong> We use your local browser storage (localStorage) to store your cookie consent preferences and progress achievements for interactive tools (like the Aquarium Quiz). This data stays entirely on your device.
-            </li>
-          </ul>
-
-          <h2 className="text-xl font-bold text-white mb-4">3. Data Sharing & Third Parties</h2>
-          <p className="text-sm text-slate-400 leading-relaxed mb-6 font-light">
-            We do not sell, rent, or distribute your email addresses or personal identification data to third parties. We only share form content with our email submission partner, Web3Forms, to route your message to our support desk.
-          </p>
-
-          <h2 className="text-xl font-bold text-white mb-4">4. Cookies & Tracking Control</h2>
-          <p className="text-sm text-slate-400 leading-relaxed mb-6 font-light">
-            We respect your browser choices. Google Analytics 4 is only activated if you click "Accept" on our Cookie Consent banner. If you choose to "Decline" or ignore the banner, no tracking cookies or analytics scripts will load.
-          </p>
-          
-          <h2 className="text-xl font-bold text-white mb-4">5. Contact Information</h2>
-          <p className="text-sm text-slate-400 leading-relaxed mb-4 font-light">
-            If you have questions about this policy or wish to request data deletion, contact us at:
-          </p>
-          <div className="p-5 bg-slate-950 border border-slate-900 rounded-2xl mb-8 text-xs font-semibold space-y-1">
-            <p className="text-white">{siteConfig.name} Support</p>
-            <p className="text-slate-400">Email: {siteConfig.contactEmail}</p>
-            <p className="text-slate-400">Address: {siteConfig.contactAddress.full}</p>
+          <div className="p-4 rounded-xl bg-[#061224] border border-slate-800 text-xs">
+            <p className="text-slate-400">
+              <strong className="text-white block mb-1">Effective & Last Updated:</strong>
+              September 2026
+            </p>
           </div>
 
-          <div className="border-t border-slate-900 pt-6 text-[11px] text-slate-500 leading-relaxed font-light">
-            <p className="mb-2"><strong>Disclaimer:</strong> This Privacy Policy is for educational and informational purposes only. It is not intended to serve as professional legal counsel or binding legal representation. Aquarists are advised to review local jurisdictional laws before adapting templates.</p>
-            <p>Last updated: August 28, 2026</p>
+          <div>
+            <h2 className="text-lg font-bold text-white mb-3 font-poppins">1. Overview & Commitment</h2>
+            <p className="font-normal text-slate-400">
+              {siteConfig.name} is an educational website built to help aquarium keepers make informed choices about aquatic care. We believe in data minimization: we only collect information necessary to respond to your inquiries and ensure the website operates smoothly.
+            </p>
           </div>
+
+          <div>
+            <h2 className="text-lg font-bold text-white mb-3 font-poppins">2. Information We Collect</h2>
+            <ul className="list-disc pl-5 space-y-2 text-slate-400">
+              <li>
+                <strong className="text-slate-200">Contact Form Submissions:</strong> When you submit a message through our Contact page, you voluntarily provide your name, email address, message, and optional phone number. These messages are securely transmitted via our form-processing service, <strong>Web3Forms</strong>, to our email inbox.
+              </li>
+              <li>
+                <strong className="text-slate-200">Local Browser Storage:</strong> We use client-side local storage (<code className="text-teal-300">localStorage</code>) to store your preferences, such as cookie consent acknowledgments or setup checklist progress. This data remains on your device and is never transmitted to external servers.
+              </li>
+              <li>
+                <strong className="text-slate-200">Website Analytics (Opt-In):</strong> If you choose to accept analytics cookies on our cookie banner, anonymized aggregate telemetry may be processed through Google Analytics to understand popular care topics. If you decline, tracking is disabled.
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="text-lg font-bold text-white mb-3 font-poppins">3. How We Use Information</h2>
+            <p className="font-normal text-slate-400 mb-2">
+              Information provided to {siteConfig.name} is used strictly to:
+            </p>
+            <ul className="list-disc pl-5 space-y-1.5 text-slate-400">
+              <li>Respond directly to your care, compatibility, or general inquiries.</li>
+              <li>Maintain and improve the quality of species care guides and interactive tools.</li>
+              <li>Prevent spam and maintain website integrity.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="text-lg font-bold text-white mb-3 font-poppins">4. Third-Party Services & Form Processing</h2>
+            <p className="font-normal text-slate-400">
+              Our contact form uses <strong>Web3Forms</strong> as an API endpoint to deliver messages directly to our inbox. We do not sell, rent, monetize, or distribute your email address or personal details to advertisers or third-party marketing brokers.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-lg font-bold text-white mb-3 font-poppins">5. Data Retention & Security</h2>
+            <p className="font-normal text-slate-400">
+              We retain contact email correspondence only as long as necessary to answer your questions and resolve inquiries. We employ secure HTTPS encryption across the entire website.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-lg font-bold text-white mb-3 font-poppins">6. Contact & Data Inquiries</h2>
+            <p className="font-normal text-slate-400 mb-3">
+              If you have any questions about this Privacy Policy or wish to request the deletion of past correspondence, please contact us directly:
+            </p>
+            <div className="p-4 bg-[#061224] border border-slate-800 rounded-xl text-xs space-y-1">
+              <p className="text-white font-semibold">{siteConfig.name}</p>
+              <p className="text-slate-400">Email: <a href={`mailto:${siteConfig.contactEmail}`} className="text-teal-400 hover:underline">{siteConfig.contactEmail}</a></p>
+            </div>
+          </div>
+
         </div>
       </section>
+
     </div>
   );
 }

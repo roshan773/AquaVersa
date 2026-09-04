@@ -1,40 +1,43 @@
 import Link from 'next/link';
-import { ArrowRight, Waves } from 'lucide-react';
-import Image from 'next/image';
+import { ArrowRight, Waves, Compass, BookOpen } from 'lucide-react';
+import { siteConfig } from '@/config/site';
 
 export default function FinalCTA() {
   return (
-    <section className="relative py-32 bg-slate-900 overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 z-0">
-        <Image src="/betta_bg.png" alt="Dark Aquarium" fill className="object-cover opacity-15 mix-blend-luminosity brightness-50" />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/80 to-slate-900/40"></div>
-      </div>
+    <section className="py-20 bg-[#030712] relative overflow-hidden text-center">
+      <div className="container relative z-10 mx-auto px-4 max-w-4xl">
+        <div className="p-8 sm:p-12 rounded-3xl bg-[#061224] border border-slate-800 shadow-xl relative overflow-hidden text-center">
+          
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-950/60 border border-teal-800/30 text-teal-300 text-xs font-semibold mb-6">
+            <Waves className="w-3.5 h-3.5 text-teal-400" />
+            <span>{siteConfig.name}</span>
+          </div>
 
-      <div className="container relative z-10 mx-auto px-4 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-955/20 backdrop-blur-md border border-blue-500/30 text-blue-500 font-semibold mb-8">
-          <Waves className="w-4 h-4" /> Dive In
-        </div>
-        <h2 className="text-4xl md:text-6xl font-poppins font-bold text-white mb-6 max-w-4xl mx-auto leading-tight text-center">
-          Ready to Build Your <span className="text-blue-500">Dream Aquarium?</span>
-        </h2>
-        <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-12 text-center">
-          Start building your aquarium with confidence.
-        </p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-white mb-4 leading-tight">
+            Start Planning Your Aquarium with Confidence
+          </h2>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="/start-aquarium"
-            className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-full transition-colors flex items-center justify-center gap-2 text-lg shadow-lg shadow-blue-500/20 cursor-pointer"
-          >
-            Start Your Journey <ArrowRight className="w-5 h-5" />
-          </Link>
-          <Link
-            href="/guides"
-            className="px-8 py-4 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white font-bold rounded-full transition-colors flex items-center justify-center text-lg cursor-pointer"
-          >
-            Browse Guides
-          </Link>
+          <p className="text-slate-300 text-sm sm:text-base max-w-xl mx-auto mb-8 font-normal leading-relaxed">
+            Discover compatible species, understand natural habitat parameters, and build a healthy ecosystem step by step.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-3 justify-center text-xs font-semibold">
+            <Link
+              href="/start-aquarium"
+              className="px-6 py-3.5 bg-teal-600 hover:bg-teal-500 text-white rounded-xl transition-colors flex items-center justify-center gap-2 shadow-sm"
+            >
+              <span>First Aquarium Setup Guide</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              href="/fish"
+              className="px-6 py-3.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 hover:text-white rounded-xl transition-colors flex items-center justify-center gap-2"
+            >
+              <Compass className="w-4 h-4 text-teal-400" />
+              <span>Explore Fish Library</span>
+            </Link>
+          </div>
+
         </div>
       </div>
     </section>

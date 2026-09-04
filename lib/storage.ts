@@ -1,4 +1,4 @@
-// Client-side local storage helper utility for AquaVersa V2
+// Client-side local storage helper utility for Roshan Aquva World
 
 export const isClient = typeof window !== 'undefined';
 
@@ -44,11 +44,11 @@ export const storage = {
 
 // Key Definitions
 export const KEYS = {
-  CHECKLIST: 'aquaversa_checklist_v2',
-  MAINTENANCE: 'aquaversa_maintenance_v2',
-  ACHIEVEMENTS: 'aquaversa_achievements_v2',
-  AQUASCAPE: 'aquaversa_aquascape_v2',
-  SAVED_STOCK: 'aquaversa_saved_stock_v2'
+  CHECKLIST: 'roshanaquva_checklist',
+  MAINTENANCE: 'roshanaquva_maintenance',
+  ACHIEVEMENTS: 'roshanaquva_achievements',
+  AQUASCAPE: 'roshanaquva_aquascape',
+  SAVED_STOCK: 'roshanaquva_saved_stock'
 };
 
 // Achievement Unlocking Utility

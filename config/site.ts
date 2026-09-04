@@ -1,30 +1,22 @@
 /**
  * Centralized Site Configuration for Roshan Aquva World
- * Update this file for production settings (such as real address, domain, etc.)
  */
 export const siteConfig = {
   name: "Roshan Aquva World",
-  fullName: "Roshan Aquva World - Complete Aquarium & Fish Care Guide",
-  alternateNames: ["Roshan Aquva World", "Roshan Aqua World", "Aquva World", "AquvaGuide", "AquaGuide", "AquaVersa", "aqva versa"],
-  description: "Your complete aquarium & fish care guide. Discover species parameters, tank compatibility, aquatic plants, and equipment guides to build a thriving ecosystem.",
+  fullName: "Roshan Aquva World — Aquarium & Fish Care Guide",
+  alternateNames: ["Roshan Aquva World", "Roshan Aqua World", "Aquva World"],
+  description: "A comprehensive, educational aquarium platform. Discover fish species requirements, plant care, community compatibility, equipment guides, water chemistry, and tank maintenance routines.",
   
-  // Production site URL (can be overwritten via NEXT_PUBLIC_SITE_URL environment variable)
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://aquaversa.vercel.app",
+  // Production site URL
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://roshanaquvaworld.com",
   
-  // Contact details
+  // Direct contact details
   contactEmail: "pakhreroshan@gmail.com",
   
-  // CENTRALIZED PRODUCTION ADDRESS CONFIGURATION:
-  // If there is no confirmed real address, keep this placeholder and modify it before publishing.
-  contactAddress: {
-    street: "123 Ocean Drive, Suite 400",
-    city: "Seaside",
-    state: "CA",
-    zip: "94000",
-    full: "123 Ocean Drive, Suite 400, Seaside, CA 94000"
-  },
+  // Web3Forms Access Key for contact form submissions
+  web3FormsAccessKey: "2d7e12ea-1240-4d9f-acbe-db75c3fbbae2",
   
-  // Social Media Links (No fake placeholders, only clean routes/configs)
+  // Social Media
   socialLinks: {
     twitter: "https://twitter.com/roshanaquvaworld",
     facebook: "https://facebook.com/roshanaquvaworld",

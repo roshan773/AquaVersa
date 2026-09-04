@@ -1,37 +1,37 @@
 'use client';
+
 import { useState } from 'react';
-import { Ruler, Maximize, ArrowRight } from 'lucide-react';
-import Image from 'next/image';
+import { Ruler, Maximize, ArrowRight, Info, AlertTriangle } from 'lucide-react';
 import Link from 'next/link';
 
 const tankData = [
   {
     size: '5 Gallon',
-    dimensions: '16" x 8" x 10"',
-    weight: '~60 lbs filled',
-    bestFor: 'A single Betta fish OR shrimp only.',
-    warning: 'Parameters fluctuate rapidly. Not recommended for beginners.'
+    dimensions: '16" × 8" × 10"',
+    weight: '~48 lbs filled',
+    bestFor: 'A single Betta fish or a dedicated freshwater dwarf shrimp & snail colony.',
+    warning: 'Small water volume means parameters can shift rapidly with slight overfeeding.'
   },
   {
     size: '10 Gallon',
-    dimensions: '20" x 10" x 12"',
-    weight: '~111 lbs filled',
-    bestFor: 'Betta + snail OR a small school (6) of nano fish (e.g. Ember Tetras).',
-    warning: 'Still prone to swings. Requires weekly maintenance.'
+    dimensions: '20" × 10" × 12"',
+    weight: '~110 lbs filled',
+    bestFor: 'Betta community with snails, or a small school (6) of nano fish like Ember Tetras or Chili Rasboras.',
+    warning: 'Still requires steady weekly water changes and careful feeding discipline.'
   },
   {
     size: '20 Gallon Long',
-    dimensions: '30" x 12" x 12"',
+    dimensions: '30" × 12" × 12"',
     weight: '~225 lbs filled',
-    bestFor: 'The absolute best beginner tank. Great footprint for schooling fish and bottom dwellers like Corydoras.',
-    warning: 'Needs a dedicated sturdy stand.'
+    bestFor: 'The ideal beginner footprint. Excellent horizontal swimming length for schooling tetras and Corydoras.',
+    warning: 'Requires a level, dedicated aquarium stand capable of supporting ~250 lbs.'
   },
   {
     size: '55 Gallon',
-    dimensions: '48" x 13" x 21"',
+    dimensions: '48" × 13" × 21"',
     weight: '~600 lbs filled',
-    bestFor: 'Larger community setups, medium cichlids, or heavily planted scapes.',
-    warning: 'Very heavy. Ensure floor can support it. Deep tank means harder to reach bottom for planting.'
+    bestFor: 'Diverse community ecosystems, peaceful medium species, or heavily planted display tanks.',
+    warning: 'Significant weight requires verification of floor support and careful filter positioning.'
   }
 ];
 
@@ -40,84 +40,89 @@ export default function TankSizeGuide() {
   const selected = tankData[selectedIdx];
 
   return (
-    <section className="py-24 bg-background">
+    <section className="py-20 bg-[#030712] relative border-b border-slate-800/80 text-left">
       <div className="container mx-auto px-4 max-w-6xl">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-semibold mb-4">
-            <Ruler className="w-4 h-4" /> Size Matters
+        
+        {/* Section Header */}
+        <div className="mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-950/50 border border-teal-800/30 mb-3 text-teal-300 text-xs font-semibold">
+            <Ruler className="w-3.5 h-3.5 text-teal-400" />
+            <span>Aquarium Dimensions & Volume</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-poppins font-bold mb-4 text-foreground">
-            The Right Tank Size
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-white tracking-tight">
+            Choosing the Right Tank Size
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Bigger is actually better for beginners. Larger volumes of water dilute toxic ammonia spikes much faster than small tanks.
+          <p className="text-slate-400 text-sm max-w-2xl mt-2 font-normal leading-relaxed">
+            For beginners, moderate-to-larger water volumes offer greater biological stability by diluting organic waste and preventing rapid temperature or pH swings.
           </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-12 items-center">
-          {/* Selector */}
-          <div className="w-full lg:w-1/3 space-y-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          {/* Tank Selector Buttons */}
+          <div className="lg:col-span-4 space-y-3">
             {tankData.map((tank, idx) => (
               <button
                 key={tank.size}
                 onClick={() => setSelectedIdx(idx)}
-                className={`w-full text-left p-5 rounded-2xl border transition-all ${
+                className={`w-full text-left p-4 rounded-xl border transition-all duration-200 cursor-pointer ${
                   selectedIdx === idx 
-                    ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900/20 shadow-md transform scale-105' 
-                    : 'border-border bg-card hover:border-indigo-300'
+                    ? 'border-teal-500 bg-teal-950/40 shadow-sm' 
+                    : 'border-slate-800 bg-[#061224] hover:border-slate-700'
                 }`}
               >
-                <h3 className={`text-xl font-bold ${selectedIdx === idx ? 'text-indigo-700 dark:text-indigo-300' : 'text-foreground'}`}>
-                  {tank.size}
-                </h3>
-                <p className="text-sm text-muted-foreground mt-1">{tank.dimensions}</p>
+                <div className="flex justify-between items-center">
+                  <h3 className={`text-base font-bold font-poppins ${selectedIdx === idx ? 'text-teal-300' : 'text-white'}`}>
+                    {tank.size}
+                  </h3>
+                  <span className="text-[11px] text-slate-400 font-medium">{tank.dimensions}</span>
+                </div>
               </button>
             ))}
           </div>
 
-          {/* Details */}
-          <div className="w-full lg:w-2/3">
-            <div className="bg-card rounded-3xl p-8 md:p-10 border border-border shadow-xl h-full flex flex-col justify-center relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-8 opacity-5">
-                <Maximize className="w-48 h-48 text-indigo-500" />
-              </div>
-              
-              <div className="relative z-10">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 rounded-2xl bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 font-bold text-2xl">
+          {/* Details Card */}
+          <div className="lg:col-span-8">
+            <div className="bg-[#061224] rounded-2xl p-6 sm:p-8 border border-slate-800 shadow-md h-full flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-3.5 mb-6 pb-4 border-b border-slate-800">
+                  <div className="w-12 h-12 rounded-xl bg-teal-950/60 border border-teal-500/30 flex items-center justify-center text-teal-300 font-bold font-poppins text-lg">
                     {selected.size.split(' ')[0]}
                   </div>
                   <div>
-                    <h3 className="text-3xl font-bold text-foreground">{selected.size}</h3>
-                    <p className="text-muted-foreground">{selected.weight}</p>
+                    <h3 className="text-xl font-bold text-white font-poppins">{selected.size}</h3>
+                    <p className="text-xs text-slate-400">Filled weight: {selected.weight} • Footprint: {selected.dimensions}</p>
                   </div>
                 </div>
 
-                <div className="space-y-6">
-                  <div className="bg-muted p-6 rounded-2xl">
-                    <h4 className="font-bold text-foreground mb-2 flex items-center gap-2">
-                       Best For
+                <div className="space-y-4">
+                  <div className="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                    <h4 className="font-semibold text-white text-xs mb-1 flex items-center gap-2">
+                      <Info className="w-3.5 h-3.5 text-teal-400" />
+                      Recommended Inhabitants & Setup
                     </h4>
-                    <p className="text-muted-foreground">{selected.bestFor}</p>
+                    <p className="text-xs text-slate-300 leading-relaxed">{selected.bestFor}</p>
                   </div>
                   
-                  <div className="bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-900/50 p-6 rounded-2xl">
-                    <h4 className="font-bold text-amber-700 dark:text-amber-500 mb-2 flex items-center gap-2">
-                       Keep in Mind
+                  <div className="bg-amber-950/20 border border-amber-800/30 p-4 rounded-xl">
+                    <h4 className="font-semibold text-amber-400 text-xs mb-1 flex items-center gap-2">
+                      <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
+                      Important Care Considerations
                     </h4>
-                    <p className="text-amber-900/80 dark:text-amber-200/70">{selected.warning}</p>
+                    <p className="text-xs text-slate-300 leading-relaxed">{selected.warning}</p>
                   </div>
                 </div>
+              </div>
 
-                <div className="mt-8 flex justify-end">
-                  <Link href="/tank-size" className="inline-flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-semibold hover:underline">
-                    Compare All Tank Sizes & Dimensions <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
+              <div className="mt-6 pt-4 border-t border-slate-800/80 flex justify-end">
+                <Link href="/tank-size" className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-400 hover:text-teal-300 transition-colors">
+                  <span>View Full Tank Size Guide</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
               </div>
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );

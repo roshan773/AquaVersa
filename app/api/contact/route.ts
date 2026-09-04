@@ -135,7 +135,7 @@ export async function POST(request: Request) {
       <div style="max-width: 600px; margin: auto; text-align: center;">
         <hr style="border: 0; border-top: 1px solid #e2e8f0; margin-bottom: 12px;"/>
         <p style="font-size: 11px; color: #64748b; margin: 0;">
-          Submitted from: <a href="https://aquaversa.vercel.app/" style="color: #64748b; text-decoration: underline;">https://aquaversa.vercel.app/</a>
+          Submitted from: Roshan Aquva World (<a href="https://roshanaquvaworld.com" style="color: #64748b; text-decoration: underline;">roshanaquvaworld.com</a>)
         </p>
       </div>
     `;
@@ -146,7 +146,7 @@ export async function POST(request: Request) {
     
     // Recipient list configuration
     const contactEmail1 = process.env.CONTACT_EMAIL_1 || "pakhreroshan@gmail.com";
-    const contactEmail2 = process.env.CONTACT_EMAIL_2 || "aquaversa@gmail.com";
+    const contactEmail2 = process.env.CONTACT_EMAIL_2 || "pakhreroshan@gmail.com";
 
     if (!resendApiKey) {
       console.warn("WARNING: RESEND_API_KEY environment variable is not configured. Email not sent.");
