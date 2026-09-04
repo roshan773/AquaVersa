@@ -1,49 +1,42 @@
 import Link from 'next/link';
-import { ArrowRight, Ruler, FlaskConical, CalendarCheck } from 'lucide-react';
-import {
-  IconToolsAtlas,
-  IconPlantsAtlas,
-  IconEquipmentAtlas,
-  IconGuidesAtlas,
-  IconFishAtlas,
-} from '@/components/ui/AtlasIcons';
+import { ArrowRight, GitCompare, Ruler, Leaf, Wrench, FlaskConical, CalendarDays } from 'lucide-react';
 
 export default function AtlasTools() {
   const tools = [
     {
       title: 'Fish Compatibility Checker',
       desc: 'Verify temperature, pH, adult sizes, and social temperaments before introducing new tankmates.',
-      icon: IconFishAtlas,
+      icon: GitCompare,
       href: '/compatibility',
     },
     {
       title: 'Tank Size & Volume Guide',
       desc: 'Explore footprint dimensions, filled weights, and realistic stocking capacities from 5 to 75+ gallons.',
-      icon: IconToolsAtlas,
+      icon: Ruler,
       href: '/tank-size',
     },
     {
       title: 'Plant Matcher',
       desc: 'Find live aquatic flora matched to your lighting levels, substrate, and maintenance commitment.',
-      icon: IconPlantsAtlas,
+      icon: Leaf,
       href: '/plants',
     },
     {
       title: 'Equipment Recommender',
       desc: 'Get tailored hardware recommendations for filtration flow rates, heaters, and LED lighting.',
-      icon: IconEquipmentAtlas,
+      icon: Wrench,
       href: '/equipment',
     },
     {
       title: 'Water Chemistry Reference',
       desc: 'Learn practical management of ammonia, nitrite, nitrate, pH, and water hardness.',
-      icon: IconGuidesAtlas,
+      icon: FlaskConical,
       href: '/water-params',
     },
     {
       title: 'Maintenance Schedule',
       desc: 'Daily, weekly, and monthly checklists to maintain biological equilibrium without panic.',
-      icon: IconToolsAtlas,
+      icon: CalendarDays,
       href: '/start-aquarium',
     },
   ];

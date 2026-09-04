@@ -4,18 +4,22 @@ import { useState, useEffect, useRef } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, X, ArrowRight, Sparkles, Waves } from 'lucide-react';
 import {
-  IconHomeAtlas,
-  IconFishAtlas,
-  IconPlantsAtlas,
-  IconEquipmentAtlas,
-  IconGuidesAtlas,
-  IconToolsAtlas,
-  IconAboutAtlas,
-  IconContactAtlas,
-} from '@/components/ui/AtlasIcons';
-import BrandLogo, { BrandMark } from '@/components/ui/BrandLogo';
+  Search,
+  Menu,
+  X,
+  ArrowRight,
+  Sparkles,
+  Home,
+  Fish,
+  Leaf,
+  Wrench,
+  BookOpen,
+  Compass,
+  Info,
+  Mail,
+} from 'lucide-react';
+import BrandLogo from '@/components/ui/BrandLogo';
 import { siteConfig } from '@/config/site';
 
 export default function Navbar() {
@@ -76,14 +80,14 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { label: 'Home', href: '/', badge: 'Atlas Hub', icon: IconHomeAtlas },
-    { label: 'Fish Library', href: '/fish', badge: '120+ Species', icon: IconFishAtlas },
-    { label: 'Aquarium Plants', href: '/plants', badge: 'Flora Archive', icon: IconPlantsAtlas },
-    { label: 'Equipment Archive', href: '/equipment', badge: 'Gear & Tech', icon: IconEquipmentAtlas },
-    { label: 'Care Guides', href: '/guides', badge: 'Step-by-Step', icon: IconGuidesAtlas },
-    { label: 'Aquarium Tools', href: '/compatibility', badge: 'Interactive', icon: IconToolsAtlas },
-    { label: 'About Atlas', href: '/about', badge: 'Our Story', icon: IconAboutAtlas },
-    { label: 'Contact', href: '/contact', badge: 'Get in Touch', icon: IconContactAtlas },
+    { label: 'Home', href: '/', badge: 'Atlas Hub', icon: Home },
+    { label: 'Fish Library', href: '/fish', badge: '120+ Species', icon: Fish },
+    { label: 'Aquarium Plants', href: '/plants', badge: 'Flora Archive', icon: Leaf },
+    { label: 'Equipment Archive', href: '/equipment', badge: 'Gear & Tech', icon: Wrench },
+    { label: 'Care Guides', href: '/guides', badge: 'Step-by-Step', icon: BookOpen },
+    { label: 'Aquarium Tools', href: '/compatibility', badge: 'Interactive', icon: Compass },
+    { label: 'About Atlas', href: '/about', badge: 'Our Story', icon: Info },
+    { label: 'Contact', href: '/contact', badge: 'Get in Touch', icon: Mail },
   ];
 
   return (
@@ -101,7 +105,7 @@ export default function Navbar() {
           {/* BRAND LOGO */}
           <BrandLogo size="md" onClick={closeMenu} />
 
-          {/* RIGHT ACTIONS: Search & Stylish Marine Hamburger */}
+          {/* RIGHT ACTIONS: Search & Lucide Centered Menu Button */}
           <div className="flex items-center gap-3">
             
             {/* Search Trigger Button */}
@@ -110,10 +114,10 @@ export default function Navbar() {
               className="w-10 h-10 rounded-full bg-[#f7f7ff] border border-[#cfcaf5] hover:border-[#27187e] hover:bg-[#edeafc] flex items-center justify-center text-[#27187e] transition-all shadow-sm focus:outline-none"
               aria-label="Open Search"
             >
-              <Search className="w-4 h-4" />
+              <Search className="w-5 h-5" strokeWidth={1.8} aria-hidden="true" />
             </button>
 
-            {/* STYLISH MARINE HAMBURGER MENU BUTTON */}
+            {/* LUCIDE MENU / X BUTTON WITH EXACT CENTER ROTATION */}
             <button
               onClick={toggleMenu}
               className="group relative flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-[#27187e] hover:bg-[#1b1059] text-[#f7f7ff] transition-all shadow-md active:scale-95 focus:outline-none"
@@ -121,14 +125,36 @@ export default function Navbar() {
               aria-expanded={isOpen}
             >
               <span className="text-xs font-condensed font-bold uppercase tracking-widest hidden sm:inline-block">
-                Menu
+                {isOpen ? 'Close' : 'Menu'}
               </span>
 
-              {/* Animated 3 Marine Wave Lines */}
-              <div className="w-5 h-4 flex flex-col justify-between items-center relative">
-                <span className="w-5 h-0.5 bg-[#f7f7ff] rounded-full transition-all" />
-                <span className="w-3.5 h-0.5 bg-[#f7f7ff] rounded-full self-end transition-all" />
-                <span className="w-5 h-0.5 bg-[#f7f7ff] rounded-full transition-all" />
+              {/* Centered Icon Box */}
+              <div className="w-5 h-5 flex items-center justify-center relative">
+                <AnimatePresence mode="wait" initial={false}>
+                  {isOpen ? (
+                    <motion.div
+                      key="close"
+                      initial={{ rotate: -90, opacity: 0 }}
+                      animate={{ rotate: 0, opacity: 1 }}
+                      exit={{ rotate: 90, opacity: 0 }}
+                      transition={{ duration: 0.15 }}
+                      className="flex items-center justify-center"
+                    >
+                      <X className="w-5 h-5 text-[#f7f7ff]" strokeWidth={2} aria-hidden="true" />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="menu"
+                      initial={{ rotate: 90, opacity: 0 }}
+                      animate={{ rotate: 0, opacity: 1 }}
+                      exit={{ rotate: -90, opacity: 0 }}
+                      transition={{ duration: 0.15 }}
+                      className="flex items-center justify-center"
+                    >
+                      <Menu className="w-5 h-5 text-[#f7f7ff]" strokeWidth={2} aria-hidden="true" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </button>
 
@@ -171,7 +197,7 @@ export default function Navbar() {
                     aria-label="Close menu"
                   >
                     <span>CLOSE</span>
-                    <X className="w-4 h-4" />
+                    <X className="w-4 h-4" strokeWidth={2} aria-hidden="true" />
                   </button>
                 </div>
 
@@ -180,7 +206,7 @@ export default function Navbar() {
                   onSubmit={(e) => handleSearchSubmit(e, searchQuery)}
                   className="relative mb-5"
                 >
-                  <Search className="w-4 h-4 text-[#27187e]/60 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <Search className="w-4 h-4 text-[#27187e]/60 absolute left-3.5 top-1/2 -translate-y-1/2" strokeWidth={1.8} aria-hidden="true" />
                   <input
                     ref={drawerSearchInputRef}
                     type="text"
@@ -226,11 +252,9 @@ export default function Navbar() {
                               }`}
                             >
                               <item.icon
-                                className={`w-5 h-5 transition-colors ${
-                                  isActive
-                                    ? 'text-[#f7f7ff]'
-                                    : 'text-[#27187e] group-hover:text-[#f7f7ff]'
-                                }`}
+                                className="w-5 h-5 transition-colors"
+                                strokeWidth={1.8}
+                                aria-hidden="true"
                               />
                             </div>
                             <div className="flex flex-col text-left">
@@ -251,6 +275,8 @@ export default function Navbar() {
                             className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${
                               isActive ? 'text-[#f7f7ff]' : 'text-[#27187e]'
                             }`}
+                            strokeWidth={2}
+                            aria-hidden="true"
                           />
                         </Link>
                       </motion.div>
@@ -266,9 +292,8 @@ export default function Navbar() {
                   onClick={closeMenu}
                   className="w-full py-3.5 rounded-xl bg-[#27187e] hover:bg-[#1b1059] text-[#f7f7ff] text-xs font-condensed font-bold uppercase tracking-wider text-center transition-all shadow-md flex items-center justify-center gap-2"
                 >
-                  <Sparkles className="w-4 h-4" />
                   <span>Start Beginner Setup Roadmap</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4" strokeWidth={2} aria-hidden="true" />
                 </Link>
                 <p className="text-[11px] text-[#27187e]/70 text-center font-sans">
                   The Aquarium Atlas — Systematic knowledge for aquarium keepers.
@@ -300,7 +325,7 @@ export default function Navbar() {
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
-                  <Waves className="w-5 h-5 text-[#27187e]" />
+                  <Search className="w-5 h-5 text-[#27187e]" strokeWidth={2} aria-hidden="true" />
                   <span className="font-display text-xl text-[#27187e]">
                     SEARCH THE AQUARIUM ATLAS
                   </span>
@@ -308,13 +333,14 @@ export default function Navbar() {
                 <button
                   onClick={() => setIsSearchOpen(false)}
                   className="w-8 h-8 rounded-full bg-[#edeafc] flex items-center justify-center text-[#27187e] hover:bg-[#27187e] hover:text-[#f7f7ff] transition-colors"
+                  aria-label="Close search"
                 >
-                  <X className="w-4 h-4" />
+                  <X className="w-4 h-4" strokeWidth={2} aria-hidden="true" />
                 </button>
               </div>
 
               <form onSubmit={handleSearchSubmit} className="relative">
-                <Search className="w-5 h-5 text-[#27187e]/60 absolute left-4 top-1/2 -translate-y-1/2" />
+                <Search className="w-5 h-5 text-[#27187e]/60 absolute left-4 top-1/2 -translate-y-1/2" strokeWidth={1.8} aria-hidden="true" />
                 <input
                   ref={searchInputRef}
                   autoFocus

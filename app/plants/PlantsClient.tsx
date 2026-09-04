@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Plant as PlantType } from '@/lib/types';
-import { Search, ArrowRight, RotateCcw, Filter, Leaf } from 'lucide-react';
+import { Search, ArrowRight, RotateCcw, SlidersHorizontal, Leaf, Sun, Layers, Sprout } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -52,7 +52,7 @@ export default function PlantsClient({ plantList }: PlantsClientProps) {
 
           {/* Search */}
           <div className="mt-8 max-w-3xl relative">
-            <Search className="w-5 h-5 text-[#27187e]/60 absolute left-4 top-1/2 -translate-y-1/2" />
+            <Search className="w-5 h-5 text-[#27187e]/60 absolute left-4 top-1/2 -translate-y-1/2" strokeWidth={1.8} aria-hidden="true" />
             <input
               type="text"
               placeholder="Search botanical species (e.g. Java Fern, Anubias nana, Amazon Sword)..."
@@ -67,7 +67,7 @@ export default function PlantsClient({ plantList }: PlantsClientProps) {
         <div className="bg-[#ffffff] border-2 border-[#cfcaf5] rounded-3xl p-6 mb-10 shadow-sm">
           <div className="flex flex-wrap items-center justify-between gap-4 mb-4 pb-4 border-b border-[#edeafc]">
             <div className="flex items-center gap-2">
-              <Leaf className="w-4 h-4 text-[#27187e]" />
+              <SlidersHorizontal className="w-4 h-4 text-[#27187e]" strokeWidth={1.8} aria-hidden="true" />
               <span className="text-xs font-condensed font-bold uppercase tracking-wider text-[#27187e]">
                 Filter Botanical Archive ({filteredPlants.length} species available)
               </span>
@@ -78,7 +78,7 @@ export default function PlantsClient({ plantList }: PlantsClientProps) {
                 onClick={clearFilters}
                 className="text-xs font-condensed font-bold uppercase tracking-wider text-[#27187e] hover:underline flex items-center gap-1 cursor-pointer"
               >
-                <RotateCcw className="w-3.5 h-3.5" />
+                <RotateCcw className="w-3.5 h-3.5" strokeWidth={2} aria-hidden="true" />
                 <span>Reset Filters</span>
               </button>
             )}
@@ -140,8 +140,9 @@ export default function PlantsClient({ plantList }: PlantsClientProps) {
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
-                    <div className="absolute top-3 left-3 bg-[#f7f7ff] text-[#27187e] px-2.5 py-1 rounded-md text-[10px] font-condensed font-bold uppercase tracking-wider">
-                      {plant.placement || 'Midground'}
+                    <div className="absolute top-3 left-3 bg-[#f7f7ff] text-[#27187e] px-2.5 py-1 rounded-md text-[10px] font-condensed font-bold uppercase tracking-wider flex items-center gap-1.5">
+                      <Leaf className="w-3 h-3" strokeWidth={2} aria-hidden="true" />
+                      <span>{plant.placement || 'Midground'}</span>
                     </div>
                   </div>
 
@@ -154,13 +155,28 @@ export default function PlantsClient({ plantList }: PlantsClientProps) {
                   </p>
 
                   <div className="flex flex-wrap gap-2 text-xs font-sans mb-4 pt-3 border-t border-[#edeafc]">
-                    <span className="bg-[#edeafc] text-[#27187e] px-2.5 py-1 rounded-md font-medium text-[11px]">
-                      Light: {plant.light}
+                    <span className="bg-[#edeafc] text-[#27187e] px-2.5 py-1 rounded-md font-medium text-[11px] flex items-center gap-1.5">
+                      <Sun className="w-3.5 h-3.5 text-[#27187e]" strokeWidth={1.8} aria-hidden="true" />
+                      <span>Light: {plant.light}</span>
                     </span>
-                    <span className="bg-[#edeafc] text-[#27187e] px-2.5 py-1 rounded-md font-medium text-[11px]">
-                      Difficulty: {plant.difficulty}
+                    <span className="bg-[#edeafc] text-[#27187e] px-2.5 py-1 rounded-md font-medium text-[11px] flex items-center gap-1.5">
+                      <Sprout className="w-3.5 h-3.5 text-[#27187e]" strokeWidth={1.8} aria-hidden="true" />
+                      <span>Difficulty: {plant.difficulty}</span>
                     </span>
                   </div>
+
+                  <p className="text-xs text-[#27187e]/80 font-sans leading-relaxed line-clamp-2">
+                    {plant.description}
+                  </p>
+                </div>
+
+                <div className="pt-4 mt-4 border-t border-[#edeafc] flex items-center justify-between text-xs font-condensed font-bold uppercase tracking-wider text-[#27187e]">
+                  <span>View Botanical Profile</span>
+                  <ArrowRight className="w-3.5 h-3.5" strokeWidth={2} aria-hidden="true" />
+                </div>
+              </Link>
+            ))}
+          </div>
 
                   <p className="text-xs text-[#27187e]/80 font-sans leading-relaxed line-clamp-2">
                     {plant.description}

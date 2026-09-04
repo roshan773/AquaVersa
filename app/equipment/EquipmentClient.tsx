@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Equipment as EquipmentType } from '@/lib/types';
-import { Search, ArrowRight, RotateCcw, Filter, Wrench } from 'lucide-react';
+import { Search, ArrowRight, RotateCcw, SlidersHorizontal, Wrench, Filter } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -49,7 +49,7 @@ export default function EquipmentClient({ eqList }: EquipmentClientProps) {
 
           {/* Search */}
           <div className="mt-8 max-w-3xl relative">
-            <Search className="w-5 h-5 text-[#27187e]/60 absolute left-4 top-1/2 -translate-y-1/2" />
+            <Search className="w-5 h-5 text-[#27187e]/60 absolute left-4 top-1/2 -translate-y-1/2" strokeWidth={1.8} aria-hidden="true" />
             <input
               type="text"
               placeholder="Search hardware (e.g. Canister Filter, Submersible Heater, LED Light)..."
@@ -64,7 +64,7 @@ export default function EquipmentClient({ eqList }: EquipmentClientProps) {
         <div className="bg-[#ffffff] border-2 border-[#cfcaf5] rounded-3xl p-6 mb-10 shadow-sm">
           <div className="flex flex-wrap items-center justify-between gap-4 mb-4 pb-4 border-b border-[#edeafc]">
             <div className="flex items-center gap-2">
-              <Wrench className="w-4 h-4 text-[#27187e]" />
+              <SlidersHorizontal className="w-4 h-4 text-[#27187e]" strokeWidth={1.8} aria-hidden="true" />
               <span className="text-xs font-condensed font-bold uppercase tracking-wider text-[#27187e]">
                 Filter Hardware by Category ({filteredEq.length} profiles documented)
               </span>
@@ -75,7 +75,7 @@ export default function EquipmentClient({ eqList }: EquipmentClientProps) {
                 onClick={clearFilters}
                 className="text-xs font-condensed font-bold uppercase tracking-wider text-[#27187e] hover:underline flex items-center gap-1 cursor-pointer"
               >
-                <RotateCcw className="w-3.5 h-3.5" />
+                <RotateCcw className="w-3.5 h-3.5" strokeWidth={2} aria-hidden="true" />
                 <span>Reset Filters</span>
               </button>
             )}
@@ -121,8 +121,9 @@ export default function EquipmentClient({ eqList }: EquipmentClientProps) {
                       className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
-                    <div className="absolute top-3 left-3 bg-[#edeafc] text-[#27187e] border border-[#cfcaf5] px-2.5 py-1 rounded-md text-[10px] font-condensed font-bold uppercase tracking-wider">
-                      {eq.category}
+                    <div className="absolute top-3 left-3 bg-[#edeafc] text-[#27187e] border border-[#cfcaf5] px-2.5 py-1 rounded-md text-[10px] font-condensed font-bold uppercase tracking-wider flex items-center gap-1.5">
+                      <Wrench className="w-3 h-3" strokeWidth={2} aria-hidden="true" />
+                      <span>{eq.category}</span>
                     </div>
                   </div>
 
@@ -137,8 +138,11 @@ export default function EquipmentClient({ eqList }: EquipmentClientProps) {
 
                 <div className="pt-4 mt-4 border-t border-[#edeafc] flex items-center justify-between text-xs font-condensed font-bold uppercase tracking-wider text-[#27187e]">
                   <span>Read Hardware Guide</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-3.5 h-3.5" strokeWidth={2} aria-hidden="true" />
                 </div>
+              </Link>
+            ))}
+          </div>
               </Link>
             ))}
           </div>

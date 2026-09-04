@@ -1,7 +1,21 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Award, Lock, CheckCircle2, RotateCcw, HelpCircle, ArrowRight } from 'lucide-react';
+import {
+  Award,
+  Lock,
+  CheckCircle2,
+  RotateCcw,
+  HelpCircle,
+  ArrowRight,
+  GraduationCap,
+  FlaskConical,
+  Fish,
+  Layers,
+  Ruler,
+  CalendarDays,
+  type LucideIcon
+} from 'lucide-react';
 import { storage, KEYS } from '@/lib/storage';
 import Link from 'next/link';
 
@@ -10,7 +24,7 @@ interface Achievement {
   title: string;
   description: string;
   unlockHint: string;
-  icon: string;
+  icon: LucideIcon;
   link: string;
   linkLabel: string;
 }
@@ -21,8 +35,8 @@ const achievementsList: Achievement[] = [
     title: 'Completed First Setup',
     description: 'Checked off all items in either the Freshwater or Saltwater starter checklist.',
     unlockHint: 'Go to the setup checklist and check off all essential hardware items.',
-    icon: '🏆',
-    link: '/#checklist', // checklist is on homepage or standalone
+    icon: Award,
+    link: '/#checklist',
     linkLabel: 'Go to Setup Checklist'
   },
   {
@@ -30,7 +44,7 @@ const achievementsList: Achievement[] = [
     title: 'Quiz Science Expert',
     description: 'Scored 8/10 or higher on the Aquarium Science Quiz.',
     unlockHint: 'Study up on nitrogen cycling and testing, then complete the quiz with 80% accuracy.',
-    icon: '🎓',
+    icon: GraduationCap,
     link: '/quiz',
     linkLabel: 'Take the Quiz'
   },
@@ -39,7 +53,7 @@ const achievementsList: Achievement[] = [
     title: 'Water Master chemist',
     description: 'Checked and analyzed water chemistry levels using the Water Analyzer.',
     unlockHint: 'Go to the Water Parameter Analyzer and submit your water readings.',
-    icon: '🧪',
+    icon: FlaskConical,
     link: '/water-analyzer',
     linkLabel: 'Use Water Analyzer'
   },
@@ -48,7 +62,7 @@ const achievementsList: Achievement[] = [
     title: 'Stocking Master Architect',
     description: 'Built a safe stocking layout in the Stocking Planner with 0 errors.',
     unlockHint: 'Add at least 2 compatible species to the Stocking Planner without overstocking.',
-    icon: '🐟',
+    icon: Fish,
     link: '/stocking-planner',
     linkLabel: 'Go to Stocking Planner'
   },
@@ -57,7 +71,7 @@ const achievementsList: Achievement[] = [
     title: 'Aquascaping Artist',
     description: 'Placed at least 5 different layout elements in the Aquascape Planner.',
     unlockHint: 'Open the Aquascape Planner and add 5 plants, hardscapes, or fish to the canvas.',
-    icon: '🪵',
+    icon: Layers,
     link: '/aquascape-planner',
     linkLabel: 'Open Aquascape Planner'
   },
@@ -66,7 +80,7 @@ const achievementsList: Achievement[] = [
     title: 'Aquarium Math Scholar',
     description: 'Calculated tank dimensions and reviewed gear specs in the Volume Calculator.',
     unlockHint: 'Enter your tank dimensions in the Aquarium Calculator.',
-    icon: '📐',
+    icon: Ruler,
     link: '/tank-size',
     linkLabel: 'Open Volume Calculator'
   },
@@ -75,7 +89,7 @@ const achievementsList: Achievement[] = [
     title: 'Routine Care Specialist',
     description: 'Checked off and completed all care tasks in the Maintenance Planner.',
     unlockHint: 'Complete the maintenance checklist for daily, weekly, and monthly tasks.',
-    icon: '📅',
+    icon: CalendarDays,
     link: '/#maintenance',
     linkLabel: 'Go to Maintenance Planner'
   }
@@ -171,12 +185,16 @@ export default function AchievementsPage() {
                   )}
 
                   {/* Icon section */}
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 border text-3xl select-none ${
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 border select-none ${
                     isUnlocked 
-                      ? 'bg-emerald-500/10 border-emerald-500/25' 
-                      : 'bg-background border-border grayscale opacity-60'
+                      ? 'bg-emerald-500/10 border-emerald-500/25 text-emerald-600 dark:text-emerald-400' 
+                      : 'bg-background border-border text-muted-foreground opacity-60'
                   }`}>
-                    {isUnlocked ? ach.icon : '🔒'}
+                    {isUnlocked ? (
+                      <ach.icon className="w-7 h-7" strokeWidth={1.8} aria-hidden="true" />
+                    ) : (
+                      <Lock className="w-6 h-6" strokeWidth={1.8} aria-hidden="true" />
+                    )}
                   </div>
 
                   {/* Copy content */}

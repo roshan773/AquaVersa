@@ -250,9 +250,10 @@ export default async function FishDetailPage({
               </div>
               <Link
                 href="/fish"
-                className="text-xs font-condensed font-bold uppercase tracking-wider text-[#27187e] hover:underline"
+                className="text-xs font-condensed font-bold uppercase tracking-wider text-[#27187e] hover:underline inline-flex items-center gap-1.5"
               >
-                All Species →
+                <span>All Species</span>
+                <ArrowRight className="w-3.5 h-3.5" strokeWidth={2} aria-hidden="true" />
               </Link>
             </div>
 

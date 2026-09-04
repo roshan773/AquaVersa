@@ -154,42 +154,42 @@ export default function AquascapePlannerPage() {
     if (selectedStyle === 'iwagumi') {
       // Iwagumi layout: main stones (Oyaishi) and carpeting plants (Monte Carlo)
       items = [
-        { id: 'rock-1', type: 'rock', name: 'Main Stone', label: '🪨 Oyaishi Stone', x: 45, y: 55, color: 'bg-slate-500' },
-        { id: 'rock-2', type: 'rock', name: 'Fukuishi Stone', label: '🪨 Secondary Stone', x: 30, y: 65, color: 'bg-slate-400' },
-        { id: 'rock-3', type: 'rock', name: 'Soishi Stone', label: '🪨 Helper Stone', x: 60, y: 70, color: 'bg-slate-600' },
-        { id: 'plant-1', type: 'plant', name: 'Monte Carlo', label: '🌱 Carpet Plant', x: 20, y: 80, color: 'bg-emerald-500' },
-        { id: 'plant-2', type: 'plant', name: 'Monte Carlo', label: '🌱 Carpet Plant', x: 40, y: 82, color: 'bg-emerald-500' },
-        { id: 'plant-3', type: 'plant', name: 'Monte Carlo', label: '🌱 Carpet Plant', x: 75, y: 81, color: 'bg-emerald-500' },
-        { id: 'fish-1', type: 'fish', name: 'Tetra', label: '🐟 Neon Tetra', x: 50, y: 25, color: 'bg-cyan-500' },
-        { id: 'fish-2', type: 'fish', name: 'Tetra', label: '🐟 Neon Tetra', x: 58, y: 20, color: 'bg-cyan-500' }
+        { id: 'rock-1', type: 'rock', name: 'Main Stone', label: 'Oyaishi Stone', x: 45, y: 55, color: 'bg-slate-500' },
+        { id: 'rock-2', type: 'rock', name: 'Fukuishi Stone', label: 'Secondary Stone', x: 30, y: 65, color: 'bg-slate-400' },
+        { id: 'rock-3', type: 'rock', name: 'Soishi Stone', label: 'Helper Stone', x: 60, y: 70, color: 'bg-slate-600' },
+        { id: 'plant-1', type: 'plant', name: 'Monte Carlo', label: 'Carpet Plant', x: 20, y: 80, color: 'bg-emerald-500' },
+        { id: 'plant-2', type: 'plant', name: 'Monte Carlo', label: 'Carpet Plant', x: 40, y: 82, color: 'bg-emerald-500' },
+        { id: 'plant-3', type: 'plant', name: 'Monte Carlo', label: 'Carpet Plant', x: 75, y: 81, color: 'bg-emerald-500' },
+        { id: 'fish-1', type: 'fish', name: 'Tetra', label: 'Neon Tetra', x: 50, y: 25, color: 'bg-cyan-500' },
+        { id: 'fish-2', type: 'fish', name: 'Tetra', label: 'Neon Tetra', x: 58, y: 20, color: 'bg-cyan-500' }
       ];
     } else if (selectedStyle === 'jungle') {
       // Jungle style: driftwood center, swords background, valisneria
       items = [
-        { id: 'wood-1', type: 'wood', name: 'Driftwood Branch', label: '🪵 Driftwood Root', x: 50, y: 50, color: 'bg-amber-800' },
-        { id: 'plant-1', type: 'plant', name: 'Amazon Sword', label: '🌿 Amazon Sword', x: 20, y: 45, color: 'bg-emerald-600' },
-        { id: 'plant-2', type: 'plant', name: 'Amazon Sword', label: '🌿 Amazon Sword', x: 80, y: 45, color: 'bg-emerald-600' },
-        { id: 'plant-3', type: 'plant', name: 'Jungle Val', label: '🌱 Jungle Val', x: 10, y: 35, color: 'bg-emerald-700' },
-        { id: 'plant-4', type: 'plant', name: 'Jungle Val', label: '🌱 Jungle Val', x: 90, y: 35, color: 'bg-emerald-700' },
-        { id: 'plant-5', type: 'plant', name: 'Java Fern', label: '🌿 Java Fern', x: 45, y: 65, color: 'bg-emerald-500' },
-        { id: 'fish-1', type: 'fish', name: 'Angelfish', label: '🐠 Angelfish', x: 35, y: 30, color: 'bg-yellow-400' }
+        { id: 'wood-1', type: 'wood', name: 'Driftwood Branch', label: 'Driftwood Root', x: 50, y: 50, color: 'bg-amber-800' },
+        { id: 'plant-1', type: 'plant', name: 'Amazon Sword', label: 'Amazon Sword', x: 20, y: 45, color: 'bg-emerald-600' },
+        { id: 'plant-2', type: 'plant', name: 'Amazon Sword', label: 'Amazon Sword', x: 80, y: 45, color: 'bg-emerald-600' },
+        { id: 'plant-3', type: 'plant', name: 'Jungle Val', label: 'Jungle Val', x: 10, y: 35, color: 'bg-emerald-700' },
+        { id: 'plant-4', type: 'plant', name: 'Jungle Val', label: 'Jungle Val', x: 90, y: 35, color: 'bg-emerald-700' },
+        { id: 'plant-5', type: 'plant', name: 'Java Fern', label: 'Java Fern', x: 45, y: 65, color: 'bg-emerald-500' },
+        { id: 'fish-1', type: 'fish', name: 'Angelfish', label: 'Angelfish', x: 35, y: 30, color: 'bg-yellow-400' }
       ];
     } else if (selectedStyle === 'minimal') {
       items = [
-        { id: 'wood-1', type: 'wood', name: 'Bonsai Wood', label: '🪵 Centerwood', x: 50, y: 55, color: 'bg-amber-900' },
-        { id: 'plant-1', type: 'plant', name: 'Anubias', label: '🌱 Anubias Nana', x: 48, y: 62, color: 'bg-emerald-600' },
-        { id: 'plant-2', type: 'plant', name: 'Anubias', label: '🌱 Anubias', x: 55, y: 65, color: 'bg-emerald-600' },
-        { id: 'fish-1', type: 'fish', name: 'Betta', label: '🐠 Betta Fish', x: 30, y: 25, color: 'bg-blue-500' }
+        { id: 'wood-1', type: 'wood', name: 'Bonsai Wood', label: 'Centerwood', x: 50, y: 55, color: 'bg-amber-900' },
+        { id: 'plant-1', type: 'plant', name: 'Anubias', label: 'Anubias Nana', x: 48, y: 62, color: 'bg-emerald-600' },
+        { id: 'plant-2', type: 'plant', name: 'Anubias', label: 'Anubias', x: 55, y: 65, color: 'bg-emerald-600' },
+        { id: 'fish-1', type: 'fish', name: 'Betta', label: 'Betta Fish', x: 30, y: 25, color: 'bg-blue-500' }
       ];
     } else {
       // Nature style: mixed
       items = [
-        { id: 'wood-1', type: 'wood', name: 'Wood Root', label: '🪵 Island Branch', x: 35, y: 55, color: 'bg-amber-800' },
-        { id: 'rock-1', type: 'rock', name: 'Rock', label: '🪨 River Rock', x: 60, y: 68, color: 'bg-slate-500' },
-        { id: 'plant-1', type: 'plant', name: 'Java Fern', label: '🌿 Java Fern', x: 32, y: 62, color: 'bg-emerald-500' },
-        { id: 'plant-2', type: 'plant', name: 'Anubias', label: '🌱 Anubias', x: 62, y: 65, color: 'bg-emerald-600' },
-        { id: 'plant-3', type: 'plant', name: 'Sword', label: '🌿 Background Sword', x: 78, y: 45, color: 'bg-emerald-600' },
-        { id: 'fish-1', type: 'fish', name: 'Guppy', label: '🐟 Guppy', x: 50, y: 28, color: 'bg-orange-400' }
+        { id: 'wood-1', type: 'wood', name: 'Wood Root', label: 'Island Branch', x: 35, y: 55, color: 'bg-amber-800' },
+        { id: 'rock-1', type: 'rock', name: 'Rock', label: 'River Rock', x: 60, y: 68, color: 'bg-slate-500' },
+        { id: 'plant-1', type: 'plant', name: 'Java Fern', label: 'Java Fern', x: 32, y: 62, color: 'bg-emerald-500' },
+        { id: 'plant-2', type: 'plant', name: 'Anubias', label: 'Anubias', x: 62, y: 65, color: 'bg-emerald-600' },
+        { id: 'plant-3', type: 'plant', name: 'Sword', label: 'Background Sword', x: 78, y: 45, color: 'bg-emerald-600' },
+        { id: 'fish-1', type: 'fish', name: 'Guppy', label: 'Guppy', x: 50, y: 28, color: 'bg-orange-400' }
       ];
     }
 
@@ -354,92 +354,92 @@ export default function AquascapePlannerPage() {
 
                 {/* Toolbox Items */}
                 <div className="space-y-4 font-sans text-sm">
-                  {/* Category: Plants */}
-                  <div className="space-y-2">
-                    <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Plants</h4>
-                    <div className="grid grid-cols-2 gap-2">
-                      <button 
-                        onClick={() => handleAddItem('plant', 'java-fern', '🌿 Java Fern', 'bg-emerald-600')}
-                        className="py-2 px-3 bg-muted border border-border hover:border-cyan-500/35 rounded-xl text-xs font-bold text-foreground cursor-pointer text-left flex items-center gap-1.5"
-                      >
-                        <Plus className="w-3.5 h-3.5 text-emerald-500" /> Java Fern
-                      </button>
-                      <button 
-                        onClick={() => handleAddItem('plant', 'anubias', '🌱 Anubias', 'bg-emerald-500')}
-                        className="py-2 px-3 bg-muted border border-border hover:border-cyan-500/35 rounded-xl text-xs font-bold text-foreground cursor-pointer text-left flex items-center gap-1.5"
-                      >
-                        <Plus className="w-3.5 h-3.5 text-emerald-500" /> Anubias
-                      </button>
-                      <button 
-                        onClick={() => handleAddItem('plant', 'sword', '🌿 Sword Plant', 'bg-emerald-700')}
-                        className="py-2 px-3 bg-muted border border-border hover:border-cyan-500/35 rounded-xl text-xs font-bold text-foreground cursor-pointer text-left flex items-center gap-1.5"
-                      >
-                        <Plus className="w-3.5 h-3.5 text-emerald-500" /> Amazon Sword
-                      </button>
-                      <button 
-                        onClick={() => handleAddItem('plant', 'val', '🌱 Jungle Val', 'bg-teal-600')}
-                        className="py-2 px-3 bg-muted border border-border hover:border-cyan-500/35 rounded-xl text-xs font-bold text-foreground cursor-pointer text-left flex items-center gap-1.5"
-                      >
-                        <Plus className="w-3.5 h-3.5 text-emerald-500" /> Jungle Val
-                      </button>
+                    {/* Category: Plants */}
+                    <div className="space-y-2">
+                      <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Plants</h4>
+                      <div className="grid grid-cols-2 gap-2">
+                        <button 
+                          onClick={() => handleAddItem('plant', 'java-fern', 'Java Fern', 'bg-emerald-600')}
+                          className="py-2 px-3 bg-muted border border-border hover:border-cyan-500/35 rounded-xl text-xs font-bold text-foreground cursor-pointer text-left flex items-center gap-1.5"
+                        >
+                          <Plus className="w-3.5 h-3.5 text-emerald-500" /> Java Fern
+                        </button>
+                        <button 
+                          onClick={() => handleAddItem('plant', 'anubias', 'Anubias', 'bg-emerald-500')}
+                          className="py-2 px-3 bg-muted border border-border hover:border-cyan-500/35 rounded-xl text-xs font-bold text-foreground cursor-pointer text-left flex items-center gap-1.5"
+                        >
+                          <Plus className="w-3.5 h-3.5 text-emerald-500" /> Anubias
+                        </button>
+                        <button 
+                          onClick={() => handleAddItem('plant', 'sword', 'Sword Plant', 'bg-emerald-700')}
+                          className="py-2 px-3 bg-muted border border-border hover:border-cyan-500/35 rounded-xl text-xs font-bold text-foreground cursor-pointer text-left flex items-center gap-1.5"
+                        >
+                          <Plus className="w-3.5 h-3.5 text-emerald-500" /> Amazon Sword
+                        </button>
+                        <button 
+                          onClick={() => handleAddItem('plant', 'val', 'Jungle Val', 'bg-teal-600')}
+                          className="py-2 px-3 bg-muted border border-border hover:border-cyan-500/35 rounded-xl text-xs font-bold text-foreground cursor-pointer text-left flex items-center gap-1.5"
+                        >
+                          <Plus className="w-3.5 h-3.5 text-emerald-500" /> Jungle Val
+                        </button>
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Category: Rocks & Wood */}
-                  <div className="space-y-2 pt-2 border-t border-border/40">
-                    <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Hardscape</h4>
-                    <div className="grid grid-cols-2 gap-2">
-                      <button 
-                        onClick={() => handleAddItem('rock', 'rock', '🪨 River Stone', 'bg-slate-500')}
-                        className="py-2 px-3 bg-muted border border-border hover:border-cyan-500/35 rounded-xl text-xs font-bold text-foreground cursor-pointer text-left flex items-center gap-1.5"
-                      >
-                        <Plus className="w-3.5 h-3.5 text-slate-500" /> River Rock
-                      </button>
-                      <button 
-                        onClick={() => handleAddItem('rock', 'dragon-rock', '🪨 Dragon Rock', 'bg-stone-500')}
-                        className="py-2 px-3 bg-muted border border-border hover:border-cyan-500/35 rounded-xl text-xs font-bold text-foreground cursor-pointer text-left flex items-center gap-1.5"
-                      >
-                        <Plus className="w-3.5 h-3.5 text-slate-500" /> Dragon Rock
-                      </button>
-                      <button 
-                        onClick={() => handleAddItem('wood', 'driftwood', '🪵 Driftwood', 'bg-amber-800')}
-                        className="py-2 px-3 bg-muted border border-border hover:border-cyan-500/35 rounded-xl text-xs font-bold text-foreground cursor-pointer text-left flex items-center gap-1.5"
-                      >
-                        <Plus className="w-3.5 h-3.5 text-amber-700" /> Driftwood
-                      </button>
-                      <button 
-                        onClick={() => handleAddItem('wood', 'root', '🪵 Spiderwood', 'bg-amber-700')}
-                        className="py-2 px-3 bg-muted border border-border hover:border-cyan-500/35 rounded-xl text-xs font-bold text-foreground cursor-pointer text-left flex items-center gap-1.5"
-                      >
-                        <Plus className="w-3.5 h-3.5 text-amber-700" /> Spiderwood
-                      </button>
+                    {/* Category: Rocks & Wood */}
+                    <div className="space-y-2 pt-2 border-t border-border/40">
+                      <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Hardscape</h4>
+                      <div className="grid grid-cols-2 gap-2">
+                        <button 
+                          onClick={() => handleAddItem('rock', 'rock', 'River Stone', 'bg-slate-500')}
+                          className="py-2 px-3 bg-muted border border-border hover:border-cyan-500/35 rounded-xl text-xs font-bold text-foreground cursor-pointer text-left flex items-center gap-1.5"
+                        >
+                          <Plus className="w-3.5 h-3.5 text-slate-500" /> River Rock
+                        </button>
+                        <button 
+                          onClick={() => handleAddItem('rock', 'dragon-rock', 'Dragon Rock', 'bg-stone-500')}
+                          className="py-2 px-3 bg-muted border border-border hover:border-cyan-500/35 rounded-xl text-xs font-bold text-foreground cursor-pointer text-left flex items-center gap-1.5"
+                        >
+                          <Plus className="w-3.5 h-3.5 text-slate-500" /> Dragon Rock
+                        </button>
+                        <button 
+                          onClick={() => handleAddItem('wood', 'driftwood', 'Driftwood', 'bg-amber-800')}
+                          className="py-2 px-3 bg-muted border border-border hover:border-cyan-500/35 rounded-xl text-xs font-bold text-foreground cursor-pointer text-left flex items-center gap-1.5"
+                        >
+                          <Plus className="w-3.5 h-3.5 text-amber-700" /> Driftwood
+                        </button>
+                        <button 
+                          onClick={() => handleAddItem('wood', 'root', 'Spiderwood', 'bg-amber-700')}
+                          className="py-2 px-3 bg-muted border border-border hover:border-cyan-500/35 rounded-xl text-xs font-bold text-foreground cursor-pointer text-left flex items-center gap-1.5"
+                        >
+                          <Plus className="w-3.5 h-3.5 text-amber-700" /> Spiderwood
+                        </button>
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Category: Fish */}
-                  <div className="space-y-2 pt-2 border-t border-border/40">
-                    <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Livestock</h4>
-                    <div className="grid grid-cols-2 gap-2">
-                      <button 
-                        onClick={() => handleAddItem('fish', 'tetra', '🐟 Neon Tetra', 'bg-cyan-500')}
-                        className="py-2 px-3 bg-muted border border-border hover:border-cyan-500/35 rounded-xl text-xs font-bold text-foreground cursor-pointer text-left flex items-center gap-1.5"
-                      >
-                        <Plus className="w-3.5 h-3.5 text-cyan-400" /> Neon Tetra
-                      </button>
-                      <button 
-                        onClick={() => handleAddItem('fish', 'guppy', '🐟 Guppy', 'bg-orange-400')}
-                        className="py-2 px-3 bg-muted border border-border hover:border-cyan-500/35 rounded-xl text-xs font-bold text-foreground cursor-pointer text-left flex items-center gap-1.5"
-                      >
-                        <Plus className="w-3.5 h-3.5 text-orange-400" /> Guppy
-                      </button>
-                      <button 
-                        onClick={() => handleAddItem('fish', 'betta', '🐠 Betta Fish', 'bg-blue-500')}
-                        className="py-2 px-3 bg-muted border border-border hover:border-cyan-500/35 rounded-xl text-xs font-bold text-foreground cursor-pointer text-left flex items-center gap-1.5"
-                      >
-                        <Plus className="w-3.5 h-3.5 text-blue-500" /> Betta Fish
-                      </button>
+                    {/* Category: Fish */}
+                    <div className="space-y-2 pt-2 border-t border-border/40">
+                      <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Livestock</h4>
+                      <div className="grid grid-cols-2 gap-2">
+                        <button 
+                          onClick={() => handleAddItem('fish', 'tetra', 'Neon Tetra', 'bg-cyan-500')}
+                          className="py-2 px-3 bg-muted border border-border hover:border-cyan-500/35 rounded-xl text-xs font-bold text-foreground cursor-pointer text-left flex items-center gap-1.5"
+                        >
+                          <Plus className="w-3.5 h-3.5 text-cyan-400" /> Neon Tetra
+                        </button>
+                        <button 
+                          onClick={() => handleAddItem('fish', 'guppy', 'Guppy', 'bg-orange-400')}
+                          className="py-2 px-3 bg-muted border border-border hover:border-cyan-500/35 rounded-xl text-xs font-bold text-foreground cursor-pointer text-left flex items-center gap-1.5"
+                        >
+                          <Plus className="w-3.5 h-3.5 text-orange-400" /> Guppy
+                        </button>
+                        <button 
+                          onClick={() => handleAddItem('fish', 'betta', 'Betta Fish', 'bg-blue-500')}
+                          className="py-2 px-3 bg-muted border border-border hover:border-cyan-500/35 rounded-xl text-xs font-bold text-foreground cursor-pointer text-left flex items-center gap-1.5"
+                        >
+                          <Plus className="w-3.5 h-3.5 text-blue-500" /> Betta Fish
+                        </button>
+                      </div>
                     </div>
-                  </div>
                 </div>
               </div>
 

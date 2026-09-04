@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Waves, BookOpen, ArrowRight, Droplets, Leaf, Wrench, Compass, ShieldCheck } from 'lucide-react';
+import { BookOpen, ArrowRight, FlaskConical, Leaf, Wrench, Compass, GitCompare } from 'lucide-react';
 import { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
 
@@ -16,37 +16,37 @@ export default function GuidesPage() {
     {
       title: 'Water Chemistry & Nitrogen Cycle',
       desc: 'Master ammonia, nitrite, nitrate conversion, and pH stability to establish a biologically resilient aquarium.',
-      icon: <Droplets className="w-6 h-6 text-[#27187e]" />,
+      icon: FlaskConical,
       href: '/water-params',
     },
     {
       title: 'Aquascaping & Live Flora',
       desc: 'Discover low-tech aquatic plants, substrate selection, CO2 requirements, and layout principles.',
-      icon: <Leaf className="w-6 h-6 text-[#27187e]" />,
+      icon: Leaf,
       href: '/plants',
     },
     {
       title: 'Tank Size & Volume Planning',
       desc: 'Understand surface area gas exchange, floor weight distribution, and realistic stocking capacities.',
-      icon: <Compass className="w-6 h-6 text-[#27187e]" />,
+      icon: Compass,
       href: '/tank-size',
     },
     {
       title: 'Filtration & Hardware Architecture',
       desc: 'Compare sponge, hang-on-back, and canister filtration flow rates for mechanical and biological media.',
-      icon: <Wrench className="w-6 h-6 text-[#27187e]" />,
+      icon: Wrench,
       href: '/equipment',
     },
     {
       title: 'Species Compatibility & Social Behavior',
       desc: 'Evaluate temperament dynamics, schooling requirements, and biotope matching before adding livestock.',
-      icon: <ShieldCheck className="w-6 h-6 text-[#27187e]" />,
+      icon: GitCompare,
       href: '/compatibility',
     },
     {
       title: 'Beginner 5-Step Setup Progression',
       desc: 'A structured roadmap from dry tank placement to cycling, acclimation, and weekly water change discipline.',
-      icon: <BookOpen className="w-6 h-6 text-[#27187e]" />,
+      icon: BookOpen,
       href: '/start-aquarium',
     },
   ];
@@ -77,8 +77,8 @@ export default function GuidesPage() {
               className="bg-[#ffffff] border-2 border-[#cfcaf5] hover:border-[#27187e] rounded-3xl p-7 flex flex-col justify-between group transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1"
             >
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-[#edeafc] border border-[#cfcaf5] flex items-center justify-center text-[#27187e] mb-5 group-hover:bg-[#27187e] group-hover:text-[#f7f7ff] transition-colors">
-                  {item.icon}
+                <div className="w-12 h-12 rounded-2xl bg-[#edeafc] border border-[#cfcaf5] flex items-center justify-center text-[#27187e] mb-5 group-hover:bg-[#27187e] group-hover:text-[#f7f7ff] transition-all">
+                  <item.icon className="w-6 h-6 text-current" strokeWidth={1.8} aria-hidden="true" />
                 </div>
 
                 <h2 className="text-2xl sm:text-3xl font-display font-normal text-[#27187e] mb-2 group-hover:text-[#1b1059] transition-colors leading-tight">
@@ -92,7 +92,7 @@ export default function GuidesPage() {
 
               <div className="pt-6 mt-6 border-t border-[#edeafc] flex items-center justify-between text-xs font-condensed font-bold uppercase tracking-wider text-[#27187e]">
                 <span>Read Reference Article</span>
-                <ArrowRight className="w-4 h-4 text-[#27187e] group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 text-[#27187e] group-hover:translate-x-1 transition-transform" strokeWidth={2} aria-hidden="true" />
               </div>
             </Link>
           ))}

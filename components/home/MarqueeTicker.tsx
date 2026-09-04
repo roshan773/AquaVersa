@@ -1,4 +1,4 @@
-'use client';
+import { Sparkles } from 'lucide-react';
 
 export default function MarqueeTicker() {
   const items = [
@@ -24,7 +24,7 @@ export default function MarqueeTicker() {
             <span className="font-condensed text-sm sm:text-base font-bold uppercase tracking-wider text-[#F7F7FF]/80 hover:text-[#F7F7FF] transition-colors">
               {text}
             </span>
-            <span className="text-[#aca1f7] text-xs">✦</span>
+            <Sparkles className="w-3 h-3 text-[#aca1f7] shrink-0" strokeWidth={2} aria-hidden="true" />
           </div>
         ))}
       </div>

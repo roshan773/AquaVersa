@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, CheckCircle2, Waves } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle } from "lucide-react";
 import { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 
@@ -10,36 +10,35 @@ export const metadata: Metadata = {
 
 export default function ThankYouPage() {
   return (
-    <div className="min-h-screen bg-black text-slate-100 flex items-center justify-center py-16 px-4 relative overflow-hidden font-sans">
-      {/* Background ambient lighting */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[30%] left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-blue-955/15 rounded-full blur-[140px]" />
-      </div>
-
-      <div className="relative z-10 max-w-lg w-full text-center space-y-8 glass p-8 md:p-10 rounded-3xl border border-blue-500/10 shadow-2xl">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-500 mb-2 animate-float">
-          <CheckCircle2 className="w-8 h-8" />
+    <div className="min-h-screen bg-[#F7F7FF] text-[#27187E] flex items-center justify-center py-24 px-4 font-sans marine-pattern-light">
+      <div className="relative z-10 max-w-lg w-full text-center space-y-8 bg-[#FFFFFF] p-8 md:p-10 rounded-3xl border-2 border-[#CFCAF5] shadow-xl">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#EDEAFC] border border-[#CFCAF5] text-[#27187E] mb-2">
+          <CheckCircle className="w-8 h-8" strokeWidth={1.8} aria-hidden="true" />
         </div>
 
         <div className="space-y-3">
-          <h1 className="text-3xl font-poppins font-extrabold tracking-tight text-white leading-tight">Thanks for Reaching Out.</h1>
-          <p className="text-sm text-slate-400 leading-relaxed font-light">
-            We've successfully received your message. Our team will read your inquiry and get back to you shortly.
+          <h1 className="text-3xl font-display font-normal text-[#27187E] leading-tight">
+            Thanks for Reaching Out.
+          </h1>
+          <p className="text-sm text-[#27187E]/80 leading-relaxed">
+            We've successfully received your message. Our team will review your inquiry and get back to you shortly.
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2 text-xs font-bold tracking-wider uppercase font-poppins">
+        <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2 text-xs font-condensed font-bold tracking-wider uppercase">
           <Link
             href="/"
-            className="px-6 py-3.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-blue-600/10"
+            className="px-6 py-3.5 bg-[#27187E] hover:bg-[#1B1059] text-[#F7F7FF] rounded-xl transition-colors flex items-center justify-center gap-2 shadow-md"
           >
-            <span>Back to Home →</span>
+            <ArrowLeft className="w-4 h-4" strokeWidth={2} aria-hidden="true" />
+            <span>Back to Home</span>
           </Link>
           <Link
             href="/fish"
-            className="px-6 py-3.5 bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-200 hover:text-white rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer"
+            className="px-6 py-3.5 bg-[#EDEAFC] hover:bg-[#CFCAF5] text-[#27187E] rounded-xl transition-colors flex items-center justify-center gap-2 border border-[#CFCAF5]"
           >
-            <span>Explore {siteConfig.name} →</span>
+            <span>Explore Species Library</span>
+            <ArrowRight className="w-4 h-4" strokeWidth={2} aria-hidden="true" />
           </Link>
         </div>
       </div>

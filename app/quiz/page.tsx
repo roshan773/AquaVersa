@@ -346,8 +346,9 @@ export default function QuizPage() {
               </div>
 
               {score >= 8 ? (
-                <p className="text-emerald-500 font-bold text-xs animate-pulse">
-                  🏆 Passed! You have unlocked the "Quiz Master" Achievement.
+                <p className="text-emerald-500 font-bold text-xs flex items-center justify-center gap-1.5 animate-pulse">
+                  <Award className="w-4 h-4 shrink-0" aria-hidden="true" />
+                  <span>Passed! You have unlocked the &quot;Quiz Master&quot; Achievement.</span>
                 </p>
               ) : (
                 <p className="text-rose-500 font-semibold text-xs">

@@ -14,7 +14,8 @@ import {
   Check,
   RotateCcw,
   HelpCircle,
-  Activity,
+  Fish,
+  Leaf,
   Award
 } from "lucide-react";
 import Link from "next/link";
@@ -272,8 +273,8 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
                   className="group p-6 rounded-2xl bg-card border border-border hover:border-cyan-500/40 hover:shadow-lg transition-all flex flex-col justify-between"
                 >
                   <div>
-                    <div className="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center mb-4 font-bold group-hover:scale-110 transition-transform">
-                      🐟
+                    <div className="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <Fish className="w-5 h-5" strokeWidth={2} aria-hidden="true" />
                     </div>
                     <h4 className="font-bold text-lg mb-2 group-hover:text-cyan-500 transition-colors">Choose Your Fish</h4>
                     <p className="text-sm text-muted-foreground leading-relaxed">
@@ -281,7 +282,7 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
                     </p>
                   </div>
                   <span className="text-xs font-semibold text-cyan-500 dark:text-cyan-400 mt-4 flex items-center gap-1">
-                    Explore Hardy Fish <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    Explore Hardy Fish <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                   </span>
                 </Link>
 
@@ -291,8 +292,8 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
                   className="group p-6 rounded-2xl bg-card border border-border hover:border-emerald-500/40 hover:shadow-lg transition-all flex flex-col justify-between"
                 >
                   <div>
-                    <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center mb-4 font-bold group-hover:scale-110 transition-transform">
-                      🌿
+                    <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <Leaf className="w-5 h-5" strokeWidth={2} aria-hidden="true" />
                     </div>
                     <h4 className="font-bold text-lg mb-2 group-hover:text-emerald-500 transition-colors">Select Aquatic Plants</h4>
                     <p className="text-sm text-muted-foreground leading-relaxed">
