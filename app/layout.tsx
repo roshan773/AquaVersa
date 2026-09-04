@@ -95,6 +95,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" type="image/svg+xml" href="/icon.svg?v=4" />
+        <link rel="icon" type="image/png" sizes="64x64" href="/icon.png?v=4" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico?v=4" />
+        <link rel="shortcut icon" href="/favicon.ico?v=4" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=4" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#27187E" />
         <script
