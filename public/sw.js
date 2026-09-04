@@ -1,4 +1,4 @@
-const CACHE_NAME = 'roshan-aquva-world-v3';
+const CACHE_NAME = 'roshan-aquva-world-v4';
 const ASSETS_TO_CACHE = [
   '/manifest.json',
   '/favicon.ico'

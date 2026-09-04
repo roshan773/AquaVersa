@@ -3,94 +3,115 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Compass } from 'lucide-react';
-import { fishData } from '@/data/fish';
+import { ArrowRight, ChevronRight } from 'lucide-react';
 
 export default function PopularFish() {
-  // Select 4 popular species: Neon Tetra, Betta Fish, Corydoras Catfish, Angelfish (or Guppy)
-  const popularFish = fishData.slice(0, 4);
+  const popularFish = [
+    {
+      id: 'neon-tetra',
+      name: 'Neon Tetra',
+      scientific: 'Paracheirodon innesi',
+      image: '/images/neon_tetra.png',
+      tags: ['Peaceful', 'Schooling', 'Beginner'],
+      href: '/fish/freshwater/neon-tetra',
+    },
+    {
+      id: 'betta-fish',
+      name: 'Betta Fish',
+      scientific: 'Betta splendens',
+      image: '/images/betta.png',
+      tags: ['Semi-Aggressive', 'Solitary', 'Beginner'],
+      href: '/fish/freshwater/betta-fish',
+    },
+    {
+      id: 'corydoras-catfish',
+      name: 'Corydoras Catfish',
+      scientific: 'Corydoras spp.',
+      image: '/images/corydoras.png',
+      tags: ['Peaceful', 'Bottom Dweller', 'Beginner'],
+      href: '/fish/freshwater/corydoras-catfish',
+    },
+    {
+      id: 'oscar',
+      name: 'Oscar',
+      scientific: 'Astronotus ocellatus',
+      image: '/images/oscar.png',
+      tags: ['Semi-Aggressive', 'Large', 'Intermediate'],
+      href: '/fish/freshwater/oscar',
+    },
+  ];
 
   return (
-    <section className="py-20 bg-[#f7f7ff] border-t border-[#cfcaf5] text-left">
-      <div className="container mx-auto px-4 max-w-7xl">
+    <section className="py-20 bg-[#f7f7ff] text-left">
+      <div className="container mx-auto px-4 max-w-6xl">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10">
           <div>
-            <span className="text-xs font-condensed font-bold uppercase tracking-widest text-[#27187e] mb-2 block">
-              SPECIES SPOTLIGHT
+            <span className="text-[10px] font-condensed font-bold uppercase tracking-[0.2em] text-[#27187e]/80 mb-2 block">
+              FEATURED SPECIES
             </span>
             <h2 className="text-5xl sm:text-6xl md:text-7xl font-display font-normal text-[#27187e] tracking-wide">
               POPULAR FISH
             </h2>
-            <p className="text-base text-[#27187e]/80 font-normal max-w-xl mt-2 font-sans">
+            <p className="text-xs sm:text-sm text-[#27187e]/80 font-normal max-w-xl mt-1 font-sans">
               A look at some of the most loved aquarium fish.
             </p>
           </div>
 
           <Link
             href="/fish"
-            className="inline-flex items-center gap-2 text-xs font-condensed font-bold uppercase tracking-wider text-[#27187e] hover:text-[#1b1059] transition-colors mt-4 md:mt-0 group"
+            className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#27187e] hover:bg-[#1b1059] text-[#f7f7ff] text-xs font-condensed font-bold uppercase tracking-wider transition-all shadow-sm mt-4 md:mt-0"
           >
             <span>View All Fish</span>
-            <ArrowRight className="w-4 h-4 text-[#27187e] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-3.5 h-3.5 text-[#f7f7ff]" />
           </Link>
         </div>
 
         {/* 4-Column Desktop Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {popularFish.map((fish) => (
             <Link
               key={fish.id}
-              href={`/fish/${fish.category?.toLowerCase() || 'freshwater'}/${fish.slug}`}
-              className="editorial-card group flex flex-col justify-between overflow-hidden rounded-2xl transition-all duration-300 hover:shadow-xl"
+              href={fish.href}
+              className="bg-[#ffffff] border border-[#cfcaf5]/70 hover:border-[#27187e] rounded-2xl overflow-hidden group transition-all duration-300 shadow-sm hover:shadow-md flex flex-col justify-between"
             >
               <div>
                 {/* Fish Image */}
-                <div className="relative w-full aspect-[4/3] bg-[#edeafc] overflow-hidden">
+                <div className="relative w-full aspect-[4/3] bg-[#0d0630] overflow-hidden">
                   <Image
                     src={fish.image}
-                    alt={`${fish.name} (${fish.scientificName})`}
+                    alt={fish.name}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
-                  
-                  {/* Category Badge */}
-                  <div className="absolute top-3 left-3 bg-[#f7f7ff]/90 backdrop-blur-sm border border-[#cfcaf5] px-2.5 py-1 rounded-lg text-[10px] font-condensed uppercase tracking-wider font-bold text-[#27187e]">
-                    {fish.category}
-                  </div>
                 </div>
 
                 {/* Card Body */}
-                <div className="p-5">
-                  <h3 className="text-2xl font-display font-normal text-[#27187e] group-hover:text-[#1b1059] transition-colors leading-tight line-clamp-1">
-                    {fish.name}
-                  </h3>
-                  <p className="text-xs text-[#27187e]/60 italic font-sans mb-3 line-clamp-1">
-                    {fish.scientificName}
-                  </p>
-
-                  <p className="text-xs text-[#27187e]/75 font-sans leading-relaxed line-clamp-2 mb-4">
-                    {fish.description}
+                <div className="p-4">
+                  <div className="flex items-center justify-between mb-0.5">
+                    <h3 className="text-xl font-display font-normal text-[#27187e] group-hover:text-[#1b1059] transition-colors leading-tight">
+                      {fish.name}
+                    </h3>
+                    <ChevronRight className="w-4 h-4 text-[#27187e]/60 group-hover:translate-x-0.5 transition-transform" />
+                  </div>
+                  <p className="text-[11px] text-[#27187e]/60 italic font-sans mb-3">
+                    {fish.scientific}
                   </p>
 
                   {/* Characteristic Tags */}
-                  <div className="flex flex-wrap gap-1.5 mb-2">
-                    <span className="text-[10px] font-condensed font-semibold uppercase px-2 py-0.5 rounded-md bg-[#edeafc] text-[#27187e] border border-[#cfcaf5]">
-                      {fish.minTankSize} Gal Min
-                    </span>
-                    <span className="text-[10px] font-condensed font-semibold uppercase px-2 py-0.5 rounded-md bg-[#edeafc] text-[#27187e] border border-[#cfcaf5]">
-                      {fish.temperament}
-                    </span>
+                  <div className="flex flex-wrap gap-1">
+                    {fish.tags.map((tag, idx) => (
+                      <span
+                        key={idx}
+                        className="text-[9px] font-sans font-medium px-2 py-0.5 rounded-md bg-[#edeafc] text-[#27187e] border border-[#cfcaf5]/60"
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                 </div>
-              </div>
-
-              {/* Bottom Action */}
-              <div className="px-5 pb-5 pt-3 border-t border-[#edeafc] flex items-center justify-between text-xs font-condensed font-bold uppercase tracking-wider text-[#27187e]">
-                <span>View Care Guide</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#27187e] group-hover:translate-x-1 transition-transform" />
               </div>
             </Link>
           ))}

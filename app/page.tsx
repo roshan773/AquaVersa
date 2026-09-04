@@ -4,43 +4,27 @@ import PopularFish from "@/components/home/PopularFish";
 import FishCompatibility from "@/components/home/FishCompatibility";
 import EquipmentOverview from "@/components/home/EquipmentOverview";
 import EquipmentRecommender from "@/components/home/EquipmentRecommender";
-import PlantsSection from "@/components/home/PlantsSection";
-import TankSizeGuide from "@/components/home/TankSizeGuide";
-import WaterParams from "@/components/home/WaterParams";
-import ChecklistSection from "@/components/home/ChecklistSection";
 
 export default function Home() {
   return (
     <div className="flex flex-col w-full bg-[#f7f7ff] text-[#27187e]">
-      {/* 1. Split Editorial Hero */}
+      {/* 1. Hero Section */}
       <HeroSection />
 
-      {/* 2. 2x2 Resource Grid: Everything You Need */}
+      {/* 2. Everything You Need (2x2 Resource Grid) */}
       <EverythingYouNeed />
 
-      {/* 3. Popular Fish: 4-Column Desktop Grid */}
+      {/* 3. Popular Fish (4-Column Grid) */}
       <PopularFish />
 
-      {/* 4. Fish Compatibility Checker: Persian Indigo Section */}
+      {/* 4. Fish Compatibility Checker (Dark Indigo Section) */}
       <FishCompatibility />
 
-      {/* 5. Equipment Overview: 3-Card Grid */}
+      {/* 5. Equipment Overview (3-Column Grid) */}
       <EquipmentOverview />
 
-      {/* 6. Equipment Recommender: Interactive 2-Part Setup */}
+      {/* 6. Equipment Recommender (Centered Recommendation Tool) */}
       <EquipmentRecommender />
-
-      {/* 7. Aquatic Plants Section */}
-      <PlantsSection />
-
-      {/* 8. Tank Sizing Guide */}
-      <TankSizeGuide />
-
-      {/* 9. Water Chemistry Essentials */}
-      <WaterParams />
-
-      {/* 10. Beginner Checklist */}
-      <ChecklistSection />
     </div>
   );
 }

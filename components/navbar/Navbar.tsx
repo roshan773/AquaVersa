@@ -235,10 +235,9 @@ export default function Navbar() {
           {/* Primary CTA Button: Persian Indigo bg + Ghost White text */}
           <Link
             href="/start-aquarium"
-            className="inline-flex items-center justify-center font-condensed font-bold uppercase tracking-wider text-xs px-4 py-2 rounded-xl transition-all duration-200 cursor-pointer bg-[#27187E] hover:bg-[#1b1059] text-[#F7F7FF] shadow-sm hover:scale-105 active:scale-95"
+            className="inline-flex items-center justify-center font-condensed font-bold uppercase tracking-wider text-xs px-5 py-2.5 rounded-full transition-all duration-200 cursor-pointer bg-[#27187E] hover:bg-[#1b1059] text-[#F7F7FF] shadow-sm hover:scale-105 active:scale-95"
           >
-            <span>Start Setup</span>
-            <ArrowUpRight className="w-3.5 h-3.5 ml-1 text-[#F7F7FF]" />
+            <span>Get Started</span>
           </Link>
 
           {/* Mobile hamburger toggle */}
