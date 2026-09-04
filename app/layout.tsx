@@ -50,9 +50,12 @@ export const metadata: Metadata = {
   creator: "Roshan Aquva World",
   publisher: "Roshan Aquva World",
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
   },
   openGraph: {
     title: siteConfig.fullName,

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Waves } from 'lucide-react';
+import { BrandMark } from '@/components/ui/BrandLogo';
 import { siteConfig } from '@/config/site';
 
 export default function SitePreloader() {
@@ -35,9 +35,8 @@ export default function SitePreloader() {
         >
           <div className="flex flex-col items-center gap-4">
             {/* Logo Mark */}
-            <div className="w-14 h-14 rounded-2xl bg-[#edeafc] border border-[#cfcaf5] flex items-center justify-center text-[#27187e] shadow-md">
-              <Waves className="w-7 h-7 animate-pulse text-[#27187e]" />
-            </div>
+            <BrandMark size={56} theme="light" />
+
 
             {/* Brand Title */}
             <div className="text-center">

@@ -7,7 +7,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Search,
   X,
-  Waves,
   ArrowRight,
   BookOpen,
   Fish,
@@ -16,9 +15,10 @@ import {
   Compass,
   Info,
   Mail,
-  CheckCircle2,
   Sparkles,
+  Waves,
 } from 'lucide-react';
+import BrandLogo, { BrandMark } from '@/components/ui/BrandLogo';
 import { siteConfig } from '@/config/site';
 
 export default function Navbar() {
@@ -102,24 +102,7 @@ export default function Navbar() {
         <div className="site-container flex items-center justify-between">
           
           {/* BRAND LOGO */}
-          <Link
-            href="/"
-            onClick={closeMenu}
-            className="flex items-center gap-3 group focus:outline-none"
-            aria-label="Roshan Aquva World — The Aquarium Atlas"
-          >
-            <div className="w-9 h-9 rounded-xl bg-[#27187e] flex items-center justify-center text-[#f7f7ff] shadow-md group-hover:scale-105 transition-transform">
-              <Waves className="w-5 h-5" />
-            </div>
-            <div className="flex flex-col text-left">
-              <span className="font-display text-2xl tracking-wider text-[#27187e] leading-none">
-                ROSHAN AQUVA WORLD
-              </span>
-              <span className="text-[10px] uppercase tracking-[0.2em] text-[#27187e]/70 font-semibold mt-0.5 font-sans">
-                The Aquarium Atlas
-              </span>
-            </div>
-          </Link>
+          <BrandLogo size="md" onClick={closeMenu} />
 
           {/* RIGHT ACTIONS: Search & Stylish Marine Hamburger */}
           <div className="flex items-center gap-3">
@@ -182,24 +165,12 @@ export default function Navbar() {
               <div>
                 {/* TOP HEADER INSIDE DRAWER (Fixed cleanly without colliding) */}
                 <div className="flex items-center justify-between pb-5 mb-5 border-b border-[#cfcaf5]">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-lg bg-[#27187e] flex items-center justify-center text-[#f7f7ff] shadow-sm">
-                      <Waves className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <span className="font-display text-xl text-[#27187e] block leading-none">
-                        ROSHAN AQUVA WORLD
-                      </span>
-                      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#27187e]/70 font-sans">
-                        Navigation Atlas
-                      </span>
-                    </div>
-                  </div>
+                  <BrandLogo size="sm" onClick={closeMenu} />
 
                   {/* Single Clean Close Button */}
                   <button
                     onClick={closeMenu}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#edeafc] hover:bg-[#27187e] text-[#27187e] hover:text-[#f7f7ff] border border-[#cfcaf5] transition-all font-sans text-xs font-bold"
+                    className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#edeafc] hover:bg-[#27187e] text-[#27187e] hover:text-[#f7f7ff] border border-[#cfcaf5] transition-all font-sans text-xs font-bold"
                     aria-label="Close menu"
                   >
                     <span>CLOSE</span>

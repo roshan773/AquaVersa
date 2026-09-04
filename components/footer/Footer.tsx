@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Waves, ArrowUpRight, ShieldCheck, Sparkles, BookOpen } from 'lucide-react';
+import { ArrowUpRight, ShieldCheck, Sparkles, BookOpen } from 'lucide-react';
+import BrandLogo from '@/components/ui/BrandLogo';
 import { siteConfig } from '@/config/site';
 
 export default function Footer() {
@@ -13,19 +14,8 @@ export default function Footer() {
 
           {/* Brand & Manifesto Column (4 Cols) */}
           <div className="lg:col-span-4 text-left">
-            <Link href="/" className="flex items-center gap-3 mb-5 group inline-flex focus:outline-none" aria-label="Roshan Aquva World Home">
-              <div className="w-9 h-9 rounded-xl bg-[#f7f7ff] flex items-center justify-center text-[#27187e] shadow-md group-hover:scale-105 transition-transform">
-                <Waves className="w-5 h-5" />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-display text-2xl font-normal text-[#f7f7ff] tracking-wider leading-none">
-                  {siteConfig.name}
-                </span>
-                <span className="text-[10px] uppercase tracking-[0.2em] text-[#cfcaf5] font-semibold mt-1">
-                  The Aquarium Atlas
-                </span>
-              </div>
-            </Link>
+            <BrandLogo theme="dark" size="md" className="mb-5" />
+
             
             <p className="text-sm text-[#cfcaf5] mb-6 max-w-sm leading-relaxed font-normal">
               An exhaustive, curated encyclopedia &amp; decision toolset for modern aquarists. We provide systematic species dossiers, planted aquascape chemistry, and hardware engineering guidance.
