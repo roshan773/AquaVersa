@@ -1,84 +1,82 @@
-import Link from "next/link";
-import { Waves, Mail } from "lucide-react";
-import { siteConfig } from "@/config/site";
+import Link from 'next/link';
+import { Waves, Mail } from 'lucide-react';
+import { siteConfig } from '@/config/site';
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#02050c] text-slate-400 pt-16 pb-12 border-t border-slate-800/80 mt-auto font-sans text-left">
+    <footer className="w-full bg-[#27187e] text-[#f7f7ff] pt-16 pb-12 border-t border-[#3b28ab] mt-auto font-sans text-left">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12 mb-12">
 
-          {/* Brand Column */}
+          {/* Left Column: Brand & Description */}
           <div className="lg:col-span-2 text-left">
             <Link href="/" className="flex items-center gap-2.5 mb-5 group inline-flex" aria-label="Roshan Aquva World Home">
-              <div className="bg-teal-600/20 border border-teal-500/30 p-2 rounded-xl group-hover:bg-teal-500/30 transition-colors">
-                <Waves className="w-5 h-5 text-teal-400" />
+              <div className="bg-[#f7f7ff] p-2 rounded-xl group-hover:scale-105 transition-transform shadow-md">
+                <Waves className="w-5 h-5 text-[#27187e]" />
               </div>
-              <span className="font-poppins font-bold text-xl text-white tracking-tight group-hover:text-teal-200 transition-colors">
+              <span className="font-display text-2xl font-normal text-[#f7f7ff] tracking-wider">
                 {siteConfig.name}
               </span>
             </Link>
             
-            <p className="text-xs text-slate-400 mb-6 max-w-sm leading-relaxed font-normal">
-              An educational aquarium care platform built for hobbyists. We provide practical guidance on species requirements, tank setups, water chemistry, and biological compatibility.
+            <p className="text-xs text-[#f7f7ff]/80 mb-6 max-w-sm leading-relaxed font-normal">
+              Practical knowledge for healthier, better-planned aquariums.
             </p>
 
-            <div className="flex items-center gap-2.5 text-xs text-slate-400">
-              <div className="w-7 h-7 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center shrink-0 text-teal-400">
+            <div className="flex items-center gap-2.5 text-xs text-[#f7f7ff]/80">
+              <div className="w-7 h-7 rounded-lg bg-[#1f1366] border border-[#3b28ab] flex items-center justify-center shrink-0 text-[#f7f7ff]">
                 <Mail className="w-3.5 h-3.5" />
               </div>
               <div>
-                <span className="block text-[10px] uppercase font-semibold text-slate-500 tracking-wider">Contact Email</span>
-                <a href={`mailto:${siteConfig.contactEmail}`} className="text-slate-300 hover:text-teal-300 transition-colors">
+                <span className="block text-[10px] uppercase font-condensed font-bold text-[#f7f7ff]/70 tracking-wider">Contact Email</span>
+                <a href={`mailto:${siteConfig.contactEmail}`} className="text-[#f7f7ff] hover:underline">
                   {siteConfig.contactEmail}
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Explore Column */}
+          {/* Column 1: Explore */}
           <div>
-            <h4 className="text-white font-semibold mb-4 text-xs uppercase tracking-wider font-poppins">Explore</h4>
+            <h4 className="text-[#f7f7ff] font-condensed font-bold uppercase mb-4 text-sm tracking-wider">Explore</h4>
             <ul className="space-y-2.5 text-xs font-normal">
-              <li><Link href="/fish" className="text-slate-400 hover:text-teal-300 transition-colors">Fish Catalog</Link></li>
-              <li><Link href="/fish/freshwater" className="text-slate-400 hover:text-teal-300 transition-colors">Freshwater Fish</Link></li>
-              <li><Link href="/fish/saltwater" className="text-slate-400 hover:text-teal-300 transition-colors">Saltwater & Reef</Link></li>
-              <li><Link href="/plants" className="text-slate-400 hover:text-teal-300 transition-colors">Aquatic Plants</Link></li>
-              <li><Link href="/equipment" className="text-slate-400 hover:text-teal-300 transition-colors">Equipment Guide</Link></li>
-              <li><Link href="/guides" className="text-slate-400 hover:text-teal-300 transition-colors">Care Guides</Link></li>
+              <li><Link href="/fish" className="text-[#f7f7ff]/75 hover:text-[#f7f7ff] transition-colors">Fish</Link></li>
+              <li><Link href="/plants" className="text-[#f7f7ff]/75 hover:text-[#f7f7ff] transition-colors">Plants</Link></li>
+              <li><Link href="/equipment" className="text-[#f7f7ff]/75 hover:text-[#f7f7ff] transition-colors">Equipment</Link></li>
+              <li><Link href="/guides" className="text-[#f7f7ff]/75 hover:text-[#f7f7ff] transition-colors">Guides</Link></li>
             </ul>
           </div>
 
-          {/* Aquarium Tools Column */}
+          {/* Column 2: Aquarium Tools */}
           <div>
-            <h4 className="text-white font-semibold mb-4 text-xs uppercase tracking-wider font-poppins">Aquarium Tools</h4>
+            <h4 className="text-[#f7f7ff] font-condensed font-bold uppercase mb-4 text-sm tracking-wider">Aquarium Tools</h4>
             <ul className="space-y-2.5 text-xs font-normal">
-              <li><Link href="/compatibility" className="text-slate-400 hover:text-teal-300 transition-colors">Compatibility Checker</Link></li>
-              <li><Link href="/tank-size" className="text-slate-400 hover:text-teal-300 transition-colors">Tank Size Guide</Link></li>
-              <li><Link href="/water-params" className="text-slate-400 hover:text-teal-300 transition-colors">Water Chemistry</Link></li>
-              <li><Link href="/start-aquarium" className="text-slate-400 hover:text-teal-300 transition-colors">Beginner Checklist</Link></li>
-              <li><Link href="/guides" className="text-slate-400 hover:text-teal-300 transition-colors">Maintenance Schedule</Link></li>
+              <li><Link href="/compatibility" className="text-[#f7f7ff]/75 hover:text-[#f7f7ff] transition-colors">Compatibility Checker</Link></li>
+              <li><Link href="/tank-size" className="text-[#f7f7ff]/75 hover:text-[#f7f7ff] transition-colors">Tank Size Guide</Link></li>
+              <li><Link href="/water-params" className="text-[#f7f7ff]/75 hover:text-[#f7f7ff] transition-colors">Water Chemistry</Link></li>
+              <li><Link href="/guides" className="text-[#f7f7ff]/75 hover:text-[#f7f7ff] transition-colors">Maintenance</Link></li>
+              <li><Link href="/start-aquarium" className="text-[#f7f7ff]/75 hover:text-[#f7f7ff] transition-colors">Beginner Checklist</Link></li>
             </ul>
           </div>
 
-          {/* Information & Legal Column */}
+          {/* Column 3: Information */}
           <div>
-            <h4 className="text-white font-semibold mb-4 text-xs uppercase tracking-wider font-poppins">Information</h4>
+            <h4 className="text-[#f7f7ff] font-condensed font-bold uppercase mb-4 text-sm tracking-wider">Information</h4>
             <ul className="space-y-2.5 text-xs font-normal">
-              <li><Link href="/about" className="text-slate-400 hover:text-teal-300 transition-colors">About Us</Link></li>
-              <li><Link href="/contact" className="text-slate-400 hover:text-teal-300 transition-colors">Contact</Link></li>
-              <li><Link href="/privacy-policy" className="text-slate-400 hover:text-teal-300 transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="text-slate-400 hover:text-teal-300 transition-colors">Terms & Conditions</Link></li>
+              <li><Link href="/about" className="text-[#f7f7ff]/75 hover:text-[#f7f7ff] transition-colors">About</Link></li>
+              <li><Link href="/contact" className="text-[#f7f7ff]/75 hover:text-[#f7f7ff] transition-colors">Contact</Link></li>
+              <li><Link href="/privacy-policy" className="text-[#f7f7ff]/75 hover:text-[#f7f7ff] transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="text-[#f7f7ff]/75 hover:text-[#f7f7ff] transition-colors">Terms & Conditions</Link></li>
             </ul>
           </div>
         </div>
 
-        {/* Disclaimer & Copyright */}
-        <div className="border-t border-slate-900/90 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-left">
-          <p className="text-[11px] text-slate-500 leading-relaxed max-w-3xl">
-            <strong className="text-slate-400 font-medium">Disclaimer:</strong> {siteConfig.name} is an educational resource for aquarium hobbyists. Individual animal temperament, local tap water chemistry, and tank conditions vary. Always monitor parameters and verify species requirements before introducing livestock.
+        {/* Bottom Bar: Copyright */}
+        <div className="border-t border-[#3b28ab] pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-left">
+          <p className="text-[11px] text-[#f7f7ff]/70 leading-relaxed max-w-3xl font-sans">
+            Roshan Aquva World is an educational aquarium resource. Always research individual species requirements before setting up your habitat.
           </p>
-          <p className="text-[11px] text-slate-500 shrink-0">
+          <p className="text-[11px] text-[#f7f7ff]/90 shrink-0 font-condensed uppercase tracking-wider font-semibold">
             © 2026 {siteConfig.name}. All rights reserved.
           </p>
         </div>

@@ -1,61 +1,46 @@
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, Droplets, Waves, CheckCircle2, AlertTriangle, Leaf, Settings } from "lucide-react";
-import BuildEcosystem from "@/components/home/BuildEcosystem";
-
 import HeroSection from "@/components/home/HeroSection";
-import MarqueeTicker from "@/components/home/MarqueeTicker";
-import StatsStrip from "@/components/home/StatsStrip";
-import JourneySelector from "@/components/home/JourneySelector";
-import FirstAquariumTimeline from "@/components/home/FirstAquariumTimeline";
-import AquariumTypes from "@/components/home/AquariumTypes";
-import ExploreFishSection from "@/components/home/ExploreFishSection";
-import FeaturedFish from "@/components/home/FeaturedFish";
+import EverythingYouNeed from "@/components/home/EverythingYouNeed";
+import PopularFish from "@/components/home/PopularFish";
 import FishCompatibility from "@/components/home/FishCompatibility";
-import EquipmentSection from "@/components/home/EquipmentSection";
-import EquipmentGuide from "@/components/home/EquipmentGuide";
+import EquipmentOverview from "@/components/home/EquipmentOverview";
+import EquipmentRecommender from "@/components/home/EquipmentRecommender";
 import PlantsSection from "@/components/home/PlantsSection";
-import FishPlantCompatibility from "@/components/home/FishPlantCompatibility";
 import TankSizeGuide from "@/components/home/TankSizeGuide";
 import WaterParams from "@/components/home/WaterParams";
 import ChecklistSection from "@/components/home/ChecklistSection";
-import MaintenanceSection from "@/components/home/MaintenanceSection";
-import MistakesSection from "@/components/home/MistakesSection";
-import MythsSection from "@/components/home/MythsSection";
-import QuickQuestions from "@/components/home/QuickQuestions";
-import FinalCTA from "@/components/home/FinalCTA";
 
 export default function Home() {
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full bg-[#f7f7ff] text-[#27187e]">
+      {/* 1. Split Editorial Hero */}
       <HeroSection />
-      <MarqueeTicker />
-      <StatsStrip />
-      
-      <JourneySelector />
-      <FirstAquariumTimeline />
-      <AquariumTypes />
-      
-      <ExploreFishSection />
-      <FeaturedFish />
+
+      {/* 2. 2x2 Resource Grid: Everything You Need */}
+      <EverythingYouNeed />
+
+      {/* 3. Popular Fish: 4-Column Desktop Grid */}
+      <PopularFish />
+
+      {/* 4. Fish Compatibility Checker: Persian Indigo Section */}
       <FishCompatibility />
-      
-      <EquipmentSection />
-      <EquipmentGuide />
 
+      {/* 5. Equipment Overview: 3-Card Grid */}
+      <EquipmentOverview />
+
+      {/* 6. Equipment Recommender: Interactive 2-Part Setup */}
+      <EquipmentRecommender />
+
+      {/* 7. Aquatic Plants Section */}
       <PlantsSection />
-      <FishPlantCompatibility />
 
+      {/* 8. Tank Sizing Guide */}
       <TankSizeGuide />
-      <WaterParams />
-      
-      <ChecklistSection />
-      <MaintenanceSection />
-      <MistakesSection />
-      <MythsSection />
 
-      <QuickQuestions />
-      <FinalCTA />
+      {/* 9. Water Chemistry Essentials */}
+      <WaterParams />
+
+      {/* 10. Beginner Checklist */}
+      <ChecklistSection />
     </div>
   );
 }

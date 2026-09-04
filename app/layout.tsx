@@ -6,8 +6,6 @@ import Navbar from "@/components/navbar/Navbar";
 import { StatsProvider } from "@/components/home/StatsContext";
 import Footer from "@/components/footer/Footer";
 import SitePreloader from "@/components/ui/SitePreloader";
-import CookieBanner from "@/components/ui/CookieBanner";
-import StickyMobileCTA from "@/components/ui/StickyMobileCTA";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -89,7 +87,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#27187E" />
@@ -112,7 +110,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${plusJakarta.variable} ${oswald.variable} ${bebasNeue.variable} font-sans antialiased min-h-screen flex flex-col bg-[#0f0738] text-[#F7F7FF] selection:bg-[#27187E] selection:text-[#F7F7FF]`}>
+      <body className={`${plusJakarta.variable} ${oswald.variable} ${bebasNeue.variable} font-sans antialiased min-h-screen flex flex-col bg-[#F7F7FF] text-[#27187E] selection:bg-[#27187E] selection:text-[#F7F7FF]`}>
         <SitePreloader />
         <Navbar />
         <StatsProvider>
@@ -120,8 +118,6 @@ export default function RootLayout({
             {children}
           </main>
         </StatsProvider>
-        <CookieBanner />
-        <StickyMobileCTA />
         <Footer />
       </body>
     </html>

@@ -3,8 +3,7 @@
 import { useState, useMemo } from "react";
 import { Fish as FishType } from "@/lib/types";
 import FishCard from "@/components/ui/FishCard";
-import { Search, RotateCcw, Filter, Compass, Check } from "lucide-react";
-import Link from "next/link";
+import { Search, RotateCcw, Filter, Compass } from "lucide-react";
 
 interface FishLibraryClientProps {
   initialFish: FishType[];
@@ -57,19 +56,19 @@ export default function FishLibraryClient({ initialFish }: FishLibraryClientProp
   const hasActiveFilters = searchTerm !== "" || waterTypeFilter !== "All" || difficultyFilter !== "All" || beginnerOnly || temperamentFilter !== "All";
 
   return (
-    <div className="min-h-screen bg-[#030712] py-12 px-4 sm:px-6">
+    <div className="min-h-screen bg-[#0f0738] py-12 px-4 sm:px-6">
       <div className="container mx-auto max-w-7xl">
         
         {/* Page Header */}
-        <div className="mb-10 text-left border-b border-slate-800/80 pb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-950/50 border border-teal-800/30 mb-3 text-teal-300 text-xs font-semibold">
-            <Compass className="w-3.5 h-3.5 text-teal-400" />
+        <div className="mb-10 text-left border-b border-[#27187E] pb-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-[#27187E]/50 border border-[#3622a6] mb-3 text-[#F7F7FF] text-xs font-condensed uppercase tracking-wider font-semibold">
+            <Compass className="w-3.5 h-3.5 text-[#aca1f7]" />
             <span>Species Database</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-poppins font-bold text-white tracking-tight">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-display font-normal text-[#F7F7FF] tracking-wide">
             Fish Species Library
           </h1>
-          <p className="text-slate-400 text-sm max-w-2xl mt-2 font-normal leading-relaxed">
+          <p className="text-[#F7F7FF]/75 text-sm max-w-2xl mt-2 font-normal leading-relaxed font-sans">
             Search and filter documented freshwater and saltwater species. Review water chemistry requirements, social behavior, minimum tank sizes, and community compatibility.
           </p>
         </div>
@@ -79,16 +78,16 @@ export default function FishLibraryClient({ initialFish }: FishLibraryClientProp
           
           {/* Filter Sidebar */}
           <aside className="w-full lg:w-72 shrink-0 space-y-5 text-left">
-            <div className="bg-[#061224] border border-slate-800 rounded-2xl p-5 shadow-sm">
-              <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-800">
-                <h2 className="font-poppins font-bold text-sm text-white flex items-center gap-2">
-                  <Filter className="w-4 h-4 text-teal-400" />
+            <div className="bg-[#1c0e64] border border-[#27187E] rounded-2xl p-5 shadow-xl">
+              <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#27187E]">
+                <h2 className="font-condensed uppercase tracking-wider font-bold text-sm text-[#F7F7FF] flex items-center gap-2">
+                  <Filter className="w-4 h-4 text-[#aca1f7]" />
                   <span>Filter Species</span>
                 </h2>
                 {hasActiveFilters && (
                   <button
                     onClick={clearFilters}
-                    className="text-xs text-teal-400 hover:text-teal-300 flex items-center gap-1 font-medium cursor-pointer"
+                    className="text-xs font-condensed uppercase tracking-wider text-[#aca1f7] hover:text-[#F7F7FF] flex items-center gap-1 font-bold cursor-pointer"
                   >
                     <RotateCcw className="w-3 h-3" />
                     <span>Reset</span>
@@ -100,31 +99,31 @@ export default function FishLibraryClient({ initialFish }: FishLibraryClientProp
                 
                 {/* Search input */}
                 <div>
-                  <label className="text-[11px] font-semibold text-slate-400 mb-1.5 block">Search Species</label>
+                  <label className="text-[11px] font-condensed uppercase tracking-wider font-bold text-[#F7F7FF]/80 mb-1.5 block">Search Species</label>
                   <div className="relative">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400" />
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#aca1f7]" />
                     <input
                       type="text"
                       placeholder="e.g. Neon Tetra, Betta..."
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full bg-slate-900 border border-slate-700/80 rounded-xl pl-9 pr-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-teal-500"
+                      className="w-full bg-[#0d0630] border border-[#3622a6] rounded-xl pl-9 pr-3 py-2 text-xs text-[#F7F7FF] placeholder-[#F7F7FF]/40 focus:outline-none focus:border-[#F7F7FF]"
                     />
                   </div>
                 </div>
 
                 {/* Water Type Filter */}
                 <div>
-                  <label className="text-[11px] font-semibold text-slate-400 mb-1.5 block">Water Habitat</label>
-                  <div className="grid grid-cols-3 gap-1.5">
+                  <label className="text-[11px] font-condensed uppercase tracking-wider font-bold text-[#F7F7FF]/80 mb-1.5 block">Water Habitat</label>
+                  <div className="grid grid-cols-3 gap-1.5 font-condensed uppercase tracking-wider font-bold text-xs">
                     {["All", "Freshwater", "Saltwater"].map((type) => (
                       <button
                         key={type}
                         onClick={() => setWaterTypeFilter(type)}
-                        className={`py-1.5 px-2 rounded-lg text-center font-medium transition-colors cursor-pointer text-[11px] ${
+                        className={`py-1.5 px-2 rounded-lg text-center transition-colors cursor-pointer text-[11px] ${
                           waterTypeFilter === type
-                            ? "bg-teal-600 text-white font-semibold"
-                            : "bg-slate-900 text-slate-300 hover:bg-slate-800"
+                            ? "bg-[#F7F7FF] text-[#27187E] shadow-sm"
+                            : "bg-[#27187E] text-[#F7F7FF]/80 hover:bg-[#3622a6]"
                         }`}
                       >
                         {type}
@@ -135,11 +134,11 @@ export default function FishLibraryClient({ initialFish }: FishLibraryClientProp
 
                 {/* Difficulty Filter */}
                 <div>
-                  <label className="text-[11px] font-semibold text-slate-400 mb-1.5 block">Care Difficulty</label>
+                  <label className="text-[11px] font-condensed uppercase tracking-wider font-bold text-[#F7F7FF]/80 mb-1.5 block">Care Difficulty</label>
                   <select
                     value={difficultyFilter}
                     onChange={(e) => setDifficultyFilter(e.target.value)}
-                    className="w-full bg-slate-900 border border-slate-700/80 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-teal-500"
+                    className="w-full bg-[#0d0630] border border-[#3622a6] rounded-xl px-3 py-2 text-xs text-[#F7F7FF] focus:outline-none focus:border-[#F7F7FF]"
                   >
                     <option value="All">All Difficulty Levels</option>
                     <option value="Beginner">Beginner</option>
@@ -151,11 +150,11 @@ export default function FishLibraryClient({ initialFish }: FishLibraryClientProp
 
                 {/* Temperament Filter */}
                 <div>
-                  <label className="text-[11px] font-semibold text-slate-400 mb-1.5 block">Temperament</label>
+                  <label className="text-[11px] font-condensed uppercase tracking-wider font-bold text-[#F7F7FF]/80 mb-1.5 block">Temperament</label>
                   <select
                     value={temperamentFilter}
                     onChange={(e) => setTemperamentFilter(e.target.value)}
-                    className="w-full bg-slate-900 border border-slate-700/80 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-teal-500"
+                    className="w-full bg-[#0d0630] border border-[#3622a6] rounded-xl px-3 py-2 text-xs text-[#F7F7FF] focus:outline-none focus:border-[#F7F7FF]"
                   >
                     <option value="All">All Temperaments</option>
                     <option value="Peaceful">Peaceful Community</option>
@@ -165,15 +164,15 @@ export default function FishLibraryClient({ initialFish }: FishLibraryClientProp
                 </div>
 
                 {/* Beginner friendly checkbox */}
-                <div className="pt-2 border-t border-slate-800">
-                  <label className="flex items-center gap-2.5 cursor-pointer select-none text-slate-300">
+                <div className="pt-2 border-t border-[#27187E]">
+                  <label className="flex items-center gap-2.5 cursor-pointer select-none text-[#F7F7FF]/85 font-condensed uppercase tracking-wider text-xs">
                     <input
                       type="checkbox"
                       checked={beginnerOnly}
                       onChange={(e) => setBeginnerOnly(e.target.checked)}
-                      className="w-4 h-4 rounded border-slate-700 bg-slate-900 text-teal-500 focus:ring-teal-500"
+                      className="w-4 h-4 rounded border-[#3622a6] bg-[#0d0630] text-[#27187E] focus:ring-[#F7F7FF]"
                     />
-                    <span className="text-xs">Show beginner-friendly only</span>
+                    <span>Show beginner-friendly only</span>
                   </label>
                 </div>
 
@@ -181,8 +180,8 @@ export default function FishLibraryClient({ initialFish }: FishLibraryClientProp
             </div>
 
             {/* Quick stats note */}
-            <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 text-xs text-slate-400">
-              <span className="font-semibold text-white block mb-1">Showing {filteredFish.length} of {validFish.length} Species</span>
+            <div className="p-4 rounded-xl bg-[#14094a] border border-[#27187E] text-xs text-[#F7F7FF]/70">
+              <span className="font-condensed uppercase tracking-wider font-bold text-[#F7F7FF] block mb-1">Showing {filteredFish.length} of {validFish.length} Species</span>
               Parameters derived from natural biotope observations and established hobbyist care standards.
             </div>
           </aside>
@@ -196,20 +195,20 @@ export default function FishLibraryClient({ initialFish }: FishLibraryClientProp
                 ))}
               </div>
             ) : (
-              /* Thoughtful Empty State */
-              <div className="bg-[#061224] border border-slate-800 rounded-2xl p-12 text-center flex flex-col items-center justify-center">
-                <div className="w-12 h-12 rounded-2xl bg-teal-950/60 border border-teal-500/20 flex items-center justify-center text-teal-400 mb-4">
+              /* Empty State */
+              <div className="bg-[#1c0e64] border border-[#27187E] rounded-2xl p-12 text-center flex flex-col items-center justify-center shadow-xl">
+                <div className="w-12 h-12 rounded-2xl bg-[#27187E] border border-[#3622a6] flex items-center justify-center text-[#F7F7FF] mb-4">
                   <Compass className="w-6 h-6" />
                 </div>
-                <h3 className="text-lg font-bold text-white mb-2 font-poppins">
+                <h3 className="text-2xl font-display font-normal text-[#F7F7FF] mb-2 tracking-wide">
                   No fish match your current filters.
                 </h3>
-                <p className="text-xs text-slate-400 max-w-sm mb-6 leading-relaxed">
+                <p className="text-xs text-[#F7F7FF]/70 max-w-sm mb-6 leading-relaxed font-sans">
                   Try broadening your search term, resetting water type filters, or switching to all difficulty levels.
                 </p>
                 <button
                   onClick={clearFilters}
-                  className="px-5 py-2.5 bg-teal-600 hover:bg-teal-500 text-white rounded-xl text-xs font-semibold transition-colors flex items-center gap-2 cursor-pointer"
+                  className="px-6 py-2.5 bg-[#F7F7FF] hover:bg-white text-[#27187E] rounded-xl text-xs font-condensed uppercase tracking-wider font-bold transition-all shadow-md flex items-center gap-2 cursor-pointer"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
                   <span>Clear All Filters</span>

@@ -88,7 +88,6 @@ export default function ContactPage() {
 
       if (response.status === 200 && resData.success) {
         setSubmitStatus("success");
-        // Reset form upon confirmed success
         setFullName("");
         setEmail("");
         setSubject("");
@@ -99,7 +98,6 @@ export default function ContactPage() {
       }
     } catch (err: any) {
       console.error("Web3Forms submission error:", err);
-      // Preserve form values so user doesn't lose their input
       setErrorMessage(err.message || "We couldn't send your message right now. Please try again.");
       setSubmitStatus("error");
     } finally {
@@ -107,52 +105,52 @@ export default function ContactPage() {
     }
   };
 
-  const inputClass = "w-full bg-slate-900 border border-slate-700/80 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 rounded-xl pl-10 pr-4 py-3 text-slate-100 text-xs transition-all focus:outline-none placeholder-slate-500 font-medium";
+  const inputClass = "w-full bg-[#0d0630] border border-[#3622a6] focus:border-[#F7F7FF] focus:ring-1 focus:ring-[#F7F7FF] rounded-xl pl-10 pr-4 py-3 text-[#F7F7FF] text-xs transition-all focus:outline-none placeholder-[#F7F7FF]/40 font-sans";
 
   return (
-    <div className="min-h-[85vh] bg-[#030712] text-slate-100 py-16 px-4 sm:px-6 flex items-center font-sans text-left">
+    <div className="min-h-[85vh] bg-[#0f0738] text-[#F7F7FF] py-16 px-4 sm:px-6 flex items-center font-sans text-left">
       <div className="container mx-auto max-w-5xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           
           {/* LEFT: Info Column */}
           <div className="lg:col-span-5 space-y-6">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-950/50 border border-teal-800/30 text-teal-300 text-xs font-semibold mb-4">
-                <Mail className="w-3.5 h-3.5 text-teal-400" />
-                <span>Contact & Questions</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-[#27187E]/50 border border-[#3622a6] text-[#F7F7FF] text-xs font-condensed uppercase tracking-wider font-semibold mb-4">
+                <Mail className="w-3.5 h-3.5 text-[#aca1f7]" />
+                <span>Contact & Inquiries</span>
               </div>
               
-              <h1 className="text-3xl sm:text-4xl font-poppins font-bold text-white tracking-tight leading-tight mb-4">
+              <h1 className="text-4xl sm:text-5xl font-display font-normal text-[#F7F7FF] tracking-wide leading-tight mb-4">
                 Get in Touch with {siteConfig.name}
               </h1>
               
-              <p className="text-sm text-slate-400 font-normal leading-relaxed mb-6">
+              <p className="text-sm text-[#F7F7FF]/75 font-normal leading-relaxed mb-6 font-sans">
                 Have questions regarding tank stocking, species parameters, equipment setup, or care guides? Send a message and we will respond as soon as possible.
               </p>
             </div>
 
             {/* Direct Email Card */}
-            <div className="p-5 rounded-2xl bg-[#061224] border border-slate-800 space-y-3">
+            <div className="p-5 rounded-2xl bg-[#1c0e64] border border-[#27187E] space-y-3 shadow-xl">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-teal-950/60 border border-teal-500/30 flex items-center justify-center text-teal-400 shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-[#27187E] border border-[#4a34c9] flex items-center justify-center text-[#F7F7FF] shrink-0">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div className="min-w-0">
-                  <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 block">Direct Email</span>
-                  <span className="text-sm font-semibold text-white truncate block">{siteConfig.contactEmail}</span>
+                  <span className="text-[10px] font-condensed uppercase tracking-wider font-bold text-[#aca1f7] block">Direct Email</span>
+                  <span className="text-sm font-semibold text-[#F7F7FF] truncate block font-sans">{siteConfig.contactEmail}</span>
                 </div>
               </div>
 
               <button
                 onClick={handleCopyEmail}
-                className="w-full py-2 bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 text-xs font-medium rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-2 bg-[#27187E] hover:bg-[#3622a6] border border-[#4a34c9] text-[#F7F7FF] text-xs font-condensed uppercase tracking-wider font-bold rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-sm"
               >
                 <span>{copiedEmail ? "Email Copied to Clipboard!" : "Copy Contact Email"}</span>
               </button>
             </div>
 
-            <div className="text-xs text-slate-500 pt-2 leading-relaxed">
-              <p className="font-semibold text-slate-400 mb-1">Educational Resource Notice</p>
+            <div className="text-xs text-[#F7F7FF]/60 pt-2 leading-relaxed font-sans">
+              <p className="font-condensed uppercase tracking-wider font-bold text-[#aca1f7] mb-1">Educational Resource Notice</p>
               <p>
                 {siteConfig.name} provides educational aquarium hobby guidance. For urgent aquatic animal medical emergencies, consult a local aquatic veterinarian.
               </p>
@@ -161,28 +159,28 @@ export default function ContactPage() {
 
           {/* RIGHT: Contact Form Card */}
           <div className="lg:col-span-7">
-            <div className="p-6 sm:p-8 rounded-2xl bg-[#061224] border border-slate-800 shadow-xl text-left">
+            <div className="p-6 sm:p-8 rounded-2xl bg-[#1c0e64] border border-[#27187E] shadow-2xl text-left">
               
-              <h2 className="font-poppins font-bold text-lg text-white mb-5 pb-3 border-b border-slate-800">
+              <h2 className="font-display font-normal text-2xl text-[#F7F7FF] mb-5 pb-3 border-b border-[#27187E] tracking-wide">
                 Send a Message
               </h2>
 
               {/* Status Alert Banners */}
               {submitStatus === "success" && (
-                <div className="mb-6 p-4 rounded-xl bg-emerald-950/50 border border-emerald-800/40 text-emerald-300 text-xs flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 shrink-0 text-emerald-400 mt-0.5" />
+                <div className="mb-6 p-4 rounded-xl bg-[#27187E] border border-[#4a34c9] text-[#F7F7FF] text-xs flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 shrink-0 text-[#F7F7FF] mt-0.5" />
                   <div>
-                    <strong className="block font-semibold mb-0.5">Message sent successfully.</strong>
+                    <strong className="block font-bold mb-0.5 font-condensed uppercase tracking-wider text-sm">Message sent successfully.</strong>
                     Thanks for reaching out. We&apos;ll get back to you as soon as possible.
                   </div>
                 </div>
               )}
 
               {submitStatus === "error" && (
-                <div className="mb-6 p-4 rounded-xl bg-rose-950/50 border border-rose-800/40 text-rose-300 text-xs flex items-start gap-3">
-                  <AlertTriangle className="w-5 h-5 shrink-0 text-rose-400 mt-0.5" />
+                <div className="mb-6 p-4 rounded-xl bg-rose-950/60 border border-rose-800/60 text-rose-200 text-xs flex items-start gap-3">
+                  <AlertTriangle className="w-5 h-5 shrink-0 text-rose-300 mt-0.5" />
                   <div>
-                    <strong className="block font-semibold mb-0.5">We couldn&apos;t send your message right now.</strong>
+                    <strong className="block font-bold mb-0.5 font-condensed uppercase tracking-wider text-sm">We couldn&apos;t send your message right now.</strong>
                     {errorMessage} Please review your fields and try again.
                   </div>
                 </div>
@@ -193,11 +191,11 @@ export default function ContactPage() {
                 {/* Name & Email */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <label htmlFor="fullName" className="text-[11px] font-semibold text-slate-400 block">
-                      Full Name <span className="text-teal-400">*</span>
+                    <label htmlFor="fullName" className="text-[11px] font-condensed uppercase tracking-wider font-bold text-[#F7F7FF]/80 block">
+                      Full Name <span className="text-[#aca1f7]">*</span>
                     </label>
                     <div className="relative">
-                      <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-500" />
+                      <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#aca1f7]" />
                       <input
                         id="fullName"
                         type="text"
@@ -213,16 +211,16 @@ export default function ContactPage() {
                       />
                     </div>
                     {errors.fullName && (
-                      <p className="text-[11px] text-rose-400 pl-1">{errors.fullName}</p>
+                      <p className="text-[11px] text-rose-300 pl-1">{errors.fullName}</p>
                     )}
                   </div>
                   
                   <div className="space-y-1">
-                    <label htmlFor="email" className="text-[11px] font-semibold text-slate-400 block">
-                      Email Address <span className="text-teal-400">*</span>
+                    <label htmlFor="email" className="text-[11px] font-condensed uppercase tracking-wider font-bold text-[#F7F7FF]/80 block">
+                      Email Address <span className="text-[#aca1f7]">*</span>
                     </label>
                     <div className="relative">
-                      <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-500" />
+                      <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#aca1f7]" />
                       <input
                         id="email"
                         type="email"
@@ -238,7 +236,7 @@ export default function ContactPage() {
                       />
                     </div>
                     {errors.email && (
-                      <p className="text-[11px] text-rose-400 pl-1">{errors.email}</p>
+                      <p className="text-[11px] text-rose-300 pl-1">{errors.email}</p>
                     )}
                   </div>
                 </div>
@@ -246,11 +244,11 @@ export default function ContactPage() {
                 {/* Subject & Phone */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <label htmlFor="subject" className="text-[11px] font-semibold text-slate-400 block">
-                      Subject <span className="text-teal-400">*</span>
+                    <label htmlFor="subject" className="text-[11px] font-condensed uppercase tracking-wider font-bold text-[#F7F7FF]/80 block">
+                      Subject <span className="text-[#aca1f7]">*</span>
                     </label>
                     <div className="relative">
-                      <FileText className="absolute left-3.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-500" />
+                      <FileText className="absolute left-3.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#aca1f7]" />
                       <input
                         id="subject"
                         type="text"
@@ -266,16 +264,16 @@ export default function ContactPage() {
                       />
                     </div>
                     {errors.subject && (
-                      <p className="text-[11px] text-rose-400 pl-1">{errors.subject}</p>
+                      <p className="text-[11px] text-rose-300 pl-1">{errors.subject}</p>
                     )}
                   </div>
                   
                   <div className="space-y-1">
-                    <label htmlFor="phone" className="text-[11px] font-semibold text-slate-400 block">
+                    <label htmlFor="phone" className="text-[11px] font-condensed uppercase tracking-wider font-bold text-[#F7F7FF]/80 block">
                       Phone Number (Optional)
                     </label>
                     <div className="relative">
-                      <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-500" />
+                      <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#aca1f7]" />
                       <input
                         id="phone"
                         type="tel"
@@ -290,11 +288,11 @@ export default function ContactPage() {
 
                 {/* Message */}
                 <div className="space-y-1">
-                  <label htmlFor="message" className="text-[11px] font-semibold text-slate-400 block">
-                    Message <span className="text-teal-400">*</span>
+                  <label htmlFor="message" className="text-[11px] font-condensed uppercase tracking-wider font-bold text-[#F7F7FF]/80 block">
+                    Message <span className="text-[#aca1f7]">*</span>
                   </label>
                   <div className="relative">
-                    <MessageSquare className="absolute left-3.5 top-3.5 w-3.5 h-3.5 text-slate-500" />
+                    <MessageSquare className="absolute left-3.5 top-3.5 w-3.5 h-3.5 text-[#aca1f7]" />
                     <textarea
                       id="message"
                       rows={4}
@@ -305,12 +303,12 @@ export default function ContactPage() {
                         setMessage(e.target.value);
                         if (errors.message) setErrors(prev => ({ ...prev, message: "" }));
                       }}
-                      className={`w-full bg-slate-900 border border-slate-700/80 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 rounded-xl pl-10 pr-4 py-3 text-slate-100 text-xs transition-all focus:outline-none placeholder-slate-500 font-medium resize-none ${errors.message ? "border-rose-500" : ""}`}
+                      className={`w-full bg-[#0d0630] border border-[#3622a6] focus:border-[#F7F7FF] focus:ring-1 focus:ring-[#F7F7FF] rounded-xl pl-10 pr-4 py-3 text-[#F7F7FF] text-xs transition-all focus:outline-none placeholder-[#F7F7FF]/40 font-sans resize-none ${errors.message ? "border-rose-500" : ""}`}
                       aria-invalid={errors.message ? "true" : "false"}
                     />
                   </div>
                   {errors.message && (
-                    <p className="text-[11px] text-rose-400 pl-1">{errors.message}</p>
+                    <p className="text-[11px] text-rose-300 pl-1">{errors.message}</p>
                   )}
                 </div>
 
@@ -318,7 +316,7 @@ export default function ContactPage() {
                 <button 
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3.5 bg-teal-600 hover:bg-teal-500 disabled:bg-slate-800 disabled:text-slate-500 text-white font-semibold rounded-xl transition-colors text-xs flex items-center justify-center gap-2 cursor-pointer shadow-sm"
+                  className="w-full py-3.5 bg-[#F7F7FF] hover:bg-white disabled:bg-[#27187E] disabled:text-[#F7F7FF]/40 text-[#27187E] font-condensed font-bold uppercase tracking-wider text-xs rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md hover:scale-[1.02] active:scale-[0.98]"
                 >
                   {isSubmitting ? (
                     <>

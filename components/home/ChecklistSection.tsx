@@ -1,7 +1,8 @@
 'use client';
+
 import { useState, useEffect } from 'react';
 import { Check, ClipboardList, Droplets, Waves, Info, RotateCcw } from 'lucide-react';
-import { storage, KEYS, unlockAchievement } from '@/lib/storage';
+import { storage, KEYS } from '@/lib/storage';
 
 interface ChecklistItem {
   name: string;
@@ -10,35 +11,33 @@ interface ChecklistItem {
 }
 
 const freshwaterList: ChecklistItem[] = [
-  { name: "Aquarium Tank", type: "essential", desc: "The glass or acrylic home for your aquatic ecosystem." },
-  { name: "Water Conditioner", type: "essential", desc: "Neutralizes toxic chlorine and heavy metals in tap water instantly." },
-  { name: "Filter & Media", type: "essential", desc: "Mechanical and biological cleaning (sponge or hang-on-back filter)." },
-  { name: "Water Test Kit", type: "essential", desc: "Liquid testing kit (like API Master Kit) to check toxic Ammonia/Nitrite levels." },
-  { name: "Siphon & Gravel Vacuum", type: "essential", desc: "Essential for sucking up fish waste and conducting water changes." },
-  { name: "Quality Fish Food", type: "essential", desc: "High-grade pellets/flakes tailored to your fish species' diet." },
-  { name: "Fish Net", type: "essential", desc: "For safely catching, moving, or quarantine-handling of fish." },
-  { name: "Aquarium Stand", type: "dependent", desc: "Required for tanks >10g. Filled aquariums weigh about 10 lbs per gallon." },
-  { name: "Substrate (Gravel/Sand)", type: "dependent", desc: "Essential for live plants and bottom dwellers, optional for bare-bottom setups." },
-  { name: "Submersible Heater", type: "dependent", desc: "Mandatory for keeping tropical species warm, unnecessary for coldwater species." },
-  { name: "Aquarium LED Light", type: "dependent", desc: "Mandatory for growing live plants, basic/optional for fish-only setups." },
-  { name: "Air Pump & Airline", type: "optional", desc: "Useful for driving sponge filters, running bubblers, or increasing aeration." }
+  { name: 'Aquarium Tank', type: 'essential', desc: 'The glass or acrylic home for your aquatic ecosystem.' },
+  { name: 'Water Conditioner', type: 'essential', desc: 'Neutralizes toxic chlorine and heavy metals in tap water instantly.' },
+  { name: 'Filter & Media', type: 'essential', desc: 'Mechanical and biological cleaning (sponge or hang-on-back filter).' },
+  { name: 'Water Test Kit', type: 'essential', desc: 'Liquid testing kit (like API Master Kit) to check Ammonia and Nitrite levels.' },
+  { name: 'Siphon & Gravel Vacuum', type: 'essential', desc: 'Essential for removing detritus and performing weekly partial water changes.' },
+  { name: 'Quality Fish Food', type: 'essential', desc: 'High-grade pellets/flakes tailored to your fish species dietary requirements.' },
+  { name: 'Fish Net', type: 'essential', desc: 'For safely moving or quarantine-handling fish.' },
+  { name: 'Aquarium Stand', type: 'dependent', desc: 'Required for tanks >10g. Filled aquariums weigh about 10 lbs per gallon.' },
+  { name: 'Substrate (Gravel/Sand)', type: 'dependent', desc: 'Essential for live plants and bottom dwellers, optional for bare-bottom setups.' },
+  { name: 'Submersible Heater', type: 'dependent', desc: 'Mandatory for keeping tropical species at a stable 75–80°F temperature.' },
+  { name: 'Aquarium LED Light', type: 'dependent', desc: 'Mandatory for live plants, standard for fish-only setups.' },
+  { name: 'Air Pump & Airline', type: 'optional', desc: 'Useful for driving sponge filters and ensuring surface gas exchange.' },
 ];
 
 const saltwaterList: ChecklistItem[] = [
-  { name: "Aquarium Tank", type: "essential", desc: "The glass tank configured for saltwater water." },
-  { name: "Marine Salt Mix", type: "essential", desc: "Specialized synthetic marine salt formulation to create ocean salinity." },
-  { name: "Refractometer", type: "essential", desc: "High-accuracy optical instrument to verify correct water salinity." },
-  { name: "RO/DI Water Filter", type: "essential", desc: "Multi-stage pure water filter; tap water contains elements that cause algae crashes." },
-  { name: "Filter/Sump System", type: "essential", desc: "For mechanical, chemical, and biological filtration media." },
-  { name: "Marine Test Kit", type: "essential", desc: "Liquid kit for parameters like Ammonia, Nitrates, Alkalinity, and pH." },
-  { name: "Siphon & Gravel Vacuum", type: "essential", desc: "To vacuum sand beds and perform routine marine water changes." },
-  { name: "Quality Marine Food", type: "essential", desc: "Mysis/brine shrimp, nori sheets, and marine pellets." },
-  { name: "Aquarium Stand", type: "essential", desc: "Sturdy support base capable of bearing heavy marine structures." },
-  { name: "Protein Skimmer", type: "dependent", desc: "Highly recommended for coral reefs, optional for light bioload setups." },
-  { name: "Aragonite Sand & Rock", type: "dependent", desc: "Marine substrate and biological base rock for biological filtration." },
-  { name: "Submersible Heater", type: "dependent", desc: "Mandatory to keep marine species at stable tropical ocean temperatures." },
-  { name: "Wavemakers / Powerheads", type: "dependent", desc: "Essential to generate water flow, preventing dead zones and feeding corals." },
-  { name: "Reef-Capable LED Light", type: "dependent", desc: "Mandatory to support photosynthetic corals, optional for fish-only tanks." }
+  { name: 'Aquarium Tank', type: 'essential', desc: 'The glass tank configured for marine water volume.' },
+  { name: 'Marine Salt Mix', type: 'essential', desc: 'Specialized synthetic marine salt formulation to create ocean salinity.' },
+  { name: 'Refractometer', type: 'essential', desc: 'High-accuracy optical instrument to verify correct specific gravity (1.025).' },
+  { name: 'RO/DI Water Filter', type: 'essential', desc: 'Multi-stage pure water filter to avoid nuisance algae and copper contamination.' },
+  { name: 'Filter / Sump System', type: 'essential', desc: 'For high-capacity biological and mechanical media.' },
+  { name: 'Marine Test Kit', type: 'essential', desc: 'Liquid kit for Ammonia, Nitrites, Nitrates, Alkalinity, and pH.' },
+  { name: 'Siphon & Gravel Vacuum', type: 'essential', desc: 'To vacuum sand beds and perform routine marine water changes.' },
+  { name: 'Quality Marine Food', type: 'essential', desc: 'Mysis shrimp, nori seaweed sheets, and marine pellets.' },
+  { name: 'Aquarium Stand', type: 'essential', desc: 'Heavy-duty support base capable of bearing dense marine setups.' },
+  { name: 'Protein Skimmer', type: 'dependent', desc: 'Highly recommended for reef aquariums to remove dissolved organic compounds.' },
+  { name: 'Aragonite Sand & Live Rock', type: 'dependent', desc: 'Marine substrate and biological base structure for bacteria colonies.' },
+  { name: 'Submersible Heater', type: 'dependent', desc: 'Mandatory to keep marine species at stable tropical reef temperatures.' },
 ];
 
 interface ChecklistState {
@@ -51,193 +50,185 @@ export default function ChecklistSection() {
   const [checkedState, setCheckedState] = useState<ChecklistState>({ fresh: [], salt: [] });
   const [isMounted, setIsMounted] = useState(false);
 
-  // Load from localStorage on mount
   useEffect(() => {
     setCheckedState(storage.get<ChecklistState>(KEYS.CHECKLIST, { fresh: [], salt: [] }));
     setIsMounted(true);
   }, []);
 
   const list = activeTab === 'fresh' ? freshwaterList : saltwaterList;
-  const currentChecked = activeTab === 'fresh' ? checkedState.fresh : checkedState.salt;
+  const currentChecked = isMounted ? checkedState[activeTab] || [] : [];
+  const percent = Math.round((currentChecked.length / list.length) * 100);
 
   const toggleCheck = (name: string) => {
     const isChecked = currentChecked.includes(name);
-    let updatedList: string[];
-    
-    if (isChecked) {
-      updatedList = currentChecked.filter(item => item !== name);
-    } else {
-      updatedList = [...currentChecked, name];
-    }
+    const updatedTabList = isChecked
+      ? currentChecked.filter((item) => item !== name)
+      : [...currentChecked, name];
 
     const newState = {
       ...checkedState,
-      [activeTab === 'fresh' ? 'fresh' : 'salt']: updatedList
+      [activeTab]: updatedTabList,
     };
 
     setCheckedState(newState);
     storage.set(KEYS.CHECKLIST, newState);
-
-    // Check achievement unlock
-    if (updatedList.length === list.length) {
-      unlockAchievement('first-setup');
-    }
   };
 
   const handleReset = () => {
     const newState = {
       ...checkedState,
-      [activeTab === 'fresh' ? 'fresh' : 'salt']: []
+      [activeTab]: [],
     };
     setCheckedState(newState);
     storage.set(KEYS.CHECKLIST, newState);
   };
 
-  const percent = list.length > 0 ? Math.round((currentChecked.length / list.length) * 100) : 0;
-
   const getBadge = (type: ChecklistItem['type']) => {
     switch (type) {
       case 'essential':
-        return <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-rose-500/10 text-rose-500 border border-rose-500/20 shrink-0">Essential</span>;
+        return (
+          <span className="text-[10px] font-condensed font-bold uppercase px-2 py-0.5 rounded bg-[#27187e] text-[#f7f7ff]">
+            Essential
+          </span>
+        );
       case 'dependent':
-        return <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-amber-500/10 text-amber-500 border border-amber-500/20 shrink-0">Setup Dependent</span>;
+        return (
+          <span className="text-[10px] font-condensed font-bold uppercase px-2 py-0.5 rounded bg-[#edeafc] text-[#27187e] border border-[#cfcaf5]">
+            Setup Dependent
+          </span>
+        );
       case 'optional':
-        return <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 shrink-0">Optional</span>;
+        return (
+          <span className="text-[10px] font-condensed font-bold uppercase px-2 py-0.5 rounded bg-[#f7f7ff] text-[#27187e] border border-[#cfcaf5]">
+            Optional
+          </span>
+        );
     }
   };
 
-  if (!isMounted) {
-    return (
-      <section className="py-24 bg-background border-y border-border">
-        <div className="container mx-auto px-4 max-w-5xl text-center">
-          <p className="text-muted-foreground">Loading checklist...</p>
-        </div>
-      </section>
-    );
-  }
-
   return (
-    <section className="py-24 bg-background border-y border-border">
-      <div className="container mx-auto px-4 max-w-5xl">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 font-semibold mb-4">
-            <ClipboardList className="w-4 h-4" /> Essential Shopping
-          </div>
-          <h2 className="text-3xl md:text-5xl font-poppins font-bold mb-4 text-foreground">
-            The Ultimate Starter Checklist
+    <section className="py-20 bg-[#f7f7ff] border-t border-[#cfcaf5] text-left">
+      <div className="container mx-auto px-4 max-w-7xl">
+        
+        {/* Section Header */}
+        <div className="mb-12">
+          <span className="text-xs font-condensed font-bold uppercase tracking-widest text-[#27187e] mb-2 block">
+            PRE-SETUP CHECKLIST
+          </span>
+          <h2 className="text-5xl sm:text-6xl md:text-7xl font-display font-normal text-[#27187e] tracking-wide">
+            BEGINNER CHECKLIST
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Differentiate between mandatory gear and species-specific items. Click to check off items as you compile your shopping list!
+          <p className="text-base text-[#27187e]/80 font-normal max-w-xl mt-2 font-sans">
+            Differentiate between mandatory gear and setup-dependent hardware before buying livestock.
           </p>
         </div>
 
-        <div className="bg-card rounded-3xl border border-border shadow-xl overflow-hidden">
-          {/* Tabs */}
-          <div className="flex border-b border-border">
-            <button 
+        {/* Card Box */}
+        <div className="bg-[#edeafc] border border-[#cfcaf5] rounded-3xl p-6 sm:p-8 shadow-sm">
+          
+          {/* Tab Selector */}
+          <div className="flex border-b border-[#cfcaf5] mb-8 pb-4 gap-4">
+            <button
               onClick={() => setActiveTab('fresh')}
-              className={`flex-1 flex items-center justify-center gap-2 py-5 text-lg font-bold transition-colors ${
-                activeTab === 'fresh' 
-                  ? 'bg-cyan-500/10 text-cyan-700 dark:text-cyan-400 border-b-2 border-cyan-500' 
-                  : 'text-muted-foreground hover:bg-muted'
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-xs font-condensed font-bold uppercase tracking-wider transition-all ${
+                activeTab === 'fresh'
+                  ? 'bg-[#27187e] text-[#f7f7ff]'
+                  : 'bg-[#f7f7ff] text-[#27187e] hover:bg-[#edeafc]'
               }`}
             >
-              <Droplets className="w-5 h-5" /> Freshwater Setup
+              <Droplets className="w-4 h-4" />
+              <span>Freshwater Setup</span>
             </button>
-            <button 
+
+            <button
               onClick={() => setActiveTab('salt')}
-              className={`flex-1 flex items-center justify-center gap-2 py-5 text-lg font-bold transition-colors ${
-                activeTab === 'salt' 
-                  ? 'bg-blue-500/10 text-blue-700 dark:text-blue-400 border-b-2 border-blue-500' 
-                  : 'text-muted-foreground hover:bg-muted'
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-xs font-condensed font-bold uppercase tracking-wider transition-all ${
+                activeTab === 'salt'
+                  ? 'bg-[#27187e] text-[#f7f7ff]'
+                  : 'bg-[#f7f7ff] text-[#27187e] hover:bg-[#edeafc]'
               }`}
             >
-              <Waves className="w-5 h-5" /> Saltwater Setup
+              <Waves className="w-4 h-4" />
+              <span>Saltwater Setup</span>
             </button>
           </div>
 
-          {/* List */}
-          <div className="p-6 md:p-10">
-            {/* Progress Bar Container */}
-            <div className="mb-8">
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-sm font-semibold text-muted-foreground">
-                  Progress: {currentChecked.length} of {list.length} completed ({percent}%)
-                </span>
-                {currentChecked.length > 0 && (
-                  <button 
-                    onClick={handleReset}
-                    className="flex items-center gap-1 text-xs text-muted-foreground hover:text-destructive transition-colors font-medium cursor-pointer"
-                  >
-                    <RotateCcw className="w-3.5 h-3.5" /> Reset active checklist
-                  </button>
-                )}
-              </div>
-              
-              <div className="w-full bg-slate-200 dark:bg-slate-800 h-3 rounded-full overflow-hidden shadow-inner">
-                <div 
-                  className="bg-gradient-to-r from-cyan-500 to-emerald-500 h-full transition-all duration-500 ease-out" 
-                  style={{ width: `${percent}%` }}
-                ></div>
-              </div>
-
-              <div className="flex items-center justify-between text-xs text-muted-foreground mt-2">
-                {currentChecked.length === list.length ? (
-                  <span className="text-emerald-500 font-bold animate-pulse flex items-center gap-1">
-                    <Check className="w-4 h-4" /> You are fully prepared to start! (Achievement Unlocked)
-                  </span>
-                ) : (
-                  <span className="text-slate-400 flex items-center gap-1.5 bg-muted px-2.5 py-1 rounded-lg border border-border">
-                    <Info className="w-3.5 h-3.5 text-cyan-400 shrink-0" /> Optional & Dependent items are not mandatory for all setups.
-                  </span>
-                )}
-              </div>
+          {/* Progress Bar & Actions */}
+          <div className="mb-8">
+            <div className="flex justify-between items-center mb-2">
+              <span className="text-xs font-condensed font-bold uppercase tracking-wider text-[#27187e]">
+                Progress: {currentChecked.length} of {list.length} items checked ({percent}%)
+              </span>
+              {currentChecked.length > 0 && (
+                <button
+                  onClick={handleReset}
+                  className="flex items-center gap-1.5 text-xs font-condensed font-bold uppercase text-[#27187e]/80 hover:text-[#27187e] underline"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>Reset Checklist</span>
+                </button>
+              )}
             </div>
-            
-            <div className="grid md:grid-cols-2 gap-6">
-              {list.map((item, idx) => {
-                const isItemChecked = currentChecked.includes(item.name);
-                return (
+
+            <div className="w-full bg-[#f7f7ff] h-3 rounded-full overflow-hidden border border-[#cfcaf5]">
+              <div
+                className="bg-[#27187e] h-full transition-all duration-500 ease-out"
+                style={{ width: `${percent}%` }}
+              />
+            </div>
+          </div>
+
+          {/* Item Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {list.map((item, idx) => {
+              const isItemChecked = currentChecked.includes(item.name);
+              return (
+                <div
+                  key={idx}
+                  onClick={() => toggleCheck(item.name)}
+                  className={`flex items-start text-left gap-4 p-4 rounded-2xl border transition-all cursor-pointer select-none ${
+                    isItemChecked
+                      ? 'bg-[#f7f7ff] border-[#27187e] shadow-sm'
+                      : 'bg-[#f7f7ff] border-[#cfcaf5] hover:border-[#27187e]'
+                  }`}
+                >
                   <div
-                    key={idx}
-                    onClick={() => toggleCheck(item.name)}
-                    className={`flex items-start text-left gap-4 p-5 rounded-2xl border transition-all cursor-pointer select-none group h-full ${
+                    className={`w-6 h-6 rounded-lg border-2 flex items-center justify-center shrink-0 transition-colors mt-0.5 ${
                       isItemChecked
-                        ? 'bg-emerald-500/5 dark:bg-emerald-500/10 border-emerald-500/40 shadow-sm'
-                        : 'bg-background border-border hover:border-cyan-500/40 hover:shadow-sm'
+                        ? 'bg-[#27187e] border-[#27187e] text-[#f7f7ff]'
+                        : 'border-[#cfcaf5] bg-[#f7f7ff]'
                     }`}
                   >
-                    <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors mt-0.5 ${
-                      isItemChecked
-                        ? 'bg-emerald-500 border-emerald-500 text-white'
-                        : 'border-muted-foreground/30 group-hover:border-cyan-500'
-                    }`}>
-                      {isItemChecked && <Check className="w-4 h-4" />}
-                    </div>
-                    
-                    <div className="space-y-1.5 min-w-0 flex-1">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <span className={`font-bold transition-all text-base leading-tight ${
-                          isItemChecked ? 'text-muted-foreground line-through' : 'text-foreground'
-                        }`}>
-                          {item.name}
-                        </span>
-                        {getBadge(item.type)}
-                      </div>
-                      <p className={`text-xs leading-relaxed transition-all ${
-                        isItemChecked ? 'text-muted-foreground/60 line-through' : 'text-muted-foreground'
-                      }`}>
-                        {item.desc}
-                      </p>
-                    </div>
+                    {isItemChecked && <Check className="w-4 h-4 text-[#f7f7ff]" />}
                   </div>
-                );
-              })}
-            </div>
+
+                  <div className="space-y-1 min-w-0 flex-1">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span
+                        className={`font-display text-lg tracking-wide leading-none ${
+                          isItemChecked ? 'text-[#27187e]/50 line-through' : 'text-[#27187e]'
+                        }`}
+                      >
+                        {item.name}
+                      </span>
+                      {getBadge(item.type)}
+                    </div>
+                    <p
+                      className={`text-xs font-sans leading-relaxed ${
+                        isItemChecked ? 'text-[#27187e]/40 line-through' : 'text-[#27187e]/75'
+                      }`}
+                    >
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
+
         </div>
+
       </div>
     </section>
   );
 }
-

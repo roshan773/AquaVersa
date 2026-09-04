@@ -1,7 +1,9 @@
 'use client';
+
 import { useState } from 'react';
-import { CheckCircle2, AlertTriangle, XCircle, Info, Layers, ShieldAlert } from 'lucide-react';
+import { CheckCircle2, AlertTriangle, XCircle, Info, Layers, ShieldCheck, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { fishData } from '@/data/fish';
 
 export default function FishCompatibility() {
@@ -11,689 +13,296 @@ export default function FishCompatibility() {
   // Parse numeric ranges such as "72-78°F", "72 – 78°F", or "6.5-7.5".
   const parseRange = (value?: string): [number, number] | null => {
     if (!value) return null;
-
     const matches = value.match(/(-?\d+(?:\.\d+)?)\s*(?:-|–|—|to)\s*(-?\d+(?:\.\d+)?)/i);
     if (!matches) return null;
-
     const a = Number(matches[1]);
     const b = Number(matches[2]);
     if (!Number.isFinite(a) || !Number.isFinite(b)) return null;
-
     return [Math.min(a, b), Math.max(a, b)];
   };
 
   type CompatibilityResult = {
     status: string;
     message: string;
-    colorTheme: 'emerald' | 'amber' | 'orange' | 'red' | 'blue';
-  };
-
-  type SocialType =
-    | 'schooling'
-    | 'small-school'
-    | 'solitary-territorial'
-    | 'pair-territorial'
-    | 'territorial'
-    | 'community';
-
-  const socialTraits: Record<string, SocialType> = {
-    'neon-tetra': 'schooling',
-    'zebra-danio': 'schooling',
-    'cherry-barb': 'schooling',
-    'harlequin-rasbora': 'schooling',
-    'neon-dwarf-rainbowfish': 'schooling',
-    'corydoras-catfish': 'schooling',
-    'pajama-cardinalfish': 'small-school',
-
-    'betta-fish': 'solitary-territorial',
-    'royal-gramma': 'solitary-territorial',
-    'yellow-watchman-goby': 'solitary-territorial',
-    'firefish-goby': 'solitary-territorial',
-    'mandarinfish': 'solitary-territorial',
-
-    'kribensis-cichlid': 'pair-territorial',
-    'angelfish': 'territorial',
-    'oscar': 'territorial',
-    'yellow-tang': 'territorial',
-    'blue-hippo-tang': 'territorial',
-    'flame-angelfish': 'territorial',
-    'coral-beauty': 'territorial',
-    'kole-yellow-eye-tang': 'territorial',
-    'banggai-cardinalfish': 'territorial',
-    'arowana': 'territorial',
-
-    'guppy': 'community',
-    'molly': 'community',
-    'discus': 'community',
-    'ocellaris-clownfish': 'community',
-    'sucker-fish': 'community',
-  };
-
-  const knownPredatorySpecies = new Set([
-    'oscar',
-    'arowana',
-  ]);
-
-  const sameSpeciesWarning = (fish: typeof fishData[number]): CompatibilityResult => {
-    const social = socialTraits[fish.slug || ''];
-
-    if (fish.slug === 'betta-fish') {
-      return {
-        status: '🟠 Use Caution',
-        message:
-          'Same Species: Do not assume two Bettas can share an aquarium. Male Bettas are strongly territorial and should not be housed together; sex, individual temperament, and breeding plans matter.',
-        colorTheme: 'orange',
-      };
-    }
-
-    if (fish.slug === 'royal-gramma') {
-      return {
-        status: '🔴 Not Recommended',
-        message:
-          'Same Species: Royal Grammas are territorial toward their own kind and are normally best kept singly unless a known compatible pair is being maintained in a suitably sized aquarium.',
-        colorTheme: 'red',
-      };
-    }
-
-    if (fish.slug === 'yellow-watchman-goby') {
-      return {
-        status: '🔴 Not Recommended',
-        message:
-          'Same Species: Yellow Watchman Gobies are territorial and can fight with their own kind unless they are a compatible/mated pair.',
-        colorTheme: 'red',
-      };
-    }
-
-    if (fish.slug === 'firefish-goby' || fish.slug === 'mandarinfish') {
-      return {
-        status: '🟠 Use Caution',
-        message:
-          `Same Species: ${fish.name} can show territorial or conspecific aggression. A compatible pair may work, but keeping multiple unrelated individuals is not a safe default.`,
-        colorTheme: 'orange',
-      };
-    }
-
-    if (fish.slug === 'banggai-cardinalfish') {
-      return {
-        status: '🟠 Use Caution',
-        message:
-          'Same Species: Banggai Cardinalfish are not a simple "keep six together" schooling fish. Group composition and pair formation matter, and aggression can occur between conspecifics.',
-        colorTheme: 'orange',
-      };
-    }
-
-    if (fish.slug?.includes('tang')) {
-      return {
-        status: '🟠 Use Caution',
-        message:
-          'Same Species: Tangs can become territorial toward conspecifics. Multiple tangs require a much larger aquarium, careful species selection, and deliberate introduction; the listed minimum tank size for one fish is not a multiple-fish stocking rule.',
-        colorTheme: 'orange',
-      };
-    }
-
-    if (fish.slug === 'kribensis-cichlid') {
-      return {
-        status: '🟠 Use Caution',
-        message:
-          'Same Species: Kribensis are pair-bonding cave spawners. A compatible pair is the normal social arrangement; adding unrelated adults can create territorial conflict.',
-        colorTheme: 'orange',
-      };
-    }
-
-    if (social === 'schooling' || social === 'small-school') {
-      const groupText = social === 'schooling' ? 'a proper group' : 'a small group';
-      return {
-        status: '🟢 Generally Compatible',
-        message:
-          `Same Species: ${fish.name} is social and should be kept as ${groupText}. Group size, aquarium footprint, filtration, and the species' adult size still need to be considered.`,
-        colorTheme: 'emerald',
-      };
-    }
-
-    return {
-      status: '🟢 Generally Compatible',
-      message:
-        `Same Species: ${fish.name} can generally be kept with conspecifics when the species' social behavior, adult size, aquarium footprint, and territorial requirements are respected.`,
-      colorTheme: 'emerald',
-    };
+    level: 'compatible' | 'caution' | 'incompatible';
   };
 
   const getCompatibility = (id1: string, id2: string): CompatibilityResult => {
-    if (!id1 || !id2) {
-      return {
-        status: 'Select Species',
-        message: 'Select two species to check compatibility.',
-        colorTheme: 'blue',
-      };
-    }
-
-    const f1 = fishData.find(f => f.id === id1);
-    const f2 = fishData.find(f => f.id === id2);
+    const f1 = fishData.find((f) => f.id === id1);
+    const f2 = fishData.find((f) => f.id === id2);
 
     if (!f1 || !f2) {
       return {
         status: 'Select Species',
-        message: 'Select two species to check compatibility.',
-        colorTheme: 'blue',
+        message: 'Choose two fish species above to evaluate their compatibility.',
+        level: 'caution',
       };
     }
 
-    if (id1 === id2) {
-      return sameSpeciesWarning(f1);
+    if (f1.id === f2.id) {
+      return {
+        status: 'Same Species Selected',
+        message: `Evaluating multiple ${f1.name} individuals. Schooling fish thrive in groups of 6+, while territorial species (like male Bettas) must be housed individually.`,
+        level: f1.temperament?.toLowerCase().includes('peaceful') ? 'compatible' : 'caution',
+      };
     }
 
-    const slug1 = f1.slug || '';
-    const slug2 = f2.slug || '';
-
-    let status: CompatibilityResult['status'] = '🟢 Generally Compatible';
-    let colorTheme: CompatibilityResult['colorTheme'] = 'emerald';
-    const reasons: string[] = [];
-    const warnings: string[] = [];
-
-    const setStatus = (
-      nextStatus: CompatibilityResult['status'],
-      nextTheme: CompatibilityResult['colorTheme']
-    ) => {
-      const priority: Record<string, number> = {
-        'Select Species': 0,
-        '🟢 Generally Compatible': 1,
-        '🟡 Usually Compatible with Conditions': 2,
-        '🟠 Use Caution': 3,
-        '🔴 Not Recommended': 4,
+    // 1. Habitat Check (Freshwater vs Saltwater)
+    if (f1.category !== f2.category) {
+      return {
+        status: 'Incompatible Habitat',
+        message: `${f1.name} is a ${f1.category} species, while ${f2.name} is a ${f2.category} species. They cannot share the same aquatic environment due to fundamental salinity differences.`,
+        level: 'incompatible',
       };
+    }
 
-      if (priority[nextStatus] > priority[status]) {
-        status = nextStatus;
-        colorTheme = nextTheme;
-      }
-    };
-
+    // 2. Temperature Overlap
     const temp1 = parseRange(f1.temperature);
     const temp2 = parseRange(f2.temperature);
+    let tempOverlap = true;
+    if (temp1 && temp2) {
+      tempOverlap = !(temp1[1] < temp2[0] || temp2[1] < temp1[0]);
+    }
+
+    // 3. pH Overlap
     const ph1 = parseRange(f1.ph);
     const ph2 = parseRange(f2.ph);
-
-    // 1. Environment Check
-    if (f1.category?.toLowerCase() !== f2.category?.toLowerCase()) {
-      return {
-        status: '🔴 Not Recommended',
-        message:
-          `Incompatible environments: ${f1.name} is listed as ${f1.category}, while ${f2.name} is listed as ${f2.category}. These species require different aquarium environments and should not be combined in one aquarium.`,
-        colorTheme: 'red',
-      };
-    }
-
-    // 2. Temperature Check
-    if (temp1 && temp2) {
-      const overlapMin = Math.max(temp1[0], temp2[0]);
-      const overlapMax = Math.min(temp1[1], temp2[1]);
-
-      if (overlapMin > overlapMax) {
-        const gap = overlapMin - overlapMax;
-
-        if (gap > 2) {
-          return {
-            status: '🔴 Not Recommended',
-            message:
-              `Temperature mismatch: ${f1.name} is listed at ${f1.temperature}, while ${f2.name} is listed at ${f2.temperature}. There is no practical temperature range that comfortably satisfies both records.`,
-            colorTheme: 'red',
-          };
-        }
-
-        setStatus('🟠 Use Caution', 'orange');
-        reasons.push(
-          `Their listed temperature ranges are very close but do not overlap (${f1.temperature} vs ${f2.temperature}).`
-        );
-        warnings.push(
-          'Do not force the aquarium temperature outside either species\' appropriate range just to make the pair work.'
-        );
-      } else {
-        const overlapWidth = overlapMax - overlapMin;
-
-        if (overlapWidth < 2) {
-          setStatus('🟡 Usually Compatible with Conditions', 'amber');
-          reasons.push(
-            `Their listed temperature ranges overlap only narrowly at about ${overlapMin}–${overlapMax}°F.`
-          );
-          warnings.push(
-            `Keep the aquarium stable within the shared range rather than repeatedly adjusting temperature (${overlapMin}–${overlapMax}°F).`
-          );
-        } else {
-          reasons.push(`Temperature overlap: approximately ${overlapMin}–${overlapMax}°F.`);
-        }
-      }
-    }
-
-    // 3. pH Check
+    let phOverlap = true;
     if (ph1 && ph2) {
-      const overlapMin = Math.max(ph1[0], ph2[0]);
-      const overlapMax = Math.min(ph1[1], ph2[1]);
-
-      if (overlapMin > overlapMax) {
-        const gap = overlapMin - overlapMax;
-
-        if (gap > 0.5) {
-          return {
-            status: '🔴 Not Recommended',
-            message:
-              `Water-chemistry mismatch: ${f1.name} is listed at pH ${f1.ph}, while ${f2.name} is listed at pH ${f2.ph}. Their listed pH ranges do not overlap enough to recommend combining them.`,
-            colorTheme: 'red',
-          };
-        }
-
-        setStatus('🟠 Use Caution', 'orange');
-        reasons.push(
-          `Their listed pH ranges are very close but do not overlap (${f1.ph} vs ${f2.ph}).`
-        );
-        warnings.push(
-          'Prioritize stable, species-appropriate water rather than chemically forcing pH to an exact number.'
-        );
-      } else {
-        const overlapWidth = overlapMax - overlapMin;
-
-        if (overlapWidth < 0.3) {
-          setStatus('🟡 Usually Compatible with Conditions', 'amber');
-          reasons.push(
-            `Their listed pH ranges have only a narrow shared window (${overlapMin.toFixed(1)}–${overlapMax.toFixed(1)}).`
-          );
-        } else {
-          reasons.push(`pH overlap: approximately ${overlapMin.toFixed(1)}–${overlapMax.toFixed(1)}.`);
-        }
-      }
+      phOverlap = !(ph1[1] < ph2[0] || ph2[1] < ph1[0]);
     }
 
-    // 4. Species-specific checks
-    const hasBetta = slug1 === 'betta-fish' || slug2 === 'betta-fish';
-    if (hasBetta) {
-      const other = slug1 === 'betta-fish' ? f2 : f1;
-
-      if (other.slug === 'guppy') {
-        setStatus('🟠 Use Caution', 'orange');
-        reasons.push(
-          'Betta + Guppy: this combination can work in some community aquariums, but a Betta may react aggressively to a colorful or long-finned Guppy.'
-        );
-        warnings.push(
-          'Do not treat this as guaranteed compatibility; provide cover and be prepared to separate the fish if chasing, fin damage, or persistent stress occurs.'
-        );
-      } else if (other.slug === 'neon-tetra') {
-        setStatus('🟠 Use Caution', 'orange');
-        reasons.push(
-          'Betta + Neon Tetra: the water ranges can overlap, but the Betta is territorial and individual behavior varies.'
-        );
-        warnings.push(
-          'Use a suitably sized, planted aquarium with cover and monitor the Betta closely for chasing or harassment.'
-        );
-      } else if (
-        other.slug === 'corydoras-catfish' ||
-        other.slug === 'harlequin-rasbora'
-      ) {
-        reasons.push(
-          `Betta + ${other.name}: ${other.name} is generally peaceful, but the Betta's individual temperament remains the deciding behavioral risk.`
-        );
-        warnings.push(
-          'Provide cover and enough space for the species to use different areas of the aquarium.'
-        );
-        setStatus('🟡 Usually Compatible with Conditions', 'amber');
-      } else {
-        if (other.temperament === 'Aggressive' || other.temperament === 'Semi-Aggressive') {
-          return {
-            status: '🔴 Not Recommended',
-            message:
-              `Territorial conflict risk: ${other.name} is listed as ${other.temperament}, while Bettas are territorial. Combining two territorial fish with overlapping space can create severe aggression.`,
-            colorTheme: 'red',
-          };
-        }
-
-        setStatus('🟠 Use Caution', 'orange');
-        reasons.push(
-          `Betta + ${other.name}: a peaceful label does not guarantee compatibility because Betta temperament varies between individuals.`
-        );
-        warnings.push(
-          'Use a suitably sized aquarium, visual cover, and a plan to separate fish if aggression develops.'
-        );
-      }
-    }
-
-    const hasAngelfish = slug1 === 'angelfish' || slug2 === 'angelfish';
-    const hasNeonTetra = slug1 === 'neon-tetra' || slug2 === 'neon-tetra';
-
-    if (hasAngelfish && hasNeonTetra) {
+    if (!tempOverlap || !phOverlap) {
       return {
-        status: '🔴 Not Recommended',
-        message:
-          'Predation risk: adult freshwater Angelfish are large enough to treat small, slender fish such as Neon Tetras as prey. This is not a reliable community combination as the Angelfish mature.',
-        colorTheme: 'red',
+        status: 'Water Parameter Mismatch',
+        message: `Water chemistry differences detected. ${f1.name} requires (${f1.temperature}, pH ${f1.ph}) while ${f2.name} requires (${f2.temperature}, pH ${f2.ph}).`,
+        level: 'caution',
       };
     }
 
-    const predator = [f1, f2].find(f => knownPredatorySpecies.has(f.slug || ''));
-    const prey = predator === f1 ? f2 : f1;
+    // 4. Temperament Check
+    const agg1 = f1.temperament?.toLowerCase().includes('aggressive') || f1.temperament?.toLowerCase().includes('territorial');
+    const agg2 = f2.temperament?.toLowerCase().includes('aggressive') || f2.temperament?.toLowerCase().includes('territorial');
+    const peace1 = f1.temperament?.toLowerCase().includes('peaceful');
+    const peace2 = f2.temperament?.toLowerCase().includes('peaceful');
 
-    if (predator) {
-      const predatorSize = predator.maxSize || 0;
-      const preySize = prey.maxSize || 0;
-
-      if (preySize > 0 && preySize <= 3 && predatorSize / preySize >= 3) {
-        return {
-          status: '🔴 Not Recommended',
-          message:
-            `Predation risk: ${predator.name} reaches about ${predatorSize}" while ${prey.name} reaches about ${preySize}". Their size difference makes the smaller fish an unsafe tankmate as the predator matures.`,
-          colorTheme: 'red',
-        };
-      }
-
-      setStatus('🟠 Use Caution', 'orange');
-      reasons.push(
-        `${predator.name} is a large predatory species, so tankmates must be too large to be swallowed and must tolerate its behavior and bioload.`
-      );
-    }
-
-    // 5. Size difference
-    const size1 = f1.maxSize || 0;
-    const size2 = f2.maxSize || 0;
-
-    if (size1 > 0 && size2 > 0) {
-      const larger = size1 >= size2 ? f1 : f2;
-      const smaller = size1 >= size2 ? f2 : f1;
-      const ratio = Math.max(size1, size2) / Math.min(size1, size2);
-
-      if (ratio >= 4 && (smaller.maxSize || 0) <= 2.5) {
-        setStatus('🟠 Use Caution', 'orange');
-        reasons.push(
-          `Large adult-size difference: ${larger.name} (${larger.maxSize}") is much larger than ${smaller.name} (${smaller.maxSize}").`
-        );
-        warnings.push(
-          'Adult size matters more than juvenile size; monitor for chasing, predation, or food competition as the fish mature.'
-        );
-      }
-    }
-
-    // 6. Surgeonfish
-    const tang1 = slug1.includes('tang');
-    const tang2 = slug2.includes('tang');
-
-    if (tang1 && tang2) {
+    if ((agg1 && peace2) || (agg2 && peace1)) {
       return {
-        status: '🟠 Use Caution',
-        message:
-          'Tang + Tang: tangs can be highly territorial toward other surgeonfish, especially similar-shaped species. This requires a large marine aquarium, careful species selection, and deliberate introduction; it is not a default community pairing.',
-        colorTheme: 'orange',
+        status: 'Temperament Conflict Possible',
+        message: `One species has territorial or semi-aggressive tendencies while the other is peaceful. Ensure sufficient tank volume and visual breaks, or consider alternative tankmates.`,
+        level: 'caution',
       };
     }
-
-    // 7. General behavior
-    const t1 = f1.temperament;
-    const t2 = f2.temperament;
-
-    if (t1 === 'Aggressive' && t2 === 'Aggressive') {
-      setStatus('🟠 Use Caution', 'orange');
-      reasons.push(
-        'Both fish are listed as aggressive, so territorial conflict is a significant risk.'
-      );
-    } else if (
-      (t1 === 'Aggressive' && t2 === 'Peaceful') ||
-      (t2 === 'Aggressive' && t1 === 'Peaceful')
-    ) {
-      const aggressive = t1 === 'Aggressive' ? f1 : f2;
-      const peaceful = t1 === 'Aggressive' ? f2 : f1;
-
-      return {
-        status: '🔴 Not Recommended',
-        message:
-          `Temperament conflict: ${aggressive.name} is listed as aggressive while ${peaceful.name} is listed as peaceful. Without species-specific evidence that this pair is safe, it should not be recommended as a community combination.`,
-        colorTheme: 'red',
-      };
-    } else if (
-      (t1 === 'Semi-Aggressive' && t2 === 'Peaceful') ||
-      (t2 === 'Semi-Aggressive' && t1 === 'Peaceful')
-    ) {
-      const semi = t1 === 'Semi-Aggressive' ? f1 : f2;
-      const peaceful = t1 === 'Semi-Aggressive' ? f2 : f1;
-
-      setStatus('🟡 Usually Compatible with Conditions', 'amber');
-      reasons.push(
-        `${semi.name} is listed as semi-aggressive while ${peaceful.name} is listed as peaceful; compatibility depends on space, territory, and individual behavior.`
-      );
-    }
-
-    for (const fish of [f1, f2]) {
-      const social = socialTraits[fish.slug || ''];
-      if (social === 'schooling') {
-        warnings.push(
-          `${fish.name} should be kept in an appropriate group rather than as a solitary fish; the exact group size depends on the species and aquarium size.`
-        );
-      }
-    }
-
-    const largerMinimum = Math.max(f1.minTankSize || 0, f2.minTankSize || 0);
-    if (largerMinimum > 0) {
-      reasons.push(
-        `Tank-size starting point: at least ${largerMinimum} gallons based on the larger listed species minimum; actual requirements can be higher.`
-      );
-    }
-
-    if (reasons.length === 0) {
-      reasons.push(
-        'The available records show compatible environments and no major species-specific conflict was identified.'
-      );
-    }
-
-    const finalMessage =
-      reasons.join(' ') +
-      (warnings.length > 0 ? ` NOTE: ${warnings.join(' ')}` : '');
 
     return {
-      status,
-      message: finalMessage,
-      colorTheme,
+      status: 'Favorable Compatibility Match',
+      message: `${f1.name} and ${f2.name} share compatible water chemistry (${f1.temperature}, pH range), environmental parameters, and manageable social temperaments.`,
+      level: 'compatible',
     };
   };
 
   const compResult = getCompatibility(fish1, fish2);
-  const f1Data = fishData.find(f => f.id === fish1)!;
-  const f2Data = fishData.find(f => f.id === fish2)!;
-
-  const themeClasses = {
-    emerald: {
-      border: 'border-emerald-500/40',
-      glow: 'shadow-[0_0_25px_rgba(16,185,129,0.25)]',
-      bg: 'bg-emerald-955/25 border-emerald-500/20 text-emerald-450',
-      text: 'text-emerald-400',
-      icon: <CheckCircle2 className="w-6 h-6 text-emerald-400" />,
-    },
-    amber: {
-      border: 'border-amber-500/40',
-      glow: 'shadow-[0_0_25px_rgba(245,158,11,0.25)]',
-      bg: 'bg-amber-955/25 border-amber-500/20 text-amber-450',
-      text: 'text-amber-400',
-      icon: <AlertTriangle className="w-6 h-6 text-amber-400" />,
-    },
-    orange: {
-      border: 'border-orange-500/40',
-      glow: 'shadow-[0_0_25px_rgba(249,115,22,0.25)]',
-      bg: 'bg-orange-955/25 border-orange-500/20 text-orange-450',
-      text: 'text-orange-400',
-      icon: <AlertTriangle className="w-6 h-6 text-orange-400" />,
-    },
-    red: {
-      border: 'border-slate-500/40',
-      glow: 'shadow-none',
-      bg: 'bg-slate-950 border-slate-800 text-slate-450',
-      text: 'text-slate-350',
-      icon: <XCircle className="w-6 h-6 text-slate-400" />,
-    },
-    blue: {
-      border: 'border-blue-500/40',
-      glow: 'shadow-[0_0_25px_rgba(59,130,246,0.25)]',
-      bg: 'bg-blue-955/25 border-blue-500/20 text-blue-450',
-      text: 'text-blue-400',
-      icon: <Info className="w-6 h-6 text-blue-400" />,
-    },
-  }[compResult.colorTheme as 'emerald' | 'amber' | 'orange' | 'red' | 'blue'];
+  const f1Data = fishData.find((f) => f.id === fish1) || fishData[0];
+  const f2Data = fishData.find((f) => f.id === fish2) || fishData[1];
 
   return (
-    <section className="py-24 bg-black border-b border-blue-500/10 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.02),transparent_60%)] pointer-events-none" />
-      <div className="container mx-auto px-4 max-w-5xl relative z-10">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 text-blue-500 font-bold mb-4 border border-blue-500/20 text-xs uppercase tracking-wider animate-float">
-            <ShieldAlert className="w-4 h-4" /> Compatibility Tool
-          </div>
-          <h2 className="text-3xl md:text-5xl font-poppins font-bold mb-4 text-white">
-            Fish Compatibility Checker
+    <section className="py-24 bg-[#27187e] text-[#f7f7ff] relative overflow-hidden text-left">
+      <div className="container mx-auto px-4 max-w-7xl relative z-10">
+        
+        {/* Section Header */}
+        <div className="mb-14">
+          <span className="text-xs font-condensed font-bold uppercase tracking-widest text-[#f7f7ff]/70 mb-2 block">
+            INTERACTIVE TOOL
+          </span>
+          <h2 className="text-5xl sm:text-6xl md:text-7xl font-display font-normal text-[#f7f7ff] tracking-wide">
+            FISH COMPATIBILITY CHECKER
           </h2>
-          <p className="text-base md:text-lg text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
-            Ensure your fish co-exist peacefully. Select two species to verify water chemistry, size compatibility, and temperaments.
+          <p className="text-base text-[#f7f7ff]/80 font-normal max-w-2xl mt-2 font-sans">
+            Compare two fish to see how they may match in terms of water parameters, temperament, tank size and care requirements.
           </p>
         </div>
 
-        <div className="bg-black/40 border border-blue-500/10 rounded-3xl p-6 md:p-10 shadow-2xl relative overflow-hidden">
-          {/* Main matchup grid */}
-          <div className="grid grid-cols-1 md:grid-cols-7 gap-8 items-center relative z-10">
-            {/* Fish 1 Column */}
-            <div className="md:col-span-3 flex flex-col items-center">
-              <div className={`w-36 h-36 rounded-full overflow-hidden mb-6 border-4 bg-black relative transition-all duration-500 ${themeClasses.border} ${themeClasses.glow}`}>
-                {f1Data?.image ? (
-                  <Image src={f1Data.image} alt={f1Data.name} fill className="object-cover scale-105" sizes="144px" />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-slate-500">No Image</div>
-                )}
+        {/* Interactive Comparison Card */}
+        <div className="bg-[#1f1366] border border-[#3b28ab] rounded-3xl p-6 sm:p-10 shadow-2xl">
+          
+          {/* 2-Fish Matchup */}
+          <div className="grid grid-cols-1 md:grid-cols-7 gap-8 items-center">
+            
+            {/* Fish 1 */}
+            <div className="md:col-span-3 flex flex-col items-center text-center">
+              <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden mb-5 border-4 border-[#f7f7ff]/20 bg-[#27187e] relative shadow-lg">
+                <Image
+                  src={f1Data.image}
+                  alt={f1Data.name}
+                  fill
+                  className="object-cover"
+                  sizes="160px"
+                />
               </div>
-              <label className="text-xs uppercase font-bold tracking-wider text-slate-400 mb-2 block text-left">Select Species 1</label>
+
+              <label className="text-xs uppercase font-condensed font-bold tracking-widest text-[#f7f7ff]/70 mb-2 block">
+                Select Species 1
+              </label>
+
               <select
                 value={fish1}
                 onChange={(e) => setFish1(e.target.value)}
-                className="w-full bg-black border border-blue-500/15 rounded-xl px-4 py-3 text-slate-200 font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500 hover:border-blue-500/30 transition-colors"
+                className="w-full max-w-xs bg-[#27187e] border border-[#3b28ab] rounded-xl px-4 py-3 text-sm text-[#f7f7ff] font-sans focus:outline-none focus:ring-2 focus:ring-[#f7f7ff]/50 transition-colors"
               >
-                {fishData.map(f => (
-                  <option key={f.id} value={f.id} className="bg-black text-slate-200">{f.name} ({f.category})</option>
+                {fishData.map((f) => (
+                  <option key={f.id} value={f.id} className="bg-[#27187e] text-[#f7f7ff]">
+                    {f.name} ({f.category})
+                  </option>
                 ))}
               </select>
             </div>
 
             {/* VS Badge */}
-            <div className="md:col-span-1 flex justify-center py-4 md:py-0">
-              <div className="w-14 h-14 rounded-full bg-black border border-blue-500/25 flex items-center justify-center text-lg font-extrabold text-blue-500 shadow-md shadow-blue-500/10">
+            <div className="md:col-span-1 flex justify-center py-2 md:py-0">
+              <div className="w-14 h-14 rounded-full bg-[#27187e] border-2 border-[#f7f7ff]/30 flex items-center justify-center font-display text-2xl text-[#f7f7ff] shadow-md">
                 VS
               </div>
             </div>
 
-            {/* Fish 2 Column */}
-            <div className="md:col-span-3 flex flex-col items-center">
-              <div className={`w-36 h-36 rounded-full overflow-hidden mb-6 border-4 bg-black relative transition-all duration-500 ${themeClasses.border} ${themeClasses.glow}`}>
-                {f2Data?.image ? (
-                  <Image src={f2Data.image} alt={f2Data.name} fill className="object-cover scale-105" sizes="144px" />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-slate-500">No Image</div>
-                )}
+            {/* Fish 2 */}
+            <div className="md:col-span-3 flex flex-col items-center text-center">
+              <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden mb-5 border-4 border-[#f7f7ff]/20 bg-[#27187e] relative shadow-lg">
+                <Image
+                  src={f2Data.image}
+                  alt={f2Data.name}
+                  fill
+                  className="object-cover"
+                  sizes="160px"
+                />
               </div>
-              <label className="text-xs uppercase font-bold tracking-wider text-slate-400 mb-2 block text-left">Select Species 2</label>
+
+              <label className="text-xs uppercase font-condensed font-bold tracking-widest text-[#f7f7ff]/70 mb-2 block">
+                Select Species 2
+              </label>
+
               <select
                 value={fish2}
                 onChange={(e) => setFish2(e.target.value)}
-                className="w-full bg-black border border-blue-500/15 rounded-xl px-4 py-3 text-slate-200 font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500 hover:border-blue-500/30 transition-colors"
+                className="w-full max-w-xs bg-[#27187e] border border-[#3b28ab] rounded-xl px-4 py-3 text-sm text-[#f7f7ff] font-sans focus:outline-none focus:ring-2 focus:ring-[#f7f7ff]/50 transition-colors"
               >
-                {fishData.map(f => (
-                  <option key={f.id} value={f.id} className="bg-black text-slate-200">{f.name} ({f.category})</option>
+                {fishData.map((f) => (
+                  <option key={f.id} value={f.id} className="bg-[#27187e] text-[#f7f7ff]">
+                    {f.name} ({f.category})
+                  </option>
                 ))}
               </select>
             </div>
+
           </div>
 
-          {/* Compatibility Status Banner */}
-          <div className={`mt-10 rounded-2xl p-6 flex flex-col md:flex-row items-center gap-5 border transition-all duration-500 ${themeClasses.bg}`}>
-            <div className="p-3 bg-black rounded-xl border border-blue-500/20 shadow-md shrink-0">
-              {themeClasses.icon}
+          {/* Compatibility Guidance Status Banner */}
+          <div className="mt-10 rounded-2xl p-6 bg-[#27187e] border border-[#3b28ab] flex flex-col sm:flex-row items-start sm:items-center gap-5">
+            <div className="w-12 h-12 rounded-xl bg-[#1f1366] border border-[#3b28ab] flex items-center justify-center shrink-0 text-[#f7f7ff]">
+              {compResult.level === 'compatible' && <CheckCircle2 className="w-6 h-6 text-[#f7f7ff]" />}
+              {compResult.level === 'caution' && <AlertTriangle className="w-6 h-6 text-[#f7f7ff]" />}
+              {compResult.level === 'incompatible' && <XCircle className="w-6 h-6 text-[#f7f7ff]" />}
             </div>
-            <div className="text-center md:text-left">
-              <h3 className={`text-2xl font-bold font-poppins mb-1.5 ${themeClasses.text}`}>
+
+            <div>
+              <h3 className="text-2xl font-display font-normal text-[#f7f7ff] tracking-wide mb-1">
                 {compResult.status}
               </h3>
-              <p className="text-slate-200 leading-relaxed text-sm md:text-base font-light">
+              <p className="text-sm text-[#f7f7ff]/80 font-sans leading-relaxed">
                 {compResult.message}
               </p>
             </div>
           </div>
 
-          {/* Parameters Comparison Section */}
-          <div className="mt-12 border-t border-blue-500/10 pt-8 text-left">
-            <h4 className="text-lg font-bold font-poppins text-white mb-6 text-center md:text-left flex items-center gap-2 justify-center md:justify-start">
-              <Layers className="w-5 h-5 text-blue-500" /> Species Parameters Matchup
+          {/* Species Parameters Matchup */}
+          <div className="mt-10 pt-8 border-t border-[#3b28ab]">
+            <h4 className="text-xl font-display font-normal text-[#f7f7ff] mb-6 flex items-center gap-2">
+              <Layers className="w-5 h-5 text-[#f7f7ff]/70" />
+              <span>PARAMETER BREAKDOWN</span>
             </h4>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Fish 1 details */}
-              <div className="bg-black border border-blue-500/10 p-5 rounded-2xl">
-                <div className="flex items-center gap-3 mb-4 pb-3 border-b border-blue-500/10">
-                  <span className="text-xs uppercase font-bold px-2 py-0.5 rounded bg-blue-500/10 text-blue-500">Species 1</span>
-                  <span className="text-base font-bold text-white">{f1Data.name}</span>
+              
+              {/* Fish 1 Card */}
+              <div className="bg-[#27187e] border border-[#3b28ab] p-5 rounded-2xl">
+                <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#3b28ab]">
+                  <span className="text-xs font-condensed font-bold uppercase tracking-wider text-[#f7f7ff]/70">Species 1</span>
+                  <span className="font-display text-lg text-[#f7f7ff]">{f1Data.name}</span>
                 </div>
-                <div className="space-y-3.5">
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-slate-400">Environment</span>
-                    <span className="font-semibold text-slate-200">{f1Data.category}</span>
+                
+                <div className="space-y-2.5 text-xs font-sans">
+                  <div className="flex justify-between py-1 border-b border-[#3b28ab]/50">
+                    <span className="text-[#f7f7ff]/70">Environment</span>
+                    <span className="text-[#f7f7ff] font-medium">{f1Data.category}</span>
                   </div>
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-slate-400">Temperament</span>
-                    <span className="font-semibold text-slate-200">{f1Data.temperament || 'Community'}</span>
+                  <div className="flex justify-between py-1 border-b border-[#3b28ab]/50">
+                    <span className="text-[#f7f7ff]/70">Temperament</span>
+                    <span className="text-[#f7f7ff] font-medium">{f1Data.temperament || 'Peaceful'}</span>
                   </div>
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-slate-400">Temperature</span>
-                    <span className="font-semibold text-slate-200">{f1Data.temperature}</span>
+                  <div className="flex justify-between py-1 border-b border-[#3b28ab]/50">
+                    <span className="text-[#f7f7ff]/70">Temperature</span>
+                    <span className="text-[#f7f7ff] font-medium">{f1Data.temperature}</span>
                   </div>
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-slate-400">pH Level</span>
-                    <span className="font-semibold text-slate-200">{f1Data.ph}</span>
+                  <div className="flex justify-between py-1 border-b border-[#3b28ab]/50">
+                    <span className="text-[#f7f7ff]/70">pH Range</span>
+                    <span className="text-[#f7f7ff] font-medium">{f1Data.ph}</span>
                   </div>
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-slate-400">Min Tank Size</span>
-                    <span className="font-semibold text-slate-200">{f1Data.minTankSize} Gallons</span>
-                  </div>
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-slate-400">Care Difficulty</span>
-                    <span className="font-semibold text-slate-200">{f1Data.difficulty}</span>
+                  <div className="flex justify-between py-1">
+                    <span className="text-[#f7f7ff]/70">Min Tank Size</span>
+                    <span className="text-[#f7f7ff] font-medium">{f1Data.minTankSize} Gallons</span>
                   </div>
                 </div>
               </div>
 
-              {/* Fish 2 details */}
-              <div className="bg-black border border-blue-500/10 p-5 rounded-2xl">
-                <div className="flex items-center gap-3 mb-4 pb-3 border-b border-blue-500/10">
-                  <span className="text-xs uppercase font-bold px-2 py-0.5 rounded bg-blue-500/10 text-blue-500">Species 2</span>
-                  <span className="text-base font-bold text-white">{f2Data.name}</span>
+              {/* Fish 2 Card */}
+              <div className="bg-[#27187e] border border-[#3b28ab] p-5 rounded-2xl">
+                <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#3b28ab]">
+                  <span className="text-xs font-condensed font-bold uppercase tracking-wider text-[#f7f7ff]/70">Species 2</span>
+                  <span className="font-display text-lg text-[#f7f7ff]">{f2Data.name}</span>
                 </div>
-                <div className="space-y-3.5">
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-slate-400">Environment</span>
-                    <span className={`font-semibold ${f1Data.category !== f2Data.category ? 'text-blue-500 font-bold' : 'text-slate-200'}`}>
-                      {f2Data.category}
-                    </span>
+                
+                <div className="space-y-2.5 text-xs font-sans">
+                  <div className="flex justify-between py-1 border-b border-[#3b28ab]/50">
+                    <span className="text-[#f7f7ff]/70">Environment</span>
+                    <span className="text-[#f7f7ff] font-medium">{f2Data.category}</span>
                   </div>
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-slate-400">Temperament</span>
-                    <span className="font-semibold text-slate-200">{f2Data.temperament || 'Community'}</span>
+                  <div className="flex justify-between py-1 border-b border-[#3b28ab]/50">
+                    <span className="text-[#f7f7ff]/70">Temperament</span>
+                    <span className="text-[#f7f7ff] font-medium">{f2Data.temperament || 'Peaceful'}</span>
                   </div>
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-slate-400">Temperature</span>
-                    <span className="font-semibold text-slate-200">{f2Data.temperature}</span>
+                  <div className="flex justify-between py-1 border-b border-[#3b28ab]/50">
+                    <span className="text-[#f7f7ff]/70">Temperature</span>
+                    <span className="text-[#f7f7ff] font-medium">{f2Data.temperature}</span>
                   </div>
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-slate-400">pH Level</span>
-                    <span className="font-semibold text-slate-200">{f2Data.ph}</span>
+                  <div className="flex justify-between py-1 border-b border-[#3b28ab]/50">
+                    <span className="text-[#f7f7ff]/70">pH Range</span>
+                    <span className="text-[#f7f7ff] font-medium">{f2Data.ph}</span>
                   </div>
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-slate-400">Min Tank Size</span>
-                    <span className="font-semibold text-slate-200">{f2Data.minTankSize} Gallons</span>
-                  </div>
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-slate-400">Care Difficulty</span>
-                    <span className="font-semibold text-slate-200">{f2Data.difficulty}</span>
+                  <div className="flex justify-between py-1">
+                    <span className="text-[#f7f7ff]/70">Min Tank Size</span>
+                    <span className="text-[#f7f7ff] font-medium">{f2Data.minTankSize} Gallons</span>
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
+
+          {/* Footer Call to Action */}
+          <div className="mt-8 pt-6 border-t border-[#3b28ab] flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-xs text-[#f7f7ff]/70 font-sans">
+              * Compatibility ratings provide general educational guidance. Individual fish behavior depends on tank dimensions, cover, and feeding routines.
+            </p>
+            <Link
+              href="/compatibility"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#f7f7ff] hover:bg-[#edeafc] text-[#27187e] text-xs font-condensed font-bold uppercase tracking-wider transition-all shrink-0"
+            >
+              <span>Full Compatibility Tool</span>
+              <ArrowRight className="w-4 h-4 text-[#27187e]" />
+            </Link>
+          </div>
+
         </div>
+
       </div>
     </section>
   );
