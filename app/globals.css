@@ -59,8 +59,8 @@
     color: #27187e;
     font-family: var(--font-sans);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-    font-size: 0.9375rem;
-    line-height: 1.65;
+    font-size: 1rem;
+    line-height: 1.7;
     letter-spacing: -0.011em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -85,6 +85,76 @@
   font-family: 'Oswald', 'Bebas Neue', sans-serif;
 }
 
+/* =========================================================
+   MARINE DECORATIVE BACKGROUNDS & PSEUDO-ELEMENT WATERMARKS
+   ========================================================= */
+
+/* Marine Element Background: Ghost White Sections */
+.marine-pattern-light {
+  position: relative;
+}
+
+.marine-pattern-light::before {
+  content: "";
+  position: absolute;
+  top: 5%;
+  left: 3%;
+  width: 140px;
+  height: 90px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60' fill='none' stroke='%2327187e' stroke-width='2' opacity='0.08'%3E%3Cpath d='M10,30 Q30,10 70,25 Q90,30 95,20 Q85,35 95,45 Q70,35 30,50 Q10,40 10,30 Z'/%3E%3Ccircle cx='25' cy='28' r='3' fill='%2327187e' opacity='0.08'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.marine-pattern-light::after {
+  content: "";
+  position: absolute;
+  bottom: 8%;
+  right: 4%;
+  width: 160px;
+  height: 120px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 80' fill='none' stroke='%2327187e' stroke-width='2' opacity='0.07'%3E%3Cpath d='M30,75 Q20,45 40,25 Q50,15 35,5'/%3E%3Cpath d='M50,75 Q65,50 45,30 Q35,20 55,10'/%3E%3Cpath d='M70,75 Q60,55 75,35 Q85,25 70,12'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Marine Element Background: Persian Indigo Sections */
+.marine-pattern-dark {
+  position: relative;
+}
+
+.marine-pattern-dark::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  width: 180px;
+  height: 110px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60' fill='none' stroke='%23f7f7ff' stroke-width='2' opacity='0.12'%3E%3Cpath d='M10,30 Q30,10 70,25 Q90,30 95,20 Q85,35 95,45 Q70,35 30,50 Q10,40 10,30 Z'/%3E%3Ccircle cx='25' cy='28' r='3' fill='%23f7f7ff' opacity='0.12'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.marine-pattern-dark::after {
+  content: "";
+  position: absolute;
+  bottom: 8%;
+  right: 6%;
+  width: 170px;
+  height: 130px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 80' fill='none' stroke='%23f7f7ff' stroke-width='2' opacity='0.1'%3E%3Cpath d='M25,75 Q40,50 25,30 Q15,15 35,5'/%3E%3Cpath d='M60,75 Q75,45 55,25 Q45,15 65,5'/%3E%3Ccircle cx='80' cy='25' r='4'/%3E%3Ccircle cx='85' cy='15' r='2.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* Persian Indigo & Ghost White Editorial Helpers */
 .bg-persian-indigo {
   background-color: #27187e;
@@ -102,10 +172,6 @@
   color: #f7f7ff;
 }
 
-.border-indigo-soft {
-  border-color: #cfcaf5;
-}
-
 /* Crisp Clean Editorial Card */
 .editorial-card {
   background-color: #ffffff;
@@ -116,41 +182,8 @@
 
 .editorial-card:hover {
   border-color: #27187e;
-  box-shadow: 0 10px 25px -8px rgba(39, 24, 126, 0.16);
-  transform: translateY(-2px);
-}
-
-/* Persian Indigo Feature Section Card */
-.indigo-card {
-  background-color: #1f1266;
-  border: 1px solid rgba(247, 247, 255, 0.2);
-  color: #f7f7ff;
-}
-
-/* Smooth Shimmer Loading */
-@keyframes preloader-shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-.animate-shimmer {
-  animation: preloader-shimmer 1.5s infinite ease-in-out;
-}
-
-/* Ticker Animation */
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
-}
-
-.animate-marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 35s linear infinite;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
+  box-shadow: 0 12px 30px -8px rgba(39, 24, 126, 0.18);
+  transform: translateY(-3px);
 }
 
 /* Custom Clean Indigo Scrollbar */
