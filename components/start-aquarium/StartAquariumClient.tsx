@@ -14,6 +14,7 @@ import {
   Check,
   RotateCcw,
   HelpCircle,
+  Activity,
   Fish,
   Leaf,
   Award

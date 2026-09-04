@@ -103,9 +103,6 @@ export default function AtlasSpeciesIndex() {
             </Link>
           ))}
         </div>
-            </Link>
-          ))}
-        </div>
 
       </div>
     </section>

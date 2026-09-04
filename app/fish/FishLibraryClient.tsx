@@ -227,19 +227,6 @@ export default function FishLibraryClient({ initialFish }: FishLibraryClientProp
               </Link>
             ))}
           </div>
-
-                  <p className="text-xs text-[#27187e]/80 font-sans leading-relaxed line-clamp-2">
-                    {fish.description}
-                  </p>
-                </div>
-
-                <div className="pt-4 mt-4 border-t border-[#edeafc] flex items-center justify-between text-xs font-condensed font-bold uppercase tracking-wider text-[#27187e]">
-                  <span>View Full Species Sheet</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </div>
-              </Link>
-            ))}
-          </div>
         ) : (
           <div className="bg-[#ffffff] border-2 border-[#cfcaf5] rounded-3xl p-12 text-center max-w-xl mx-auto my-12">
             <h3 className="text-3xl font-display font-normal text-[#27187e] mb-2">

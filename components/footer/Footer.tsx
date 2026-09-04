@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowUpRight, Youtube, Instagram, Facebook } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import BrandLogo from '@/components/ui/BrandLogo';
 import { siteConfig } from '@/config/site';
 
@@ -20,7 +20,7 @@ export default function Footer() {
               An exhaustive, curated encyclopedia &amp; decision toolset for modern aquarists. We provide systematic species dossiers, planted aquascape chemistry, and hardware engineering guidance.
             </p>
 
-            {/* Social Icons with Lucide */}
+            {/* Social Icons with Lucide Outline Style */}
             <div className="flex items-center gap-3">
               <a
                 href="https://youtube.com"
@@ -29,7 +29,10 @@ export default function Footer() {
                 aria-label="Roshan Aquva World YouTube"
                 className="w-9 h-9 rounded-xl bg-[#1f1366] border border-[#3b28ab] hover:border-[#f7f7ff] flex items-center justify-center text-[#cfcaf5] hover:text-[#f7f7ff] hover:bg-[#3b28ab] transition-all shadow-sm"
               >
-                <Youtube className="w-4 h-4" strokeWidth={1.8} aria-hidden="true" />
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
+                  <path d="m10 15 5-3-5-3z" />
+                </svg>
               </a>
               <a
                 href="https://instagram.com"
@@ -38,7 +41,11 @@ export default function Footer() {
                 aria-label="Roshan Aquva World Instagram"
                 className="w-9 h-9 rounded-xl bg-[#1f1366] border border-[#3b28ab] hover:border-[#f7f7ff] flex items-center justify-center text-[#cfcaf5] hover:text-[#f7f7ff] hover:bg-[#3b28ab] transition-all shadow-sm"
               >
-                <Instagram className="w-4 h-4" strokeWidth={1.8} aria-hidden="true" />
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                </svg>
               </a>
               <a
                 href="https://facebook.com"
@@ -47,7 +54,9 @@ export default function Footer() {
                 aria-label="Roshan Aquva World Facebook"
                 className="w-9 h-9 rounded-xl bg-[#1f1366] border border-[#3b28ab] hover:border-[#f7f7ff] flex items-center justify-center text-[#cfcaf5] hover:text-[#f7f7ff] hover:bg-[#3b28ab] transition-all shadow-sm"
               >
-                <Facebook className="w-4 h-4" strokeWidth={1.8} aria-hidden="true" />
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg>
               </a>
             </div>
           </div>

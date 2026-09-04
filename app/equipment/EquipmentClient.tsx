@@ -143,9 +143,6 @@ export default function EquipmentClient({ eqList }: EquipmentClientProps) {
               </Link>
             ))}
           </div>
-              </Link>
-            ))}
-          </div>
         ) : (
           <div className="bg-[#ffffff] border-2 border-[#cfcaf5] rounded-3xl p-12 text-center max-w-xl mx-auto my-12">
             <h3 className="text-3xl font-display font-normal text-[#27187e] mb-2">
