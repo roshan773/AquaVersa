@@ -347,6 +347,25 @@ export default function EquipmentWizardPage() {
           </div>
         </div>
       </section>
+
+      <GlobalCTA
+        badge="EQUIPMENT & FILTRATION SIZING"
+        title={
+          <>
+            Explore full equipment guides <br className="hidden sm:inline" />
+            and maintenance manuals.
+          </>
+        }
+        description="Learn how to service canister impellers, rinse biological media, and calibrate digital heaters safely."
+        primaryAction={{
+          label: 'Browse Equipment Catalog',
+          href: '/equipment',
+        }}
+        secondaryAction={{
+          label: 'Volume & Dimensions Calculator',
+          href: '/tank-size',
+        }}
+      />
     </div>
   );
 }
