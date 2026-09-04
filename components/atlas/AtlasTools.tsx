@@ -1,42 +1,49 @@
 import Link from 'next/link';
-import { Compass, Ruler, Leaf, Wrench, FlaskConical, CalendarCheck, ArrowRight } from 'lucide-react';
+import { ArrowRight, Ruler, FlaskConical, CalendarCheck } from 'lucide-react';
+import {
+  IconToolsAtlas,
+  IconPlantsAtlas,
+  IconEquipmentAtlas,
+  IconGuidesAtlas,
+  IconFishAtlas,
+} from '@/components/ui/AtlasIcons';
 
 export default function AtlasTools() {
   const tools = [
     {
       title: 'Fish Compatibility Checker',
       desc: 'Verify temperature, pH, adult sizes, and social temperaments before introducing new tankmates.',
-      icon: <Compass className="w-6 h-6 text-[#27187e]" />,
+      icon: IconFishAtlas,
       href: '/compatibility',
     },
     {
       title: 'Tank Size & Volume Guide',
       desc: 'Explore footprint dimensions, filled weights, and realistic stocking capacities from 5 to 75+ gallons.',
-      icon: <Ruler className="w-6 h-6 text-[#27187e]" />,
+      icon: IconToolsAtlas,
       href: '/tank-size',
     },
     {
       title: 'Plant Matcher',
       desc: 'Find live aquatic flora matched to your lighting levels, substrate, and maintenance commitment.',
-      icon: <Leaf className="w-6 h-6 text-[#27187e]" />,
+      icon: IconPlantsAtlas,
       href: '/plants',
     },
     {
       title: 'Equipment Recommender',
       desc: 'Get tailored hardware recommendations for filtration flow rates, heaters, and LED lighting.',
-      icon: <Wrench className="w-6 h-6 text-[#27187e]" />,
+      icon: IconEquipmentAtlas,
       href: '/equipment',
     },
     {
       title: 'Water Chemistry Reference',
       desc: 'Learn practical management of ammonia, nitrite, nitrate, pH, and water hardness.',
-      icon: <FlaskConical className="w-6 h-6 text-[#27187e]" />,
+      icon: IconGuidesAtlas,
       href: '/water-params',
     },
     {
       title: 'Maintenance Schedule',
       desc: 'Daily, weekly, and monthly checklists to maintain biological equilibrium without panic.',
-      icon: <CalendarCheck className="w-6 h-6 text-[#27187e]" />,
+      icon: IconToolsAtlas,
       href: '/start-aquarium',
     },
   ];
@@ -67,8 +74,8 @@ export default function AtlasTools() {
               className="bg-[#ffffff] border-2 border-[#cfcaf5] hover:border-[#27187e] rounded-3xl p-7 flex flex-col justify-between group transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1"
             >
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-[#edeafc] border border-[#cfcaf5] flex items-center justify-center text-[#27187e] mb-5 group-hover:bg-[#27187e] group-hover:text-[#f7f7ff] transition-colors">
-                  {item.icon}
+                <div className="w-12 h-12 rounded-2xl bg-[#edeafc] border border-[#cfcaf5] flex items-center justify-center text-[#27187e] mb-5 group-hover:bg-[#27187e] group-hover:text-[#f7f7ff] transition-all">
+                  <item.icon className="w-6 h-6 text-current" />
                 </div>
 
                 <h3 className="text-2xl sm:text-3xl font-display font-normal text-[#27187e] mb-2 group-hover:text-[#1b1059] transition-colors leading-tight">

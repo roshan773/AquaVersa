@@ -4,20 +4,17 @@ import { useState, useEffect, useRef } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Search, X, ArrowRight, Sparkles, Waves } from 'lucide-react';
 import {
-  Search,
-  X,
-  ArrowRight,
-  BookOpen,
-  Fish,
-  Leaf,
-  Wrench,
-  Compass,
-  Info,
-  Mail,
-  Sparkles,
-  Waves,
-} from 'lucide-react';
+  IconHomeAtlas,
+  IconFishAtlas,
+  IconPlantsAtlas,
+  IconEquipmentAtlas,
+  IconGuidesAtlas,
+  IconToolsAtlas,
+  IconAboutAtlas,
+  IconContactAtlas,
+} from '@/components/ui/AtlasIcons';
 import BrandLogo, { BrandMark } from '@/components/ui/BrandLogo';
 import { siteConfig } from '@/config/site';
 
@@ -79,14 +76,14 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { label: 'Home', href: '/', badge: 'Atlas Hub', icon: <Waves className="w-5 h-5 text-[#27187e]" /> },
-    { label: 'Fish Library', href: '/fish', badge: '120+ Species', icon: <Fish className="w-5 h-5 text-[#27187e]" /> },
-    { label: 'Aquarium Plants', href: '/plants', badge: 'Flora Archive', icon: <Leaf className="w-5 h-5 text-[#27187e]" /> },
-    { label: 'Equipment Archive', href: '/equipment', badge: 'Gear & Tech', icon: <Wrench className="w-5 h-5 text-[#27187e]" /> },
-    { label: 'Care Guides', href: '/guides', badge: 'Step-by-Step', icon: <BookOpen className="w-5 h-5 text-[#27187e]" /> },
-    { label: 'Aquarium Tools', href: '/compatibility', badge: 'Interactive', icon: <Compass className="w-5 h-5 text-[#27187e]" /> },
-    { label: 'About Atlas', href: '/about', badge: 'Our Story', icon: <Info className="w-5 h-5 text-[#27187e]" /> },
-    { label: 'Contact', href: '/contact', badge: 'Get in Touch', icon: <Mail className="w-5 h-5 text-[#27187e]" /> },
+    { label: 'Home', href: '/', badge: 'Atlas Hub', icon: IconHomeAtlas },
+    { label: 'Fish Library', href: '/fish', badge: '120+ Species', icon: IconFishAtlas },
+    { label: 'Aquarium Plants', href: '/plants', badge: 'Flora Archive', icon: IconPlantsAtlas },
+    { label: 'Equipment Archive', href: '/equipment', badge: 'Gear & Tech', icon: IconEquipmentAtlas },
+    { label: 'Care Guides', href: '/guides', badge: 'Step-by-Step', icon: IconGuidesAtlas },
+    { label: 'Aquarium Tools', href: '/compatibility', badge: 'Interactive', icon: IconToolsAtlas },
+    { label: 'About Atlas', href: '/about', badge: 'Our Story', icon: IconAboutAtlas },
+    { label: 'Contact', href: '/contact', badge: 'Get in Touch', icon: IconContactAtlas },
   ];
 
   return (
@@ -222,13 +219,19 @@ export default function Navbar() {
                         >
                           <div className="flex items-center gap-3.5">
                             <div
-                              className={`w-9 h-9 rounded-lg flex items-center justify-center transition-colors ${
+                              className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all shrink-0 ${
                                 isActive
-                                  ? 'bg-[#1f1366] text-[#f7f7ff]'
+                                  ? 'bg-[#1f1366] text-[#f7f7ff] shadow-inner'
                                   : 'bg-[#edeafc] text-[#27187e] group-hover:bg-[#27187e] group-hover:text-[#f7f7ff]'
                               }`}
                             >
-                              {item.icon}
+                              <item.icon
+                                className={`w-5 h-5 transition-colors ${
+                                  isActive
+                                    ? 'text-[#f7f7ff]'
+                                    : 'text-[#27187e] group-hover:text-[#f7f7ff]'
+                                }`}
+                              />
                             </div>
                             <div className="flex flex-col text-left">
                               <span className="font-display text-xl tracking-wide leading-tight">
