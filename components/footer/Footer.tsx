@@ -5,7 +5,7 @@ import { siteConfig } from '@/config/site';
 export default function Footer() {
   return (
     <footer className="w-full bg-[#27187e] text-[#f7f7ff] pt-14 pb-10 border-t border-[#3b28ab] mt-auto font-sans text-left">
-      <div className="container mx-auto px-4 max-w-6xl">
+      <div className="site-container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10 mb-10">
 
           {/* Left Column: Brand & Socials */}

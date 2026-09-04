@@ -10,7 +10,7 @@ export default function HeroSection() {
 
   return (
     <section id="hero" className="marine-pattern-light relative pt-28 sm:pt-36 pb-20 bg-[#f7f7ff] text-[#27187e] overflow-hidden text-left">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 w-full relative z-10">
+      <div className="site-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
           {/* LEFT: Eyebrow, Giant Headline, Description, Buttons, Stats */}

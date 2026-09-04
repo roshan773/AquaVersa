@@ -11,7 +11,7 @@ export default function EquipmentRecommender() {
 
   return (
     <section className="marine-pattern-light py-24 bg-[#f7f7ff] text-center relative overflow-hidden">
-      <div className="container mx-auto px-4 max-w-5xl relative z-10">
+      <div className="site-container relative z-10">
         
         {/* Section Header (Centered) */}
         <div className="mb-14 flex flex-col items-center">

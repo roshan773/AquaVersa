@@ -1,30 +1,34 @@
-import HeroSection from "@/components/home/HeroSection";
-import EverythingYouNeed from "@/components/home/EverythingYouNeed";
-import PopularFish from "@/components/home/PopularFish";
-import FishCompatibility from "@/components/home/FishCompatibility";
-import EquipmentOverview from "@/components/home/EquipmentOverview";
-import EquipmentRecommender from "@/components/home/EquipmentRecommender";
+import AtlasHero from '@/components/atlas/AtlasHero';
+import AtlasDestinations from '@/components/atlas/AtlasDestinations';
+import AtlasSpeciesIndex from '@/components/atlas/AtlasSpeciesIndex';
+import AtlasKnowledge from '@/components/atlas/AtlasKnowledge';
+import AtlasTools from '@/components/atlas/AtlasTools';
+import AtlasBeginner from '@/components/atlas/AtlasBeginner';
+import AtlasFinalCTA from '@/components/atlas/AtlasFinalCTA';
 
 export default function Home() {
   return (
     <div className="flex flex-col w-full bg-[#f7f7ff] text-[#27187e]">
-      {/* 1. Hero Section */}
-      <HeroSection />
+      {/* 1. Original Editorial Hero */}
+      <AtlasHero />
 
-      {/* 2. Everything You Need (2x2 Resource Grid) */}
-      <EverythingYouNeed />
+      {/* 2. Destination Portals: Fish, Plants, Equipment, Guides */}
+      <AtlasDestinations />
 
-      {/* 3. Popular Fish (4-Column Grid) */}
-      <PopularFish />
+      {/* 3. Species Field Guide Index */}
+      <AtlasSpeciesIndex />
 
-      {/* 4. Fish Compatibility Checker (Dark Indigo Section) */}
-      <FishCompatibility />
+      {/* 4. Core Knowledge Pillars (Dark Persian Indigo Section) */}
+      <AtlasKnowledge />
 
-      {/* 5. Equipment Overview (3-Column Grid) */}
-      <EquipmentOverview />
+      {/* 5. Practical Planning Utilities */}
+      <AtlasTools />
 
-      {/* 6. Equipment Recommender (Centered Recommendation Tool) */}
-      <EquipmentRecommender />
+      {/* 6. Beginner 5-Step Progression */}
+      <AtlasBeginner />
+
+      {/* 7. Final Atlas CTA */}
+      <AtlasFinalCTA />
     </div>
   );
 }

@@ -1,145 +1,197 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Plant as PlantType } from "@/lib/types";
-import { Search, ArrowRight } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { useState } from 'react';
+import { Plant as PlantType } from '@/lib/types';
+import { Search, ArrowRight, RotateCcw, Filter, Leaf } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 interface PlantsClientProps {
   plantList: PlantType[];
 }
 
 export default function PlantsClient({ plantList }: PlantsClientProps) {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [lightFilter, setLightFilter] = useState("All");
+  const [searchTerm, setSearchTerm] = useState('');
+  const [lightFilter, setLightFilter] = useState('All');
+  const [placementFilter, setPlacementFilter] = useState('All');
 
-  const filteredPlants = plantList.filter(plant => {
-    const matchesSearch = plant.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                          (plant.scientificName && plant.scientificName.toLowerCase().includes(searchTerm.toLowerCase()));
-    const matchesLight = lightFilter === "All" || plant.light === lightFilter;
-    return matchesSearch && matchesLight;
+  const filteredPlants = plantList.filter((plant) => {
+    const matchesSearch =
+      plant.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (plant.scientificName && plant.scientificName.toLowerCase().includes(searchTerm.toLowerCase()));
+    const matchesLight = lightFilter === 'All' || plant.light?.toLowerCase().includes(lightFilter.toLowerCase());
+    const matchesPlacement =
+      placementFilter === 'All' || plant.placement?.toLowerCase().includes(placementFilter.toLowerCase());
+
+    return matchesSearch && matchesLight && matchesPlacement;
   });
 
+  const clearFilters = () => {
+    setSearchTerm('');
+    setLightFilter('All');
+    setPlacementFilter('All');
+  };
+
+  const hasActiveFilters = searchTerm !== '' || lightFilter !== 'All' || placementFilter !== 'All';
+
   return (
-    <div className="container mx-auto px-4 py-12 flex flex-col md:flex-row gap-8">
-      
-      {/* Sidebar Filters */}
-      <aside className="w-full md:w-64 shrink-0">
-        <div className="sticky top-24 glass p-6 rounded-2xl">
-          <h2 className="font-semibold text-lg mb-6">Filters</h2>
-          
-          <div className="mb-6">
-            <label className="text-sm font-medium text-muted-foreground mb-3 block">Search</label>
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-              <input 
-                type="text" 
-                placeholder="Search plants..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full bg-background border border-border rounded-lg pl-9 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
-              />
-            </div>
-          </div>
-
-          <div className="mb-6">
-            <label className="text-sm font-medium text-muted-foreground mb-3 block">Lighting Need</label>
-            <div className="flex flex-col gap-2">
-              {["All", "Low", "Medium", "High"].map(l => (
-                <label key={l} className="flex items-center gap-2 cursor-pointer">
-                  <input 
-                    type="radio" 
-                    name="light" 
-                    value={l}
-                    checked={lightFilter === l}
-                    onChange={() => setLightFilter(l)}
-                    className="text-emerald-500 focus:ring-emerald-500 bg-background border-border"
-                  />
-                  <span className="text-sm">{l}</span>
-                </label>
-              ))}
-            </div>
-          </div>
-        </div>
-      </aside>
-
-      {/* Main Content */}
-      <main className="flex-1">
+    <div className="min-h-screen bg-[#f7f7ff] text-[#27187e] pt-32 pb-24 text-left marine-pattern-light">
+      <div className="site-container">
         
-        {/* Above the Fold Header & CTA */}
-        <div className="p-6 md:p-8 rounded-3xl bg-emerald-950/20 border border-emerald-500/10 mb-8 flex flex-col md:flex-row md:items-center justify-between gap-6 text-left relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/5 rounded-full blur-2xl pointer-events-none" />
-          <div className="space-y-2">
-            <h1 className="text-3xl md:text-4xl font-poppins font-bold tracking-tight text-emerald-400">Aquatic Plants Guide</h1>
-            <p className="text-slate-400 max-w-lg leading-relaxed text-sm">
-              Discover beautiful live plants for natural filtration, structural depth, and fish shelter in your aquarium.
-            </p>
-          </div>
-          <div className="shrink-0">
-            <Link
-              href="/aquascape-planner"
-              className="px-6 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-slate-900 font-bold rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/10 hover:shadow-emerald-600/25 transition-all tracking-wider uppercase font-poppins cursor-pointer"
-            >
-              <span>Design Layout</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+        {/* Page Header */}
+        <div className="mb-10 pb-8 border-b border-[#cfcaf5]">
+          <span className="text-xs font-condensed font-bold uppercase tracking-[0.25em] text-[#27187e] mb-2 block">
+            BOTANICAL CATALOGUE
+          </span>
+          <h1 className="text-6xl sm:text-7xl md:text-8xl font-display font-normal text-[#27187e] tracking-wide mb-3">
+            AQUARIUM PLANTS
+          </h1>
+          <p className="text-base sm:text-lg text-[#27187e]/85 font-normal max-w-2xl font-sans leading-relaxed">
+            Botanical index of freshwater flora for natural nutrient absorption, aquascaping depth, and fish shelter.
+          </p>
+
+          {/* Search */}
+          <div className="mt-8 max-w-3xl relative">
+            <Search className="w-5 h-5 text-[#27187e]/60 absolute left-4 top-1/2 -translate-y-1/2" />
+            <input
+              type="text"
+              placeholder="Search botanical species (e.g. Java Fern, Anubias nana, Amazon Sword)..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-12 pr-4 py-4 rounded-2xl bg-[#ffffff] border-2 border-[#cfcaf5] focus:border-[#27187e] text-base text-[#27187e] font-sans focus:outline-none shadow-sm"
+            />
           </div>
         </div>
 
+        {/* Filter Bar */}
+        <div className="bg-[#ffffff] border-2 border-[#cfcaf5] rounded-3xl p-6 mb-10 shadow-sm">
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-4 pb-4 border-b border-[#edeafc]">
+            <div className="flex items-center gap-2">
+              <Leaf className="w-4 h-4 text-[#27187e]" />
+              <span className="text-xs font-condensed font-bold uppercase tracking-wider text-[#27187e]">
+                Filter Botanical Archive ({filteredPlants.length} species available)
+              </span>
+            </div>
+
+            {hasActiveFilters && (
+              <button
+                onClick={clearFilters}
+                className="text-xs font-condensed font-bold uppercase tracking-wider text-[#27187e] hover:underline flex items-center gap-1 cursor-pointer"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>Reset Filters</span>
+              </button>
+            )}
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-sans">
+            {/* Light Requirement */}
+            <div>
+              <label className="text-[11px] uppercase font-condensed font-bold text-[#27187e] mb-1.5 block">
+                Lighting Requirement
+              </label>
+              <select
+                value={lightFilter}
+                onChange={(e) => setLightFilter(e.target.value)}
+                className="w-full bg-[#f7f7ff] border border-[#cfcaf5] rounded-xl px-3 py-2 text-xs text-[#27187e] focus:outline-none focus:border-[#27187e]"
+              >
+                <option value="All">All Light Requirements</option>
+                <option value="low">Low Light (Beginner Friendly)</option>
+                <option value="medium">Medium Light</option>
+                <option value="high">High Light (CO2 Beneficial)</option>
+              </select>
+            </div>
+
+            {/* Placement */}
+            <div>
+              <label className="text-[11px] uppercase font-condensed font-bold text-[#27187e] mb-1.5 block">
+                Aquarium Placement
+              </label>
+              <select
+                value={placementFilter}
+                onChange={(e) => setPlacementFilter(e.target.value)}
+                className="w-full bg-[#f7f7ff] border border-[#cfcaf5] rounded-xl px-3 py-2 text-xs text-[#27187e] focus:outline-none focus:border-[#27187e]"
+              >
+                <option value="All">All Placements</option>
+                <option value="foreground">Foreground (Carpeting)</option>
+                <option value="midground">Midground &amp; Hardscape</option>
+                <option value="background">Background (Tall Stems)</option>
+                <option value="floating">Floating Plants</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        {/* Botanical Plant Grid */}
         {filteredPlants.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredPlants.map(plant => (
-              <div key={plant.id} className="group rounded-2xl border border-border bg-card overflow-hidden hover:shadow-lg transition-all flex flex-col justify-between text-left">
+            {filteredPlants.map((plant) => (
+              <Link
+                key={plant.id}
+                href={`/plants/${plant.slug}`}
+                className="bg-[#ffffff] border-2 border-[#cfcaf5] hover:border-[#27187e] rounded-3xl p-6 flex flex-col justify-between group transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1"
+              >
                 <div>
-                  <div className="relative h-48 w-full bg-muted overflow-hidden shrink-0">
-                    <Image 
-                      src={plant.image} 
-                      alt={`${plant.name} (${plant.scientificName || 'Live Aquatic Plant'})`} 
-                      fill 
+                  <div className="relative w-full aspect-[4/3] rounded-2xl bg-[#edeafc] overflow-hidden mb-5">
+                    <Image
+                      src={plant.image}
+                      alt={plant.name}
+                      fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      sizes="(max-width: 768px) 100vw, 33vw"
                     />
-                    <div className="absolute top-3 right-3 bg-black/60 text-white backdrop-blur-md px-2 py-0.5 rounded text-xs font-semibold">
-                      {plant.difficulty} Care
+                    <div className="absolute top-3 left-3 bg-[#f7f7ff] text-[#27187e] px-2.5 py-1 rounded-md text-[10px] font-condensed font-bold uppercase tracking-wider">
+                      {plant.placement || 'Midground'}
                     </div>
                   </div>
-                  <div className="p-5">
-                    <h3 className="text-lg font-bold group-hover:text-emerald-500 transition-colors line-clamp-1">{plant.name}</h3>
-                    <p className="text-xs text-muted-foreground italic mb-3">{plant.scientificName}</p>
-                    <p className="text-sm text-muted-foreground line-clamp-2 mb-4">{plant.description}</p>
-                    
-                    <div className="grid grid-cols-2 gap-2 text-xs mb-2">
-                      <span>Light: <strong>{plant.light}</strong></span>
-                      <span>CO2: <strong>{plant.co2 || 'Optional'}</strong></span>
-                      <span className="col-span-2 truncate">Placement: <strong>{plant.placement}</strong></span>
-                    </div>
+
+                  <h3 className="text-2xl sm:text-3xl font-display font-normal text-[#27187e] group-hover:text-[#1b1059] transition-colors leading-tight mb-1">
+                    {plant.name}
+                  </h3>
+
+                  <p className="text-xs text-[#27187e]/70 italic font-sans mb-4">
+                    {plant.scientificName || 'Aquatic flora'}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 text-xs font-sans mb-4 pt-3 border-t border-[#edeafc]">
+                    <span className="bg-[#edeafc] text-[#27187e] px-2.5 py-1 rounded-md font-medium text-[11px]">
+                      Light: {plant.light}
+                    </span>
+                    <span className="bg-[#edeafc] text-[#27187e] px-2.5 py-1 rounded-md font-medium text-[11px]">
+                      Difficulty: {plant.difficulty}
+                    </span>
                   </div>
+
+                  <p className="text-xs text-[#27187e]/80 font-sans leading-relaxed line-clamp-2">
+                    {plant.description}
+                  </p>
                 </div>
-                <div className="px-5 pb-5">
-                  <Link
-                    href={`/plants/${plant.slug}`}
-                    className="w-full py-2.5 bg-muted hover:bg-emerald-600 hover:text-slate-900 text-center rounded-xl text-sm font-semibold transition-colors block"
-                  >
-                    View Plant Guide
-                  </Link>
+
+                <div className="pt-4 mt-4 border-t border-[#edeafc] flex items-center justify-between text-xs font-condensed font-bold uppercase tracking-wider text-[#27187e]">
+                  <span>View Botanical Profile</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         ) : (
-          <div className="text-center py-20 bg-muted/30 rounded-2xl border border-border border-dashed">
-            <p className="text-muted-foreground">No plants match your current filters.</p>
-            <button 
-              onClick={() => { setSearchTerm(""); setLightFilter("All"); }}
-              className="mt-4 text-emerald-600 font-medium hover:underline"
+          <div className="bg-[#ffffff] border-2 border-[#cfcaf5] rounded-3xl p-12 text-center max-w-xl mx-auto my-12">
+            <h3 className="text-3xl font-display font-normal text-[#27187e] mb-2">
+              No aquatic plants matched your search.
+            </h3>
+            <p className="text-sm text-[#27187e]/75 mb-6 font-sans">
+              Try adjusting your spelling or reset the filter criteria.
+            </p>
+            <button
+              onClick={clearFilters}
+              className="px-6 py-3 rounded-full bg-[#27187e] text-[#f7f7ff] text-xs font-condensed font-bold uppercase tracking-wider hover:bg-[#1b1059] transition-all"
             >
-              Clear filters
+              Clear All Filters
             </button>
           </div>
         )}
-      </main>
-      
+
+      </div>
     </div>
   );
 }

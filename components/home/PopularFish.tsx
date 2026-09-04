@@ -43,7 +43,7 @@ export default function PopularFish() {
 
   return (
     <section className="marine-pattern-light py-24 bg-[#f7f7ff] text-left relative overflow-hidden">
-      <div className="container mx-auto px-4 max-w-6xl relative z-10">
+      <div className="site-container relative z-10">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">

@@ -14,7 +14,7 @@ export default function FishCompatibility() {
 
   return (
     <section className="marine-pattern-dark py-24 bg-[#27187e] text-[#f7f7ff] relative overflow-hidden text-left">
-      <div className="container mx-auto px-4 max-w-6xl relative z-10">
+      <div className="site-container relative z-10">
         
         {/* Section Header */}
         <div className="mb-14">

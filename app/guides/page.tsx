@@ -1,64 +1,103 @@
-import Link from "next/link";
-import { Waves, Sparkles, BookOpen } from "lucide-react";
-import { Metadata } from "next";
-import { siteConfig } from "@/config/site";
+import Link from 'next/link';
+import { Waves, BookOpen, ArrowRight, Droplets, Leaf, Wrench, Compass, ShieldCheck } from 'lucide-react';
+import { Metadata } from 'next';
+import { siteConfig } from '@/config/site';
 
 export const metadata: Metadata = {
-  title: `Aquarium Setup & Maintenance Guides | ${siteConfig.name}`,
-  description: `Read in-depth step-by-step guides on aquarium setup, water parameters, filter media, and plant growth from ${siteConfig.name}.`,
-  keywords: [
-    "roshan aquva world tutorials",
-    "aquarium maintenance guides",
-    "roshan aquva world setup tutorial",
-    "roshan aquva world",
-    "aquaguide",
-    "aquvaGuide"
-  ],
+  title: `Aquarium Knowledge Guides & Reference Articles | ${siteConfig.name}`,
+  description: `In-depth step-by-step editorial guides covering nitrogen water chemistry, planted aquascapes, hardware selection, and disease prevention.`,
   alternates: {
     canonical: `${siteConfig.siteUrl}/guides`,
-  }
+  },
 };
 
 export default function GuidesPage() {
-  return (
-    <section className="min-h-screen py-24 bg-black text-slate-100 text-left font-sans">
-      <div className="container mx-auto px-4 max-w-5xl">
-        <div className="text-center mb-12 flex flex-col items-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-cyan-500/20 text-cyan-400 mb-6 border border-cyan-500/30">
-            <Waves className="w-8 h-8" />
-          </div>
-          <h1 className="text-4xl md:text-5xl font-poppins font-extrabold mb-4 text-white">Guides & Tutorials</h1>
-          <p className="text-base md:text-lg text-slate-455 max-w-2xl mx-auto font-light leading-relaxed mb-6">
-            In‑depth step‑by‑step guides covering everything from cycling water chemistry to advanced planted aquascaping layouts.
-          </p>
+  const guideCategories = [
+    {
+      title: 'Water Chemistry & Nitrogen Cycle',
+      desc: 'Master ammonia, nitrite, nitrate conversion, and pH stability to establish a biologically resilient aquarium.',
+      icon: <Droplets className="w-6 h-6 text-[#27187e]" />,
+      href: '/water-params',
+    },
+    {
+      title: 'Aquascaping & Live Flora',
+      desc: 'Discover low-tech aquatic plants, substrate selection, CO2 requirements, and layout principles.',
+      icon: <Leaf className="w-6 h-6 text-[#27187e]" />,
+      href: '/plants',
+    },
+    {
+      title: 'Tank Size & Volume Planning',
+      desc: 'Understand surface area gas exchange, floor weight distribution, and realistic stocking capacities.',
+      icon: <Compass className="w-6 h-6 text-[#27187e]" />,
+      href: '/tank-size',
+    },
+    {
+      title: 'Filtration & Hardware Architecture',
+      desc: 'Compare sponge, hang-on-back, and canister filtration flow rates for mechanical and biological media.',
+      icon: <Wrench className="w-6 h-6 text-[#27187e]" />,
+      href: '/equipment',
+    },
+    {
+      title: 'Species Compatibility & Social Behavior',
+      desc: 'Evaluate temperament dynamics, schooling requirements, and biotope matching before adding livestock.',
+      icon: <ShieldCheck className="w-6 h-6 text-[#27187e]" />,
+      href: '/compatibility',
+    },
+    {
+      title: 'Beginner 5-Step Setup Progression',
+      desc: 'A structured roadmap from dry tank placement to cycling, acclimation, and weekly water change discipline.',
+      icon: <BookOpen className="w-6 h-6 text-[#27187e]" />,
+      href: '/start-aquarium',
+    },
+  ];
 
-          {/* Above the Fold CTA */}
-          <Link
-            href="/start-aquarium"
-            className="px-6 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-blue-600/10 hover:shadow-blue-600/25 transition-all tracking-wider uppercase font-poppins cursor-pointer"
-          >
-            <span>Start Your Setup Guide</span>
-            <BookOpen className="w-4 h-4" />
-          </Link>
-        </div>
+  return (
+    <section className="min-h-screen pt-32 pb-24 bg-[#f7f7ff] text-[#27187e] text-left font-sans marine-pattern-light">
+      <div className="site-container">
         
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto pt-8">
-          <Link href="/water-params" className="p-8 bg-slate-950 hover:bg-slate-900 rounded-3xl border border-slate-900 hover:border-blue-500/30 hover:shadow-lg transition-all block group">
-            <h2 className="text-2xl font-bold mb-4 text-cyan-400 group-hover:text-cyan-300 transition-colors">Water Chemistry Guide</h2>
-            <p className="text-slate-400 leading-relaxed text-sm font-light">
-              Master the science of water quality. Learn how to test, balance, and maintain optimal parameters like pH, ammonia, nitrite, and nitrates for a healthy aquarium.
-            </p>
-            <span className="inline-block mt-6 text-xs font-bold uppercase tracking-wider text-cyan-455 group-hover:underline">Read Water Guide →</span>
-          </Link>
-          
-          <Link href="/plants" className="p-8 bg-slate-950 hover:bg-slate-900 rounded-3xl border border-slate-900 hover:border-emerald-500/30 hover:shadow-lg transition-all block group">
-            <h2 className="text-2xl font-bold mb-4 text-emerald-400 group-hover:text-emerald-300 transition-colors">Aquascaping & Plants Guide</h2>
-            <p className="text-slate-400 leading-relaxed text-sm font-light">
-              Design stunning planted tanks. Discover beginner-friendly low-tech plants, placement layouts (foreground/background), lighting needs, and growth guidelines.
-            </p>
-            <span className="inline-block mt-6 text-xs font-bold uppercase tracking-wider text-emerald-455 group-hover:underline">Read Plants Guide →</span>
-          </Link>
+        {/* Header */}
+        <div className="mb-12 pb-8 border-b border-[#cfcaf5]">
+          <span className="text-xs font-condensed font-bold uppercase tracking-[0.25em] text-[#27187e] mb-2 block">
+            KNOWLEDGE BASE
+          </span>
+          <h1 className="text-6xl sm:text-7xl md:text-8xl font-display font-normal text-[#27187e] tracking-wide mb-3">
+            CARE GUIDES &amp; ARTICLES
+          </h1>
+          <p className="text-base sm:text-lg text-[#27187e]/85 font-normal max-w-2xl font-sans leading-relaxed">
+            Carefully written natural history reference articles on aquatic husbandry, water parameter management, and habitat planning.
+          </p>
         </div>
+
+        {/* 6 Guides Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {guideCategories.map((item) => (
+            <Link
+              key={item.title}
+              href={item.href}
+              className="bg-[#ffffff] border-2 border-[#cfcaf5] hover:border-[#27187e] rounded-3xl p-7 flex flex-col justify-between group transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1"
+            >
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-[#edeafc] border border-[#cfcaf5] flex items-center justify-center text-[#27187e] mb-5 group-hover:bg-[#27187e] group-hover:text-[#f7f7ff] transition-colors">
+                  {item.icon}
+                </div>
+
+                <h2 className="text-2xl sm:text-3xl font-display font-normal text-[#27187e] mb-2 group-hover:text-[#1b1059] transition-colors leading-tight">
+                  {item.title}
+                </h2>
+
+                <p className="text-sm text-[#27187e]/80 font-sans leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+
+              <div className="pt-6 mt-6 border-t border-[#edeafc] flex items-center justify-between text-xs font-condensed font-bold uppercase tracking-wider text-[#27187e]">
+                <span>Read Reference Article</span>
+                <ArrowRight className="w-4 h-4 text-[#27187e] group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+          ))}
+        </div>
+
       </div>
     </section>
   );
