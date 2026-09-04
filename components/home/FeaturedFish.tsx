@@ -17,50 +17,49 @@ export default function FeaturedFish() {
   }, [setFishCount]);
 
   return (
-    <section className="py-20 bg-[#030712] relative border-b border-slate-800/80">
+    <section className="py-20 bg-[#0f0738] relative border-b border-[#27187E]/80">
       <div className="container mx-auto px-4 max-w-7xl">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 text-left">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-950/50 border border-teal-800/30 mb-3 text-teal-300 text-xs font-semibold">
-              <Compass className="w-3.5 h-3.5 text-teal-400" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-[#27187E]/50 border border-[#3622a6] mb-3 text-[#F7F7FF] text-xs font-condensed uppercase tracking-wider font-semibold">
+              <Compass className="w-3.5 h-3.5 text-[#aca1f7]" />
               <span>Species Care Library</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-white tracking-tight">
-              Featured Aquarium Fish
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-normal text-[#F7F7FF] tracking-wide">
+              Featured Aquarium Species
             </h2>
-            <p className="text-slate-400 text-sm max-w-xl mt-2 font-normal leading-relaxed">
+            <p className="text-[#F7F7FF]/75 text-sm max-w-xl mt-2 font-normal leading-relaxed font-sans">
               Explore essential care requirements, tank parameters, and social temperaments for popular freshwater and marine species.
             </p>
           </div>
 
           <Link 
             href="/fish" 
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-400 hover:text-teal-300 transition-colors mt-4 md:mt-0"
+            className="inline-flex items-center gap-1.5 text-xs font-condensed font-bold uppercase tracking-wider text-[#F7F7FF] hover:text-[#aca1f7] transition-colors mt-4 md:mt-0"
           >
             <span>Browse All {fishData.length} Species</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 text-[#aca1f7]" />
           </Link>
         </div>
 
         {/* Card Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
           {fishData.slice(0, 6).map((fish) => {
-            const isFreshwater = fish.category?.toLowerCase() === "freshwater";
             const badgeColor = 
-              fish.difficulty === "Beginner" ? "bg-emerald-950/60 text-emerald-300 border-emerald-800/30" :
-              fish.difficulty === "Advanced Beginner" ? "bg-teal-950/60 text-teal-300 border-teal-800/30" :
-              fish.difficulty === "Intermediate" ? "bg-blue-950/60 text-blue-300 border-blue-800/30" :
-              "bg-amber-950/60 text-amber-300 border-amber-800/30";
+              fish.difficulty === "Beginner" ? "bg-[#F7F7FF] text-[#27187E] font-bold" :
+              fish.difficulty === "Advanced Beginner" ? "bg-[#d0cbfb] text-[#14094a] font-bold" :
+              fish.difficulty === "Intermediate" ? "bg-[#3622a6] text-[#F7F7FF] font-semibold" :
+              "bg-[#ffbe3b] text-[#14094a] font-bold";
             
             return (
               <div 
                 key={fish.id}
-                className="group rounded-2xl overflow-hidden border border-slate-800 bg-[#061224] hover:border-slate-700 transition-all duration-200 flex flex-col"
+                className="group rounded-2xl overflow-hidden border border-[#27187E] bg-[#1c0e64] hover:border-[#F7F7FF] transition-all duration-200 flex flex-col shadow-lg"
               >
                 {/* Card Image */}
-                <div className="relative overflow-hidden h-48 w-full bg-slate-950">
+                <div className="relative overflow-hidden h-48 w-full bg-[#0d0630]">
                   <Image 
                     src={fish.image} 
                     alt={`${fish.name} (${fish.scientificName || 'Aquarium species'})`} 
@@ -70,12 +69,12 @@ export default function FeaturedFish() {
                   />
                   
                   {/* Category Pill */}
-                  <div className="absolute top-3 left-3 bg-[#030712]/90 backdrop-blur-sm border border-slate-800 px-2.5 py-0.5 rounded-md text-[10px] font-semibold text-slate-300">
+                  <div className="absolute top-3 left-3 bg-[#0d0630]/90 backdrop-blur-sm border border-[#27187E] px-2.5 py-0.5 rounded-md text-[10px] font-condensed uppercase tracking-wider font-semibold text-[#F7F7FF]">
                     {fish.category}
                   </div>
 
                   {/* Difficulty Tag */}
-                  <div className={`absolute top-3 right-3 border backdrop-blur-sm px-2.5 py-0.5 rounded-md text-[10px] font-semibold ${badgeColor}`}>
+                  <div className={`absolute top-3 right-3 px-2.5 py-0.5 rounded-md text-[10px] font-condensed uppercase tracking-wider shadow-sm ${badgeColor}`}>
                     {fish.difficulty}
                   </div>
                 </div>
@@ -83,34 +82,34 @@ export default function FeaturedFish() {
                 {/* Card Body */}
                 <div className="p-5 flex flex-col flex-grow">
                   <div className="mb-3">
-                    <h3 className="text-base font-bold text-white group-hover:text-teal-300 transition-colors line-clamp-1 font-poppins">
+                    <h3 className="text-xl font-display font-normal tracking-wide text-[#F7F7FF] group-hover:text-white transition-colors line-clamp-1">
                       {fish.name}
                     </h3>
-                    <p className="text-xs text-slate-400 italic font-normal">{fish.scientificName}</p>
+                    <p className="text-xs text-[#F7F7FF]/70 italic font-normal font-sans">{fish.scientificName}</p>
                   </div>
                   
                   {/* Quick parameter pills */}
-                  <div className="grid grid-cols-2 gap-2 mb-4 text-[11px] text-slate-300">
-                    <div className="p-1.5 rounded-lg bg-slate-900 border border-slate-800">
-                      <span className="text-slate-500 block text-[9px] uppercase">Min Tank</span>
-                      <span className="font-semibold text-white">{fish.minTankSize} gal</span>
+                  <div className="grid grid-cols-2 gap-2 mb-4 text-[11px] text-[#F7F7FF]">
+                    <div className="p-2 rounded-xl bg-[#27187E]/60 border border-[#3622a6]">
+                      <span className="text-[#F7F7FF]/60 block text-[9px] uppercase font-condensed tracking-wider">Min Tank</span>
+                      <span className="font-bold text-[#F7F7FF] font-condensed text-sm">{fish.minTankSize} GAL</span>
                     </div>
-                    <div className="p-1.5 rounded-lg bg-slate-900 border border-slate-800">
-                      <span className="text-slate-500 block text-[9px] uppercase">Temperament</span>
-                      <span className="font-semibold text-white truncate block">{fish.temperament}</span>
+                    <div className="p-2 rounded-xl bg-[#27187E]/60 border border-[#3622a6]">
+                      <span className="text-[#F7F7FF]/60 block text-[9px] uppercase font-condensed tracking-wider">Temperament</span>
+                      <span className="font-bold text-[#F7F7FF] font-condensed text-sm truncate block">{fish.temperament}</span>
                     </div>
                   </div>
 
-                  <p className="text-xs text-slate-400 font-normal mb-5 line-clamp-2 flex-grow leading-relaxed">
+                  <p className="text-xs text-[#F7F7FF]/75 font-normal mb-5 line-clamp-2 flex-grow leading-relaxed font-sans">
                     {fish.description}
                   </p>
                   
                   <Link 
                     href={`/fish/${fish.category?.toLowerCase() || 'freshwater'}/${fish.slug}`} 
-                    className="inline-flex items-center gap-1.5 text-slate-200 hover:text-white font-semibold text-xs mt-auto group cursor-pointer pt-3 border-t border-slate-800/80"
+                    className="inline-flex items-center gap-1.5 text-[#F7F7FF] hover:text-white font-condensed uppercase tracking-wider font-bold text-xs mt-auto group cursor-pointer pt-3 border-t border-[#27187E]"
                   >
                     <span>Read Care Profile</span> 
-                    <ArrowRight className="w-3.5 h-3.5 text-teal-400 group-hover:translate-x-0.5 transition-transform" />
+                    <ArrowRight className="w-3.5 h-3.5 text-[#aca1f7] group-hover:translate-x-0.5 transition-transform" />
                   </Link>
                 </div>
               </div>

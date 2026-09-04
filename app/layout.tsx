@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Outfit } from "next/font/google";
+import { Plus_Jakarta_Sans, Oswald, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 import Navbar from "@/components/navbar/Navbar";
@@ -15,9 +15,16 @@ const plusJakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const outfit = Outfit({
+const oswald = Oswald({
   subsets: ["latin"],
-  variable: "--font-outfit",
+  variable: "--font-oswald",
+  display: "swap",
+});
+
+const bebasNeue = Bebas_Neue({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-bebas",
   display: "swap",
 });
 
@@ -85,7 +92,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <head>
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#030712" />
+        <meta name="theme-color" content="#27187E" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -105,7 +112,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${plusJakarta.variable} ${outfit.variable} font-sans antialiased min-h-screen flex flex-col bg-[#030712] text-slate-100 selection:bg-cyan-500/20 selection:text-cyan-200`}>
+      <body className={`${plusJakarta.variable} ${oswald.variable} ${bebasNeue.variable} font-sans antialiased min-h-screen flex flex-col bg-[#0f0738] text-[#F7F7FF] selection:bg-[#27187E] selection:text-[#F7F7FF]`}>
         <SitePreloader />
         <Navbar />
         <StatsProvider>

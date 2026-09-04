@@ -15,7 +15,7 @@ export default function AquariumTypes() {
     {
       id: 'planted',
       title: 'Planted Aquascape',
-      badge: 'Living Ecosystem',
+      badge: 'Living Flora',
       desc: 'Focuses on lush aquatic flora, CO2 balance, specialized substrates, and natural layout composition.',
       image: '/images/anubias.png',
       href: '/plants',
@@ -39,19 +39,19 @@ export default function AquariumTypes() {
   ];
 
   return (
-    <section className="py-20 bg-[#040a14] relative border-b border-slate-800/80 text-left">
+    <section className="py-20 bg-[#14094a] relative border-b border-[#27187E]/80 text-left">
       <div className="container mx-auto px-4 max-w-7xl">
         
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-950/50 border border-teal-800/30 mb-3 text-teal-300 text-xs font-semibold">
-              <Layers className="w-3.5 h-3.5 text-teal-400" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-[#27187E]/50 border border-[#3622a6] mb-3 text-[#F7F7FF] text-xs font-condensed uppercase tracking-wider font-semibold">
+              <Layers className="w-3.5 h-3.5 text-[#aca1f7]" />
               <span>Aquarium Styles</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-white tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-normal text-[#F7F7FF] tracking-wide">
               Explore Aquarium Types
             </h2>
-            <p className="text-slate-400 text-sm max-w-xl mt-2 font-normal leading-relaxed">
+            <p className="text-[#F7F7FF]/75 text-sm max-w-xl mt-2 font-normal leading-relaxed font-sans">
               Every thriving aquarium begins with a clear system focus. Choose the style of habitat that fits your goals and experience level.
             </p>
           </div>
@@ -62,9 +62,9 @@ export default function AquariumTypes() {
             <Link 
               href={type.href} 
               key={type.id} 
-              className="group text-left rounded-2xl border border-slate-800 bg-[#061224] overflow-hidden hover:border-slate-700 transition-all duration-200 flex flex-col"
+              className="group text-left rounded-2xl border border-[#27187E] bg-[#1c0e64] overflow-hidden hover:border-[#F7F7FF] transition-all duration-200 flex flex-col shadow-lg"
             >
-              <div className="relative h-44 w-full overflow-hidden bg-slate-950">
+              <div className="relative h-44 w-full overflow-hidden bg-[#0d0630]">
                 <Image 
                   src={type.image} 
                   alt={type.title} 
@@ -72,18 +72,18 @@ export default function AquariumTypes() {
                   className="object-cover group-hover:scale-105 transition-transform duration-300 opacity-85" 
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" 
                 />
-                <div className="absolute top-3 left-3 bg-[#030712]/90 px-2.5 py-0.5 rounded-md text-[10px] font-semibold text-teal-300 border border-slate-800">
+                <div className="absolute top-3 left-3 bg-[#F7F7FF] px-2.5 py-0.5 rounded-md text-[10px] font-condensed uppercase tracking-wider font-bold text-[#27187E]">
                   {type.badge}
                 </div>
               </div>
               <div className="p-5 flex flex-col flex-grow">
-                <h3 className="text-base font-bold mb-1.5 text-white group-hover:text-teal-300 transition-colors font-poppins">
+                <h3 className="text-xl font-display font-normal tracking-wide mb-1.5 text-[#F7F7FF] group-hover:text-white transition-colors">
                   {type.title}
                 </h3>
-                <p className="text-xs text-slate-400 font-normal leading-relaxed mb-4 flex-grow">
+                <p className="text-xs text-[#F7F7FF]/75 font-normal leading-relaxed mb-4 flex-grow font-sans">
                   {type.desc}
                 </p>
-                <span className="inline-flex items-center gap-1 text-xs font-semibold text-teal-400 group-hover:text-teal-300 pt-3 border-t border-slate-800/80">
+                <span className="inline-flex items-center gap-1 text-xs font-condensed uppercase tracking-wider font-bold text-[#aca1f7] group-hover:text-white pt-3 border-t border-[#27187E]">
                   <span>Learn Requirements</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                 </span>

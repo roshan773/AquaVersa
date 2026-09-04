@@ -1,4 +1,4 @@
-import { TestTubes, Droplets, Thermometer, FlaskConical, ArrowRight, AlertTriangle, ShieldCheck } from 'lucide-react';
+import { TestTubes, Droplets, Thermometer, FlaskConical, ArrowRight, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 
 interface WaterParamsProps {
@@ -13,8 +13,8 @@ export default function WaterParams({ showCTA = true }: WaterParamsProps) {
       target: '0 ppm (Strictly)',
       danger: '> 0 ppm',
       desc: 'Highly toxic waste excreted by fish gills and decaying organic matter. Must be completely zero in an established, cycled aquarium.',
-      icon: <FlaskConical className="w-5 h-5 text-rose-400" />,
-      tagColor: 'text-rose-300 bg-rose-950/40 border-rose-800/40'
+      icon: <FlaskConical className="w-5 h-5 text-[#F7F7FF]" />,
+      tagColor: 'text-[#F7F7FF] bg-[#27187E] border-[#4a34c9]'
     },
     {
       id: 'nitrite',
@@ -22,8 +22,8 @@ export default function WaterParams({ showCTA = true }: WaterParamsProps) {
       target: '0 ppm (Strictly)',
       danger: '> 0 ppm',
       desc: 'The intermediate compound in the nitrogen cycle. Also toxic to fish respiration. Beneficial nitrifying bacteria convert this into nitrate.',
-      icon: <FlaskConical className="w-5 h-5 text-amber-400" />,
-      tagColor: 'text-amber-300 bg-amber-950/40 border-amber-800/40'
+      icon: <FlaskConical className="w-5 h-5 text-[#aca1f7]" />,
+      tagColor: 'text-[#aca1f7] bg-[#1c0e64] border-[#3622a6]'
     },
     {
       id: 'nitrate',
@@ -31,8 +31,8 @@ export default function WaterParams({ showCTA = true }: WaterParamsProps) {
       target: '< 20 ppm',
       danger: '> 40 ppm',
       desc: 'The final byproduct of the biological cycle. Safely managed through regular partial water changes and nutrient uptake by live aquatic plants.',
-      icon: <FlaskConical className="w-5 h-5 text-teal-400" />,
-      tagColor: 'text-teal-300 bg-teal-950/40 border-teal-800/40'
+      icon: <FlaskConical className="w-5 h-5 text-[#F7F7FF]" />,
+      tagColor: 'text-[#F7F7FF] bg-[#27187E] border-[#4a34c9]'
     },
     {
       id: 'ph',
@@ -40,8 +40,8 @@ export default function WaterParams({ showCTA = true }: WaterParamsProps) {
       target: 'Species Specific',
       danger: 'Rapid Fluctuations',
       desc: 'Measures water acidity. Consistent stability is much more critical than chasing a theoretical number with chemical additives.',
-      icon: <TestTubes className="w-5 h-5 text-sky-400" />,
-      tagColor: 'text-sky-300 bg-sky-950/40 border-sky-800/40'
+      icon: <TestTubes className="w-5 h-5 text-[#aca1f7]" />,
+      tagColor: 'text-[#aca1f7] bg-[#1c0e64] border-[#3622a6]'
     },
     {
       id: 'temp',
@@ -49,8 +49,8 @@ export default function WaterParams({ showCTA = true }: WaterParamsProps) {
       target: 'Species Specific',
       danger: 'Sudden Chills or Spikes',
       desc: 'Tropical species typically thrive between 72–80°F. Reliable heaters and digital thermometers protect fish from stress-induced diseases.',
-      icon: <Thermometer className="w-5 h-5 text-emerald-400" />,
-      tagColor: 'text-emerald-300 bg-emerald-950/40 border-emerald-800/40'
+      icon: <Thermometer className="w-5 h-5 text-[#F7F7FF]" />,
+      tagColor: 'text-[#F7F7FF] bg-[#27187E] border-[#4a34c9]'
     },
     {
       id: 'gh-kh',
@@ -58,34 +58,34 @@ export default function WaterParams({ showCTA = true }: WaterParamsProps) {
       target: 'Species Specific',
       danger: 'KH < 3 dKH (Crash Risk)',
       desc: 'Carbonate hardness (KH) buffers against pH crashes, while General hardness (GH) provides essential minerals for invertebrates and plants.',
-      icon: <Droplets className="w-5 h-5 text-teal-400" />,
-      tagColor: 'text-teal-300 bg-teal-950/40 border-teal-800/40'
+      icon: <Droplets className="w-5 h-5 text-[#aca1f7]" />,
+      tagColor: 'text-[#aca1f7] bg-[#1c0e64] border-[#3622a6]'
     }
   ];
 
   return (
-    <section className="py-20 bg-[#040a14] relative border-b border-slate-800/80 text-left">
+    <section className="py-20 bg-[#14094a] relative border-b border-[#27187E]/80 text-left">
       <div className="container mx-auto px-4 max-w-6xl">
         
         {/* Section Header */}
         <div className="mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-950/50 border border-teal-800/30 mb-3 text-teal-300 text-xs font-semibold">
-            <TestTubes className="w-3.5 h-3.5 text-teal-400" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-[#27187E]/50 border border-[#3622a6] mb-3 text-[#F7F7FF] text-xs font-condensed uppercase tracking-wider font-semibold">
+            <TestTubes className="w-3.5 h-3.5 text-[#aca1f7]" />
             <span>Water Chemistry Fundamentals</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-white tracking-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-normal text-[#F7F7FF] tracking-wide">
             Understanding Aquarium Water
           </h2>
-          <p className="text-slate-400 text-sm max-w-2xl mt-2 font-normal leading-relaxed">
+          <p className="text-[#F7F7FF]/75 text-sm max-w-2xl mt-2 font-normal leading-relaxed font-sans">
             Successful fishkeeping is fundamentally about cultivating a healthy aquatic environment. Understanding key parameters prevents common beginner issues.
           </p>
         </div>
 
         {/* Stability Warning Notice */}
-        <div className="mb-8 p-4 rounded-xl bg-[#061224] border border-slate-800 flex items-start gap-3.5 text-left">
-          <ShieldCheck className="w-5 h-5 text-teal-400 shrink-0 mt-0.5" />
-          <div className="text-xs leading-relaxed text-slate-300">
-            <strong className="font-semibold text-white block mb-0.5">Core Principle: Stability Over Constant Adjustment</strong>
+        <div className="mb-8 p-4 rounded-xl bg-[#1c0e64] border border-[#27187E] flex items-start gap-3.5 text-left shadow-md">
+          <ShieldCheck className="w-5 h-5 text-[#aca1f7] shrink-0 mt-0.5" />
+          <div className="text-xs leading-relaxed text-[#F7F7FF]/85 font-sans">
+            <strong className="font-bold text-white block mb-0.5 font-condensed uppercase tracking-wider text-sm">Core Principle: Stability Over Constant Adjustment</strong>
             Most tank-bred fish adapt comfortably to a range of natural water parameters as long as they are kept stable. Frequent use of chemical adjusters can create volatile swings that stress fish far more than steady, slightly imperfect conditions.
           </div>
         </div>
@@ -95,24 +95,24 @@ export default function WaterParams({ showCTA = true }: WaterParamsProps) {
           {params.map(param => (
             <div 
               key={param.id} 
-              className="p-5 rounded-xl border border-slate-800 bg-[#061224] flex flex-col justify-between"
+              className="p-5 rounded-2xl border border-[#27187E] bg-[#1c0e64] flex flex-col justify-between shadow-lg"
             >
               <div>
                 <div className="flex items-center justify-between mb-3.5">
-                  <div className="p-2 rounded-lg bg-slate-900 border border-slate-800">
+                  <div className="p-2 rounded-xl bg-[#27187E] border border-[#3622a6]">
                     {param.icon}
                   </div>
-                  <span className={`text-[10px] font-semibold px-2.5 py-1 rounded-md border ${param.tagColor}`}>
+                  <span className={`text-[10px] font-condensed uppercase tracking-wider font-bold px-2.5 py-1 rounded-md border ${param.tagColor}`}>
                     Target: {param.target}
                   </span>
                 </div>
-                <h3 className="text-base font-bold text-white mb-1.5 font-poppins">{param.name}</h3>
-                <p className="text-xs text-slate-400 font-normal leading-relaxed mb-4">{param.desc}</p>
+                <h3 className="text-xl font-display font-normal text-[#F7F7FF] mb-1.5 tracking-wide">{param.name}</h3>
+                <p className="text-xs text-[#F7F7FF]/75 font-normal leading-relaxed mb-4 font-sans">{param.desc}</p>
               </div>
 
-              <div className="pt-3 border-t border-slate-800 text-[11px] flex justify-between items-center text-slate-400">
+              <div className="pt-3 border-t border-[#27187E] text-[11px] font-condensed uppercase tracking-wider flex justify-between items-center text-[#F7F7FF]/70 font-semibold">
                 <span>Caution Zone:</span>
-                <span className="font-medium text-slate-200">{param.danger}</span>
+                <span className="font-bold text-[#F7F7FF]">{param.danger}</span>
               </div>
             </div>
           ))}
@@ -122,10 +122,10 @@ export default function WaterParams({ showCTA = true }: WaterParamsProps) {
           <div className="mt-10 text-center">
             <Link 
               href="/water-params" 
-              className="inline-flex items-center gap-2 px-6 py-3 bg-teal-600 hover:bg-teal-500 text-white font-semibold text-xs rounded-xl transition-colors"
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#F7F7FF] hover:bg-white text-[#27187E] font-condensed font-bold uppercase tracking-wider text-xs rounded-xl transition-all shadow-md"
             >
               <span>Explore Water Chemistry Guide</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 text-[#27187E]" />
             </Link>
           </div>
         )}

@@ -1,12 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --font-sans: 'Plus Jakarta Sans', var(--font-plus-jakarta), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-poppins: 'Outfit', var(--font-outfit), sans-serif;
-  --font-display: 'Outfit', var(--font-outfit), sans-serif;
+  --font-display: 'Bebas Neue', 'Oswald', sans-serif;
+  --font-poppins: 'Oswald', 'Bebas Neue', sans-serif;
+  --font-heading: 'Bebas Neue', 'Oswald', sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   
   --color-background: hsl(var(--background));
@@ -34,87 +35,85 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  /* NAVY BLUE (#000080) & MUSTARD YELLOW (#FFDB58) PALETTE */
-  --color-navy-950: #02071c;
-  --color-navy-900: #05103b;
-  --color-navy-850: #081854;
-  --color-navy-800: #0c216e;
-  --color-navy-700: #000080;
-  --color-navy-600: #102d8f;
+  /* GHOST WHITE (#F7F7FF) & PERSIAN INDIGO (#27187E) COLOR SYSTEM */
+  --color-indigo-950: #0d0630;
+  --color-indigo-900: #14094a;
+  --color-indigo-850: #1c0e64;
+  --color-indigo-800: #27187e; /* Persian Indigo */
+  --color-indigo-700: #3622a6;
+  --color-indigo-600: #4a34c9;
+  --color-indigo-500: #644eed;
+  --color-indigo-400: #8574f2;
+  --color-indigo-300: #aca1f7;
+  --color-indigo-200: #d0cbfb;
+  --color-indigo-100: #ebe9fe;
+  --color-indigo-50: #f7f7ff; /* Ghost White */
 
-  --color-mustard-50: #fffef2;
-  --color-mustard-100: #fffbe0;
-  --color-mustard-200: #fff6b8;
-  --color-mustard-300: #ffec85;
-  --color-mustard-400: #ffdb58;
-  --color-mustard-500: #f5c427;
-  --color-mustard-600: #d9a011;
-  --color-mustard-700: #b0790b;
-  --color-mustard-800: #8f5f0f;
-  --color-mustard-900: #764d11;
+  --color-ghost-white: #f7f7ff;
+  --color-persian-indigo: #27187e;
 }
 
 @layer base {
   :root {
-    --background: 231 82% 6%;
-    --foreground: 48 100% 97%;
+    --background: 240 100% 98%;
+    --foreground: 251 68% 29%;
 
-    --card: 231 75% 10%;
-    --card-foreground: 48 100% 97%;
+    --card: 0 0% 100%;
+    --card-foreground: 251 68% 29%;
 
-    --popover: 231 82% 7%;
-    --popover-foreground: 48 100% 97%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 251 68% 29%;
 
-    --primary: 47 100% 67%;
-    --primary-foreground: 240 100% 25%;
+    --primary: 251 68% 29%; /* Persian Indigo */
+    --primary-foreground: 240 100% 98%; /* Ghost White */
 
-    --secondary: 231 80% 20%;
-    --secondary-foreground: 47 100% 67%;
+    --secondary: 240 100% 98%;
+    --secondary-foreground: 251 68% 29%;
 
-    --muted: 231 60% 15%;
-    --muted-foreground: 220 30% 70%;
+    --muted: 240 60% 95%;
+    --muted-foreground: 251 40% 45%;
 
-    --accent: 47 100% 67%;
-    --accent-foreground: 240 100% 25%;
+    --accent: 251 68% 29%;
+    --accent-foreground: 240 100% 98%;
 
     --destructive: 345 80% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 231 60% 18%;
-    --input: 231 60% 18%;
-    --ring: 47 100% 67%;
+    --border: 251 40% 88%;
+    --input: 251 40% 88%;
+    --ring: 251 68% 29%;
 
-    --radius: 0.875rem;
+    --radius: 0.75rem;
   }
 
   .dark {
-    --background: 231 82% 6%;
-    --foreground: 48 100% 97%;
+    --background: 251 75% 10%; /* Deep Persian Indigo Dark */
+    --foreground: 240 100% 98%; /* Ghost White */
 
-    --card: 231 75% 10%;
-    --card-foreground: 48 100% 97%;
+    --card: 251 68% 15%;
+    --card-foreground: 240 100% 98%;
 
-    --popover: 231 82% 7%;
-    --popover-foreground: 48 100% 97%;
+    --popover: 251 75% 11%;
+    --popover-foreground: 240 100% 98%;
 
-    --primary: 47 100% 67%;
-    --primary-foreground: 240 100% 25%;
+    --primary: 240 100% 98%; /* Ghost White on Dark */
+    --primary-foreground: 251 68% 29%; /* Persian Indigo */
 
-    --secondary: 231 80% 20%;
-    --secondary-foreground: 47 100% 67%;
+    --secondary: 251 68% 29%;
+    --secondary-foreground: 240 100% 98%;
 
-    --muted: 231 60% 15%;
-    --muted-foreground: 220 30% 70%;
+    --muted: 251 50% 22%;
+    --muted-foreground: 240 40% 80%;
 
-    --accent: 47 100% 67%;
-    --accent-foreground: 240 100% 25%;
+    --accent: 251 68% 29%;
+    --accent-foreground: 240 100% 98%;
 
     --destructive: 345 80% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 231 60% 18%;
-    --input: 231 60% 18%;
-    --ring: 47 100% 67%;
+    --border: 251 50% 25%;
+    --input: 251 50% 25%;
+    --ring: 240 100% 98%;
   }
 
   * {
@@ -122,8 +121,8 @@
   }
   
   body {
-    background-color: #02071c;
-    color: #f8fafc;
+    background-color: #0f0738;
+    color: #f7f7ff;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     font-size: 0.9375rem;
     line-height: 1.65;
@@ -133,51 +132,57 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-poppins);
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    color: #ffffff;
+    font-family: var(--font-heading);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #f7f7ff;
   }
 }
 
-/* Glass & Card Design Tokens */
-.glass {
-  background-color: rgba(5, 16, 59, 0.8);
+/* Persian Indigo & Ghost White Editorial Classes */
+.font-display {
+  font-family: 'Bebas Neue', 'Oswald', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.font-condensed {
+  font-family: 'Oswald', 'Bebas Neue', sans-serif;
+}
+
+/* Card & Surface Tokens */
+.surface-indigo {
+  background-color: #27187e;
+  color: #f7f7ff;
+}
+
+.surface-ghost {
+  background-color: #f7f7ff;
+  color: #27187e;
+}
+
+.glass-indigo {
+  background-color: rgba(39, 24, 126, 0.75);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 219, 88, 0.2);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(247, 247, 255, 0.2);
 }
 
 .glass-card {
-  background-color: rgba(8, 24, 84, 0.6);
+  background-color: rgba(26, 14, 88, 0.65);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 219, 88, 0.15);
-  box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(247, 247, 255, 0.12);
+  box-shadow: 0 4px 20px -5px rgba(13, 6, 48, 0.5);
   transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .glass-card:hover {
-  border-color: rgba(255, 219, 88, 0.5);
-  box-shadow: 0 12px 30px -8px rgba(0, 0, 128, 0.4);
+  border-color: rgba(247, 247, 255, 0.4);
+  box-shadow: 0 12px 30px -8px rgba(39, 24, 126, 0.5);
   transform: translateY(-2px);
 }
 
-/* Typography Gradient Utilities */
-.text-gradient-mustard {
-  background: linear-gradient(135deg, #ffffff 30%, #ffdb58 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.text-gradient-gold {
-  background: linear-gradient(135deg, #ffdb58 0%, #f59e0b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Subdued Ticker Animation */
+/* Ticker Animation */
 @keyframes marquee {
   0% { transform: translateX(0%); }
   100% { transform: translateX(-50%); }
@@ -213,18 +218,19 @@
   }
 }
 
-/* Custom Navy & Mustard Scrollbar */
+/* Custom Persian Indigo Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #02071c;
+  background: #0f0738;
 }
 ::-webkit-scrollbar-thumb {
-  background: #0c216e;
+  background: #27187e;
   border-radius: 4px;
+  border: 1px solid rgba(247, 247, 255, 0.2);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #ffdb58;
+  background: #4a34c9;
 }

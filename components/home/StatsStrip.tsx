@@ -11,48 +11,48 @@ export default function StatsStrip() {
       label: 'Documented Species',
       value: `${fish} Profiles`,
       sub: 'Freshwater & Marine',
-      icon: <Fish className="w-5 h-5 text-teal-400" />,
+      icon: <Fish className="w-5 h-5 text-[#F7F7FF]" />,
     },
     {
       label: 'Aquatic Flora',
       value: `${plants} Species`,
       sub: 'Carpeting, Stem & Epiphytes',
-      icon: <Leaf className="w-5 h-5 text-emerald-400" />,
+      icon: <Leaf className="w-5 h-5 text-[#aca1f7]" />,
     },
     {
       label: 'Hardware Guides',
       value: `${equipment} Guides`,
       sub: 'Filters, Heaters & Lighting',
-      icon: <Wrench className="w-5 h-5 text-sky-400" />,
+      icon: <Wrench className="w-5 h-5 text-[#F7F7FF]" />,
     },
     {
       label: 'Care Philosophy',
       value: 'Evidence-Based',
       sub: 'Natural Husbandry Practices',
-      icon: <ShieldCheck className="w-5 h-5 text-teal-400" />,
+      icon: <ShieldCheck className="w-5 h-5 text-[#aca1f7]" />,
     },
   ];
 
   return (
-    <section className="w-full bg-[#040a14] border-y border-slate-800/80 py-8 relative">
+    <section className="w-full bg-[#14094a] border-y border-[#27187E] py-8 relative text-left">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {statsItems.map((stat, i) => (
             <div 
               key={i} 
-              className="flex items-start gap-3.5 text-left"
+              className="flex items-start gap-3.5"
             >
-              <div className="p-2.5 rounded-xl bg-slate-900 border border-slate-800 shrink-0 mt-0.5">
+              <div className="p-2.5 rounded-xl bg-[#27187E] border border-[#3622a6] shrink-0 mt-0.5 shadow-sm">
                 {stat.icon}
               </div>
               <div className="min-w-0">
-                <span className="block text-sm sm:text-base font-bold text-white font-poppins">
+                <span className="block text-xl sm:text-2xl font-bold text-[#F7F7FF] font-display tracking-wider leading-none">
                   {stat.value}
                 </span>
-                <span className="block text-xs font-medium text-slate-300">
+                <span className="block text-xs font-condensed uppercase tracking-wider text-[#aca1f7] mt-1">
                   {stat.label}
                 </span>
-                <span className="block text-[11px] text-slate-500 truncate">
+                <span className="block text-[11px] text-[#F7F7FF]/60 truncate font-sans">
                   {stat.sub}
                 </span>
               </div>

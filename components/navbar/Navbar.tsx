@@ -76,10 +76,10 @@ export default function Navbar() {
 
   const navLinkClass = (path: string) => {
     const isActive = pathname === path;
-    return `text-xs font-semibold tracking-wide py-1.5 px-3 rounded-full transition-all duration-200 flex items-center gap-1.5 ${
+    return `text-xs font-semibold tracking-wider uppercase font-condensed py-1.5 px-3 rounded-xl transition-all duration-200 flex items-center gap-1.5 ${
       isActive 
-        ? "text-[#02071c] bg-[#ffdb58] font-bold shadow-sm" 
-        : "text-slate-200 hover:text-[#ffdb58] hover:bg-[#081854]"
+        ? "text-[#27187E] bg-[#F7F7FF] font-bold shadow-md" 
+        : "text-[#F7F7FF]/85 hover:text-[#F7F7FF] hover:bg-[#27187E]/60"
     }`;
   };
 
@@ -87,8 +87,8 @@ export default function Navbar() {
     <div className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 sm:px-6 pointer-events-none">
       <header className={`pointer-events-auto transition-all duration-300 rounded-2xl flex items-center justify-between px-5 sm:px-7 py-3 max-w-6xl w-full ${
         isScrolled 
-          ? "bg-[#02071c]/95 backdrop-blur-md border border-[#ffdb58]/30 shadow-2xl shadow-black/60" 
-          : "bg-[#05103b]/90 backdrop-blur-md border border-[#0c216e] shadow-xl"
+          ? "bg-[#0d0630]/95 backdrop-blur-md border border-[#27187E] shadow-2xl shadow-black/70" 
+          : "bg-[#1c0e64]/90 backdrop-blur-md border border-[#27187E]/80 shadow-xl"
       }`}>
         
         {/* LOGO */}
@@ -98,21 +98,21 @@ export default function Navbar() {
           className="flex items-center gap-2.5 group focus:outline-none" 
           aria-label="Roshan Aquva World Home"
         >
-          <div className="w-8 h-8 rounded-xl bg-[#ffdb58] flex items-center justify-center text-[#000080] group-hover:scale-105 transition-transform duration-200 shadow-md">
-            <Waves className="w-5 h-5 text-[#000080]" />
+          <div className="w-8 h-8 rounded-xl bg-[#F7F7FF] flex items-center justify-center text-[#27187E] group-hover:scale-105 transition-transform duration-200 shadow-md">
+            <Waves className="w-5 h-5 text-[#27187E]" />
           </div>
           <div className="flex flex-col text-left">
-            <span className="font-poppins text-sm sm:text-base font-extrabold tracking-tight text-white group-hover:text-[#ffdb58] transition-colors leading-tight">
-              ROSHAN <span className="text-[#ffdb58]">AQUVA</span>
+            <span className="font-display text-lg sm:text-xl font-normal tracking-wider text-[#F7F7FF] group-hover:text-white transition-colors leading-none">
+              ROSHAN <span className="text-[#aca1f7]">AQUVA</span>
             </span>
-            <span className="text-[9px] uppercase tracking-wider text-slate-300 font-semibold leading-none">
+            <span className="text-[9px] uppercase tracking-widest text-[#F7F7FF]/70 font-semibold leading-tight mt-0.5">
               Aquarium Guide
             </span>
           </div>
         </Link>
 
         {/* DESKTOP NAV */}
-        <nav className="hidden lg:flex items-center gap-1.5" aria-label="Primary Navigation">
+        <nav className="hidden lg:flex items-center gap-1" aria-label="Primary Navigation">
           <Link href="/" className={navLinkClass("/")}>
             <span>Home</span>
           </Link>
@@ -139,14 +139,14 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 8, scale: 0.98 }}
                   transition={{ duration: 0.15 }}
-                  className="absolute top-10 left-1/2 -translate-x-1/2 w-[540px] bg-[#05103b] border border-[#ffdb58]/30 rounded-2xl p-5 shadow-2xl grid grid-cols-2 gap-4 z-50 text-left"
+                  className="absolute top-10 left-1/2 -translate-x-1/2 w-[540px] bg-[#14094a] border border-[#3622a6] rounded-2xl p-5 shadow-2xl grid grid-cols-2 gap-4 z-50 text-left"
                 >
                   <Link 
                     href="/fish/freshwater" 
                     onClick={() => setActiveDropdown(null)} 
-                    className="p-3.5 rounded-xl bg-[#081854] border border-[#0c216e] hover:border-[#ffdb58] hover:bg-[#0c216e] transition-all group"
+                    className="p-3.5 rounded-xl bg-[#27187e]/60 border border-[#3622a6] hover:border-[#F7F7FF] hover:bg-[#27187e] transition-all group"
                   >
-                    <div className="relative w-full h-24 rounded-lg overflow-hidden mb-2.5 bg-[#02071c]">
+                    <div className="relative w-full h-24 rounded-lg overflow-hidden mb-2.5 bg-[#0d0630]">
                       <Image 
                         src="/images/betta.png" 
                         alt="Freshwater fish collection" 
@@ -155,18 +155,18 @@ export default function Navbar() {
                         sizes="240px" 
                       />
                     </div>
-                    <div className="font-poppins font-bold text-xs text-white group-hover:text-[#ffdb58] transition-colors">
+                    <div className="font-condensed font-bold text-sm uppercase text-[#F7F7FF] group-hover:text-white transition-colors">
                       Freshwater Species →
                     </div>
-                    <p className="text-[11px] text-slate-300 mt-0.5">{fwFish.length} species profiles & tank requirements.</p>
+                    <p className="text-[11px] text-[#F7F7FF]/70 mt-0.5">{fwFish.length} species profiles & tank requirements.</p>
                   </Link>
 
                   <Link 
                     href="/fish/saltwater" 
                     onClick={() => setActiveDropdown(null)} 
-                    className="p-3.5 rounded-xl bg-[#081854] border border-[#0c216e] hover:border-[#ffdb58] hover:bg-[#0c216e] transition-all group"
+                    className="p-3.5 rounded-xl bg-[#27187e]/60 border border-[#3622a6] hover:border-[#F7F7FF] hover:bg-[#27187e] transition-all group"
                   >
-                    <div className="relative w-full h-24 rounded-lg overflow-hidden mb-2.5 bg-[#02071c]">
+                    <div className="relative w-full h-24 rounded-lg overflow-hidden mb-2.5 bg-[#0d0630]">
                       <Image 
                         src="/images/clownfish.png" 
                         alt="Saltwater marine fish collection" 
@@ -175,18 +175,18 @@ export default function Navbar() {
                         sizes="240px" 
                       />
                     </div>
-                    <div className="font-poppins font-bold text-xs text-white group-hover:text-[#ffdb58] transition-colors">
+                    <div className="font-condensed font-bold text-sm uppercase text-[#F7F7FF] group-hover:text-white transition-colors">
                       Saltwater & Reef →
                     </div>
-                    <p className="text-[11px] text-slate-300 mt-0.5">{swFish.length} marine profiles & compatibility.</p>
+                    <p className="text-[11px] text-[#F7F7FF]/70 mt-0.5">{swFish.length} marine profiles & compatibility.</p>
                   </Link>
 
-                  <div className="col-span-2 pt-2 border-t border-[#0c216e] flex justify-between items-center text-xs">
-                    <span className="text-slate-300 text-[11px]">Explore all species in one place:</span>
+                  <div className="col-span-2 pt-2 border-t border-[#3622a6] flex justify-between items-center text-xs">
+                    <span className="text-[#F7F7FF]/70 text-[11px]">Explore all species in one place:</span>
                     <Link 
                       href="/fish" 
                       onClick={() => setActiveDropdown(null)} 
-                      className="text-[#ffdb58] hover:underline font-bold"
+                      className="text-[#aca1f7] hover:text-white hover:underline font-bold uppercase tracking-wider font-condensed"
                     >
                       View Complete Fish Library →
                     </Link>
@@ -225,30 +225,30 @@ export default function Navbar() {
         <div className="flex items-center gap-2.5">
           {/* Search bar */}
           <form onSubmit={handleSearchSubmit} className="relative hidden md:block">
-            <Search className="w-3.5 h-3.5 text-[#ffdb58] absolute left-3 top-1/2 -translate-y-1/2" />
+            <Search className="w-3.5 h-3.5 text-[#aca1f7] absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               ref={searchInputRef}
               type="text"
               placeholder="Search fish, plants..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-36 focus:w-52 transition-all duration-200 pl-8 pr-3 py-1.5 rounded-full bg-[#081854] border border-[#0c216e] text-xs text-white placeholder-slate-400 focus:outline-none focus:border-[#ffdb58] focus:ring-1 focus:ring-[#ffdb58]"
+              className="w-36 focus:w-52 transition-all duration-200 pl-8 pr-3 py-1.5 rounded-full bg-[#14094a] border border-[#3622a6] text-xs text-[#F7F7FF] placeholder-[#F7F7FF]/50 focus:outline-none focus:border-[#F7F7FF] focus:ring-1 focus:ring-[#F7F7FF]"
             />
           </form>
 
-          {/* Mustard Primary CTA */}
+          {/* Ghost White Primary CTA Button */}
           <Link
             href="/start-aquarium"
-            className="inline-flex items-center justify-center font-poppins font-bold text-xs px-4 py-2 rounded-full transition-all duration-200 cursor-pointer bg-[#ffdb58] hover:bg-[#ffe580] text-[#000080] shadow-md hover:scale-105 active:scale-95"
+            className="inline-flex items-center justify-center font-condensed font-bold uppercase tracking-wider text-xs px-4 py-2 rounded-xl transition-all duration-200 cursor-pointer bg-[#F7F7FF] hover:bg-white text-[#27187E] shadow-md hover:scale-105 active:scale-95"
           >
             <span>Start Setup</span>
-            <ArrowUpRight className="w-3.5 h-3.5 ml-1 text-[#000080]" />
+            <ArrowUpRight className="w-3.5 h-3.5 ml-1 text-[#27187E]" />
           </Link>
 
           {/* Mobile hamburger toggle */}
           <button
             onClick={toggleMobileMenu}
-            className="lg:hidden p-2 rounded-xl bg-[#081854] border border-[#0c216e] text-slate-200 hover:text-[#ffdb58] transition-colors"
+            className="lg:hidden p-2 rounded-xl bg-[#27187e] border border-[#3622a6] text-[#F7F7FF] hover:text-white transition-colors"
             aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={isMobileMenuOpen}
           >
@@ -272,96 +272,96 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-[#02071c]/98 backdrop-blur-xl lg:hidden pointer-events-auto flex flex-col justify-between p-6 pt-24 overflow-y-auto"
+            className="fixed inset-0 z-40 bg-[#0d0630]/98 backdrop-blur-xl lg:hidden pointer-events-auto flex flex-col justify-between p-6 pt-24 overflow-y-auto"
           >
             <div className="flex flex-col gap-6 max-w-md mx-auto w-full text-left">
               
               {/* Mobile Search */}
               <form onSubmit={handleSearchSubmit} className="relative w-full">
-                <Search className="w-4 h-4 text-[#ffdb58] absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <Search className="w-4 h-4 text-[#aca1f7] absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
                   placeholder="Search species, guides, tools..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#081854] border border-[#0c216e] text-sm text-white placeholder-slate-400 focus:outline-none focus:border-[#ffdb58]"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#1c0e64] border border-[#3622a6] text-sm text-[#F7F7FF] placeholder-[#F7F7FF]/50 focus:outline-none focus:border-[#F7F7FF]"
                 />
               </form>
 
               {/* Navigation Links */}
-              <nav className="flex flex-col divide-y divide-[#0c216e]">
+              <nav className="flex flex-col divide-y divide-[#27187e]/60 font-condensed uppercase tracking-wider text-base">
                 <Link 
                   href="/" 
                   onClick={closeMobileMenu} 
-                  className="py-3 flex items-center justify-between text-base font-semibold text-slate-200 hover:text-[#ffdb58]"
+                  className="py-3 flex items-center justify-between text-[#F7F7FF] hover:text-white"
                 >
                   <span>Home</span>
-                  <ArrowUpRight className="w-4 h-4 text-[#ffdb58]" />
+                  <ArrowUpRight className="w-4 h-4 text-[#aca1f7]" />
                 </Link>
                 <Link 
                   href="/fish" 
                   onClick={closeMobileMenu} 
-                  className="py-3 flex items-center justify-between text-base font-semibold text-slate-200 hover:text-[#ffdb58]"
+                  className="py-3 flex items-center justify-between text-[#F7F7FF] hover:text-white"
                 >
                   <span>Fish Species Library</span>
-                  <ArrowUpRight className="w-4 h-4 text-[#ffdb58]" />
+                  <ArrowUpRight className="w-4 h-4 text-[#aca1f7]" />
                 </Link>
                 <Link 
                   href="/plants" 
                   onClick={closeMobileMenu} 
-                  className="py-3 flex items-center justify-between text-base font-semibold text-slate-200 hover:text-[#ffdb58]"
+                  className="py-3 flex items-center justify-between text-[#F7F7FF] hover:text-white"
                 >
                   <span>Aquatic Plants</span>
-                  <ArrowUpRight className="w-4 h-4 text-[#ffdb58]" />
+                  <ArrowUpRight className="w-4 h-4 text-[#aca1f7]" />
                 </Link>
                 <Link 
                   href="/equipment" 
                   onClick={closeMobileMenu} 
-                  className="py-3 flex items-center justify-between text-base font-semibold text-slate-200 hover:text-[#ffdb58]"
+                  className="py-3 flex items-center justify-between text-[#F7F7FF] hover:text-white"
                 >
                   <span>Equipment Guide</span>
-                  <ArrowUpRight className="w-4 h-4 text-[#ffdb58]" />
+                  <ArrowUpRight className="w-4 h-4 text-[#aca1f7]" />
                 </Link>
                 <Link 
                   href="/compatibility" 
                   onClick={closeMobileMenu} 
-                  className="py-3 flex items-center justify-between text-base font-semibold text-slate-200 hover:text-[#ffdb58]"
+                  className="py-3 flex items-center justify-between text-[#F7F7FF] hover:text-white"
                 >
                   <span>Compatibility Checker</span>
-                  <ArrowUpRight className="w-4 h-4 text-[#ffdb58]" />
+                  <ArrowUpRight className="w-4 h-4 text-[#aca1f7]" />
                 </Link>
                 <Link 
                   href="/tank-size" 
                   onClick={closeMobileMenu} 
-                  className="py-3 flex items-center justify-between text-base font-semibold text-slate-200 hover:text-[#ffdb58]"
+                  className="py-3 flex items-center justify-between text-[#F7F7FF] hover:text-white"
                 >
                   <span>Tank Size Guide</span>
-                  <ArrowUpRight className="w-4 h-4 text-[#ffdb58]" />
+                  <ArrowUpRight className="w-4 h-4 text-[#aca1f7]" />
                 </Link>
                 <Link 
                   href="/guides" 
                   onClick={closeMobileMenu} 
-                  className="py-3 flex items-center justify-between text-base font-semibold text-slate-200 hover:text-[#ffdb58]"
+                  className="py-3 flex items-center justify-between text-[#F7F7FF] hover:text-white"
                 >
                   <span>Care Guides & Articles</span>
-                  <ArrowUpRight className="w-4 h-4 text-[#ffdb58]" />
+                  <ArrowUpRight className="w-4 h-4 text-[#aca1f7]" />
                 </Link>
                 <Link 
                   href="/contact" 
                   onClick={closeMobileMenu} 
-                  className="py-3 flex items-center justify-between text-base font-semibold text-slate-200 hover:text-[#ffdb58]"
+                  className="py-3 flex items-center justify-between text-[#F7F7FF] hover:text-white"
                 >
                   <span>Contact & Questions</span>
-                  <ArrowUpRight className="w-4 h-4 text-[#ffdb58]" />
+                  <ArrowUpRight className="w-4 h-4 text-[#aca1f7]" />
                 </Link>
               </nav>
             </div>
 
-            <div className="max-w-md mx-auto w-full pt-6 border-t border-[#0c216e]">
+            <div className="max-w-md mx-auto w-full pt-6 border-t border-[#27187e]">
               <Link
                 href="/start-aquarium"
                 onClick={closeMobileMenu}
-                className="w-full py-3.5 bg-[#ffdb58] text-[#000080] font-bold rounded-xl flex items-center justify-center gap-2 text-sm font-poppins shadow-md"
+                className="w-full py-3.5 bg-[#F7F7FF] text-[#27187E] font-condensed font-bold uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 text-sm shadow-md"
               >
                 <span>Start Aquarium Setup Guide</span>
                 <ArrowUpRight className="w-4 h-4" />
