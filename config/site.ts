@@ -5,7 +5,7 @@ export const siteConfig = {
   name: "Roshan Aquva World",
   fullName: "Roshan Aquva World — Aquarium & Fish Care Guide",
   alternateNames: ["Roshan Aquva World", "Roshan Aqua World", "Aquva World"],
-  description: "A comprehensive, educational aquarium platform. Discover fish species requirements, plant care, community compatibility, equipment guides, water chemistry, and tank maintenance routines.",
+  description: "An educational aquarium platform. Discover fish species profiles, plant care, community compatibility, equipment guides, water chemistry, and tank maintenance routines.",
   
   // Production site URL
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://aquaversa.vercel.app",

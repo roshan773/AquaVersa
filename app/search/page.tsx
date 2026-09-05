@@ -159,13 +159,13 @@ function SearchResults() {
             </div>
             <div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-normal tracking-tight">
-                SEARCH ARCHIVE
+                SEARCH LIBRARY
               </h1>
               <p className="text-base text-[#27187e]/80 mt-1 font-medium">
                 {normalizedQuery ? (
                   <>Showing {totalResults} documented matches for <strong className="text-[#27187e]">"{query}"</strong></>
                 ) : (
-                  `Query the complete ${siteConfig.name} natural history database`
+                  `Search the ${siteConfig.name} species, plant, and equipment library`
                 )}
               </p>
             </div>
@@ -198,16 +198,16 @@ function SearchResults() {
         {!normalizedQuery ? (
           <div className="text-center py-20 bg-[#ffffff] border-2 border-[#cfcaf5] border-dashed rounded-3xl p-8 max-w-2xl mx-auto shadow-sm">
             <SearchIcon className="w-16 h-16 text-[#27187e]/30 mx-auto mb-4" />
-            <h2 className="text-3xl font-display text-[#27187e] mb-2">Search the Field Guide Database</h2>
+            <h2 className="text-3xl font-display text-[#27187e] mb-2">Search the Field Guide Library</h2>
             <p className="text-base text-[#27187e]/80 max-w-md mx-auto mb-6 font-medium leading-relaxed">
               Enter queries like "peaceful fish for 10 gallon", "low light plants", or "canister filter" to explore matching profiles.
             </p>
             <div className="flex justify-center gap-4 text-sm font-semibold">
-              <Link href="/fish" className="hover:underline text-[#27187e]">Fish Atlas</Link>
+              <Link href="/fish" className="hover:underline text-[#27187e]">Fish Library</Link>
               <span>•</span>
-              <Link href="/plants" className="hover:underline text-[#27187e]">Plant Atlas</Link>
+              <Link href="/plants" className="hover:underline text-[#27187e]">Plant Library</Link>
               <span>•</span>
-              <Link href="/equipment" className="hover:underline text-[#27187e]">Equipment Archive</Link>
+              <Link href="/equipment" className="hover:underline text-[#27187e]">Equipment Guide</Link>
             </div>
           </div>
         ) : totalResults === 0 ? (

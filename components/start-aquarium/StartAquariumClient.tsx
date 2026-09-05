@@ -205,7 +205,7 @@ export default function StartAquariumClient({ starterGuideSteps }: StartAquarium
             HOW TO START YOUR FIRST AQUARIUM
           </h1>
           <p className="text-base sm:text-lg text-[#27187e]/85 font-readable max-w-2xl leading-relaxed">
-            A step-by-step biological roadmap to establishing a stable aquatic ecosystem. Avoid beginner mistakes and track setup milestones.
+            A step-by-step practical guide to establishing a stable aquatic ecosystem and tracking setup milestones.
           </p>
 
           {checkedCount > 0 && (

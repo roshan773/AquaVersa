@@ -24,7 +24,7 @@ export default function AtlasDestinations() {
     },
     {
       id: 'equipment',
-      title: 'HARDWARE ARCHIVE',
+      title: 'HARDWARE DIRECTORY',
       subtitle: 'Equipment Guide',
       desc: 'Understand filtration mechanics, precision heating thermostats, and full-spectrum LED lighting.',
       image: '/images/canister_filter.png',
@@ -33,7 +33,7 @@ export default function AtlasDestinations() {
     },
     {
       id: 'guides',
-      title: 'CARE PROTOCOLS',
+      title: 'CARE GUIDES',
       subtitle: 'Knowledge Base',
       desc: 'In-depth reference articles on biological cycling, acclimation protocols, and long-term water stability.',
       image: '/hero_aquarium.jpg',
@@ -49,7 +49,7 @@ export default function AtlasDestinations() {
         {/* Section Header */}
         <div className="mb-12">
           <span className="font-sans text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#27187e] mb-2 block">
-            THE ATLAS ARCHIVE
+            THE AQUARIUM LIBRARY
           </span>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-normal text-[#27187e] tracking-wide">
             Explore the underwater world.

@@ -31,7 +31,7 @@ export default function QuickQuestions() {
             HAVE AN AQUARIUM QUESTION?
           </h2>
           <p className="text-base sm:text-lg text-[#27187e]/80 mb-8 font-readable max-w-xl mx-auto">
-            Search our extensive database of beginner questions, water chemistry tips, and educational care answers.
+            Search our collection of beginner questions, water chemistry tips, and educational care answers.
           </p>
 
           <form onSubmit={handleSearch} className="relative max-w-2xl mx-auto mb-12">

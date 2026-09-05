@@ -24,7 +24,7 @@ export async function generateMetadata({
   }
 
   const titleText = `${plant.name} Care Guide: Planting, Lighting & CO2 Requirements | ${siteConfig.name}`;
-  const descText = `Complete ${plant.name} (${plant.scientificName}) planting profile. Learn about growth rate (${plant.growthRate}), placement (${plant.placement}), lighting requirements (${plant.light}), and CO2 parameters on ${siteConfig.name}.`;
+  const descText = `Care and planting profile for ${plant.name} (${plant.scientificName}). Learn about growth rate (${plant.growthRate}), placement (${plant.placement}), lighting requirements (${plant.light}), and CO2 parameters on ${siteConfig.name}.`;
 
   return {
     title: titleText,

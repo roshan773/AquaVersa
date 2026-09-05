@@ -35,7 +35,7 @@ export default function WaterChemistryPage() {
           href: '/water-analyzer',
         }}
         secondaryAction={{
-          label: 'Species Parameter Database',
+          label: 'Species Care Library',
           href: '/fish',
         }}
       />

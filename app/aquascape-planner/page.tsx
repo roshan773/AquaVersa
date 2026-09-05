@@ -424,7 +424,7 @@ export default function AquascapePlannerPage() {
             with real biological species.
           </>
         }
-        description="Verify lighting requirements and fish cohabitation rules across our comprehensive species library."
+        description="Explore lighting requirements and fish cohabitation rules across our species library."
         primaryAction={{
           label: 'Browse Plant Catalog',
           href: '/plants',

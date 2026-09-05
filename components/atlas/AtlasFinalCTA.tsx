@@ -5,9 +5,9 @@ import GlobalCTA from '@/components/ui/GlobalCTA';
 export default function AtlasFinalCTA() {
   return (
     <GlobalCTA
-      badge="THE AQUARIUM ATLAS ARCHIVES"
+      badge="THE AQUARIUM KNOWLEDGE LIBRARY"
       title="Build a better aquarium, one decision at a time."
-      description="Explore species biological profiles, water chemistry parameters, and step-by-step equipment setup guides in our comprehensive archive."
+      description="Explore species profiles, water chemistry parameters, and practical equipment setup guides in our growing library."
       primaryAction={{
         label: 'Explore Species Library',
         href: '/fish',

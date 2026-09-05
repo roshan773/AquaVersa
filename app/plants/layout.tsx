@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
 
 export const metadata: Metadata = {
-  title: `Aquatic Plant Guide & Planting Database | ${siteConfig.name}`,
+  title: `Aquatic Plant Guide & Planting Library | ${siteConfig.name}`,
   description: 'Explore live aquatic plants for freshwater aquariums. Learn about lighting, CO2, placement, and difficulty levels to build a thriving planted tank.',
 };
 

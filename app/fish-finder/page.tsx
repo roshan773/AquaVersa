@@ -304,7 +304,7 @@ export default function FishFinderPage() {
                   <HelpCircle className="w-12 h-12 text-muted-foreground/30 mx-auto mb-4" />
                   <h3 className="font-bold text-lg mb-2">No Matching Fish Found</h3>
                   <p className="text-sm text-muted-foreground max-w-md mx-auto mb-6">
-                    We couldn't find any fish in our local database that match all selected criteria. Try adjusting your preferences (e.g. choose a larger tank size or different temperament settings).
+                    We couldn't find any fish in our library that match all selected criteria. Try adjusting your preferences (e.g. choose a larger tank size or different temperament settings).
                   </p>
                   <button onClick={handleReset} className="px-6 py-2.5 border border-border rounded-xl font-bold hover:bg-muted transition-colors cursor-pointer">
                     Adjust Answers

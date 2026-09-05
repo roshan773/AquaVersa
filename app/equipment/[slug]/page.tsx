@@ -24,7 +24,7 @@ export async function generateMetadata({
   }
 
   const titleText = `${eq.name} Specification & Maintenance Guide | ${siteConfig.name}`;
-  const descText = `Complete ${eq.name} hardware guide. Learn about its purpose, operational details, maintenance instructions, and beginner setup mistakes on ${siteConfig.name}.`;
+  const descText = `Hardware guide and specifications for ${eq.name}. Learn about its purpose, operational details, maintenance tips, and setup considerations on ${siteConfig.name}.`;
 
   return {
     title: titleText,

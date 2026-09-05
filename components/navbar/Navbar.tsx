@@ -91,21 +91,21 @@ export default function Navbar() {
       num: '01',
       label: 'Fish Library',
       href: '/fish',
-      badge: '120+ Species',
-      desc: 'Systematic database of freshwater & marine fish species.',
+      badge: 'Species Profiles',
+      desc: 'Library of freshwater & marine fish species profiles.',
       icon: Fish,
     },
     {
       num: '02',
       label: 'Aquarium Plants',
       href: '/plants',
-      badge: 'Flora Archive',
-      desc: 'Comprehensive guide to aquatic plants & aquascaping.',
+      badge: 'Plant Library',
+      desc: 'Practical guide to live aquatic plants & aquascaping.',
       icon: Leaf,
     },
     {
       num: '03',
-      label: 'Equipment Archive',
+      label: 'Equipment Guide',
       href: '/equipment',
       badge: 'Gear & Tech',
       desc: 'Filters, lighting, heaters, and essential tank hardware.',
@@ -123,16 +123,16 @@ export default function Navbar() {
       num: '05',
       label: 'Beginner Roadmap',
       href: '/start-aquarium',
-      badge: '10-Step Plan',
-      desc: 'Complete step-by-step setup guide for first-time aquarists.',
+      badge: 'Setup Guide',
+      desc: 'Practical step-by-step setup guide for first-time aquarists.',
       icon: Sparkles,
     },
     {
       num: '06',
-      label: 'About The Atlas',
+      label: 'About Us',
       href: '/about',
       badge: 'Our Mission',
-      desc: 'Open-access educational encyclopedia for all hobbyists.',
+      desc: 'Open-access educational knowledge platform for fishkeepers.',
       icon: Info,
     },
     {
@@ -517,10 +517,10 @@ export default function Navbar() {
                           New to Aquariums?
                         </span>
                         <h4 className="font-display text-xl sm:text-2xl text-[#ffffff] leading-snug">
-                          Complete 10-Step Setup Roadmap
+                          Step-by-Step Setup Roadmap
                         </h4>
                         <p className="font-readable text-sm sm:text-base text-[#e2dffa] font-normal mt-1 leading-relaxed">
-                          Avoid common beginner mistakes before buying fish.
+                          Helpful starter tips to consider before adding fish.
                         </p>
                       </div>
 

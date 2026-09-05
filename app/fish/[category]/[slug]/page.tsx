@@ -24,7 +24,7 @@ export async function generateMetadata({
   }
 
   const titleText = `${fish.name} (${fish.scientificName}) Field Guide | ${siteConfig.name}`;
-  const descText = `Comprehensive ${fish.name} (${fish.scientificName}) care sheet. Minimum tank volume: ${fish.minTankSize} Gallons, temperament: ${fish.temperament}, pH: ${fish.ph}, temperature: ${fish.temperature}.`;
+  const descText = `Care sheet and profile for ${fish.name} (${fish.scientificName}). Minimum tank volume: ${fish.minTankSize} Gallons, temperament: ${fish.temperament}, pH: ${fish.ph}, temperature: ${fish.temperature}.`;
 
   return {
     title: titleText,

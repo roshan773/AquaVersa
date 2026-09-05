@@ -67,7 +67,7 @@ export default function GuidesPage() {
               CARE GUIDES &amp; ARTICLES
             </h1>
             <p className="text-base sm:text-lg text-[#27187e]/85 max-w-2xl leading-relaxed font-medium">
-              Carefully researched natural history reference articles on aquatic husbandry, water parameter management, and biotope habitat design.
+              Practical reference articles on aquatic husbandry, water parameter management, and biotope habitat design.
             </p>
           </div>
 

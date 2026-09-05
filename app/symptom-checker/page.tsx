@@ -118,7 +118,7 @@ export default function SymptomCheckerPage() {
             FISH SYMPTOM CHECKER
           </h1>
           <p className="text-base sm:text-lg text-[#27187e]/85 font-readable max-w-2xl leading-relaxed">
-            Identify potential fish illnesses by checking physical and behavioral abnormalities against our documented pathology database.
+            Identify potential fish health issues by matching observed physical and behavioral signs with educational disease profiles.
           </p>
         </div>
 

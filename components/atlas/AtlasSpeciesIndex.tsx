@@ -23,7 +23,7 @@ export default function AtlasSpeciesIndex() {
               Find the right species.
             </h2>
             <p className="font-readable text-sm sm:text-base md:text-lg text-[#27187e]/85 max-w-xl mt-2 leading-relaxed">
-              Care requirements, adult sizing, and biological compatibilities from our natural history database.
+              Care requirements, adult sizing, and compatibility guidelines from our species library.
             </p>
           </div>
 

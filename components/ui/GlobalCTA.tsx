@@ -21,7 +21,7 @@ export interface GlobalCTAProps {
 export default function GlobalCTA({
   badge = 'ROSHAN AQUVA WORLD',
   title = 'Build a better aquarium, one decision at a time.',
-  description = 'Explore species requirements, water chemistry parameters, and practical equipment guides in our comprehensive archive.',
+  description = 'Explore species profiles, water chemistry parameters, and practical equipment guides in our growing library.',
   primaryAction = {
     label: 'Explore Species Catalog',
     href: '/fish',

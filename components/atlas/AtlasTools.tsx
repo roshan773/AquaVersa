@@ -54,7 +54,7 @@ export default function AtlasTools() {
             Plan before you stock.
           </h2>
           <p className="font-readable text-sm sm:text-base md:text-lg text-[#27187e]/85 max-w-xl mt-2 leading-relaxed">
-            Essential reference tools and calculators to prevent costly mistakes and safeguard aquatic life.
+            Practical tools and calculators to help you plan and manage your aquarium.
           </p>
         </div>
 

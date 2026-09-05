@@ -17,7 +17,7 @@ export default function Footer() {
             <BrandLogo theme="dark" size="md" className="mb-5" />
 
             <p className="font-readable text-sm sm:text-base text-[#cfcaf5] mb-6 max-w-sm leading-relaxed font-normal">
-              An exhaustive, curated encyclopedia &amp; decision toolset for modern aquarists. We provide systematic species dossiers, planted aquascape chemistry, and hardware engineering guidance.
+              An educational aquarium knowledge library and practical planning toolset for fishkeepers. Explore species care profiles, planted aquascape chemistry, and hardware guidance.
             </p>
 
             {/* Social Icons with Lucide Outline Style */}

@@ -89,7 +89,7 @@ export default function AtlasHero() {
                   120+
                 </span>
                 <span className="font-readable text-xs sm:text-sm font-medium text-[#27187e]/80 mt-1">
-                  Species Dossiers
+                  Species Profiles
                 </span>
               </div>
               <div className="flex flex-col border-l border-[#cfcaf5] pl-4">
