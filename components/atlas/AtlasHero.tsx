@@ -60,15 +60,15 @@ export default function AtlasHero() {
             </h1>
 
             {/* Sub-headline / Description */}
-            <p className="text-base sm:text-lg md:text-xl text-[#27187e]/85 font-normal max-w-lg leading-relaxed mb-8 font-sans">
+            <p className="font-readable text-sm sm:text-base md:text-lg text-[#27187e]/85 font-normal max-w-lg leading-relaxed mb-8">
               Practical aquarium knowledge for choosing fish, understanding their needs, planning tanks and caring for aquatic life.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap items-center gap-4 text-sm font-condensed uppercase tracking-wider font-bold mb-10 w-full sm:w-auto">
+            <div className="flex flex-wrap items-center gap-4 font-readable text-sm sm:text-base font-semibold mb-10 w-full sm:w-auto">
               <Link
                 href="/fish"
-                className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-[#27187e] hover:bg-[#1b1059] text-[#f7f7ff] transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 text-sm group cursor-pointer"
+                className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-[#27187e] hover:bg-[#1b1059] text-[#f7f7ff] transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 text-sm sm:text-base group cursor-pointer"
               >
                 <span>Explore Fish</span>
                 <ArrowRight className="w-4 h-4 text-[#f7f7ff] group-hover:translate-x-1 transition-transform" strokeWidth={2.2} aria-hidden="true" />
@@ -76,7 +76,7 @@ export default function AtlasHero() {
 
               <Link
                 href="/start-aquarium"
-                className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-[#ffffff] border-2 border-[#cfcaf5] hover:border-[#27187e] hover:bg-[#edeafc] text-[#27187e] transition-all shadow-xs hover:-translate-y-0.5 active:translate-y-0 text-sm cursor-pointer"
+                className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-[#ffffff] border-2 border-[#cfcaf5] hover:border-[#27187e] hover:bg-[#edeafc] text-[#27187e] transition-all shadow-xs hover:-translate-y-0.5 active:translate-y-0 text-sm sm:text-base cursor-pointer"
               >
                 <span>Start with the Basics</span>
               </Link>
@@ -88,7 +88,7 @@ export default function AtlasHero() {
                 <span className="font-display text-2xl sm:text-3xl text-[#27187e] leading-none">
                   120+
                 </span>
-                <span className="text-[11px] font-sans font-medium text-[#27187e]/70 mt-1">
+                <span className="font-readable text-xs sm:text-sm font-medium text-[#27187e]/80 mt-1">
                   Species Dossiers
                 </span>
               </div>
@@ -96,7 +96,7 @@ export default function AtlasHero() {
                 <span className="font-display text-2xl sm:text-3xl text-[#27187e] leading-none">
                   100%
                 </span>
-                <span className="text-[11px] font-sans font-medium text-[#27187e]/70 mt-1">
+                <span className="font-readable text-xs sm:text-sm font-medium text-[#27187e]/80 mt-1">
                   Free &amp; Open Atlas
                 </span>
               </div>
@@ -104,7 +104,7 @@ export default function AtlasHero() {
                 <span className="font-display text-2xl sm:text-3xl text-[#27187e] leading-none">
                   6+
                 </span>
-                <span className="text-[11px] font-sans font-medium text-[#27187e]/70 mt-1">
+                <span className="font-readable text-xs sm:text-sm font-medium text-[#27187e]/80 mt-1">
                   Smart Tools
                 </span>
               </div>
@@ -142,42 +142,42 @@ export default function AtlasHero() {
 
                 {/* TOP FLOATING BIOTOPE BADGE */}
                 <div className="absolute top-5 left-5 right-5 flex items-center justify-between pointer-events-none">
-                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#12093d]/80 backdrop-blur-md border border-[#cfcaf5]/30 text-[#f7f7ff] shadow-lg">
-                    <Compass className="w-3.5 h-3.5 text-[#cfcaf5]" />
-                    <span className="text-xs font-condensed font-bold uppercase tracking-wider">
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#12093d]/85 backdrop-blur-md border border-[#cfcaf5]/40 text-[#f7f7ff] shadow-lg">
+                    <Compass className="w-4 h-4 text-[#cfcaf5]" />
+                    <span className="font-readable text-xs sm:text-sm font-semibold">
                       Amazonian Biotope
                     </span>
                   </div>
 
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#12093d]/80 backdrop-blur-md border border-[#cfcaf5]/30 text-[#f7f7ff] shadow-lg text-[11px] font-mono">
-                    <Thermometer className="w-3.5 h-3.5 text-amber-400" />
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#12093d]/85 backdrop-blur-md border border-[#cfcaf5]/40 text-[#f7f7ff] shadow-lg font-readable text-xs sm:text-sm font-medium">
+                    <Thermometer className="w-4 h-4 text-amber-400" />
                     <span>28°–30°C</span>
                   </div>
                 </div>
 
                 {/* BOTTOM FLOATING GLASS CARD */}
-                <div className="absolute bottom-5 left-5 right-5 p-5 rounded-2xl bg-[#12093d]/85 backdrop-blur-md border border-[#cfcaf5]/30 text-left text-[#f7f7ff] shadow-2xl">
+                <div className="absolute bottom-5 left-5 right-5 p-5 sm:p-6 rounded-2xl bg-[#12093d]/90 backdrop-blur-md border border-[#cfcaf5]/40 text-left text-[#f7f7ff] shadow-2xl">
                   <div className="flex items-center justify-between mb-2">
                     <span className="font-display text-2xl sm:text-3xl tracking-wider text-[#ffffff] leading-none">
                       THE NATURAL HABITAT
                     </span>
-                    <span className="px-2 py-0.5 rounded bg-[#27187e] border border-[#cfcaf5]/30 text-[10px] font-mono text-[#cfcaf5] uppercase">
+                    <span className="px-2.5 py-0.5 rounded bg-[#27187e] border border-[#cfcaf5]/40 font-mono text-xs text-[#cfcaf5] uppercase font-medium">
                       pH 6.0 - 7.0
                     </span>
                   </div>
 
-                  <p className="text-xs font-sans text-[#cfcaf5] font-medium mb-3">
+                  <p className="font-readable text-sm sm:text-base text-[#e2dffa] font-medium mb-3">
                     Symphysodon aequifasciatus — Planted Amazonian Biotopes
                   </p>
 
-                  <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-[#cfcaf5]/20 text-[11px] font-sans">
-                    <span className="inline-flex items-center gap-1 text-[#f7f7ff]/90">
-                      <Droplets className="w-3 h-3 text-cyan-400" />
+                  <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-[#cfcaf5]/30 font-readable text-xs sm:text-sm">
+                    <span className="inline-flex items-center gap-1.5 text-[#ffffff]">
+                      <Droplets className="w-3.5 h-3.5 text-cyan-400" />
                       <span>Soft Water (1–5 dGH)</span>
                     </span>
-                    <span className="text-[#cfcaf5]/40">•</span>
-                    <span className="inline-flex items-center gap-1 text-[#f7f7ff]/90">
-                      <ShieldCheck className="w-3 h-3 text-emerald-400" />
+                    <span className="text-[#cfcaf5]/60">•</span>
+                    <span className="inline-flex items-center gap-1.5 text-[#ffffff]">
+                      <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
                       <span>Planted Setup</span>
                     </span>
                   </div>
@@ -189,16 +189,16 @@ export default function AtlasHero() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.35 }}
-                className="hidden sm:flex absolute -left-6 top-1/3 -translate-y-1/2 p-3.5 rounded-2xl bg-[#ffffff] border-2 border-[#27187e] shadow-xl items-center gap-3 z-20"
+                className="hidden sm:flex absolute -left-6 top-1/3 -translate-y-1/2 p-4 rounded-2xl bg-[#ffffff] border-2 border-[#27187e] shadow-xl items-center gap-3 z-20"
               >
-                <div className="w-10 h-10 rounded-xl bg-[#edeafc] text-[#27187e] flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-[#edeafc] text-[#27187e] flex items-center justify-center shrink-0">
                   <Fish className="w-5 h-5" />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="font-display text-base text-[#27187e] leading-tight">
+                  <span className="font-display text-lg text-[#27187e] leading-tight">
                     Blue Diamond Discus
                   </span>
-                  <span className="text-[10px] font-sans font-semibold text-[#27187e]/70 uppercase tracking-wider">
+                  <span className="font-readable text-xs font-semibold text-[#27187e]/80 uppercase tracking-wider">
                     Featured Profile
                   </span>
                 </div>

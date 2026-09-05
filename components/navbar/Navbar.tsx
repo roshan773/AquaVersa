@@ -319,16 +319,16 @@ export default function Navbar() {
                   
                   {/* LEFT 7 COLS: EDITORIAL MAIN DIRECTORIES */}
                   <div className="lg:col-span-7 flex flex-col">
-                    <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#cfcaf5]/15">
-                      <span className="font-condensed text-xs font-bold tracking-[0.25em] text-[#cfcaf5] uppercase">
+                    <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#cfcaf5]/20">
+                      <span className="font-sans text-sm sm:text-base font-bold tracking-wider text-[#cfcaf5] uppercase">
                         01 // Main Atlas Archives
                       </span>
-                      <span className="text-[11px] font-sans text-[#cfcaf5]/60">
+                      <span className="font-readable text-sm sm:text-base text-[#cfcaf5]">
                         Explore Verified Repositories
                       </span>
                     </div>
 
-                    <nav className="flex flex-col divide-y divide-[#cfcaf5]/10" aria-label="Main Navigation">
+                    <nav className="flex flex-col divide-y divide-[#cfcaf5]/15" aria-label="Main Navigation">
                       {primaryLinks.map((item, idx) => {
                         const isActive = pathname === item.href;
                         const isHovered = hoveredIdx === idx;
@@ -346,17 +346,17 @@ export default function Navbar() {
                             <Link
                               href={item.href}
                               onClick={closeMenu}
-                              className={`flex items-center justify-between py-3.5 sm:py-4 transition-all duration-200 ${
-                                isActive ? 'text-[#ffffff]' : 'text-[#f7f7ff]/90 hover:text-[#ffffff]'
+                              className={`flex items-center justify-between py-4 sm:py-5 transition-all duration-200 ${
+                                isActive ? 'text-[#ffffff]' : 'text-[#f7f7ff] hover:text-[#ffffff]'
                               }`}
                             >
                               <div className="flex items-center gap-4 sm:gap-6">
                                 {/* Number Prefix */}
                                 <span
-                                  className={`font-mono text-xs sm:text-sm font-medium tracking-wider transition-colors ${
+                                  className={`font-mono text-sm sm:text-base font-semibold tracking-wider transition-colors ${
                                     isActive || isHovered
-                                      ? 'text-[#cfcaf5]'
-                                      : 'text-[#cfcaf5]/40'
+                                      ? 'text-[#ffffff]'
+                                      : 'text-[#cfcaf5]/70'
                                   }`}
                                 >
                                   {item.num}
@@ -364,41 +364,41 @@ export default function Navbar() {
 
                                 {/* Icon Pill */}
                                 <div
-                                  className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all ${
+                                  className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all shrink-0 ${
                                     isActive
-                                      ? 'bg-[#f7f7ff] text-[#27187e]'
+                                      ? 'bg-[#ffffff] text-[#27187e] shadow-md'
                                       : isHovered
-                                      ? 'bg-[#3b28ab] text-[#f7f7ff]'
-                                      : 'bg-[#27187e]/60 text-[#cfcaf5]'
+                                      ? 'bg-[#3b28ab] text-[#ffffff]'
+                                      : 'bg-[#27187e] text-[#cfcaf5] border border-[#cfcaf5]/30'
                                   }`}
                                 >
-                                  <item.icon className="w-4 h-4" strokeWidth={2} />
+                                  <item.icon className="w-5 h-5" strokeWidth={2} />
                                 </div>
 
-                                {/* Label & Badge */}
+                                {/* Label & Description */}
                                 <div className="flex flex-col text-left">
                                   <div className="flex items-center gap-3">
-                                    <span className="font-display text-2xl sm:text-3xl lg:text-4xl tracking-wide group-hover:translate-x-1.5 transition-transform duration-200">
+                                    <span className="font-display text-2xl sm:text-3xl lg:text-4xl tracking-wide group-hover:translate-x-1.5 transition-transform duration-200 text-[#ffffff]">
                                       {item.label}
                                     </span>
                                     {isActive && (
-                                      <span className="px-2 py-0.5 rounded-full bg-[#f7f7ff] text-[#27187e] text-[10px] font-sans font-bold uppercase tracking-wider">
+                                      <span className="px-2.5 py-0.5 rounded-full bg-[#ffffff] text-[#27187e] text-xs font-readable font-bold uppercase tracking-wider">
                                         Active
                                       </span>
                                     )}
                                   </div>
-                                  <span className="text-xs text-[#cfcaf5]/70 font-sans hidden sm:block">
+                                  <span className="font-readable text-sm sm:text-base text-[#e2dffa] font-normal mt-1 leading-relaxed block">
                                     {item.desc}
                                   </span>
                                 </div>
                               </div>
 
                               {/* Right Badge & Arrow */}
-                              <div className="flex items-center gap-3">
-                                <span className="hidden md:inline-block px-2.5 py-1 rounded-md bg-[#27187e]/50 border border-[#cfcaf5]/20 text-[11px] font-condensed font-semibold uppercase tracking-wider text-[#cfcaf5]">
+                              <div className="flex items-center gap-3 shrink-0">
+                                <span className="hidden md:inline-block px-3 py-1 rounded-lg bg-[#27187e] border border-[#cfcaf5]/40 font-readable text-xs sm:text-sm font-medium text-[#ffffff] shadow-xs">
                                   {item.badge}
                                 </span>
-                                <div className="w-8 h-8 rounded-full flex items-center justify-center bg-[#27187e]/40 group-hover:bg-[#f7f7ff] text-[#cfcaf5] group-hover:text-[#27187e] transition-all">
+                                <div className="w-9 h-9 rounded-full flex items-center justify-center bg-[#27187e] group-hover:bg-[#ffffff] text-[#cfcaf5] group-hover:text-[#27187e] border border-[#cfcaf5]/30 transition-all shadow-xs">
                                   <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                                 </div>
                               </div>
@@ -413,10 +413,10 @@ export default function Navbar() {
                   <div className="lg:col-span-5 flex flex-col gap-6">
                     
                     {/* INLINE QUICK SEARCH BOX */}
-                    <div className="p-5 sm:p-6 rounded-2xl bg-[#1b1059]/80 border border-[#cfcaf5]/20 shadow-xl backdrop-blur-md">
+                    <div className="p-5 sm:p-6 rounded-2xl bg-[#1b1059] border border-[#cfcaf5]/30 shadow-xl backdrop-blur-md">
                       <div className="flex items-center justify-between mb-3">
-                        <span className="font-condensed text-xs font-bold tracking-[0.2em] text-[#cfcaf5] uppercase flex items-center gap-2">
-                          <Search className="w-3.5 h-3.5" />
+                        <span className="font-sans text-sm sm:text-base font-bold tracking-wider text-[#ffffff] uppercase flex items-center gap-2">
+                          <Search className="w-4 h-4 text-[#cfcaf5]" />
                           Quick Atlas Search
                         </span>
                       </div>
@@ -426,7 +426,7 @@ export default function Navbar() {
                         className="relative mb-3"
                       >
                         <Search
-                          className="w-4 h-4 text-[#cfcaf5]/60 absolute left-3.5 top-1/2 -translate-y-1/2"
+                          className="w-4 h-4 text-[#cfcaf5] absolute left-3.5 top-1/2 -translate-y-1/2"
                           strokeWidth={2}
                         />
                         <input
@@ -435,19 +435,19 @@ export default function Navbar() {
                           placeholder="Search species, plants, gear..."
                           value={searchQuery}
                           onChange={(e) => setSearchQuery(e.target.value)}
-                          className="w-full pl-10 pr-20 py-2.5 rounded-xl bg-[#12093d] border border-[#cfcaf5]/30 focus:border-[#cfcaf5] text-sm text-[#f7f7ff] placeholder-[#cfcaf5]/50 font-sans focus:outline-none transition-all"
+                          className="w-full pl-10 pr-20 py-3 rounded-xl bg-[#12093d] border border-[#cfcaf5]/40 focus:border-[#ffffff] font-readable text-sm sm:text-base text-[#ffffff] placeholder-[#cfcaf5]/70 focus:outline-none transition-all"
                         />
                         <button
                           type="submit"
-                          className="absolute right-1.5 top-1/2 -translate-y-1/2 px-3 py-1 bg-[#27187e] hover:bg-[#3b28ab] text-[#f7f7ff] border border-[#cfcaf5]/30 rounded-lg text-xs font-bold font-sans transition-colors cursor-pointer"
+                          className="absolute right-2 top-1/2 -translate-y-1/2 px-4 py-1.5 bg-[#27187e] hover:bg-[#3b28ab] text-[#ffffff] border border-[#cfcaf5]/40 rounded-lg font-readable text-xs sm:text-sm font-semibold transition-colors cursor-pointer"
                         >
                           Find
                         </button>
                       </form>
 
                       {/* Trending Suggestions */}
-                      <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                        <span className="text-[10px] text-[#cfcaf5]/60 uppercase tracking-wider font-condensed">
+                      <div className="flex flex-wrap items-center gap-2 pt-1">
+                        <span className="font-readable text-xs sm:text-sm font-medium text-[#cfcaf5]">
                           Trending:
                         </span>
                         {trendingSearches.map((term) => (
@@ -457,7 +457,7 @@ export default function Navbar() {
                               router.push(`/search?q=${encodeURIComponent(term)}`);
                               closeMenu();
                             }}
-                            className="px-2 py-0.5 rounded-md bg-[#27187e]/60 hover:bg-[#f7f7ff] text-[#cfcaf5] hover:text-[#27187e] border border-[#cfcaf5]/15 text-[11px] font-sans transition-all cursor-pointer"
+                            className="px-2.5 py-1 rounded-lg bg-[#27187e] hover:bg-[#ffffff] text-[#e2dffa] hover:text-[#27187e] border border-[#cfcaf5]/30 font-readable text-xs sm:text-sm font-medium transition-all cursor-pointer"
                           >
                             {term}
                           </button>
@@ -467,41 +467,41 @@ export default function Navbar() {
 
                     {/* SMART TOOLS & CALCULATORS */}
                     <div>
-                      <div className="flex items-center justify-between pb-2 mb-3 border-b border-[#cfcaf5]/15">
-                        <span className="font-condensed text-xs font-bold tracking-[0.25em] text-[#cfcaf5] uppercase">
+                      <div className="flex items-center justify-between pb-2 mb-3 border-b border-[#cfcaf5]/20">
+                        <span className="font-sans text-sm sm:text-base font-bold tracking-wider text-[#cfcaf5] uppercase">
                           02 // Interactive Tools
                         </span>
                         <Link
                           href="/compatibility"
                           onClick={closeMenu}
-                          className="text-[11px] font-sans text-[#cfcaf5]/80 hover:text-[#ffffff] flex items-center gap-1"
+                          className="font-readable text-sm sm:text-base font-medium text-[#e2dffa] hover:text-[#ffffff] flex items-center gap-1"
                         >
                           <span>All Tools</span>
-                          <ChevronRight className="w-3 h-3" />
+                          <ChevronRight className="w-4 h-4" />
                         </Link>
                       </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {smartTools.map((tool) => (
                           <Link
                             key={tool.href}
                             href={tool.href}
                             onClick={closeMenu}
-                            className="group p-3.5 rounded-xl bg-[#1b1059]/60 hover:bg-[#27187e] border border-[#cfcaf5]/15 hover:border-[#cfcaf5]/50 transition-all flex flex-col justify-between"
+                            className="group p-4 rounded-xl bg-[#1b1059] hover:bg-[#27187e] border border-[#cfcaf5]/25 hover:border-[#cfcaf5]/60 transition-all flex flex-col justify-between"
                           >
-                            <div className="flex items-center justify-between mb-1.5">
-                              <div className="w-7 h-7 rounded-lg bg-[#12093d] flex items-center justify-center text-[#cfcaf5] group-hover:bg-[#f7f7ff] group-hover:text-[#27187e] transition-colors">
-                                <tool.icon className="w-3.5 h-3.5" />
+                            <div className="flex items-center justify-between mb-2">
+                              <div className="w-8 h-8 rounded-lg bg-[#12093d] flex items-center justify-center text-[#cfcaf5] group-hover:bg-[#ffffff] group-hover:text-[#27187e] transition-colors border border-[#cfcaf5]/20">
+                                <tool.icon className="w-4 h-4" />
                               </div>
-                              <span className="text-[10px] font-mono text-[#cfcaf5]/60 uppercase">
+                              <span className="font-mono text-xs text-[#cfcaf5] uppercase font-semibold">
                                 {tool.badge}
                               </span>
                             </div>
                             <div>
-                              <h4 className="font-condensed text-sm font-bold tracking-wider text-[#f7f7ff] group-hover:text-[#ffffff]">
+                              <h4 className="font-display text-lg sm:text-xl font-normal tracking-wide text-[#ffffff] leading-tight">
                                 {tool.title}
                               </h4>
-                              <p className="text-[11px] text-[#cfcaf5]/70 font-sans line-clamp-1 mt-0.5">
+                              <p className="font-readable text-sm sm:text-base text-[#e2dffa] font-normal leading-snug line-clamp-2 mt-1">
                                 {tool.desc}
                               </p>
                             </div>
@@ -511,15 +511,15 @@ export default function Navbar() {
                     </div>
 
                     {/* FEATURED ROADMAP CARD */}
-                    <div className="p-5 rounded-2xl bg-gradient-to-br from-[#27187e] to-[#1b1059] border-2 border-[#cfcaf5]/30 shadow-xl flex items-center justify-between gap-4">
+                    <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-[#27187e] to-[#1b1059] border-2 border-[#cfcaf5]/40 shadow-xl flex items-center justify-between gap-4">
                       <div>
-                        <span className="inline-block px-2 py-0.5 rounded bg-[#f7f7ff] text-[#27187e] text-[10px] font-bold font-condensed tracking-wider uppercase mb-1.5">
+                        <span className="inline-block px-2.5 py-0.5 rounded bg-[#ffffff] text-[#27187e] font-readable text-xs font-bold uppercase tracking-wider mb-2">
                           New to Aquariums?
                         </span>
-                        <h4 className="font-display text-lg text-[#f7f7ff] leading-snug">
+                        <h4 className="font-display text-xl sm:text-2xl text-[#ffffff] leading-snug">
                           Complete 10-Step Setup Roadmap
                         </h4>
-                        <p className="text-xs text-[#cfcaf5]/80 font-sans mt-0.5">
+                        <p className="font-readable text-sm sm:text-base text-[#e2dffa] font-normal mt-1 leading-relaxed">
                           Avoid common beginner mistakes before buying fish.
                         </p>
                       </div>
@@ -527,10 +527,10 @@ export default function Navbar() {
                       <Link
                         href="/start-aquarium"
                         onClick={closeMenu}
-                        className="shrink-0 w-11 h-11 rounded-full bg-[#f7f7ff] hover:bg-[#cfcaf5] text-[#27187e] flex items-center justify-center transition-transform hover:scale-105 shadow-md"
+                        className="shrink-0 w-12 h-12 rounded-full bg-[#ffffff] hover:bg-[#cfcaf5] text-[#27187e] flex items-center justify-center transition-transform hover:scale-105 shadow-lg cursor-pointer"
                         aria-label="Start Beginner Roadmap"
                       >
-                        <ArrowRight className="w-5 h-5" strokeWidth={2.2} />
+                        <ArrowRight className="w-5 h-5" strokeWidth={2.4} />
                       </Link>
                     </div>
 
@@ -541,18 +541,18 @@ export default function Navbar() {
             </div>
 
             {/* BOTTOM BAR INSIDE OVERLAY */}
-            <div className="relative z-10 border-t border-[#cfcaf5]/15 py-4 bg-[#12093d]/90">
-              <div className="site-container flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-sans text-[#cfcaf5]/70">
+            <div className="relative z-10 border-t border-[#cfcaf5]/20 py-4 bg-[#12093d]">
+              <div className="site-container flex flex-col sm:flex-row items-center justify-between gap-3 font-readable text-sm sm:text-base text-[#e2dffa]">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>Roshan Aquva World — The Free & Systematic Aquarium Atlas.</span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>Roshan Aquva World — The Free &amp; Systematic Aquarium Atlas.</span>
                 </div>
 
                 <div className="flex items-center gap-4">
                   <Link
                     href="/privacy"
                     onClick={closeMenu}
-                    className="hover:text-[#f7f7ff] transition-colors"
+                    className="hover:text-[#ffffff] transition-colors"
                   >
                     Privacy Policy
                   </Link>
@@ -560,7 +560,7 @@ export default function Navbar() {
                   <Link
                     href="/terms"
                     onClick={closeMenu}
-                    className="hover:text-[#f7f7ff] transition-colors"
+                    className="hover:text-[#ffffff] transition-colors"
                   >
                     Terms of Use
                   </Link>
@@ -568,7 +568,7 @@ export default function Navbar() {
                   <Link
                     href="/contact"
                     onClick={closeMenu}
-                    className="hover:text-[#f7f7ff] transition-colors"
+                    className="hover:text-[#ffffff] transition-colors"
                   >
                     Direct Support
                   </Link>

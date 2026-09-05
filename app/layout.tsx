@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Oswald, Bebas_Neue } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans, Oswald, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 import Navbar from "@/components/navbar/Navbar";
 import { StatsProvider } from "@/components/home/StatsContext";
 import Footer from "@/components/footer/Footer";
 import SitePreloader from "@/components/ui/SitePreloader";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -121,7 +127,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${plusJakarta.variable} ${oswald.variable} ${bebasNeue.variable} font-sans antialiased min-h-screen flex flex-col bg-[#F7F7FF] text-[#27187E] selection:bg-[#27187E] selection:text-[#F7F7FF]`}>
+      <body className={`${inter.variable} ${plusJakarta.variable} ${oswald.variable} ${bebasNeue.variable} font-sans antialiased min-h-screen flex flex-col bg-[#F7F7FF] text-[#27187E] selection:bg-[#27187E] selection:text-[#F7F7FF]`}>
         <SitePreloader />
         <Navbar />
         <StatsProvider>
