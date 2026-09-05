@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { CalendarDays, Droplets, Scissors, FlaskConical, Filter, Check, RotateCcw } from 'lucide-react';
+import { CalendarDays, Droplets, Scissors, FlaskConical, Filter, Check, RotateCcw, Fish, Thermometer, Eye, Sparkles } from 'lucide-react';
 import { storage, KEYS, unlockAchievement } from '@/lib/storage';
 
 interface MaintenanceTask {
@@ -41,26 +41,26 @@ export default function MaintenanceSection() {
     {
       period: 'Daily',
       tasks: [
-        { name: 'Feed fish (1-2 times, only what they eat in 2 mins)', icon: <FishIcon className="w-4 h-4 text-cyan-500" /> },
-        { name: 'Check temperature and filter flow', icon: <ThermometerIcon className="w-4 h-4 text-orange-500" /> },
-        { name: 'Observe fish behavior and health', icon: <Eye className="w-4 h-4 text-emerald-500" /> }
+        { name: 'Feed fish (1-2 times, only what they consume in 2 mins)', icon: <Fish className="w-4 h-4 text-[#27187e]" /> },
+        { name: 'Check thermometer & filter turnover flow', icon: <Thermometer className="w-4 h-4 text-[#27187e]" /> },
+        { name: 'Observe fish swimming behavior & respiratory rates', icon: <Eye className="w-4 h-4 text-[#27187e]" /> }
       ]
     },
     {
       period: 'Weekly',
       tasks: [
-        { name: 'Change 20-30% of water', icon: <Droplets className="w-4 h-4 text-blue-500" /> },
-        { name: 'Siphon gravel to remove waste', icon: <Droplets className="w-4 h-4 text-blue-500" /> },
-        { name: 'Scrape algae from glass', icon: <Scissors className="w-4 h-4 text-purple-500" /> },
-        { name: 'Test water parameters', icon: <FlaskConical className="w-4 h-4 text-amber-500" /> }
+        { name: 'Change 20–30% of water volume with dechlorinator', icon: <Droplets className="w-4 h-4 text-[#27187e]" /> },
+        { name: 'Siphon substrate gravel to remove organic debris', icon: <Droplets className="w-4 h-4 text-[#27187e]" /> },
+        { name: 'Scrape glass algae and clean view panels', icon: <Scissors className="w-4 h-4 text-[#27187e]" /> },
+        { name: 'Test pH, Ammonia, Nitrite, and Nitrate', icon: <FlaskConical className="w-4 h-4 text-[#27187e]" /> }
       ]
     },
     {
       period: 'Monthly',
       tasks: [
-        { name: 'Rinse filter media in old tank water', icon: <Filter className="w-4 h-4 text-indigo-500" /> },
-        { name: 'Trim overgrown plants', icon: <Scissors className="w-4 h-4 text-emerald-500" /> },
-        { name: 'Check expiration on test kits & food', icon: <CalendarDays className="w-4 h-4 text-rose-500" /> }
+        { name: 'Rinse coarse filter sponge in siphoned tank water', icon: <Filter className="w-4 h-4 text-[#27187e]" /> },
+        { name: 'Trim overgrown stem plants & remove dead leaves', icon: <Scissors className="w-4 h-4 text-[#27187e]" /> },
+        { name: 'Check expiration on reagent test kits & food packs', icon: <CalendarDays className="w-4 h-4 text-[#27187e]" /> }
       ]
     }
   ];
@@ -84,7 +84,6 @@ export default function MaintenanceSection() {
     setCheckedState(newState);
     storage.set(KEYS.MAINTENANCE, newState);
 
-    // Calculate total checked across all periods to trigger achievement
     const totalTasks = schedule.reduce((sum, p) => sum + p.tasks.length, 0);
     const totalChecked = newState.Daily.length + newState.Weekly.length + newState.Monthly.length;
 
@@ -102,135 +101,106 @@ export default function MaintenanceSection() {
     storage.set(KEYS.MAINTENANCE, newState);
   };
 
-  if (!isMounted) {
-    return (
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4 text-center text-muted-foreground">
-          Loading maintenance schedule...
-        </div>
-      </section>
-    );
-  }
-
   return (
-    <section className="py-24 bg-background">
-      <div className="container mx-auto px-4 max-w-6xl">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-semibold mb-4">
-            <CalendarDays className="w-4 h-4" /> Routine Care
+    <section className="py-24 bg-[#ffffff] border-t-2 border-b-2 border-[#cfcaf5] text-left marine-pattern-light">
+      <div className="site-container">
+        
+        {/* Header */}
+        <div className="mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#edeafc] border border-[#cfcaf5] text-[#27187e] font-readable text-xs font-semibold uppercase tracking-wider mb-4">
+            <CalendarDays className="w-3.5 h-3.5 text-[#27187e]" />
+            <span>Aquarium Maintenance Protocol</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-poppins font-bold mb-6 text-foreground">
-            Aquarium Maintenance Schedule
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-normal text-[#27187e] tracking-tight">
+            Husbandry &amp; Care Schedule
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Consistency is the secret to a crystal clear, algae-free, and healthy aquarium. Spend 20 minutes a week to save hours of headaches.
+          <p className="text-base sm:text-lg text-[#27187e]/85 font-readable max-w-2xl mt-3 leading-relaxed">
+            Consistent routine care prevents waste buildup and disease outbreaks. Check off completed items to track your aquarium routine.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {schedule.map((item, idx) => {
-            const periodChecked = checkedState[item.period];
-            const percent = Math.round((periodChecked.length / item.tasks.length) * 100);
-            
+        {/* Schedule Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-readable">
+          {schedule.map((item) => {
+            const checkedCount = isMounted ? checkedState[item.period]?.length || 0 : 0;
+            const totalCount = item.tasks.length;
+            const isAllCompleted = checkedCount === totalCount && totalCount > 0;
+
             return (
-              <div key={idx} className="bg-card border border-border rounded-3xl p-8 hover:shadow-xl transition-shadow relative overflow-hidden group flex flex-col justify-between">
-                <div className="absolute -top-6 -right-6 p-6 opacity-[0.02] group-hover:opacity-[0.05] transition-opacity transform group-hover:scale-110 pointer-events-none">
-                  <CalendarDays className="w-32 h-32 text-foreground" />
-                </div>
-                
+              <div
+                key={item.period}
+                className="bg-[#f7f7ff] border-2 border-[#cfcaf5] rounded-3xl p-6 sm:p-7 flex flex-col justify-between shadow-sm"
+              >
                 <div>
-                  <div className="flex justify-between items-center mb-4">
-                    <h3 className="text-2xl font-bold text-foreground">{item.period} Tasks</h3>
-                    {periodChecked.length > 0 && (
-                      <button 
+                  <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#edeafc]">
+                    <div className="flex items-center gap-2.5">
+                      <span className="font-display text-2xl sm:text-3xl text-[#27187e]">
+                        {item.period} Tasks
+                      </span>
+                      {isAllCompleted && (
+                        <span className="bg-[#27187e] text-[#f7f7ff] text-xs font-bold px-2 py-0.5 rounded-md">
+                          Done
+                        </span>
+                      )}
+                    </div>
+
+                    {checkedCount > 0 && (
+                      <button
                         onClick={() => handleResetPeriod(item.period)}
-                        className="text-xs text-muted-foreground hover:text-destructive flex items-center gap-0.5 cursor-pointer"
-                        title="Reset category tasks"
+                        className="text-xs font-semibold text-[#27187e]/70 hover:text-[#27187e] flex items-center gap-1 cursor-pointer"
+                        title="Reset task group"
                       >
                         <RotateCcw className="w-3.5 h-3.5" />
+                        <span>Reset</span>
                       </button>
                     )}
                   </div>
 
-                  {/* Progress bar */}
-                  <div className="mb-6">
-                    <div className="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden mb-2">
-                      <div 
-                        className="bg-cyan-500 h-full transition-all duration-500" 
-                        style={{ width: `${percent}%` }}
-                      ></div>
-                    </div>
-                    <span className="text-xs text-muted-foreground font-semibold">
-                      {periodChecked.length} of {item.tasks.length} completed
-                    </span>
-                  </div>
+                  <div className="space-y-3 mb-6">
+                    {item.tasks.map((task) => {
+                      const isChecked = isMounted && checkedState[item.period]?.includes(task.name);
 
-                  <ul className="space-y-4">
-                    {item.tasks.map((task, tIdx) => {
-                      const isTaskChecked = periodChecked.includes(task.name);
                       return (
-                        <li 
-                          key={tIdx} 
+                        <button
+                          key={task.name}
                           onClick={() => toggleTask(item.period, task.name)}
-                          className={`flex items-start gap-3 cursor-pointer p-2 rounded-xl border transition-colors select-none ${
-                            isTaskChecked 
-                              ? 'bg-emerald-500/5 dark:bg-emerald-500/10 border-emerald-500/20' 
-                              : 'border-transparent hover:bg-muted/40'
+                          className={`w-full text-left p-3.5 rounded-2xl border-2 transition-all flex items-start gap-3 cursor-pointer shadow-sm ${
+                            isChecked
+                              ? 'bg-[#edeafc] border-[#27187e] text-[#27187e]'
+                              : 'bg-[#ffffff] border-[#cfcaf5] hover:border-[#27187e] text-[#27187e]'
                           }`}
                         >
-                          <div className={`mt-0.5 w-5 h-5 rounded-md border flex items-center justify-center shrink-0 transition-colors ${
-                            isTaskChecked 
-                              ? 'bg-emerald-500 border-emerald-500 text-white' 
-                              : 'border-muted-foreground/30'
-                          }`}>
-                            {isTaskChecked && <Check className="w-3.5 h-3.5" />}
+                          <div
+                            className={`w-5 h-5 rounded-lg border-2 flex items-center justify-center shrink-0 mt-0.5 transition-colors ${
+                              isChecked
+                                ? 'bg-[#27187e] border-[#27187e] text-[#f7f7ff]'
+                                : 'border-[#cfcaf5] bg-[#ffffff]'
+                            }`}
+                          >
+                            {isChecked && <Check className="w-3.5 h-3.5" strokeWidth={3} />}
                           </div>
-                          
-                          <div className="flex items-start gap-2.5 min-w-0 flex-1">
-                            <div className="mt-0.5 p-1 bg-muted rounded shrink-0">
-                              {task.icon}
-                            </div>
-                            <span className={`text-sm font-medium transition-all ${
-                              isTaskChecked ? 'text-muted-foreground line-through' : 'text-slate-700 dark:text-slate-350'
-                            }`}>
+
+                          <div className="flex-1 text-sm font-medium leading-snug">
+                            <span className={isChecked ? 'line-through opacity-70' : ''}>
                               {task.name}
                             </span>
                           </div>
-                        </li>
+                        </button>
                       );
                     })}
-                  </ul>
+                  </div>
+                </div>
+
+                <div className="pt-3 border-t border-[#edeafc] flex items-center justify-between text-xs text-[#27187e]/70 font-semibold uppercase tracking-wider">
+                  <span>Progress</span>
+                  <span>{checkedCount} / {totalCount} completed</span>
                 </div>
               </div>
             );
           })}
         </div>
+
       </div>
     </section>
   );
 }
-
-// Minimal icons for the missing ones in lucide
-function FishIcon(props: any) {
-  return (
-    <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M6.5 12c.94-3.46 4.94-6 8.5-6 1.11 0 2.05.23 3 .5h2c-1.15 2.15-2.02 5.02-2.02 8.5S18.85 21.35 20 23.5h-2c-.95.27-1.89.5-3 .5-3.56 0-7.56-2.54-8.5-6C4.5 18 2 19 2 19s1-3.5 1-7c0-3.5-1-7-1-7s2.5 1 4.5 7z" />
-    </svg>
-  );
-}
-function ThermometerIcon(props: any) {
-  return (
-    <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z" />
-    </svg>
-  );
-}
-function Eye(props: any) {
-  return (
-    <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
-      <circle cx="12" cy="12" r="3" />
-    </svg>
-  );
-}
-

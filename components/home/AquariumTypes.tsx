@@ -39,58 +39,58 @@ export default function AquariumTypes() {
   ];
 
   return (
-    <section className="py-20 bg-[#14094a] relative border-b border-[#27187E]/80 text-left">
-      <div className="container mx-auto px-4 max-w-7xl">
-        
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-[#27187E]/50 border border-[#3622a6] mb-3 text-[#F7F7FF] text-xs font-condensed uppercase tracking-wider font-semibold">
-              <Layers className="w-3.5 h-3.5 text-[#aca1f7]" />
-              <span>Aquarium Styles</span>
-            </div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-normal text-[#F7F7FF] tracking-wide">
-              Explore Aquarium Types
-            </h2>
-            <p className="text-[#F7F7FF]/75 text-sm max-w-xl mt-2 font-normal leading-relaxed font-sans">
-              Every thriving aquarium begins with a clear system focus. Choose the style of habitat that fits your goals and experience level.
-            </p>
-          </div>
+    <section className="bg-[#ffffff] rounded-3xl border-2 border-[#cfcaf5] p-6 sm:p-10 shadow-sm text-left font-readable">
+      <div className="mb-10 pb-6 border-b border-[#edeafc]">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#edeafc] border border-[#cfcaf5] text-[#27187e] text-xs font-semibold uppercase tracking-wider mb-3">
+          <Layers className="w-3.5 h-3.5 text-[#27187e]" />
+          <span>Biotope Classifications</span>
         </div>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-normal text-[#27187e] tracking-tight">
+          Explore Aquarium Biotope Types
+        </h2>
+        <p className="text-base text-[#27187e]/85 max-w-xl mt-2 leading-relaxed">
+          Every thriving aquarium begins with a clear system focus. Choose the style of habitat that fits your goals and experience level.
+        </p>
+      </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {types.map((type) => (
-            <Link 
-              href={type.href} 
-              key={type.id} 
-              className="group text-left rounded-2xl border border-[#27187E] bg-[#1c0e64] overflow-hidden hover:border-[#F7F7FF] transition-all duration-200 flex flex-col shadow-lg"
-            >
-              <div className="relative h-44 w-full overflow-hidden bg-[#0d0630]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {types.map((type) => (
+          <Link 
+            href={type.href} 
+            key={type.id} 
+            className="group text-left rounded-3xl border-2 border-[#cfcaf5] bg-[#f7f7ff] overflow-hidden hover:border-[#27187e] transition-all flex flex-col justify-between shadow-sm hover:shadow-lg"
+          >
+            <div>
+              <div className="relative h-44 w-full overflow-hidden bg-[#12093d]">
                 <Image 
                   src={type.image} 
                   alt={type.title} 
                   fill 
-                  className="object-cover group-hover:scale-105 transition-transform duration-300 opacity-85" 
+                  className="object-cover group-hover:scale-105 transition-transform duration-500" 
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" 
                 />
-                <div className="absolute top-3 left-3 bg-[#F7F7FF] px-2.5 py-0.5 rounded-md text-[10px] font-condensed uppercase tracking-wider font-bold text-[#27187E]">
+                <div className="absolute top-3 left-3 bg-[#f7f7ff] text-[#27187e] border border-[#cfcaf5] px-2.5 py-1 rounded-md text-xs uppercase font-bold tracking-wider shadow-sm">
                   {type.badge}
                 </div>
               </div>
-              <div className="p-5 flex flex-col flex-grow">
-                <h3 className="text-xl font-display font-normal tracking-wide mb-1.5 text-[#F7F7FF] group-hover:text-white transition-colors">
+              <div className="p-5">
+                <h3 className="text-xl sm:text-2xl font-display font-normal mb-2 text-[#27187e] group-hover:text-[#1b1059] transition-colors">
                   {type.title}
                 </h3>
-                <p className="text-xs text-[#F7F7FF]/75 font-normal leading-relaxed mb-4 flex-grow font-sans">
+                <p className="text-xs sm:text-sm text-[#27187e]/80 font-medium leading-relaxed">
                   {type.desc}
                 </p>
-                <span className="inline-flex items-center gap-1 text-xs font-condensed uppercase tracking-wider font-bold text-[#aca1f7] group-hover:text-white pt-3 border-t border-[#27187E]">
-                  <span>Learn Requirements</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                </span>
               </div>
-            </Link>
-          ))}
-        </div>
+            </div>
+            
+            <div className="p-5 pt-0">
+              <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#27187e] group-hover:underline pt-3 border-t border-[#edeafc] w-full justify-between">
+                <span>Learn Requirements</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </div>
+          </Link>
+        ))}
       </div>
     </section>
   );

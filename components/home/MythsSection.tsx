@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Lightbulb, Info, RotateCcw } from 'lucide-react';
+import { Lightbulb, Info, RotateCcw, HelpCircle, CheckCircle2 } from 'lucide-react';
 
 interface MythItem {
   myth: string;
@@ -11,34 +11,34 @@ interface MythItem {
 
 const myths: MythItem[] = [
   {
-    myth: "Small tanks are easier for beginners.",
-    truth: "False. Smaller aquariums can be less forgiving because water conditions can change more quickly.",
-    why: "Larger aquariums generally provide more water volume and can be more stable, but proper cycling, filtration, stocking, and maintenance are still essential."
+    myth: "Small bowls or 1-gallon nano tanks are easiest for beginners.",
+    truth: "False. Small water volumes magnify chemical spikes and temperature swings.",
+    why: "Larger aquariums (20–40 gallons) dilute waste compounds and provide thermal stability, giving beginners a much wider safety margin."
   },
   {
-    myth: "You can stock '1 inch of fish per gallon' of water.",
-    truth: "False. The 1-inch-per-gallon rule is an unreliable stocking rule.",
-    why: "Fish differ greatly in adult size, body mass, behavior, activity level, and bioload. Stocking should consider adult size, species requirements, tank dimensions, filtration, and maintenance."
+    myth: "You can reliably stock '1 inch of fish per gallon' of water.",
+    truth: "False. The 1-inch-per-gallon rule ignores body mass and bioload.",
+    why: "A 10-inch Oscar produces fifty times the waste and oxygen demand of ten 1-inch Neon Tetras. Stocking must consider adult biomass, swimming layers, and filtration turnover."
   },
   {
-    myth: "Fish only grow to the size of their tank.",
-    truth: "False. Fish do not simply stop growing harmlessly to match their aquarium.",
-    why: "Inadequate space, chronic poor water quality, poor nutrition, stress, and other conditions can impair normal growth and welfare."
+    myth: "Fish will only grow to the size of their glass tank.",
+    truth: "False. Fish do not harmlessly stop growing to fit small aquariums.",
+    why: "Severe spatial confinement and poor water quality cause stunted skeletal growth while internal organs continue growing, resulting in premature organ failure."
   },
   {
-    myth: "Bettas naturally live in tiny mud puddles.",
-    truth: "False. Bettas are adapted to shallow, vegetated freshwater habitats.",
-    why: "Their ability to survive in shallow or temporary environments does not mean they thrive in tiny bowls or poorly maintained containers. Appropriate space, stable temperature, water quality, and enrichment are important."
+    myth: "Bettas naturally thrive in tiny, stagnant mud puddles.",
+    truth: "False. Bettas inhabit vast, shallow rice paddies with massive water volume.",
+    why: "Their labyrinth organ allows survival during temporary dry seasons, but optimal health requires a minimum of 5 gallons with gentle filtration and a heater at 78°F."
   },
   {
-    myth: "Plecos clean the tank for you.",
-    truth: "False. Plecos are not a replacement for aquarium maintenance.",
-    why: "Some plecos consume algae or other foods, but they also produce waste and many species grow large. Always identify the species before choosing a tank size."
+    myth: "Common Plecos will clean all algae and keep the tank clean.",
+    truth: "False. Common Plecos grow up to 18–24 inches and produce massive bioload.",
+    why: "As plecos mature, their diet shifts to omnivorous grazing. Their high waste production easily overloads standard biological filtration."
   },
   {
-    myth: "Water conditioner cycles your tank instantly.",
-    truth: "False. Water conditioner does not establish the biological nitrogen cycle.",
-    why: "Conditioner treats substances such as chlorine or chloramine according to the product's formulation. Establishing a biological cycle requires beneficial microorganisms and should be confirmed through appropriate water testing."
+    myth: "Adding bottled water conditioner instantly cycles your aquarium.",
+    truth: "False. Conditioner only neutralizes tap chlorine and heavy metals.",
+    why: "Establishing the nitrifying bacterial colonies (Nitrosomonas and Nitrospira) requires 3 to 6 weeks of dosed ammonia cycling before introducing fish safely."
   }
 ];
 
@@ -50,32 +50,32 @@ export default function MythsSection() {
   };
 
   return (
-    <section className="py-24 bg-muted/30 border-y border-border">
-      <div className="container mx-auto px-4 max-w-6xl">
+    <section className="py-24 bg-[#f7f7ff] border-t-2 border-[#cfcaf5] text-left marine-pattern-light">
+      <div className="site-container">
 
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 text-cyan-400 font-semibold mb-4 border border-cyan-500/20">
-            <Lightbulb className="w-4 h-4" />
-            Fact Check
+        <div className="mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#edeafc] border border-[#cfcaf5] text-[#27187e] font-readable text-xs font-semibold uppercase tracking-wider mb-4">
+            <Lightbulb className="w-3.5 h-3.5 text-[#27187e]" />
+            <span>Scientific Fact Check</span>
           </div>
 
-          <h2 className="text-3xl md:text-5xl font-poppins font-bold mb-6 text-foreground">
-            Busting Aquarium Myths
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-normal text-[#27187e] tracking-tight">
+            Busting Common Aquarium Myths
           </h2>
 
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            The pet store might have given you bad advice. Let's clear up some of the most common misconceptions with scientific facts.
+          <p className="text-base sm:text-lg text-[#27187e]/85 font-readable max-w-2xl mt-3 leading-relaxed">
+            Pet stores often pass down outdated misconceptions. Tap any card below to review peer-reviewed biological realities.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 font-readable">
           {myths.map((item, idx) => {
             const isFlipped = activeCard === idx;
 
             return (
               <div
                 key={idx}
-                className="group relative h-72 [perspective:1000px] cursor-pointer"
+                className="group relative h-80 [perspective:1000px] cursor-pointer"
                 onClick={() => handleCardClick(idx)}
                 role="button"
                 tabIndex={0}
@@ -98,24 +98,24 @@ export default function MythsSection() {
                 >
 
                   {/* FRONT */}
-                  <div className="absolute w-full h-full rounded-3xl bg-card border border-border p-6 flex flex-col items-center justify-center text-center [backface-visibility:hidden] shadow-sm">
-                    <div className="w-12 h-12 bg-blue-500/10 border border-blue-500/20 rounded-full flex items-center justify-center mb-4">
-                      <span className="font-bold text-lg text-blue-500">
-                        ?
-                      </span>
+                  <div className="absolute w-full h-full rounded-3xl bg-[#ffffff] border-2 border-[#cfcaf5] p-6 flex flex-col justify-between text-left [backface-visibility:hidden] shadow-sm">
+                    <div>
+                      <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#edeafc]">
+                        <span className="text-xs uppercase font-bold text-[#27187e] px-2.5 py-1 rounded-md bg-[#edeafc] border border-[#cfcaf5] tracking-wider">
+                          Myth vs Reality
+                        </span>
+                        <HelpCircle className="w-5 h-5 text-[#27187e]/60" />
+                      </div>
+
+                      <h3 className="text-xl sm:text-2xl font-display text-[#27187e] leading-snug">
+                        "{item.myth}"
+                      </h3>
                     </div>
 
-                    <span className="text-[10px] font-bold text-blue-500 uppercase tracking-widest mb-2">
-                      Common Myth
-                    </span>
-
-                    <h3 className="text-lg font-bold text-foreground leading-snug px-2">
-                      "{item.myth}"
-                    </h3>
-
-                    <p className="text-[10px] text-muted-foreground mt-6 uppercase tracking-wider font-semibold md:group-hover:text-cyan-400 transition-colors">
-                      Tap to reveal
-                    </p>
+                    <div className="pt-3 border-t border-[#edeafc] flex items-center justify-between text-xs sm:text-sm font-semibold text-[#27187e] uppercase tracking-wider">
+                      <span>Tap to reveal scientific truth</span>
+                      <RotateCcw className="w-4 h-4 text-[#27187e]" />
+                    </div>
                   </div>
 
                   {/* BACK */}
@@ -123,35 +123,35 @@ export default function MythsSection() {
                     className="
                       absolute w-full h-full
                       rounded-3xl
-                      bg-slate-900
-                      border border-cyan-500/40
+                      bg-[#27187e]
+                      border-2 border-[#1b1059]
                       p-6
-                      flex flex-col justify-center text-left
+                      flex flex-col justify-between text-left
                       [backface-visibility:hidden]
                       [transform:rotateY(180deg)]
                       shadow-xl
-                      overflow-y-auto
+                      text-[#f7f7ff]
                     "
                   >
-                    <div className="flex items-center gap-2 mb-3 text-cyan-400 font-bold uppercase tracking-wider text-xs">
-                      <Info className="w-4 h-4 shrink-0 text-cyan-400" />
-                      Truth Check
+                    <div>
+                      <div className="flex items-center gap-2 mb-3 text-[#cfcaf5] font-bold uppercase tracking-wider text-xs">
+                        <CheckCircle2 className="w-4 h-4 shrink-0 text-[#f7f7ff]" />
+                        <span>Verified Biological Fact</span>
+                      </div>
+
+                      <div className="text-[#f7f7ff] font-bold text-sm sm:text-base leading-snug mb-3">
+                        {item.truth}
+                      </div>
+
+                      <p className="text-[#edeafc] text-xs sm:text-sm leading-relaxed border-t border-[#3b28ab] pt-3">
+                        <strong className="text-[#f7f7ff] font-bold">Why: </strong>
+                        {item.why}
+                      </p>
                     </div>
 
-                    <div className="text-white font-extrabold text-sm leading-snug mb-3">
-                      {item.truth}
-                    </div>
-
-                    <p className="text-slate-300 text-xs leading-relaxed border-t border-slate-800 pt-3">
-                      <strong className="text-cyan-400 font-bold">
-                        Why:{' '}
-                      </strong>
-                      {item.why}
-                    </p>
-
-                    <div className="flex items-center gap-1.5 mt-4 text-[10px] text-slate-400 uppercase tracking-wider">
-                      <RotateCcw className="w-3 h-3" />
-                      Tap to flip back
+                    <div className="flex items-center gap-1.5 pt-2 text-xs text-[#cfcaf5] uppercase tracking-wider font-semibold">
+                      <RotateCcw className="w-3.5 h-3.5" />
+                      <span>Tap to flip back</span>
                     </div>
                   </div>
 

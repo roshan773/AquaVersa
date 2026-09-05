@@ -2,7 +2,7 @@ import { fishData } from '@/data/fish';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, Compass, Droplets, Thermometer, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Compass, Droplets, Thermometer, ShieldCheck, Ruler, Activity, Layers } from 'lucide-react';
 import { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
 import GlobalCTA from '@/components/ui/GlobalCTA';
@@ -95,7 +95,7 @@ export default async function FishDetailPage({
         {/* Back Link */}
         <Link
           href="/fish"
-          className="inline-flex items-center gap-2 text-xs font-condensed font-bold uppercase tracking-wider text-[#27187e] hover:text-[#1b1059] mb-8 group"
+          className="inline-flex items-center gap-2 text-sm font-readable font-semibold text-[#27187e] hover:underline mb-8 group"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           <span>Back to Species Field Guide</span>
@@ -106,47 +106,47 @@ export default async function FishDetailPage({
           
           {/* Left: Species Info & Overview */}
           <div className="lg:col-span-6">
-            <div className="flex flex-wrap items-center gap-2 mb-3">
-              <span className="text-xs font-condensed font-bold uppercase px-3 py-1 rounded-md bg-[#27187e] text-[#f7f7ff]">
+            <div className="flex flex-wrap items-center gap-2.5 mb-4">
+              <span className="font-readable text-xs sm:text-sm font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-lg bg-[#27187e] text-[#f7f7ff]">
                 {fish.category}
               </span>
-              <span className="text-xs font-condensed font-bold uppercase px-3 py-1 rounded-md bg-[#edeafc] text-[#27187e] border border-[#cfcaf5]">
-                {fish.difficulty} Level
+              <span className="font-readable text-xs sm:text-sm font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-lg bg-[#edeafc] text-[#27187e] border border-[#cfcaf5]">
+                {fish.difficulty} Care
               </span>
             </div>
 
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-display font-normal text-[#27187e] tracking-wide leading-tight mb-2">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-display font-normal text-[#27187e] tracking-tight leading-none mb-3">
               {fish.name}
             </h1>
             
-            <p className="text-sm sm:text-base text-[#27187e]/70 italic font-sans mb-6">
+            <p className="text-base sm:text-lg text-[#27187e]/70 italic font-readable mb-6 font-medium">
               {fish.scientificName}
             </p>
 
-            <p className="text-base sm:text-lg text-[#27187e]/85 font-sans leading-relaxed mb-8">
+            <p className="text-base sm:text-lg text-[#27187e]/90 font-readable leading-relaxed mb-8 max-w-[65ch]">
               {fish.description}
             </p>
 
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/compatibility"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#27187e] hover:bg-[#1b1059] text-[#f7f7ff] text-xs sm:text-sm font-condensed font-bold uppercase tracking-wider transition-all shadow-md"
+                className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[#27187e] hover:bg-[#1b1059] text-[#f7f7ff] text-sm sm:text-base font-readable font-semibold transition-all shadow-md"
               >
                 <span>Check Compatibility</span>
                 <Compass className="w-4 h-4 text-[#f7f7ff]" />
               </Link>
               <Link
                 href="/start-aquarium"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#f7f7ff] border-2 border-[#27187e] hover:bg-[#edeafc] text-[#27187e] text-xs sm:text-sm font-condensed font-bold uppercase tracking-wider transition-all"
+                className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[#ffffff] border-2 border-[#27187e] hover:bg-[#edeafc] text-[#27187e] text-sm sm:text-base font-readable font-semibold transition-all"
               >
-                <span>Start Setup Checklist</span>
+                <span>Start Setup Guide</span>
               </Link>
             </div>
           </div>
 
-          {/* Right: Large High-Resolution Species Photo */}
+          {/* Right: High-Resolution Species Photo */}
           <div className="lg:col-span-6">
-            <div className="relative w-full aspect-[4/3] rounded-3xl bg-[#0d0630] overflow-hidden border-4 border-[#ffffff] shadow-2xl">
+            <div className="relative w-full aspect-[4/3] rounded-3xl bg-[#12093d] overflow-hidden border-4 border-[#ffffff] shadow-2xl">
               <Image
                 src={fish.image}
                 alt={`${fish.name} (${fish.scientificName})`}
@@ -162,77 +162,78 @@ export default async function FishDetailPage({
 
         {/* SPECIES PROFILE: Structured Natural History Parameters */}
         <div className="mb-16">
-          <div className="mb-6">
-            <span className="text-xs font-condensed font-bold uppercase tracking-[0.25em] text-[#27187e] block">
-              NATURAL HISTORY DATA
-            </span>
-            <h2 className="text-4xl sm:text-5xl font-display font-normal text-[#27187e] tracking-wide">
-              Species Profile &amp; Parameters
+          <div className="mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#edeafc] border border-[#cfcaf5] text-[#27187e] font-readable text-xs font-semibold uppercase tracking-wider mb-2">
+              <Activity className="w-3.5 h-3.5" />
+              <span>Taxonomic Specifications</span>
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-display font-normal text-[#27187e] tracking-tight">
+              Species Profile &amp; Biology
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 text-left">
-            <div className="bg-[#ffffff] border-2 border-[#cfcaf5] p-5 rounded-2xl">
-              <span className="text-[11px] font-condensed font-bold uppercase text-[#27187e]/70 block">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left font-readable">
+            <div className="bg-[#ffffff] border-2 border-[#cfcaf5] p-6 rounded-2xl shadow-sm">
+              <span className="text-xs uppercase font-semibold tracking-wider text-[#27187e]/70 block mb-1">
                 Minimum Tank Volume
               </span>
-              <span className="font-display text-2xl sm:text-3xl text-[#27187e] block mt-1">
+              <span className="font-display text-3xl sm:text-4xl text-[#27187e] block">
                 {fish.minTankSize} Gallons
               </span>
             </div>
 
-            <div className="bg-[#ffffff] border-2 border-[#cfcaf5] p-5 rounded-2xl">
-              <span className="text-[11px] font-condensed font-bold uppercase text-[#27187e]/70 block">
+            <div className="bg-[#ffffff] border-2 border-[#cfcaf5] p-6 rounded-2xl shadow-sm">
+              <span className="text-xs uppercase font-semibold tracking-wider text-[#27187e]/70 block mb-1">
                 Temperature Range
               </span>
-              <span className="font-display text-2xl sm:text-3xl text-[#27187e] block mt-1">
+              <span className="font-display text-3xl sm:text-4xl text-[#27187e] block">
                 {fish.temperature}
               </span>
             </div>
 
-            <div className="bg-[#ffffff] border-2 border-[#cfcaf5] p-5 rounded-2xl">
-              <span className="text-[11px] font-condensed font-bold uppercase text-[#27187e]/70 block">
+            <div className="bg-[#ffffff] border-2 border-[#cfcaf5] p-6 rounded-2xl shadow-sm">
+              <span className="text-xs uppercase font-semibold tracking-wider text-[#27187e]/70 block mb-1">
                 pH Range
               </span>
-              <span className="font-display text-2xl sm:text-3xl text-[#27187e] block mt-1">
+              <span className="font-display text-3xl sm:text-4xl text-[#27187e] block">
                 {fish.ph}
               </span>
             </div>
 
-            <div className="bg-[#ffffff] border-2 border-[#cfcaf5] p-5 rounded-2xl">
-              <span className="text-[11px] font-condensed font-bold uppercase text-[#27187e]/70 block">
+            <div className="bg-[#ffffff] border-2 border-[#cfcaf5] p-6 rounded-2xl shadow-sm">
+              <span className="text-xs uppercase font-semibold tracking-wider text-[#27187e]/70 block mb-1">
                 Temperament
               </span>
-              <span className="font-display text-2xl sm:text-3xl text-[#27187e] block mt-1">
+              <span className="font-display text-3xl sm:text-4xl text-[#27187e] block">
                 {fish.temperament}
               </span>
             </div>
 
-            <div className="bg-[#ffffff] border-2 border-[#cfcaf5] p-5 rounded-2xl">
-              <span className="text-[11px] font-condensed font-bold uppercase text-[#27187e]/70 block">
+            <div className="bg-[#ffffff] border-2 border-[#cfcaf5] p-6 rounded-2xl shadow-sm">
+              <span className="text-xs uppercase font-semibold tracking-wider text-[#27187e]/70 block mb-1">
                 Care Difficulty
               </span>
-              <span className="font-display text-2xl sm:text-3xl text-[#27187e] block mt-1">
+              <span className="font-display text-3xl sm:text-4xl text-[#27187e] block capitalize">
                 {fish.difficulty}
               </span>
             </div>
 
-            <div className="bg-[#ffffff] border-2 border-[#cfcaf5] p-5 rounded-2xl">
-              <span className="text-[11px] font-condensed font-bold uppercase text-[#27187e]/70 block">
-                Environment Type
+            <div className="bg-[#ffffff] border-2 border-[#cfcaf5] p-6 rounded-2xl shadow-sm">
+              <span className="text-xs uppercase font-semibold tracking-wider text-[#27187e]/70 block mb-1">
+                Biotope Category
               </span>
-              <span className="font-display text-2xl sm:text-3xl text-[#27187e] block mt-1">
+              <span className="font-display text-3xl sm:text-4xl text-[#27187e] block capitalize">
                 {fish.category}
               </span>
             </div>
 
-            <div className="bg-[#ffffff] border-2 border-[#cfcaf5] p-5 rounded-2xl col-span-2">
-              <span className="text-[11px] font-condensed font-bold uppercase text-[#27187e]/70 block">
-                Compatibility Note
+            <div className="bg-[#ffffff] border-2 border-[#cfcaf5] p-6 rounded-2xl shadow-sm sm:col-span-2">
+              <span className="text-xs uppercase font-semibold tracking-wider text-[#27187e]/70 block mb-1">
+                Compatibility &amp; Cohabitation Note
               </span>
-              <span className="text-xs sm:text-sm font-sans text-[#27187e] block mt-1 font-medium">
-                Compatibility depends on tank conditions, individual temperament and available space.
-              </span>
+              <p className="text-sm sm:text-base text-[#27187e]/90 block mt-2 font-medium leading-relaxed">
+                Successful cohabitation requires matching water parameters (pH &amp; temp), respecting swim territories, and providing suitable hides or plant cover.
+              </p>
             </div>
           </div>
         </div>
@@ -240,21 +241,21 @@ export default async function FishDetailPage({
         {/* RELATED SPECIES */}
         {relatedSpecies.length > 0 && (
           <div className="pt-12 border-t-2 border-[#cfcaf5]">
-            <div className="mb-8 flex items-center justify-between">
+            <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
               <div>
-                <span className="text-xs font-condensed font-bold uppercase tracking-[0.25em] text-[#27187e] block">
+                <span className="text-xs font-readable font-semibold uppercase tracking-wider text-[#27187e]/70 block mb-1">
                   EXPLORE SIMILAR SPECIES
                 </span>
-                <h3 className="text-4xl sm:text-5xl font-display font-normal text-[#27187e] tracking-wide">
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-display font-normal text-[#27187e] tracking-tight">
                   Related {fish.category} Species
                 </h3>
               </div>
               <Link
                 href="/fish"
-                className="text-xs font-condensed font-bold uppercase tracking-wider text-[#27187e] hover:underline inline-flex items-center gap-1.5"
+                className="font-readable font-semibold text-sm sm:text-base text-[#27187e] hover:underline inline-flex items-center gap-2"
               >
-                <span>All Species</span>
-                <ArrowRight className="w-3.5 h-3.5" strokeWidth={2} aria-hidden="true" />
+                <span>Browse Full Species Index</span>
+                <ArrowRight className="w-4 h-4" strokeWidth={2} aria-hidden="true" />
               </Link>
             </div>
 
@@ -263,10 +264,10 @@ export default async function FishDetailPage({
                 <Link
                   key={rel.id}
                   href={`/fish/${rel.category?.toLowerCase() || 'freshwater'}/${rel.slug}`}
-                  className="bg-[#ffffff] border-2 border-[#cfcaf5] hover:border-[#27187e] rounded-3xl p-5 flex flex-col justify-between group transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1"
+                  className="bg-[#ffffff] border-2 border-[#cfcaf5] hover:border-[#27187e] rounded-3xl p-6 flex flex-col justify-between group transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1"
                 >
                   <div>
-                    <div className="relative w-full aspect-[16/10] rounded-2xl bg-[#0d0630] overflow-hidden mb-4">
+                    <div className="relative w-full aspect-[16/10] rounded-2xl bg-[#12093d] overflow-hidden mb-4">
                       <Image
                         src={rel.image}
                         alt={rel.name}
@@ -275,16 +276,16 @@ export default async function FishDetailPage({
                         sizes="350px"
                       />
                     </div>
-                    <h4 className="text-2xl font-display font-normal text-[#27187e] group-hover:text-[#1b1059] leading-tight">
+                    <h4 className="text-2xl font-display font-normal text-[#27187e] group-hover:text-[#1b1059] leading-tight mb-1">
                       {rel.name}
                     </h4>
-                    <p className="text-xs text-[#27187e]/70 italic font-sans mb-2">
+                    <p className="text-sm text-[#27187e]/70 italic font-readable mb-3">
                       {rel.scientificName}
                     </p>
                   </div>
-                  <div className="pt-3 border-t border-[#edeafc] flex items-center justify-between text-xs font-condensed font-bold uppercase text-[#27187e]">
+                  <div className="pt-3 border-t border-[#edeafc] flex items-center justify-between font-readable font-semibold text-sm text-[#27187e]">
                     <span>View Care Sheet</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </Link>
               ))}

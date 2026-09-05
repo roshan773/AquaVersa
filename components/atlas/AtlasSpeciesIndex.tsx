@@ -10,29 +10,29 @@ export default function AtlasSpeciesIndex() {
   const speciesList = fishData.slice(0, 6);
 
   return (
-    <section className="marine-pattern-light py-24 bg-[#f7f7ff] text-left border-t border-[#cfcaf5]">
+    <section className="marine-pattern-light py-20 sm:py-24 bg-[#f7f7ff] text-left border-t border-[#cfcaf5]">
       <div className="site-container">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div>
-            <span className="text-xs font-condensed font-bold uppercase tracking-[0.25em] text-[#27187e] mb-2 block">
+            <span className="font-sans text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#27187e] mb-2 block">
               SPECIES FIELD GUIDE
             </span>
-            <h2 className="text-5xl sm:text-6xl md:text-7xl font-display font-normal text-[#27187e] tracking-wide">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-normal text-[#27187e] tracking-wide">
               Find the right species.
             </h2>
-            <p className="text-base sm:text-lg text-[#27187e]/85 font-normal max-w-xl mt-2 font-sans leading-relaxed">
+            <p className="font-readable text-sm sm:text-base md:text-lg text-[#27187e]/85 max-w-xl mt-2 leading-relaxed">
               Care requirements, adult sizing, and biological compatibilities from our natural history database.
             </p>
           </div>
 
           <Link
             href="/fish"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#27187e] hover:bg-[#1b1059] text-[#f7f7ff] text-xs sm:text-sm font-condensed font-bold uppercase tracking-wider transition-all shadow-md mt-4 md:mt-0"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl bg-[#27187e] hover:bg-[#1b1059] text-[#f7f7ff] font-readable text-sm sm:text-base font-semibold transition-all shadow-md hover:-translate-y-0.5 active:translate-y-0 mt-4 md:mt-0 group cursor-pointer shrink-0"
           >
             <span>View Species Library</span>
-            <ArrowRight className="w-4 h-4 text-[#f7f7ff]" strokeWidth={2} aria-hidden="true" />
+            <ArrowRight className="w-4 h-4 text-[#f7f7ff] group-hover:translate-x-1 transition-transform" strokeWidth={2.2} aria-hidden="true" />
           </Link>
         </div>
 
@@ -42,7 +42,7 @@ export default function AtlasSpeciesIndex() {
             <Link
               key={fish.id}
               href={`/fish/${fish.category?.toLowerCase() || 'freshwater'}/${fish.slug}`}
-              className="bg-[#ffffff] border-2 border-[#cfcaf5] hover:border-[#27187e] rounded-3xl p-6 flex flex-col justify-between group transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1"
+              className="bg-[#ffffff] border-2 border-[#cfcaf5] hover:border-[#27187e] rounded-3xl p-6 flex flex-col justify-between group transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1.5"
             >
               <div>
                 {/* Image */}
@@ -54,8 +54,8 @@ export default function AtlasSpeciesIndex() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
-                  <div className="absolute top-3 left-3 bg-[#f7f7ff] text-[#27187e] px-2.5 py-1 rounded-md text-[10px] font-condensed font-bold uppercase tracking-wider flex items-center gap-1.5">
-                    <Fish className="w-3 h-3" strokeWidth={2} aria-hidden="true" />
+                  <div className="absolute top-3 left-3 bg-[#ffffff] text-[#27187e] border border-[#cfcaf5] px-3 py-1 rounded-full text-xs font-sans font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm">
+                    <Fish className="w-3.5 h-3.5" strokeWidth={2} aria-hidden="true" />
                     <span>{fish.category}</span>
                   </div>
                 </div>
@@ -68,37 +68,37 @@ export default function AtlasSpeciesIndex() {
                   <ChevronRight className="w-5 h-5 text-[#27187e]/60 group-hover:translate-x-1 transition-transform" strokeWidth={2} aria-hidden="true" />
                 </div>
                 
-                <p className="text-xs text-[#27187e]/70 italic font-sans mb-4">
+                <p className="font-readable text-xs sm:text-sm text-[#27187e]/70 italic mb-4">
                   {fish.scientificName}
                 </p>
 
                 {/* Species Parameters Table */}
-                <div className="grid grid-cols-2 gap-2 text-xs font-sans mb-4 pt-3 border-t border-[#edeafc]">
-                  <div className="bg-[#f7f7ff] p-2.5 rounded-xl border border-[#cfcaf5] flex items-center gap-2">
-                    <Ruler className="w-4 h-4 text-[#27187e] shrink-0" strokeWidth={1.8} aria-hidden="true" />
+                <div className="grid grid-cols-2 gap-2 font-readable text-xs sm:text-sm mb-4 pt-3 border-t border-[#edeafc]">
+                  <div className="bg-[#f7f7ff] p-3 rounded-xl border border-[#cfcaf5] flex items-center gap-2.5">
+                    <Ruler className="w-4 h-4 text-[#27187e] shrink-0" strokeWidth={2} aria-hidden="true" />
                     <div>
-                      <span className="text-[10px] uppercase font-condensed text-[#27187e]/70 block font-bold">Min Tank</span>
-                      <span className="font-bold text-xs text-[#27187e]">{fish.minTankSize} Gal</span>
+                      <span className="text-xs uppercase font-sans text-[#27187e]/70 block font-bold">Min Tank</span>
+                      <span className="font-bold text-sm text-[#27187e]">{fish.minTankSize} Gal</span>
                     </div>
                   </div>
-                  <div className="bg-[#f7f7ff] p-2.5 rounded-xl border border-[#cfcaf5] flex items-center gap-2">
-                    <Thermometer className="w-4 h-4 text-[#27187e] shrink-0" strokeWidth={1.8} aria-hidden="true" />
+                  <div className="bg-[#f7f7ff] p-3 rounded-xl border border-[#cfcaf5] flex items-center gap-2.5">
+                    <Thermometer className="w-4 h-4 text-[#27187e] shrink-0" strokeWidth={2} aria-hidden="true" />
                     <div>
-                      <span className="text-[10px] uppercase font-condensed text-[#27187e]/70 block font-bold">Care Level</span>
-                      <span className="font-bold text-xs text-[#27187e] capitalize">{fish.difficulty}</span>
+                      <span className="text-xs uppercase font-sans text-[#27187e]/70 block font-bold">Care Level</span>
+                      <span className="font-bold text-sm text-[#27187e] capitalize">{fish.difficulty}</span>
                     </div>
                   </div>
                 </div>
 
-                <p className="text-xs text-[#27187e]/80 font-sans leading-relaxed line-clamp-2">
+                <p className="font-readable text-sm sm:text-base text-[#27187e]/85 leading-relaxed line-clamp-2">
                   {fish.description}
                 </p>
               </div>
 
               {/* View link */}
-              <div className="pt-4 mt-4 border-t border-[#edeafc] flex items-center justify-between text-xs font-condensed font-bold uppercase tracking-wider text-[#27187e]">
+              <div className="pt-4 mt-4 border-t border-[#edeafc] flex items-center justify-between font-readable text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#27187e]">
                 <span>Open Species Sheet</span>
-                <ArrowRight className="w-3.5 h-3.5" strokeWidth={2} aria-hidden="true" />
+                <ArrowRight className="w-4 h-4 text-[#27187e] group-hover:translate-x-1 transition-transform" strokeWidth={2} aria-hidden="true" />
               </div>
             </Link>
           ))}
@@ -108,3 +108,4 @@ export default function AtlasSpeciesIndex() {
     </section>
   );
 }
+

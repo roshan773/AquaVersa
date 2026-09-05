@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { FlaskConical, AlertTriangle, CheckCircle2, XCircle, Info, RefreshCw } from 'lucide-react';
+import { useState } from 'react';
+import { FlaskConical, AlertTriangle, CheckCircle2, XCircle, Info, RefreshCw, Layers, ShieldCheck, Activity } from 'lucide-react';
 import { fishData } from '@/data/fish';
 import { unlockAchievement } from '@/lib/storage';
 import GlobalCTA from '@/components/ui/GlobalCTA';
@@ -40,7 +40,6 @@ export default function WaterAnalyzerPage() {
     setTargetType('fresh_gen');
   };
 
-  // Helper: parse string range
   const parseRange = (value?: string): [number, number] | null => {
     if (!value) return null;
     const matches = value.match(/(-?\d+(?:\.\d+)?)\s*(?:-|–|—|to)\s*(-?\d+(?:\.\d+)?)/i);
@@ -50,7 +49,6 @@ export default function WaterAnalyzerPage() {
     return [Math.min(a, b), Math.max(a, b)];
   };
 
-  // Determine Target ranges based on user selection
   let targetTempRange: [number, number] = [72, 78];
   let targetPhRange: [number, number] = [6.5, 7.5];
   let targetGhRange: [number, number] = [4, 8];
@@ -63,7 +61,7 @@ export default function WaterAnalyzerPage() {
   if (targetType === 'salt_gen') {
     targetTempRange = [75, 80];
     targetPhRange = [8.1, 8.4];
-    targetGhRange = [8, 12]; // General marine equivalent
+    targetGhRange = [8, 12];
     targetKhRange = [8, 12];
     isSaltwater = true;
     targetLabel = "General Saltwater Reef Community";
@@ -81,7 +79,6 @@ export default function WaterAnalyzerPage() {
       targetGhRange = [8, 12];
       targetKhRange = [8, 12];
     } else {
-      // Default soft water vs hard water species adjustments
       const nameLower = activeFish.name.toLowerCase();
       if (nameLower.includes('tetra') || nameLower.includes('betta') || nameLower.includes('discus')) {
         targetGhRange = [3, 6];
@@ -96,7 +93,6 @@ export default function WaterAnalyzerPage() {
     }
   }
 
-  // Analyze water chemistry
   const analyzeParameters = (): {
     overallStatus: 'GOOD' | 'WATCH' | 'ATTENTION';
     results: ParameterResult[];
@@ -105,21 +101,21 @@ export default function WaterAnalyzerPage() {
     
     // 1. Temperature
     let tempStatus: ParameterResult['status'] = 'GOOD';
-    let tempExplanation = `Within the recommended target of ${targetTempRange[0]}–${targetTempRange[1]}°F.`;
-    let tempAction = "No action needed. Keep heating system checked.";
+    let tempExplanation = `Within the recommended target range of ${targetTempRange[0]}–${targetTempRange[1]}°F.`;
+    let tempAction = "No action needed. Keep heating system inspected.";
     
     if (temp < targetTempRange[0] - 3 || temp > targetTempRange[1] + 3) {
       tempStatus = 'ATTENTION';
-      tempExplanation = `Severely outside target range of ${targetTempRange[0]}–${targetTempRange[1]}°F. Extreme temperatures cause lethargy, metabolic stress, and death.`;
-      tempAction = "Slowly adjust your heater. Inspect if heater is broken or unplugged. Avoid rapid temperature drops.";
+      tempExplanation = `Severely outside target range of ${targetTempRange[0]}–${targetTempRange[1]}°F. Extreme temperatures cause metabolic distress and shock.`;
+      tempAction = "Slowly adjust your heater calibration dial. Inspect if the heater is functioning correctly.";
     } else if (temp < targetTempRange[0] || temp > targetTempRange[1]) {
       tempStatus = 'WATCH';
-      tempExplanation = `Slightly outside target range of ${targetTempRange[0]}–${targetTempRange[1]}°F. Weakens the immune system over time, increasing disease susceptibility (e.g. Ich).`;
-      tempAction = "Nudge the heater adjustment dial slightly. Ensure there are no cool drafts hitting the aquarium.";
+      tempExplanation = `Slightly outside target range of ${targetTempRange[0]}–${targetTempRange[1]}°F. Can reduce immune resistance over time.`;
+      tempAction = "Nudge heater dial slightly. Verify thermometer accuracy.";
     }
 
     results.push({
-      name: 'Temperature',
+      name: 'Water Temperature',
       value: temp,
       target: `${targetTempRange[0]}–${targetTempRange[1]} °F`,
       status: tempStatus,
@@ -129,17 +125,17 @@ export default function WaterAnalyzerPage() {
 
     // 2. pH Level
     let phStatus: ParameterResult['status'] = 'GOOD';
-    let phExplanation = `Within the recommended target of ${targetPhRange[0].toFixed(1)}–${targetPhRange[1].toFixed(1)}.`;
-    let phAction = "Stable pH is critical. Do not perform heavy adjustments.";
+    let phExplanation = `Within the target buffer of ${targetPhRange[0].toFixed(1)}–${targetPhRange[1].toFixed(1)}.`;
+    let phAction = "Stable pH is critical. Avoid rapid chemical shifts.";
     
     if (ph < targetPhRange[0] - 0.6 || ph > targetPhRange[1] + 0.6) {
       phStatus = 'ATTENTION';
-      phExplanation = `pH is severely off target (${targetPhRange[0].toFixed(1)}–${targetPhRange[1].toFixed(1)}). Acidosis or alkalosis may occur.`;
-      phAction = "Do not use chemical pH Up/Down buffers! Adjust naturally. Raise slowly with crushed coral or limestone. Lower slowly with driftwood or peat moss.";
+      phExplanation = `pH is significantly off target (${targetPhRange[0].toFixed(1)}–${targetPhRange[1].toFixed(1)}). Acidosis or alkalosis may occur.`;
+      phAction = "Adjust naturally and slowly. Raise using crushed coral substrate; lower gradually with driftwood tannins.";
     } else if (ph < targetPhRange[0] || ph > targetPhRange[1]) {
       phStatus = 'WATCH';
-      phExplanation = `Slightly off target (${targetPhRange[0].toFixed(1)}–${targetPhRange[1].toFixed(1)}). Adaptable if stable, but swings must be avoided.`;
-      phAction = "Monitor stability over several days. Stability is always more important than targeting a exact decimal.";
+      phExplanation = `Slightly off target (${targetPhRange[0].toFixed(1)}–${targetPhRange[1].toFixed(1)}). Steady stability is superior to erratic chemical correction.`;
+      phAction = "Observe stability over successive weekly water changes.";
     }
 
     results.push({
@@ -152,92 +148,86 @@ export default function WaterAnalyzerPage() {
     });
 
     // 3. Ammonia
-    let ammStatus: ParameterResult['status'] = 'GOOD';
-    let ammExplanation = "Zero detectable Ammonia. The nitrogen cycle is successfully processing fish waste.";
-    let ammAction = "Continue standard feeding and monthly maintenance.";
+    let ammoniaStatus: ParameterResult['status'] = 'GOOD';
+    let ammoniaExplanation = "Zero ammonia detected. Biological biofilter is actively converting fish waste.";
+    let ammoniaAction = "Maintain regular bi-weekly biological filter sponge rinses in tank water.";
 
-    if (ammonia > 0.5) {
-      ammStatus = 'ATTENTION';
-      ammExplanation = `High Ammonia levels (${ammonia} ppm) are highly toxic. Burns fish gills, damages mucus layers, and leads to rapid death.`;
-      ammAction = "Perform an immediate 30-50% water change. Add Seachem Prime or similar detoxifier. Stop feeding until Ammonia is back to 0 ppm.";
+    if (ammonia >= 0.5) {
+      ammoniaStatus = 'ATTENTION';
+      ammoniaExplanation = `Critical toxicity (${ammonia} ppm). Ammonia burns fish gills and blocks oxygen transport.`;
+      ammoniaAction = "Perform an immediate 50% water change with dechlorinator. Dose emergency ammonia binder and cease feeding.";
     } else if (ammonia > 0) {
-      ammStatus = 'WATCH';
-      ammExplanation = `Trace Ammonia detected (${ammonia} ppm). In a cycled tank, any reading above zero indicates biological filtration lag, overstocking, or a decay source.`;
-      ammAction = "Do a 25% water change. Check for dead fish or decaying organic matter. Add beneficial bacteria cultures.";
+      ammoniaStatus = 'WATCH';
+      ammoniaExplanation = `Trace ammonia detected (${ammonia} ppm). Indicates an uncycled tank, dying plant matter, or overfeeding.`;
+      ammoniaAction = "Conduct a 25% water change, verify filter impeller operation, and test again in 24 hours.";
     }
 
     results.push({
-      name: 'Ammonia (NH3)',
+      name: 'Ammonia (NH3/NH4+)',
       value: ammonia,
-      target: '0 ppm (Strict)',
-      status: ammStatus,
-      explanation: ammExplanation,
-      nextAction: ammAction
+      target: '0.0 ppm (Zero)',
+      status: ammoniaStatus,
+      explanation: ammoniaExplanation,
+      nextAction: ammoniaAction
     });
 
     // 4. Nitrite
-    let nitStatus: ParameterResult['status'] = 'GOOD';
-    let nitExplanation = "Zero detectable Nitrite. Beneficial bacteria are successfully converting nitrites to nitrates.";
-    let nitAction = "Good job. Maintain biological filter health.";
+    let nitriteStatus: ParameterResult['status'] = 'GOOD';
+    let nitriteExplanation = "Zero nitrite detected. Secondary nitrifying bacteria (Nitrospira) are healthy.";
+    let nitriteAction = "Continue balanced feeding schedules.";
 
-    if (nitrite > 0.5) {
-      nitStatus = 'ATTENTION';
-      nitExplanation = `High Nitrite levels (${nitrite} ppm) are lethal. Prevents fish blood cells from carrying oxygen (brown blood disease). Fish will gasp at the surface.`;
-      ammAction = "Perform a 30-50% water change immediately. Dose water detoxifier. Add aquarium salt (if freshwater species-safe) to block nitrite uptake.";
+    if (nitrite >= 0.5) {
+      nitriteStatus = 'ATTENTION';
+      nitriteExplanation = `Severe toxicity (${nitrite} ppm). Nitrite causes brown blood disease by preventing blood oxygenation.`;
+      nitriteAction = "Perform an immediate 50% water change. Dose aquarium salt (1 tbsp/5 gal for freshwater) to block nitrite uptake.";
     } else if (nitrite > 0) {
-      nitStatus = 'WATCH';
-      nitExplanation = `Trace Nitrite detected (${nitrite} ppm). Dangerous indicating cycle disruption (mini-cycle) or filter damage (e.g., from chlorine).`;
-      nitAction = "Do a 20% water change. Dose biological booster. Verify filter was not rinsed in unconditioned tap water.";
+      nitriteStatus = 'WATCH';
+      nitriteExplanation = `Trace nitrite detected (${nitrite} ppm). Nitrogen cycle is undergoing a mini-spike or incomplete cycle.`;
+      nitriteAction = "Perform a 25% water change, add concentrated beneficial bacteria starter, and reduce feeding.";
     }
 
     results.push({
-      name: 'Nitrite (NO2)',
+      name: 'Nitrite (NO2-)',
       value: nitrite,
-      target: '0 ppm (Strict)',
-      status: nitStatus,
-      explanation: nitExplanation,
-      nextAction: nitStatus === 'WATCH' ? nitAction : (nitrite > 0.5 ? "Perform a 30-50% water change immediately. Dose water detoxifier. Add aquarium salt (if freshwater species-safe) to block nitrite uptake." : "No action needed.")
+      target: '0.0 ppm (Zero)',
+      status: nitriteStatus,
+      explanation: nitriteExplanation,
+      nextAction: nitriteAction
     });
 
     // 5. Nitrate
-    let natStatus: ParameterResult['status'] = 'GOOD';
-    let maxSafeNat = isSaltwater ? 20 : 40;
-    let targetNat = isSaltwater ? '< 10 ppm' : '< 20 ppm';
-    let natExplanation = `Healthy nitrate level of ${nitrate} ppm. Normal byproduct of nitrification.`;
-    let natAction = "Continue weekly water changes to prevent accumulation.";
+    let nitrateStatus: ParameterResult['status'] = 'GOOD';
+    let nitrateExplanation = `Safe accumulation level (${nitrate} ppm).`;
+    let nitrateAction = "Maintain routine 20–25% partial water changes every 7 to 10 days.";
 
-    if (nitrate >= maxSafeNat) {
-      natStatus = 'ATTENTION';
-      natExplanation = `Excessive Nitrates (${nitrate} ppm). Triggers chronic stress, stunts growth, damages eggs, and fuels massive algae blooms.`;
-      natAction = "Perform a 30% water change. Vacuum the substrate to remove trapped mulm. Feed less and add live plants.";
-    } else if (nitrate > (isSaltwater ? 10 : 20)) {
-      natStatus = 'WATCH';
-      natExplanation = `Elevated Nitrates (${nitrate} ppm). Safe for short terms, but indicates a need for maintenance soon.`;
-      natAction = "Schedule a 20% water change. Verify filter media is not clogged.";
+    if (nitrate >= 40) {
+      nitrateStatus = 'ATTENTION';
+      nitrateExplanation = `Excessively elevated (${nitrate} ppm). Promotes heavy nuisance algae blooms and stunts fish growth.`;
+      nitrateAction = "Conduct a 35% water change today and another in 3 days. Clean mechanical filter floss and vacuum substrate.";
+    } else if (nitrate >= 25) {
+      nitrateStatus = 'WATCH';
+      nitrateExplanation = `Moderate accumulation (${nitrate} ppm). Reaching the upper safety threshold for sensitive species.`;
+      nitrateAction = "Schedule your weekly water change soon. Incorporate fast-growing stem plants or floating flora.";
     }
 
     results.push({
-      name: 'Nitrate (NO3)',
+      name: 'Nitrate (NO3-)',
       value: nitrate,
-      target: targetNat,
-      status: natStatus,
-      explanation: natExplanation,
-      nextAction: natAction
+      target: '< 20 ppm',
+      status: nitrateStatus,
+      explanation: nitrateExplanation,
+      nextAction: nitrateAction
     });
 
-    // 6. GH (General Hardness)
+    // 6. GH
     let ghStatus: ParameterResult['status'] = 'GOOD';
-    let ghExplanation = `GH of ${gh} dGH is ideal for mineral osmotic balance.`;
-    let ghAction = "Maintain consistent mineral composition.";
+    let ghExplanation = `Mineral content is balanced (${gh} dGH) for the target profile.`;
+    let ghAction = "Maintain steady tap water or remineralized RO water parameters.";
 
-    if (gh < targetGhRange[0]) {
+    if (gh < targetGhRange[0] - 2 || gh > targetGhRange[1] + 4) {
       ghStatus = 'WATCH';
-      ghExplanation = `Soft water (${gh} dGH). Lacks calcium/magnesium minerals, hindering live plants, shrimp molting, or snail shell growth.`;
-      ghAction = "Safely raise hardness by adding crushed coral, Wonder Shells, or mineral salts.";
-    } else if (gh > targetGhRange[1]) {
-      ghStatus = 'WATCH';
-      ghExplanation = `Hard water (${gh} dGH). High mineral content, which soft water species (like Discus or Neon Tetras) find stressful over time.`;
-      ghAction = "Blend in RO/DI (Reverse Osmosis) water during changes to dilute minerals.";
+      ghExplanation = `Hardness is off target (${gh} dGH vs target ${targetGhRange[0]}–${targetGhRange[1]} dGH).`;
+      ghAction = gh < targetGhRange[0] ? "Add mineral booster or wonder shell for calcium/magnesium." : "Dilute with distilled/RO water during water changes.";
     }
 
     results.push({
@@ -249,19 +239,19 @@ export default function WaterAnalyzerPage() {
       nextAction: ghAction
     });
 
-    // 7. KH (Carbonate Hardness)
+    // 7. KH
     let khStatus: ParameterResult['status'] = 'GOOD';
-    let khExplanation = `KH of ${kh} dKH is sufficient to buffer pH swings.`;
-    let khAction = "Maintain KH to keep pH stable.";
+    let khExplanation = `Adequate carbonate buffering capacity (${kh} dKH) prevents sudden pH crashes.`;
+    let khAction = "Buffer remains stable.";
 
-    if (kh < 3 && !isSaltwater) {
+    if (kh < 2) {
+      khStatus = 'ATTENTION';
+      khExplanation = `Critically low buffer (${kh} dKH). Tank is at high risk of rapid, catastrophic pH collapse.`;
+      khAction = "Slowly introduce crushed coral or sodium bicarbonate buffer to raise KH above 3 dKH.";
+    } else if (kh < targetKhRange[0]) {
       khStatus = 'WATCH';
-      khExplanation = `Low KH (${kh} dKH) alert! Water has no buffering capacity. A minor organic decay surge can cause a severe pH crash (acid crash).`;
-      khAction = "Raise KH slowly. Place a small bag of crushed coral inside the filter, or add buffer salts.";
-    } else if (kh < targetKhRange[0] || kh > targetKhRange[1]) {
-      khStatus = 'WATCH';
-      khExplanation = `Carbonate hardness (${kh} dKH) is outside target (${targetKhRange[0]}–${targetKhRange[1]}). Affects pH stability.`;
-      khAction = "Adjust mineral inputs. Avoid sudden changes.";
+      khExplanation = `Low buffer (${kh} dKH). Water has modest capacity to absorb biological acid buildup.`;
+      khAction = "Monitor pH weekly and gently support carbonate buffer with natural calcareous decor.";
     }
 
     results.push({
@@ -273,17 +263,11 @@ export default function WaterAnalyzerPage() {
       nextAction: khAction
     });
 
-    // Determine overall status
-    let overallStatus: ParameterResult['status'] = 'GOOD';
+    let overallStatus: 'GOOD' | 'WATCH' | 'ATTENTION' = 'GOOD';
     if (results.some(r => r.status === 'ATTENTION')) {
       overallStatus = 'ATTENTION';
     } else if (results.some(r => r.status === 'WATCH')) {
       overallStatus = 'WATCH';
-    }
-
-    // Trigger achievement
-    if (results.length > 0) {
-      unlockAchievement('water-check');
     }
 
     return { overallStatus, results };
@@ -292,268 +276,269 @@ export default function WaterAnalyzerPage() {
   const analysis = analyzeParameters();
 
   return (
-    <div className="w-full">
-      <section className="py-24 bg-slate-900 text-slate-100 border-b border-slate-800">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <div className="text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-cyan-500/20 text-cyan-400 mb-6 border border-cyan-500/30">
-              <FlaskConical className="w-8 h-8" />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-poppins font-bold mb-4">Water Parameter Analyzer</h1>
-            <p className="text-lg text-slate-300 max-w-2xl mx-auto font-sans">
-              Enter your current aquarium test kit readings below to check chemical safety against generalized ranges or species-specific requirements.
-            </p>
+    <div className="min-h-screen bg-[#f7f7ff] text-[#27187e] pt-32 pb-24 text-left marine-pattern-light">
+      <div className="site-container">
+        
+        {/* Header */}
+        <div className="mb-10 pb-8 border-b-2 border-[#cfcaf5]">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#edeafc] border border-[#cfcaf5] text-[#27187e] font-readable text-xs font-semibold uppercase tracking-wider mb-4">
+            <FlaskConical className="w-3.5 h-3.5 text-[#27187e]" />
+            <span>Water Chemistry Diagnostics</span>
           </div>
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-normal text-[#27187e] tracking-tight mb-4">
+            WATER PARAMETER ANALYZER
+          </h1>
+          <p className="text-base sm:text-lg text-[#27187e]/85 font-readable max-w-2xl leading-relaxed">
+            Enter liquid reagent or digital test kit measurements to audit water safety against standard benchmarks or species-specific requirements.
+          </p>
         </div>
-      </section>
 
-      <section className="py-12 bg-background">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="grid lg:grid-cols-12 gap-8 items-start">
-            
-            {/* Input Form Column */}
-            <div className="lg:col-span-5 bg-card border border-border rounded-3xl p-6 md:p-8 shadow-lg space-y-6 text-left">
-              <div className="border-b border-border pb-4">
-                <h2 className="font-bold text-xl text-foreground mb-3">Test Kit Inputs</h2>
-                
-                {/* Target Type Selector */}
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2">Target Context</label>
-                    <div className="grid grid-cols-3 gap-2">
-                      <button 
-                        onClick={() => { setTargetType('fresh_gen'); setSelectedFishId(''); }}
-                        className={`py-2 px-3 text-xs font-bold rounded-lg border transition-all cursor-pointer truncate ${
-                          targetType === 'fresh_gen' ? 'bg-cyan-500/10 text-cyan-500 border-cyan-500/35' : 'bg-background border-border text-muted-foreground'
-                        }`}
-                      >
-                        Freshwater
-                      </button>
-                      <button 
-                        onClick={() => { setTargetType('salt_gen'); setSelectedFishId(''); }}
-                        className={`py-2 px-3 text-xs font-bold rounded-lg border transition-all cursor-pointer truncate ${
-                          targetType === 'salt_gen' ? 'bg-blue-500/10 text-blue-500 border-blue-500/35' : 'bg-background border-border text-muted-foreground'
-                        }`}
-                      >
-                        Saltwater
-                      </button>
-                      <button 
-                        onClick={() => setTargetType('species')}
-                        className={`py-2 px-3 text-xs font-bold rounded-lg border transition-all cursor-pointer truncate ${
-                          targetType === 'species' ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/35' : 'bg-background border-border text-muted-foreground'
-                        }`}
-                      >
-                        Species Specific
-                      </button>
-                    </div>
-                  </div>
-
-                  {targetType === 'species' && (
-                    <div>
-                      <label className="block text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1.5">Select Species</label>
-                      <select
-                        value={selectedFishId}
-                        onChange={(e) => setSelectedFishId(e.target.value)}
-                        className="w-full bg-background border border-border rounded-xl px-3 py-2.5 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-primary"
-                      >
-                        <option value="">Choose a fish...</option>
-                        {fishData.map(f => (
-                          <option key={f.id} value={f.id}>{f.name} ({f.category})</option>
-                        ))}
-                      </select>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Chemical Parameter Sliders */}
-              <div className="space-y-4 font-sans text-sm">
-                {/* Temp */}
-                <div>
-                  <div className="flex justify-between items-center mb-1.5 font-semibold">
-                    <span className="text-foreground">Temperature</span>
-                    <span className="font-mono text-cyan-500 font-bold">{temp} °F</span>
-                  </div>
-                  <input 
-                    type="range" min="60" max="90" step="1" value={temp} 
-                    onChange={e => setTemp(Number(e.target.value))}
-                    className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer"
-                  />
-                </div>
-
-                {/* pH */}
-                <div>
-                  <div className="flex justify-between items-center mb-1.5 font-semibold">
-                    <span className="text-foreground">pH Level</span>
-                    <span className="font-mono text-cyan-500 font-bold">{ph.toFixed(1)}</span>
-                  </div>
-                  <input 
-                    type="range" min="5.0" max="9.0" step="0.1" value={ph} 
-                    onChange={e => setPh(Number(e.target.value))}
-                    className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer"
-                  />
-                </div>
-
-                {/* Ammonia */}
-                <div>
-                  <div className="flex justify-between items-center mb-1.5 font-semibold">
-                    <span className="text-foreground">Ammonia (NH3)</span>
-                    <span className={`font-mono font-bold ${ammonia > 0 ? 'text-rose-500' : 'text-emerald-500'}`}>{ammonia} ppm</span>
-                  </div>
-                  <select 
-                    value={ammonia} onChange={e => setAmmonia(Number(e.target.value))}
-                    className="w-full bg-background border border-border rounded-xl px-3 py-2 text-foreground focus:outline-none"
-                  >
-                    <option value="0">0 ppm (Safe)</option>
-                    <option value="0.25">0.25 ppm (Toxic Trace)</option>
-                    <option value="0.5">0.50 ppm (Harmful)</option>
-                    <option value="1.0">1.0 ppm (Lethal)</option>
-                    <option value="2.0">2.0+ ppm (Severe Toxicity)</option>
-                  </select>
-                </div>
-
-                {/* Nitrite */}
-                <div>
-                  <div className="flex justify-between items-center mb-1.5 font-semibold">
-                    <span className="text-foreground">Nitrite (NO2)</span>
-                    <span className={`font-mono font-bold ${nitrite > 0 ? 'text-rose-500' : 'text-emerald-500'}`}>{nitrite} ppm</span>
-                  </div>
-                  <select 
-                    value={nitrite} onChange={e => setNitrite(Number(e.target.value))}
-                    className="w-full bg-background border border-border rounded-xl px-3 py-2 text-foreground focus:outline-none"
-                  >
-                    <option value="0">0 ppm (Safe)</option>
-                    <option value="0.25">0.25 ppm (Toxic Trace)</option>
-                    <option value="0.5">0.50 ppm (Harmful)</option>
-                    <option value="1.0">1.0 ppm (Lethal)</option>
-                    <option value="2.0">2.0+ ppm (Severe Toxicity)</option>
-                  </select>
-                </div>
-
-                {/* Nitrate */}
-                <div>
-                  <div className="flex justify-between items-center mb-1.5 font-semibold">
-                    <span className="text-foreground">Nitrate (NO3)</span>
-                    <span className="font-mono text-cyan-500 font-bold">{nitrate} ppm</span>
-                  </div>
-                  <input 
-                    type="range" min="0" max="80" step="5" value={nitrate} 
-                    onChange={e => setNitrate(Number(e.target.value))}
-                    className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer"
-                  />
-                </div>
-
-                {/* GH */}
-                <div>
-                  <div className="flex justify-between items-center mb-1.5 font-semibold">
-                    <span className="text-foreground">General Hardness (GH)</span>
-                    <span className="font-mono text-cyan-500 font-bold">{gh} dGH</span>
-                  </div>
-                  <input 
-                    type="range" min="0" max="25" step="1" value={gh} 
-                    onChange={e => setGh(Number(e.target.value))}
-                    className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer"
-                  />
-                </div>
-
-                {/* KH */}
-                <div>
-                  <div className="flex justify-between items-center mb-1.5 font-semibold">
-                    <span className="text-foreground">Carbonate Hardness (KH)</span>
-                    <span className="font-mono text-cyan-500 font-bold">{kh} dKH</span>
-                  </div>
-                  <input 
-                    type="range" min="0" max="20" step="1" value={kh} 
-                    onChange={e => setKh(Number(e.target.value))}
-                    className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer"
-                  />
-                </div>
-              </div>
-
-              <button
-                onClick={handleReset}
-                className="w-full py-3 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer mt-6"
-              >
-                <RefreshCw className="w-4 h-4" /> Reset Analyzer
-              </button>
-            </div>
-
-            {/* Analysis Results Column */}
-            <div className="lg:col-span-7 space-y-6 text-left">
+        {/* Main Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
+          
+          {/* Inputs Column */}
+          <div className="lg:col-span-5 bg-[#ffffff] border-2 border-[#cfcaf5] rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 font-readable">
+            <div className="border-b border-[#edeafc] pb-5">
+              <h2 className="font-display text-2xl sm:text-3xl text-[#27187e] mb-4">
+                Test Kit Measurements
+              </h2>
               
-              {/* Overall Status Banner */}
-              <div className={`p-6 rounded-3xl border ${
-                analysis.overallStatus === 'ATTENTION' ? 'bg-rose-500/10 border-rose-500/20 text-rose-600 dark:text-rose-400' :
-                analysis.overallStatus === 'WATCH' ? 'bg-amber-500/10 border-amber-500/20 text-amber-600 dark:text-amber-400' :
-                'bg-emerald-500/10 border-emerald-500/20 text-emerald-600 dark:text-emerald-400'
-              }`}>
-                <div className="flex items-center gap-3 mb-2">
-                  {analysis.overallStatus === 'ATTENTION' && <XCircle className="w-8 h-8 text-rose-500 shrink-0" />}
-                  {analysis.overallStatus === 'WATCH' && <AlertTriangle className="w-8 h-8 text-amber-500 shrink-0" />}
-                  {analysis.overallStatus === 'GOOD' && <CheckCircle2 className="w-8 h-8 text-emerald-500 shrink-0" />}
-                  <div>
-                    <h3 className="font-poppins font-bold text-lg text-foreground">
-                      Aquarium Status: {analysis.overallStatus === 'ATTENTION' ? 'NEEDS ATTENTION' : analysis.overallStatus === 'WATCH' ? 'WATCH' : 'GOOD'}
-                    </h3>
-                    <p className="text-xs text-muted-foreground mt-0.5">Evaluating against: <strong className="text-foreground">{targetLabel}</strong></p>
+              {/* Target Type Selector */}
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-xs font-semibold text-[#27187e]/80 uppercase tracking-wider mb-2">
+                    Evaluation Context
+                  </label>
+                  <div className="grid grid-cols-3 gap-2">
+                    <button 
+                      onClick={() => { setTargetType('fresh_gen'); setSelectedFishId(''); }}
+                      className={`py-2.5 px-3 text-xs sm:text-sm font-semibold rounded-xl border-2 transition-all cursor-pointer truncate ${
+                        targetType === 'fresh_gen' ? 'bg-[#27187e] text-[#f7f7ff] border-[#27187e]' : 'bg-[#f7f7ff] border-[#cfcaf5] text-[#27187e]'
+                      }`}
+                    >
+                      Freshwater
+                    </button>
+                    <button 
+                      onClick={() => { setTargetType('salt_gen'); setSelectedFishId(''); }}
+                      className={`py-2.5 px-3 text-xs sm:text-sm font-semibold rounded-xl border-2 transition-all cursor-pointer truncate ${
+                        targetType === 'salt_gen' ? 'bg-[#27187e] text-[#f7f7ff] border-[#27187e]' : 'bg-[#f7f7ff] border-[#cfcaf5] text-[#27187e]'
+                      }`}
+                    >
+                      Saltwater
+                    </button>
+                    <button 
+                      onClick={() => setTargetType('species')}
+                      className={`py-2.5 px-3 text-xs sm:text-sm font-semibold rounded-xl border-2 transition-all cursor-pointer truncate ${
+                        targetType === 'species' ? 'bg-[#27187e] text-[#f7f7ff] border-[#27187e]' : 'bg-[#f7f7ff] border-[#cfcaf5] text-[#27187e]'
+                      }`}
+                    >
+                      Species
+                    </button>
                   </div>
                 </div>
-                <p className="text-sm text-foreground/80 leading-relaxed font-sans mt-3">
-                  {analysis.overallStatus === 'ATTENTION' && "Critical chemical imbalances detected. Immediate action is required to restore water safety and prevent mortality."}
-                  {analysis.overallStatus === 'WATCH' && "Some parameters are slightly off-target or indicate trace waste accumulation. Schedule routine water changes and monitor trends."}
-                  {analysis.overallStatus === 'GOOD' && "Excellent parameters. Your biological cycle is fully functioning and water chemistry fits requirements perfectly."}
-                </p>
+
+                {targetType === 'species' && (
+                  <div>
+                    <label className="block text-xs font-semibold text-[#27187e]/80 uppercase tracking-wider mb-2">
+                      Select Target Fish
+                    </label>
+                    <select
+                      value={selectedFishId}
+                      onChange={(e) => setSelectedFishId(e.target.value)}
+                      className="w-full bg-[#f7f7ff] border-2 border-[#cfcaf5] focus:border-[#27187e] rounded-xl px-3.5 py-2.5 text-sm sm:text-base text-[#27187e] font-medium focus:outline-none cursor-pointer"
+                    >
+                      <option value="">Choose a species...</option>
+                      {fishData.map(f => (
+                        <option key={f.id} value={f.id}>{f.name} ({f.category})</option>
+                      ))}
+                    </select>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Sliders & Selects */}
+            <div className="space-y-4 font-readable text-sm">
+              {/* Temp */}
+              <div>
+                <div className="flex justify-between items-center mb-1.5 font-semibold text-sm sm:text-base">
+                  <span className="text-[#27187e]">Temperature</span>
+                  <span className="font-bold text-[#27187e]">{temp} °F</span>
+                </div>
+                <input 
+                  type="range" min="60" max="90" step="1" value={temp} 
+                  onChange={e => setTemp(Number(e.target.value))}
+                  className="w-full h-2 bg-[#edeafc] rounded-lg appearance-none cursor-pointer accent-[#27187e]"
+                />
               </div>
 
-              {/* Parameter Row Grid */}
-              <div className="space-y-4">
-                {analysis.results.map((param, idx) => (
-                  <div key={idx} className="bg-card border border-border rounded-3xl p-5 shadow-sm space-y-3 font-sans">
-                    <div className="flex justify-between items-center flex-wrap gap-2 border-b border-border/40 pb-3">
-                      <div>
-                        <h4 className="font-bold text-base text-foreground">{param.name}</h4>
-                        <span className="text-xs text-muted-foreground">Target: <strong className="text-foreground/80">{param.target}</strong></span>
-                      </div>
-                      
-                      <div className="flex items-center gap-3">
-                        <span className="font-mono text-sm font-black text-foreground bg-muted px-2.5 py-1 rounded-lg border border-border">
-                          {param.value} {param.name.includes('Temp') ? '°F' : param.name.includes('pH') ? '' : param.name.includes('dG') || param.name.includes('dK') ? 'd' : 'ppm'}
-                        </span>
-                        
-                        <span className={`px-2.5 py-1 rounded text-xs font-bold tracking-wider ${
-                          param.status === 'ATTENTION' ? 'bg-rose-500/10 text-rose-500 border border-rose-500/20' :
-                          param.status === 'WATCH' ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20' :
-                          'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20'
-                        }`}>
-                          {param.status}
-                        </span>
-                      </div>
-                    </div>
+              {/* pH */}
+              <div>
+                <div className="flex justify-between items-center mb-1.5 font-semibold text-sm sm:text-base">
+                  <span className="text-[#27187e]">pH Level</span>
+                  <span className="font-bold text-[#27187e]">{ph.toFixed(1)}</span>
+                </div>
+                <input 
+                  type="range" min="5.0" max="9.0" step="0.1" value={ph} 
+                  onChange={e => setPh(Number(e.target.value))}
+                  className="w-full h-2 bg-[#edeafc] rounded-lg appearance-none cursor-pointer accent-[#27187e]"
+                />
+              </div>
 
-                    <div className="text-xs space-y-2">
-                      <p className="text-muted-foreground leading-relaxed">
-                        <strong className="text-foreground">Status Description:</strong> {param.explanation}
-                      </p>
+              {/* Ammonia */}
+              <div>
+                <div className="flex justify-between items-center mb-1.5 font-semibold text-sm sm:text-base">
+                  <span className="text-[#27187e]">Ammonia (NH3)</span>
+                  <span className="font-bold text-[#27187e]">{ammonia} ppm</span>
+                </div>
+                <select 
+                  value={ammonia} onChange={e => setAmmonia(Number(e.target.value))}
+                  className="w-full bg-[#f7f7ff] border-2 border-[#cfcaf5] rounded-xl px-3.5 py-2.5 text-sm sm:text-base text-[#27187e] font-medium focus:outline-none"
+                >
+                  <option value="0">0.0 ppm (Safe / Cycled)</option>
+                  <option value="0.25">0.25 ppm (Toxic Trace)</option>
+                  <option value="0.5">0.50 ppm (Harmful)</option>
+                  <option value="1.0">1.0 ppm (Lethal)</option>
+                  <option value="2.0">2.0+ ppm (Severe Toxicity)</option>
+                </select>
+              </div>
+
+              {/* Nitrite */}
+              <div>
+                <div className="flex justify-between items-center mb-1.5 font-semibold text-sm sm:text-base">
+                  <span className="text-[#27187e]">Nitrite (NO2)</span>
+                  <span className="font-bold text-[#27187e]">{nitrite} ppm</span>
+                </div>
+                <select 
+                  value={nitrite} onChange={e => setNitrite(Number(e.target.value))}
+                  className="w-full bg-[#f7f7ff] border-2 border-[#cfcaf5] rounded-xl px-3.5 py-2.5 text-sm sm:text-base text-[#27187e] font-medium focus:outline-none"
+                >
+                  <option value="0">0.0 ppm (Safe / Cycled)</option>
+                  <option value="0.25">0.25 ppm (Toxic Trace)</option>
+                  <option value="0.5">0.50 ppm (Harmful)</option>
+                  <option value="1.0">1.0 ppm (Lethal)</option>
+                  <option value="2.0">2.0+ ppm (Severe Toxicity)</option>
+                </select>
+              </div>
+
+              {/* Nitrate */}
+              <div>
+                <div className="flex justify-between items-center mb-1.5 font-semibold text-sm sm:text-base">
+                  <span className="text-[#27187e]">Nitrate (NO3)</span>
+                  <span className="font-bold text-[#27187e]">{nitrate} ppm</span>
+                </div>
+                <input 
+                  type="range" min="0" max="80" step="5" value={nitrate} 
+                  onChange={e => setNitrate(Number(e.target.value))}
+                  className="w-full h-2 bg-[#edeafc] rounded-lg appearance-none cursor-pointer accent-[#27187e]"
+                />
+              </div>
+
+              {/* GH */}
+              <div>
+                <div className="flex justify-between items-center mb-1.5 font-semibold text-sm sm:text-base">
+                  <span className="text-[#27187e]">General Hardness (GH)</span>
+                  <span className="font-bold text-[#27187e]">{gh} dGH</span>
+                </div>
+                <input 
+                  type="range" min="0" max="25" step="1" value={gh} 
+                  onChange={e => setGh(Number(e.target.value))}
+                  className="w-full h-2 bg-[#edeafc] rounded-lg appearance-none cursor-pointer accent-[#27187e]"
+                />
+              </div>
+
+              {/* KH */}
+              <div>
+                <div className="flex justify-between items-center mb-1.5 font-semibold text-sm sm:text-base">
+                  <span className="text-[#27187e]">Carbonate Hardness (KH)</span>
+                  <span className="font-bold text-[#27187e]">{kh} dKH</span>
+                </div>
+                <input 
+                  type="range" min="0" max="20" step="1" value={kh} 
+                  onChange={e => setKh(Number(e.target.value))}
+                  className="w-full h-2 bg-[#edeafc] rounded-lg appearance-none cursor-pointer accent-[#27187e]"
+                />
+              </div>
+            </div>
+
+            <button
+              onClick={handleReset}
+              className="w-full py-3.5 bg-[#27187e] hover:bg-[#1b1059] text-[#f7f7ff] font-semibold text-sm sm:text-base rounded-2xl transition-all flex items-center justify-center gap-2 cursor-pointer mt-6 shadow-sm"
+            >
+              <RefreshCw className="w-4 h-4" /> Reset Parameter Values
+            </button>
+          </div>
+
+          {/* Results Column */}
+          <div className="lg:col-span-7 space-y-6 font-readable">
+            
+            {/* Status Banner */}
+            <div className="bg-[#ffffff] border-2 border-[#cfcaf5] rounded-3xl p-6 sm:p-7 shadow-sm">
+              <div className="flex items-center gap-3 mb-2">
+                {analysis.overallStatus === 'ATTENTION' && <AlertTriangle className="w-6 h-6 text-[#27187e] shrink-0" />}
+                {analysis.overallStatus === 'WATCH' && <Info className="w-6 h-6 text-[#27187e] shrink-0" />}
+                {analysis.overallStatus === 'GOOD' && <CheckCircle2 className="w-6 h-6 text-[#27187e] shrink-0" />}
+                <div>
+                  <h3 className="font-display text-2xl sm:text-3xl text-[#27187e]">
+                    Status: {analysis.overallStatus === 'ATTENTION' ? 'NEEDS ATTENTION' : analysis.overallStatus === 'WATCH' ? 'WATCH LIST' : 'OPTIMAL EQUILIBRIUM'}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#27187e]/70 mt-0.5 font-semibold">
+                    Evaluating against: <strong className="text-[#27187e]">{targetLabel}</strong>
+                  </p>
+                </div>
+              </div>
+              <p className="text-sm sm:text-base text-[#27187e]/85 leading-relaxed font-medium mt-3">
+                {analysis.overallStatus === 'ATTENTION' && "Critical chemical imbalances detected. Immediate bio-remediation is required to protect aquatic life."}
+                {analysis.overallStatus === 'WATCH' && "Some parameters are slightly out of balance. Schedule regular maintenance and monitor trends."}
+                {analysis.overallStatus === 'GOOD' && "Excellent parameters. Your biological cycle is fully functioning and water chemistry is in stable equilibrium."}
+              </p>
+            </div>
+
+            {/* Parameter Rows */}
+            <div className="space-y-4">
+              {analysis.results.map((param, idx) => (
+                <div key={idx} className="bg-[#ffffff] border-2 border-[#cfcaf5] rounded-3xl p-5 sm:p-6 shadow-sm space-y-3">
+                  <div className="flex justify-between items-center flex-wrap gap-2 border-b border-[#edeafc] pb-3">
+                    <div>
+                      <h4 className="font-bold text-base sm:text-lg text-[#27187e]">{param.name}</h4>
+                      <span className="text-xs sm:text-sm text-[#27187e]/70">Target: <strong className="text-[#27187e]">{param.target}</strong></span>
+                    </div>
+                    
+                    <div className="flex items-center gap-3">
+                      <span className="font-bold text-sm sm:text-base text-[#27187e] bg-[#f7f7ff] px-3 py-1 rounded-xl border border-[#cfcaf5]">
+                        {param.value} {param.name.includes('Temp') ? '°F' : param.name.includes('pH') ? '' : param.name.includes('Hardness') ? 'd' : 'ppm'}
+                      </span>
                       
-                      {param.status !== 'GOOD' && (
-                        <div className="p-3 bg-muted rounded-xl border border-border flex items-start gap-2 text-foreground/90 leading-relaxed font-medium">
-                          <Info className="w-4 h-4 text-cyan-500 shrink-0 mt-0.5" />
-                          <div>
-                            <strong className="block text-[10px] text-cyan-600 dark:text-cyan-400 uppercase tracking-wider mb-0.5">Recommended Next Action</strong>
-                            {param.nextAction}
-                          </div>
-                        </div>
-                      )}
+                      <span className="px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider bg-[#edeafc] text-[#27187e] border border-[#cfcaf5]">
+                        {param.status}
+                      </span>
                     </div>
                   </div>
-                ))}
-              </div>
 
+                  <div className="text-xs sm:text-sm space-y-2">
+                    <p className="text-[#27187e]/85 leading-relaxed font-medium">
+                      <strong className="text-[#27187e]">Diagnosis:</strong> {param.explanation}
+                    </p>
+                    
+                    {param.status !== 'GOOD' && (
+                      <div className="p-3.5 bg-[#f7f7ff] rounded-2xl border border-[#cfcaf5] flex items-start gap-2.5 text-[#27187e] leading-relaxed font-medium">
+                        <Info className="w-4 h-4 text-[#27187e] shrink-0 mt-0.5" />
+                        <div>
+                          <strong className="block text-xs uppercase font-bold text-[#27187e] tracking-wider mb-0.5">Recommended Action Protocol</strong>
+                          {param.nextAction}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
 
           </div>
+
         </div>
-      </section>
+
+      </div>
 
       <GlobalCTA
         badge="BIOLOGICAL WATER CHEMISTRY"

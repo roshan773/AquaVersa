@@ -1,53 +1,57 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, BookOpen, Fish, Leaf, Wrench } from 'lucide-react';
 
 export default function AtlasDestinations() {
   const destinations = [
     {
       id: 'fish',
-      title: 'FISH',
+      title: 'FISH LIBRARY',
       subtitle: 'Species Catalog',
       desc: 'Discover freshwater and saltwater species with detailed care parameters, temperaments, and minimum tank dimensions.',
       image: '/images/betta.png',
       href: '/fish',
+      icon: Fish,
     },
     {
       id: 'plants',
-      title: 'PLANTS',
+      title: 'AQUARIUM FLORA',
       subtitle: 'Botanical Index',
       desc: 'Explore hardy low-tech and high-light aquatic flora to naturally absorb nitrates and oxygenate water.',
       image: '/images/anubias.png',
       href: '/plants',
+      icon: Leaf,
     },
     {
       id: 'equipment',
-      title: 'EQUIPMENT',
-      subtitle: 'Hardware Guide',
+      title: 'HARDWARE ARCHIVE',
+      subtitle: 'Equipment Guide',
       desc: 'Understand filtration mechanics, precision heating thermostats, and full-spectrum LED lighting.',
       image: '/images/canister_filter.png',
       href: '/equipment',
+      icon: Wrench,
     },
     {
       id: 'guides',
-      title: 'GUIDES',
+      title: 'CARE PROTOCOLS',
       subtitle: 'Knowledge Base',
       desc: 'In-depth reference articles on biological cycling, acclimation protocols, and long-term water stability.',
       image: '/hero_aquarium.jpg',
       href: '/guides',
+      icon: BookOpen,
     },
   ];
 
   return (
-    <section className="marine-pattern-light py-24 bg-[#f7f7ff] text-left border-t border-[#cfcaf5]">
+    <section className="marine-pattern-light py-20 sm:py-24 bg-[#f7f7ff] text-left border-t border-[#cfcaf5]">
       <div className="site-container">
         
         {/* Section Header */}
-        <div className="mb-14">
-          <span className="text-xs font-condensed font-bold uppercase tracking-[0.25em] text-[#27187e] mb-2 block">
+        <div className="mb-12">
+          <span className="font-sans text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#27187e] mb-2 block">
             THE ATLAS ARCHIVE
           </span>
-          <h2 className="text-5xl sm:text-6xl md:text-7xl font-display font-normal text-[#27187e] tracking-wide">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-normal text-[#27187e] tracking-wide">
             Explore the underwater world.
           </h2>
         </div>
@@ -70,26 +74,27 @@ export default function AtlasDestinations() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 768px) 100vw, 25vw"
                   />
-                  <div className="absolute top-4 left-4 bg-[#27187e] text-[#f7f7ff] px-3 py-1 rounded-full text-xs font-condensed font-bold uppercase tracking-wider">
-                    {item.subtitle}
+                  <div className="absolute top-4 left-4 bg-[#27187e] text-[#f7f7ff] px-3 py-1 rounded-full font-sans text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm">
+                    <item.icon className="w-3.5 h-3.5" />
+                    <span>{item.subtitle}</span>
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="p-6">
-                  <h3 className="text-3xl font-display font-normal text-[#27187e] group-hover:text-[#1b1059] transition-colors leading-tight mb-2">
+                  <h3 className="text-2xl sm:text-3xl font-display font-normal text-[#27187e] group-hover:text-[#1b1059] transition-colors leading-tight mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-[#27187e]/80 font-sans leading-relaxed">
+                  <p className="font-readable text-sm sm:text-base text-[#27187e]/85 leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
               </div>
 
               {/* Action */}
-              <div className="px-6 pb-6 pt-2 border-t border-[#edeafc] flex items-center justify-between text-xs font-condensed font-bold uppercase tracking-wider text-[#27187e]">
+              <div className="px-6 pb-6 pt-3 border-t border-[#edeafc] flex items-center justify-between font-readable text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#27187e]">
                 <span>Explore Archive</span>
-                <ArrowRight className="w-4 h-4 text-[#27187e] group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 text-[#27187e] group-hover:translate-x-1.5 transition-transform" />
               </div>
             </Link>
           ))}
@@ -99,3 +104,4 @@ export default function AtlasDestinations() {
     </section>
   );
 }
+
