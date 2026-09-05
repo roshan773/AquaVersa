@@ -65,26 +65,25 @@ export default function ContactPage() {
     setErrorMessage("");
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "2d7e12ea-1240-4d9f-acbe-db75c3fbbae2",
-          name: fullName,
-          email: email,
-          subject: subject,
-          phone: phone,
-          message: message,
-          from_name: `${siteConfig.name} Contact Form`,
+          category: "general",
+          name: fullName.trim(),
+          email: email.trim(),
+          subject: subject.trim(),
+          phone: phone.trim(),
+          message: message.trim(),
         }),
       });
 
       const resData = await response.json();
 
-      if (response.status === 200 && resData.success) {
+      if (response.ok && resData.success) {
         setSubmitStatus("success");
         setFullName("");
         setEmail("");
@@ -92,7 +91,7 @@ export default function ContactPage() {
         setPhone("");
         setMessage("");
       } else {
-        throw new Error(resData.message || "Unable to send message at this time.");
+        throw new Error(resData.error || "Unable to send message at this time.");
       }
     } catch (err: any) {
       setSubmitStatus("error");

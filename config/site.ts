@@ -13,9 +13,6 @@ export const siteConfig = {
   // Direct contact details
   contactEmail: "pakhreroshan@gmail.com",
   
-  // Web3Forms Access Key for contact form submissions
-  web3FormsAccessKey: "2d7e12ea-1240-4d9f-acbe-db75c3fbbae2",
-  
   // Social Media
   socialLinks: {
     twitter: "https://twitter.com/roshanaquvaworld",
