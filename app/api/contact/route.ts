@@ -135,7 +135,7 @@ export async function POST(request: Request) {
       <div style="max-width: 600px; margin: auto; text-align: center;">
         <hr style="border: 0; border-top: 1px solid #e2e8f0; margin-bottom: 12px;"/>
         <p style="font-size: 11px; color: #64748b; margin: 0;">
-          Submitted from: Roshan Aquva World (<a href="https://roshanaquvaworld.com" style="color: #64748b; text-decoration: underline;">roshanaquvaworld.com</a>)
+          Submitted from: Roshan Aquva World (<a href="https://aquaversa.vercel.app" style="color: #64748b; text-decoration: underline;">aquaversa.vercel.app</a>)
         </p>
       </div>
     `;

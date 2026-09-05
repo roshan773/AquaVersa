@@ -8,7 +8,7 @@ export const siteConfig = {
   description: "A comprehensive, educational aquarium platform. Discover fish species requirements, plant care, community compatibility, equipment guides, water chemistry, and tank maintenance routines.",
   
   // Production site URL
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://roshanaquvaworld.com",
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://aquaversa.vercel.app",
   
   // Direct contact details
   contactEmail: "pakhreroshan@gmail.com",
