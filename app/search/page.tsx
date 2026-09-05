@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { Search as SearchIcon, Fish as FishIcon, Leaf as LeafIcon, Settings as SettingsIcon, Sparkles, AlertCircle } from "lucide-react";
+import { Search as SearchIcon, Fish as FishIcon, Leaf as LeafIcon, Settings as SettingsIcon, Sparkles, AlertCircle, ArrowRight, Layers } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { Suspense, useMemo } from "react";
@@ -9,6 +9,7 @@ import { fishData } from "@/data/fish";
 import { siteConfig } from "@/config/site";
 import { plantData } from "@/data/plants";
 import { equipmentData } from "@/data/equipment";
+import GlobalCTA from "@/components/ui/GlobalCTA";
 
 function SearchResults() {
   const searchParams = useSearchParams();
@@ -32,53 +33,51 @@ function SearchResults() {
     const smartFilters: string[] = [];
     let explanation = "";
 
-    // 1. Tank Size Filter (e.g. "10 gallon", "20g")
+    // 1. Tank Size Filter
     const gallonMatch = normalizedQuery.match(/(\d+)\s*(?:gallon|gal|g)\b/i);
     if (gallonMatch) {
       const gallons = parseInt(gallonMatch[1]);
       filteredFish = filteredFish.filter(f => f.minTankSize && f.minTankSize <= gallons);
-      smartFilters.push(`Tank capacity: ≤ ${gallons} Gallons`);
+      smartFilters.push(`Tank volume: ≤ ${gallons} Gallons`);
     }
 
-    // 2. Temperament Filter (e.g. "peaceful")
+    // 2. Temperament Filter
     if (normalizedQuery.includes("peaceful")) {
       filteredFish = filteredFish.filter(f => f.temperament?.toLowerCase().includes("peaceful"));
-      smartFilters.push("Temperament: Peaceful");
+      smartFilters.push("Temperament: Peaceful Community");
     } else if (normalizedQuery.includes("aggressive") && !normalizedQuery.includes("semi")) {
       filteredFish = filteredFish.filter(f => f.temperament?.toLowerCase().includes("aggressive") && !f.temperament?.toLowerCase().includes("semi"));
-      smartFilters.push("Temperament: Aggressive");
+      smartFilters.push("Temperament: Aggressive / Territorial");
     } else if (normalizedQuery.includes("semi-aggressive")) {
       filteredFish = filteredFish.filter(f => f.temperament?.toLowerCase().includes("semi-aggressive"));
       smartFilters.push("Temperament: Semi-Aggressive");
     }
 
-    // 3. Difficulty/Beginner Filter (e.g. "beginner", "for beginners")
+    // 3. Care Level Filter
     if (normalizedQuery.includes("beginner") || normalizedQuery.includes("easy")) {
       filteredFish = filteredFish.filter(f => f.difficulty === "Beginner" || f.beginnerSuitable);
       filteredPlants = filteredPlants.filter(p => p.difficulty?.toLowerCase() === "easy");
       smartFilters.push("Care Level: Beginner Friendly");
     }
 
-    // 4. Plant Lighting Filter (e.g. "low light")
+    // 4. Plant Lighting Filter
     if (normalizedQuery.includes("low light")) {
       filteredPlants = filteredPlants.filter(p => p.light?.toLowerCase().includes("low"));
-      smartFilters.push("Plant Light: Low Requirement");
+      smartFilters.push("Lighting: Low Requirement");
     } else if (normalizedQuery.includes("high light")) {
       filteredPlants = filteredPlants.filter(p => p.light?.toLowerCase().includes("high"));
-      smartFilters.push("Plant Light: High Requirement");
+      smartFilters.push("Lighting: High Requirement");
     }
 
-    // 5. Goldfish Plants (epiphyte plants goldfish won't eat)
+    // 5. Goldfish Plants
     if (normalizedQuery.includes("goldfish") && (normalizedQuery.includes("plant") || normalizedQuery.includes("flora"))) {
-      // Goldfish destroy soft plants, return Java Fern / Anubias Nana
       filteredPlants = filteredPlants.filter(p => p.slug === "java-fern" || p.slug === "anubias-nana");
-      smartFilters.push("Plants for Goldfish");
-      explanation = "Goldfish are herbivorous and dig/eat soft-leaved vegetation. We have highlighted tough-leaved epiphytes like Java Fern and Anubias which can be attached to hardscape and are usually left alone.";
+      smartFilters.push("Flora for Herbivorous Goldfish");
+      explanation = "Goldfish eat soft plants. We highlighted tough epiphytes like Java Fern and Anubias that remain attached to wood/rocks.";
     }
 
-    // 6. Compatibility check (e.g. "live with guppies", "compatible with guppy")
+    // 6. Compatibility check
     if (normalizedQuery.includes("live with") || normalizedQuery.includes("compatible with") || normalizedQuery.includes("can live with")) {
-      // Extract target fish name
       let targetSlug = "";
       if (normalizedQuery.includes("gupp")) targetSlug = "guppy";
       else if (normalizedQuery.includes("neon") || normalizedQuery.includes("tetra")) targetSlug = "neon-tetra";
@@ -99,18 +98,16 @@ function SearchResults() {
               f.compatibleWith?.includes(targetSlug) ||
               f.temperament === "Peaceful" && targetFish.temperament === "Peaceful"
             ) &&
-            f.category === targetFish.category // must share freshwater/saltwater
+            f.category === targetFish.category
           );
           smartFilters.push(`Compatible with: ${targetFish.name}`);
-          explanation = `Showing species that can successfully share an aquarium with the ${targetFish.name} based on water chemistry, size, and peaceful temperament.`;
+          explanation = `Showing species that can successfully cohabit with ${targetFish.name} based on water chemistry and temperament.`;
         }
       }
     }
 
-    // Fallback search logic if no specific smart filters are triggered, or in addition to them
     const hasSmartFilters = smartFilters.length > 0;
     
-    // If we have no smart filters, perform standard keyword searches
     if (!hasSmartFilters) {
       filteredFish = fishData.filter(
         (f) =>
@@ -136,7 +133,6 @@ function SearchResults() {
           (e.category && e.category.toLowerCase().includes(normalizedQuery))
       );
     } else {
-      // If smart filters are active, we also filter equipment to empty since it is livestock-focused
       filteredEquipment = [];
     }
 
@@ -152,82 +148,81 @@ function SearchResults() {
   const totalResults = searchAnalysis.fish.length + searchAnalysis.plants.length + searchAnalysis.equipment.length;
 
   return (
-    <div className="container mx-auto px-4 py-16 min-h-[85vh] font-sans">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen bg-[#f7f7ff] text-[#27187e] pt-32 pb-24 text-left font-readable marine-pattern-light">
+      <div className="site-container">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 border-b border-border pb-8 text-left">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 border-b-2 border-[#cfcaf5] pb-8">
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-cyan-500/10 text-cyan-500 rounded-2xl border border-cyan-500/20">
+            <div className="p-3.5 bg-[#edeafc] text-[#27187e] rounded-2xl border border-[#cfcaf5]">
               <SearchIcon className="w-8 h-8" />
             </div>
             <div>
-              <h1 className="text-3xl md:text-4xl font-poppins font-bold">Search Results</h1>
-              <p className="text-muted-foreground mt-1">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-normal tracking-tight">
+                SEARCH ARCHIVE
+              </h1>
+              <p className="text-base text-[#27187e]/80 mt-1 font-medium">
                 {normalizedQuery ? (
-                  <>Showing {totalResults} matches for <span className="text-cyan-600 dark:text-cyan-400 font-semibold">"{query}"</span></>
+                  <>Showing {totalResults} documented matches for <strong className="text-[#27187e]">"{query}"</strong></>
                 ) : (
-                  `Explore ${siteConfig.name}'s library database`
+                  `Query the complete ${siteConfig.name} natural history database`
                 )}
               </p>
             </div>
           </div>
           {normalizedQuery && totalResults > 0 && (
-            <div className="text-sm font-semibold bg-muted px-4 py-2 rounded-full border border-border shrink-0">
-              Found: {searchAnalysis.fish.length} Fish | {searchAnalysis.plants.length} Plants | {searchAnalysis.equipment.length} Gear
+            <div className="text-xs sm:text-sm font-semibold bg-[#ffffff] px-4 py-2 rounded-full border border-[#cfcaf5] shrink-0">
+              Found: {searchAnalysis.fish.length} Fish • {searchAnalysis.plants.length} Plants • {searchAnalysis.equipment.length} Hardware
             </div>
           )}
         </div>
 
         {/* NLP Smart Filter badge */}
         {searchAnalysis.smartFilters.length > 0 && (
-          <div className="mb-8 p-5 bg-cyan-500/5 border border-cyan-500/25 rounded-2xl text-left flex gap-3 items-start max-w-4xl">
-            <Sparkles className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" />
+          <div className="mb-10 p-5 bg-[#ffffff] border-2 border-[#cfcaf5] rounded-3xl text-left flex gap-3.5 items-start max-w-4xl shadow-sm">
+            <Sparkles className="w-5 h-5 text-[#27187e] shrink-0 mt-0.5" />
             <div className="space-y-2">
               <div className="flex flex-wrap gap-2 items-center">
-                <span className="text-xs font-bold text-cyan-600 dark:text-cyan-400 uppercase tracking-wider">Smart Filters Applied:</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-[#27187e]">Semantic Query Parsed:</span>
                 {searchAnalysis.smartFilters.map((filt, idx) => (
-                  <span key={idx} className="bg-cyan-500/10 text-cyan-600 dark:text-cyan-455 text-[10px] font-bold px-2 py-0.5 rounded border border-cyan-500/20">{filt}</span>
+                  <span key={idx} className="bg-[#edeafc] text-[#27187e] text-xs font-bold px-3 py-1 rounded-lg border border-[#cfcaf5]">{filt}</span>
                 ))}
               </div>
               {searchAnalysis.explanation && (
-                <p className="text-xs text-muted-foreground leading-relaxed pt-1">{searchAnalysis.explanation}</p>
+                <p className="text-sm text-[#27187e]/85 leading-relaxed font-medium pt-1">{searchAnalysis.explanation}</p>
               )}
             </div>
           </div>
         )}
 
         {!normalizedQuery ? (
-          <div className="text-center py-16 bg-muted/20 border border-border border-dashed rounded-3xl">
-            <SearchIcon className="w-16 h-16 text-muted-foreground/30 mx-auto mb-4" />
-            <h2 className="text-xl font-bold mb-2">Search the Database</h2>
-            <p className="text-muted-foreground max-w-md mx-auto mb-6">
-              Enter a query in the search bar above to look for tropical fish, aquatic plants, or essential aquarium equipment. Try natural queries like "peaceful fish for 10 gallon" or "low light plants".
+          <div className="text-center py-20 bg-[#ffffff] border-2 border-[#cfcaf5] border-dashed rounded-3xl p-8 max-w-2xl mx-auto shadow-sm">
+            <SearchIcon className="w-16 h-16 text-[#27187e]/30 mx-auto mb-4" />
+            <h2 className="text-3xl font-display text-[#27187e] mb-2">Search the Field Guide Database</h2>
+            <p className="text-base text-[#27187e]/80 max-w-md mx-auto mb-6 font-medium leading-relaxed">
+              Enter queries like "peaceful fish for 10 gallon", "low light plants", or "canister filter" to explore matching profiles.
             </p>
-            <div className="flex justify-center gap-4">
-              <Link href="/fish" className="text-sm font-medium hover:underline text-cyan-600">Fish Catalog</Link>
-              <span className="text-muted-foreground">•</span>
-              <Link href="/plants" className="text-sm font-medium hover:underline text-emerald-600">Plants Catalog</Link>
-              <span className="text-muted-foreground">•</span>
-              <Link href="/equipment" className="text-sm font-medium hover:underline text-amber-600">Gear Catalog</Link>
+            <div className="flex justify-center gap-4 text-sm font-semibold">
+              <Link href="/fish" className="hover:underline text-[#27187e]">Fish Atlas</Link>
+              <span>•</span>
+              <Link href="/plants" className="hover:underline text-[#27187e]">Plant Atlas</Link>
+              <span>•</span>
+              <Link href="/equipment" className="hover:underline text-[#27187e]">Equipment Archive</Link>
             </div>
           </div>
         ) : totalResults === 0 ? (
-          <div className="text-center py-16 bg-muted/20 border border-border border-dashed rounded-3xl">
-            <SearchIcon className="w-16 h-16 text-destructive/40 mx-auto mb-4" />
-            <h2 className="text-xl font-bold mb-2">No Results Found</h2>
-            <p className="text-muted-foreground max-w-md mx-auto mb-8">
-              We couldn't find matches for "{query}". Try checking your spelling or searching for general categories like "tetra", "anubias", or "filter".
+          <div className="text-center py-20 bg-[#ffffff] border-2 border-[#cfcaf5] rounded-3xl p-8 max-w-2xl mx-auto shadow-sm">
+            <SearchIcon className="w-16 h-16 text-[#27187e]/40 mx-auto mb-4" />
+            <h2 className="text-3xl font-display text-[#27187e] mb-2">No Records Found</h2>
+            <p className="text-base text-[#27187e]/80 max-w-md mx-auto mb-8 font-medium">
+              We couldn't locate matching records for "{query}". Try searching for general terms like "tetra", "anubias", or "filter".
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/fish" className="px-6 py-2.5 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-semibold rounded-xl transition-colors">
-                Browse Fish
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Link href="/fish" className="px-6 py-3 bg-[#27187e] hover:bg-[#1b1059] text-[#f7f7ff] font-semibold rounded-2xl transition-colors">
+                Browse Species
               </Link>
-              <Link href="/plants" className="px-6 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-semibold rounded-xl transition-colors">
+              <Link href="/plants" className="px-6 py-3 bg-[#ffffff] border-2 border-[#27187e] text-[#27187e] font-semibold rounded-2xl hover:bg-[#edeafc] transition-colors">
                 Browse Plants
-              </Link>
-              <Link href="/equipment" className="px-6 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold rounded-xl transition-colors">
-                Browse Equipment
               </Link>
             </div>
           </div>
@@ -236,38 +231,34 @@ function SearchResults() {
             {/* Fish Results */}
             {searchAnalysis.fish.length > 0 && (
               <div>
-                <h2 className="text-2xl font-poppins font-bold mb-6 flex items-center gap-2 border-l-4 border-cyan-500 pl-3">
-                  <FishIcon className="w-6 h-6 text-cyan-500" /> Fish Library ({searchAnalysis.fish.length})
+                <h2 className="text-3xl sm:text-4xl font-display font-normal text-[#27187e] mb-6 flex items-center gap-2.5">
+                  <FishIcon className="w-6 h-6 text-[#27187e]" /> Fish Species Matches ({searchAnalysis.fish.length})
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {searchAnalysis.fish.map((fish) => (
-                    <div key={fish.id} className="group rounded-2xl border border-border bg-card overflow-hidden hover:shadow-lg transition-all flex flex-col justify-between">
+                    <div key={fish.id} className="rounded-3xl border-2 border-[#cfcaf5] bg-[#ffffff] overflow-hidden hover:border-[#27187e] transition-all flex flex-col justify-between shadow-sm p-6">
                       <div>
-                        <div className="relative h-44 w-full bg-muted overflow-hidden shrink-0">
-                          <Image src={fish.image} alt={fish.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                          <div className="absolute top-3 right-3 bg-black/60 text-white backdrop-blur-md px-2 py-0.5 rounded text-xs font-semibold">
+                        <div className="relative h-44 w-full bg-[#12093d] rounded-2xl overflow-hidden mb-4">
+                          <Image src={fish.image} alt={fish.name} fill className="object-cover" sizes="300px" />
+                          <div className="absolute top-3 right-3 bg-[#f7f7ff] text-[#27187e] border border-[#cfcaf5] px-2.5 py-1 rounded-md text-xs font-bold uppercase">
                             {fish.difficulty}
                           </div>
                         </div>
-                        <div className="p-5">
-                          <h3 className="text-lg font-bold group-hover:text-cyan-500 transition-colors line-clamp-1">{fish.name}</h3>
-                          <p className="text-xs text-muted-foreground italic mb-3">{fish.scientificName}</p>
-                          <p className="text-sm text-muted-foreground line-clamp-2 mb-4">{fish.description}</p>
-                          
-                          <div className="grid grid-cols-2 gap-2 text-xs mb-2">
-                            <span>Min Tank: <strong>{fish.minTankSize} Gal</strong></span>
-                            <span>Adult Size: <strong>{fish.maxSize}"</strong></span>
-                            <span>pH: <strong>{fish.ph}</strong></span>
-                            <span className="truncate">Behavior: <strong>{fish.temperament}</strong></span>
-                          </div>
+                        <h3 className="text-2xl font-display font-normal text-[#27187e] mb-1">{fish.name}</h3>
+                        <p className="text-xs text-[#27187e]/70 italic mb-3">{fish.scientificName}</p>
+                        <p className="text-sm text-[#27187e]/85 line-clamp-2 mb-4 font-medium">{fish.description}</p>
+                        
+                        <div className="grid grid-cols-2 gap-2 text-xs bg-[#f7f7ff] p-3 rounded-xl border border-[#cfcaf5] font-semibold">
+                          <span>Min Tank: {fish.minTankSize} Gal</span>
+                          <span>Care: {fish.difficulty}</span>
                         </div>
                       </div>
-                      <div className="px-5 pb-5">
+                      <div className="pt-4 mt-4 border-t border-[#edeafc]">
                         <Link
-                          href={`/fish/${fish.category?.toLowerCase() || "unknown"}/${fish.slug}`}
-                          className="w-full py-2 bg-muted hover:bg-cyan-500 hover:text-slate-900 text-center rounded-xl text-sm font-semibold transition-colors block"
+                          href={`/fish/${fish.category?.toLowerCase() || "freshwater"}/${fish.slug}`}
+                          className="w-full py-2.5 bg-[#27187e] hover:bg-[#1b1059] text-[#f7f7ff] text-center rounded-xl text-xs uppercase tracking-wider font-bold transition-all block shadow-sm"
                         >
-                          View Fish Guide
+                          View Species Sheet
                         </Link>
                       </div>
                     </div>
@@ -279,37 +270,29 @@ function SearchResults() {
             {/* Plant Results */}
             {searchAnalysis.plants.length > 0 && (
               <div>
-                <h2 className="text-2xl font-poppins font-bold mb-6 flex items-center gap-2 border-l-4 border-emerald-500 pl-3">
-                  <LeafIcon className="w-6 h-6 text-emerald-500" /> Aquatic Plants ({searchAnalysis.plants.length})
+                <h2 className="text-3xl sm:text-4xl font-display font-normal text-[#27187e] mb-6 flex items-center gap-2.5">
+                  <LeafIcon className="w-6 h-6 text-[#27187e]" /> Aquatic Plant Matches ({searchAnalysis.plants.length})
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {searchAnalysis.plants.map((plant) => (
-                    <div key={plant.id} className="group rounded-2xl border border-border bg-card overflow-hidden hover:shadow-lg transition-all flex flex-col justify-between">
+                    <div key={plant.id} className="rounded-3xl border-2 border-[#cfcaf5] bg-[#ffffff] overflow-hidden hover:border-[#27187e] transition-all flex flex-col justify-between shadow-sm p-6">
                       <div>
-                        <div className="relative h-44 w-full bg-muted overflow-hidden shrink-0">
-                          <Image src={plant.image} alt={plant.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                          <div className="absolute top-3 right-3 bg-black/60 text-white backdrop-blur-md px-2 py-0.5 rounded text-xs font-semibold">
-                            {plant.difficulty} Care
+                        <div className="relative h-44 w-full bg-[#12093d] rounded-2xl overflow-hidden mb-4">
+                          <Image src={plant.image} alt={plant.name} fill className="object-cover" sizes="300px" />
+                          <div className="absolute top-3 right-3 bg-[#f7f7ff] text-[#27187e] border border-[#cfcaf5] px-2.5 py-1 rounded-md text-xs font-bold uppercase">
+                            {plant.difficulty}
                           </div>
                         </div>
-                        <div className="p-5">
-                          <h3 className="text-lg font-bold group-hover:text-emerald-600 transition-colors line-clamp-1">{plant.name}</h3>
-                          <p className="text-xs text-muted-foreground italic mb-3">{plant.scientificName}</p>
-                          <p className="text-sm text-muted-foreground line-clamp-2 mb-4">{plant.description}</p>
-                          
-                          <div className="grid grid-cols-2 gap-2 text-xs mb-2">
-                            <span>Light: <strong>{plant.light}</strong></span>
-                            <span>CO2: <strong>{plant.co2}</strong></span>
-                            <span className="col-span-2 truncate">Placement: <strong>{plant.placement}</strong></span>
-                          </div>
-                        </div>
+                        <h3 className="text-2xl font-display font-normal text-[#27187e] mb-1">{plant.name}</h3>
+                        <p className="text-xs text-[#27187e]/70 italic mb-3">{plant.scientificName}</p>
+                        <p className="text-sm text-[#27187e]/85 line-clamp-2 mb-4 font-medium">{plant.description}</p>
                       </div>
-                      <div className="px-5 pb-5">
+                      <div className="pt-4 mt-4 border-t border-[#edeafc]">
                         <Link
                           href={`/plants/${plant.slug}`}
-                          className="w-full py-2 bg-muted hover:bg-emerald-500 hover:text-slate-900 text-center rounded-xl text-sm font-semibold transition-colors block"
+                          className="w-full py-2.5 bg-[#27187e] hover:bg-[#1b1059] text-[#f7f7ff] text-center rounded-xl text-xs uppercase tracking-wider font-bold transition-all block shadow-sm"
                         >
-                          View Plant Guide
+                          View Care Profile
                         </Link>
                       </div>
                     </div>
@@ -321,30 +304,25 @@ function SearchResults() {
             {/* Equipment Results */}
             {searchAnalysis.equipment.length > 0 && (
               <div>
-                <h2 className="text-2xl font-poppins font-bold mb-6 flex items-center gap-2 border-l-4 border-amber-500 pl-3">
-                  <SettingsIcon className="w-6 h-6 text-amber-500" /> Equipment & Hardware ({searchAnalysis.equipment.length})
+                <h2 className="text-3xl sm:text-4xl font-display font-normal text-[#27187e] mb-6 flex items-center gap-2.5">
+                  <SettingsIcon className="w-6 h-6 text-[#27187e]" /> Equipment Specs ({searchAnalysis.equipment.length})
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {searchAnalysis.equipment.map((eq) => (
-                    <div key={eq.id} className="group rounded-2xl border border-border bg-card overflow-hidden hover:shadow-lg transition-all flex flex-col justify-between">
+                    <div key={eq.id} className="rounded-3xl border-2 border-[#cfcaf5] bg-[#ffffff] overflow-hidden hover:border-[#27187e] transition-all flex flex-col justify-between shadow-sm p-6">
                       <div>
-                        <div className="relative h-44 w-full bg-muted overflow-hidden shrink-0">
-                          <Image src={eq.image || "/hero_aquarium.jpg"} alt={eq.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                          <div className="absolute top-3 right-3 bg-black/60 text-white backdrop-blur-md px-2 py-0.5 rounded text-xs font-semibold">
-                            {eq.category}
-                          </div>
+                        <div className="relative h-44 w-full bg-[#f7f7ff] rounded-2xl overflow-hidden mb-4 flex items-center justify-center p-4">
+                          <Image src={eq.image} alt={eq.name} fill className="object-contain p-2" sizes="300px" />
                         </div>
-                        <div className="p-5">
-                          <h3 className="text-lg font-bold group-hover:text-amber-500 transition-colors line-clamp-1">{eq.name}</h3>
-                          <p className="text-sm text-muted-foreground line-clamp-3 mb-4 mt-2">{eq.description}</p>
-                        </div>
+                        <h3 className="text-2xl font-display font-normal text-[#27187e] mb-1">{eq.name}</h3>
+                        <p className="text-sm text-[#27187e]/85 line-clamp-2 mb-4 font-medium">{eq.description}</p>
                       </div>
-                      <div className="px-5 pb-5">
+                      <div className="pt-4 mt-4 border-t border-[#edeafc]">
                         <Link
                           href={`/equipment/${eq.slug}`}
-                          className="w-full py-2 bg-muted hover:bg-amber-500 hover:text-slate-900 text-center rounded-xl text-sm font-semibold transition-colors block"
+                          className="w-full py-2.5 bg-[#27187e] hover:bg-[#1b1059] text-[#f7f7ff] text-center rounded-xl text-xs uppercase tracking-wider font-bold transition-all block shadow-sm"
                         >
-                          View Equipment Guide
+                          Read Hardware Guide
                         </Link>
                       </div>
                     </div>
@@ -354,6 +332,7 @@ function SearchResults() {
             )}
           </div>
         )}
+
       </div>
     </div>
   );
@@ -361,9 +340,12 @@ function SearchResults() {
 
 export default function SearchPage() {
   return (
-    <Suspense fallback={<div className="min-h-[80vh] flex items-center justify-center text-muted-foreground">Loading search results...</div>}>
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-[#f7f7ff] text-[#27187e] font-readable font-semibold">
+        Searching digital archive...
+      </div>
+    }>
       <SearchResults />
     </Suspense>
   );
 }
-

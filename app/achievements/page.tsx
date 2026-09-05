@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { storage, KEYS } from '@/lib/storage';
 import Link from 'next/link';
+import SubpageHero from '@/components/ui/SubpageHero';
 import GlobalCTA from '@/components/ui/GlobalCTA';
 
 interface Achievement {
@@ -51,7 +52,7 @@ const achievementsList: Achievement[] = [
   },
   {
     id: 'water-check',
-    title: 'Water Master chemist',
+    title: 'Water Master Chemist',
     description: 'Checked and analyzed water chemistry levels using the Water Analyzer.',
     unlockHint: 'Go to the Water Parameter Analyzer and submit your water readings.',
     icon: FlaskConical,
@@ -115,43 +116,35 @@ export default function AchievementsPage() {
 
   if (!isMounted) {
     return (
-      <div className="min-h-[80vh] flex items-center justify-center text-muted-foreground bg-background">
-        Loading achievements...
+      <div className="min-h-[80vh] flex items-center justify-center text-[#27187E]/70 bg-[#F7F7FF] font-readable text-base font-semibold">
+        Loading keeper achievements...
       </div>
     );
   }
 
   return (
-    <div className="w-full">
-      <section className="py-24 bg-slate-900 text-slate-100 border-b border-slate-800">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <div className="text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-cyan-500/20 text-cyan-400 mb-6 border border-cyan-500/30">
-              <Award className="w-8 h-8" />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-poppins font-bold mb-4">Aquarium Achievements</h1>
-            <p className="text-lg text-slate-300 max-w-2xl mx-auto font-sans">
-              Track your learning milestones. Complete tool tasks and pass quizzes to unlock awards and advance your ranking.
-            </p>
-          </div>
-        </div>
-      </section>
+    <div className="w-full bg-[#F7F7FF] text-[#27187E] min-h-screen">
+      <SubpageHero
+        badge="KEEPER MILESTONES & BADGES"
+        title="AQUARIUM ACHIEVEMENTS"
+        description="Track your learning milestones across chemistry, biology, stocking, and aquascaping tools to achieve Master Aquarist status."
+      />
 
-      <section className="py-12 bg-background font-sans">
-        <div className="container mx-auto px-4 max-w-5xl">
+      <section className="py-12 md:py-16 px-4 md:px-8 font-readable">
+        <div className="container mx-auto max-w-5xl">
           
           {/* Progress dashboard bar */}
-          <div className="bg-card border border-border p-6 rounded-3xl mb-12 flex flex-col md:flex-row justify-between items-center gap-6 shadow-md text-left">
-            <div className="space-y-1.5 w-full md:w-2/3">
-              <div className="flex justify-between items-center text-xs font-bold text-muted-foreground uppercase tracking-wider">
+          <div className="bg-white border-2 border-[#27187E]/15 p-6 md:p-8 rounded-3xl mb-12 flex flex-col md:flex-row justify-between items-center gap-6 shadow-sm text-left">
+            <div className="space-y-2 w-full md:w-2/3">
+              <div className="flex justify-between items-center text-xs md:text-sm font-bold text-[#27187E]/70 uppercase tracking-wider">
                 <span>Achievements Unlocked</span>
-                <span className="text-cyan-500 font-mono">{unlockedCount} of {achievementsList.length} ({percent}%)</span>
+                <span className="text-[#27187E] font-black">{unlockedCount} of {achievementsList.length} ({percent}%)</span>
               </div>
-              <div className="w-full bg-slate-200 dark:bg-slate-800 h-3.5 rounded-full overflow-hidden shadow-inner">
+              <div className="w-full bg-[#EDEAFC] h-4 rounded-full overflow-hidden">
                 <div 
-                  className="bg-gradient-to-r from-cyan-500 to-emerald-500 h-full transition-all duration-500 ease-out" 
+                  className="bg-[#27187E] h-full transition-all duration-500 ease-out rounded-full" 
                   style={{ width: `${percent}%` }}
-                ></div>
+                />
               </div>
             </div>
 
@@ -159,9 +152,9 @@ export default function AchievementsPage() {
               {unlockedCount > 0 && (
                 <button
                   onClick={handleReset}
-                  className="py-3 px-5 border border-border hover:bg-muted text-muted-foreground hover:text-destructive rounded-xl transition-all font-bold text-xs flex items-center gap-1.5 cursor-pointer"
+                  className="py-3 px-6 border-2 border-[#27187E]/20 hover:border-[#27187E] text-[#27187E] rounded-full transition-all font-bold text-xs md:text-sm flex items-center gap-2 cursor-pointer"
                 >
-                  <RotateCcw className="w-3.5 h-3.5" /> Reset Awards
+                  <RotateCcw className="w-4 h-4" /> Reset Badges
                 </button>
               )}
             </div>
@@ -174,70 +167,66 @@ export default function AchievementsPage() {
               return (
                 <div 
                   key={ach.id}
-                  className={`border rounded-3xl p-6 shadow-sm flex gap-4 transition-all relative overflow-hidden ${
+                  className={`border-2 rounded-3xl p-6 md:p-8 transition-all relative overflow-hidden flex flex-col justify-between ${
                     isUnlocked 
-                      ? 'bg-card border-emerald-500/35 hover:shadow-md' 
-                      : 'bg-muted/30 border-border opacity-70'
+                      ? 'bg-white border-[#27187E] shadow-sm' 
+                      : 'bg-white/60 border-[#27187E]/15 opacity-80'
                   }`}
                 >
-                  {/* Backdrop flare */}
-                  {isUnlocked && (
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-emerald-500/10 to-transparent pointer-events-none rounded-bl-3xl"></div>
-                  )}
+                  <div>
+                    {/* Header with Icon & State */}
+                    <div className="flex items-start justify-between gap-4 mb-4">
+                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 border-2 select-none ${
+                        isUnlocked 
+                          ? 'bg-[#27187E] border-[#27187E] text-white' 
+                          : 'bg-[#EDEAFC] border-[#27187E]/20 text-[#27187E]/60'
+                      }`}>
+                        {isUnlocked ? (
+                          <ach.icon className="w-7 h-7" strokeWidth={2} aria-hidden="true" />
+                        ) : (
+                          <Lock className="w-6 h-6" strokeWidth={2} aria-hidden="true" />
+                        )}
+                      </div>
 
-                  {/* Icon section */}
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 border select-none ${
-                    isUnlocked 
-                      ? 'bg-emerald-500/10 border-emerald-500/25 text-emerald-600 dark:text-emerald-400' 
-                      : 'bg-background border-border text-muted-foreground opacity-60'
-                  }`}>
-                    {isUnlocked ? (
-                      <ach.icon className="w-7 h-7" strokeWidth={1.8} aria-hidden="true" />
-                    ) : (
-                      <Lock className="w-6 h-6" strokeWidth={1.8} aria-hidden="true" />
-                    )}
-                  </div>
-
-                  {/* Copy content */}
-                  <div className="space-y-2 min-w-0 flex-1">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <h3 className={`font-bold text-base leading-snug ${isUnlocked ? 'text-foreground font-poppins' : 'text-muted-foreground'}`}>
-                        {ach.title}
-                      </h3>
                       {isUnlocked ? (
-                        <span className="bg-emerald-500/10 text-emerald-500 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border border-emerald-500/20 flex items-center gap-0.5 shrink-0">
-                          <CheckCircle2 className="w-3 h-3" /> Unlocked
+                        <span className="bg-[#EDEAFC] text-[#27187E] text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full border border-[#27187E]/20 flex items-center gap-1 shrink-0">
+                          <CheckCircle2 className="w-3.5 h-3.5" /> Unlocked
                         </span>
                       ) : (
-                        <span className="bg-slate-200 dark:bg-slate-800 text-muted-foreground text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border border-border flex items-center gap-0.5 shrink-0">
-                          <Lock className="w-2.5 h-2.5" /> Locked
+                        <span className="bg-[#F7F7FF] text-[#27187E]/60 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-[#27187E]/15 flex items-center gap-1 shrink-0">
+                          <Lock className="w-3 h-3" /> Locked
                         </span>
                       )}
                     </div>
 
-                    <p className="text-xs text-muted-foreground leading-relaxed font-sans">
-                      {isUnlocked ? ach.description : `Unlocked by completing actions: ${ach.description}`}
+                    {/* Title & Description */}
+                    <h3 className="font-bold text-lg md:text-xl text-[#27187E] leading-snug mb-2 font-readable">
+                      {ach.title}
+                    </h3>
+
+                    <p className="text-sm md:text-base text-[#27187E]/80 leading-relaxed mb-4">
+                      {isUnlocked ? ach.description : `Criteria: ${ach.description}`}
                     </p>
 
-                    {!isUnlocked ? (
-                      <div className="p-3 bg-background border border-border rounded-2xl text-[11px] text-muted-foreground flex gap-1.5 leading-relaxed font-sans mt-2">
-                        <HelpCircle className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
+                    {!isUnlocked && (
+                      <div className="p-4 bg-[#EDEAFC]/70 border border-[#27187E]/20 rounded-2xl text-xs md:text-sm text-[#27187E]/90 flex gap-2.5 leading-relaxed mb-4">
+                        <HelpCircle className="w-5 h-5 text-[#27187E] shrink-0 mt-0.5" />
                         <div>
-                          <strong className="text-foreground block font-bold mb-0.5 uppercase tracking-wider text-[9px]">How to unlock:</strong>
+                          <strong className="text-[#27187E] block font-black uppercase tracking-wider text-xs mb-0.5">How to unlock:</strong>
                           {ach.unlockHint}
                         </div>
                       </div>
-                    ) : null}
+                    )}
+                  </div>
 
-                    {/* Quick navigation link */}
-                    <div className="pt-2">
-                      <Link 
-                        href={ach.link}
-                        className="text-xs font-semibold text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-0.5 mt-1"
-                      >
-                        {ach.linkLabel} <ArrowRight className="w-3 h-3" />
-                      </Link>
-                    </div>
+                  {/* Action Link */}
+                  <div className="pt-3 border-t border-[#27187E]/10">
+                    <Link 
+                      href={ach.link}
+                      className="text-sm md:text-base font-bold text-[#27187E] hover:underline flex items-center gap-1.5"
+                    >
+                      {ach.linkLabel} <ArrowRight className="w-4 h-4" />
+                    </Link>
                   </div>
                 </div>
               );
@@ -248,11 +237,11 @@ export default function AchievementsPage() {
       </section>
 
       <GlobalCTA
-        badge="AQUARIUM ATLAS MILESTONES"
+        badge="CONTINUE YOUR AQUATIC JOURNEY"
         title={
           <>
-            Ready to unlock your next <br className="hidden sm:inline" />
-            husbandry award?
+            Ready to test your knowledge <br className="hidden sm:inline" />
+            and unlock more badges?
           </>
         }
         description="Take the science quiz, simulate water parameters, and assemble an aquascape to achieve Master Aquarist ranking."
