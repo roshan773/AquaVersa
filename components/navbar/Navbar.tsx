@@ -8,9 +8,8 @@ import {
   Search,
   Menu,
   X,
+  ArrowUpRight,
   ArrowRight,
-  Sparkles,
-  Home,
   Fish,
   Leaf,
   Wrench,
@@ -18,9 +17,15 @@ import {
   Compass,
   Info,
   Mail,
+  FlaskConical,
+  Calculator,
+  Maximize2,
+  Stethoscope,
+  Sparkles,
+  Layers,
+  ChevronRight,
 } from 'lucide-react';
 import BrandLogo from '@/components/ui/BrandLogo';
-import { siteConfig } from '@/config/site';
 
 export default function Navbar() {
   const router = useRouter();
@@ -29,13 +34,14 @@ export default function Navbar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
-  const drawerSearchInputRef = useRef<HTMLInputElement>(null);
+  const overlaySearchInputRef = useRef<HTMLInputElement>(null);
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
   const closeMenu = () => setIsOpen(false);
 
-  // Close on Escape
+  // Close on Escape key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -47,7 +53,7 @@ export default function Navbar() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Prevent body scroll when menu is open
+  // Prevent background scrolling when menu or search modal is open
   useEffect(() => {
     if (isOpen || isSearchOpen) {
       document.body.style.overflow = 'hidden';
@@ -59,6 +65,7 @@ export default function Navbar() {
     };
   }, [isOpen, isSearchOpen]);
 
+  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -79,20 +86,124 @@ export default function Navbar() {
     }
   };
 
-  const navLinks = [
-    { label: 'Home', href: '/', badge: 'Atlas Hub', icon: Home },
-    { label: 'Fish Library', href: '/fish', badge: '120+ Species', icon: Fish },
-    { label: 'Aquarium Plants', href: '/plants', badge: 'Flora Archive', icon: Leaf },
-    { label: 'Equipment Archive', href: '/equipment', badge: 'Gear & Tech', icon: Wrench },
-    { label: 'Care Guides', href: '/guides', badge: 'Step-by-Step', icon: BookOpen },
-    { label: 'Aquarium Tools', href: '/compatibility', badge: 'Interactive', icon: Compass },
-    { label: 'About Atlas', href: '/about', badge: 'Our Story', icon: Info },
-    { label: 'Contact', href: '/contact', badge: 'Get in Touch', icon: Mail },
+  const primaryLinks = [
+    {
+      num: '01',
+      label: 'Fish Library',
+      href: '/fish',
+      badge: '120+ Species',
+      desc: 'Systematic database of freshwater & marine fish species.',
+      icon: Fish,
+    },
+    {
+      num: '02',
+      label: 'Aquarium Plants',
+      href: '/plants',
+      badge: 'Flora Archive',
+      desc: 'Comprehensive guide to aquatic plants & aquascaping.',
+      icon: Leaf,
+    },
+    {
+      num: '03',
+      label: 'Equipment Archive',
+      href: '/equipment',
+      badge: 'Gear & Tech',
+      desc: 'Filters, lighting, heaters, and essential tank hardware.',
+      icon: Wrench,
+    },
+    {
+      num: '04',
+      label: 'Care Guides',
+      href: '/guides',
+      badge: 'Step-by-Step',
+      desc: 'Nitrogen cycle, water chemistry, and tank maintenance.',
+      icon: BookOpen,
+    },
+    {
+      num: '05',
+      label: 'Beginner Roadmap',
+      href: '/start-aquarium',
+      badge: '10-Step Plan',
+      desc: 'Complete step-by-step setup guide for first-time aquarists.',
+      icon: Sparkles,
+    },
+    {
+      num: '06',
+      label: 'About The Atlas',
+      href: '/about',
+      badge: 'Our Mission',
+      desc: 'Open-access educational encyclopedia for all hobbyists.',
+      icon: Info,
+    },
+    {
+      num: '07',
+      label: 'Contact & Support',
+      href: '/contact',
+      badge: 'Get In Touch',
+      desc: 'Send inquiries, feedback, or species contribution requests.',
+      icon: Mail,
+    },
+  ];
+
+  const smartTools = [
+    {
+      title: 'Water Analyzer',
+      href: '/water-analyzer',
+      desc: 'Instant diagnostic for pH, GH, Ammonia, Nitrite & Nitrate.',
+      icon: FlaskConical,
+      badge: 'Interactive',
+    },
+    {
+      title: 'Stocking Planner',
+      href: '/stocking-planner',
+      desc: 'Calculate bioload capacity & adult size compatibility.',
+      icon: Calculator,
+      badge: 'Calculator',
+    },
+    {
+      title: 'Tank Size Guide',
+      href: '/tank-size',
+      desc: 'Standard dimensions, water volume, and filled weight guide.',
+      icon: Maximize2,
+      badge: 'Reference',
+    },
+    {
+      title: 'Species Compatibility',
+      href: '/compatibility',
+      desc: 'Verify temperament, temperature & water hardness synergy.',
+      icon: Compass,
+      badge: 'Matrix',
+    },
+    {
+      title: 'Disease Checker',
+      href: '/symptom-checker',
+      desc: 'Identify symptoms, diagnose illnesses & treatment protocols.',
+      icon: Stethoscope,
+      badge: 'Diagnostic',
+    },
+    {
+      title: 'Aquascape Planner',
+      href: '/aquascape-planner',
+      desc: 'Design layouts, substrate layers & plant placements.',
+      icon: Layers,
+      badge: 'Planner',
+    },
+  ];
+
+  const trendingSearches = [
+    'Betta Fish',
+    'Nitrogen Cycle',
+    'Canister Filter',
+    'Neon Tetra',
+    'Java Fern',
+    'Water Hardness',
   ];
 
   return (
     <>
-      {/* HEADER BAR */}
+      {/* =========================================================
+          TOP FIXED HEADER BAR
+          ========================================================= */}
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
@@ -101,26 +212,24 @@ export default function Navbar() {
         }`}
       >
         <div className="site-container flex items-center justify-between">
-          
           {/* BRAND LOGO */}
           <BrandLogo size="md" onClick={closeMenu} />
 
-          {/* RIGHT ACTIONS: Search & Lucide Centered Menu Button */}
+          {/* RIGHT ACTIONS: Search Trigger & Menu Button */}
           <div className="flex items-center gap-3">
-            
             {/* Search Trigger Button */}
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="w-10 h-10 rounded-full bg-[#f7f7ff] border border-[#cfcaf5] hover:border-[#27187e] hover:bg-[#edeafc] flex items-center justify-center text-[#27187e] transition-all shadow-sm focus:outline-none"
+              className="w-10 h-10 rounded-full bg-[#f7f7ff] border border-[#cfcaf5] hover:border-[#27187e] hover:bg-[#edeafc] flex items-center justify-center text-[#27187e] transition-all shadow-sm focus:outline-none cursor-pointer"
               aria-label="Open Search"
             >
               <Search className="w-5 h-5" strokeWidth={1.8} aria-hidden="true" />
             </button>
 
-            {/* LUCIDE MENU / X BUTTON WITH EXACT CENTER ROTATION */}
+            {/* LUCIDE MENU / CLOSE TOGGLE BUTTON */}
             <button
               onClick={toggleMenu}
-              className="group relative flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-[#27187e] hover:bg-[#1b1059] text-[#f7f7ff] transition-all shadow-md active:scale-95 focus:outline-none"
+              className="group relative flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-[#27187e] hover:bg-[#1b1059] text-[#f7f7ff] transition-all shadow-md active:scale-95 focus:outline-none cursor-pointer"
               aria-label={isOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
               aria-expanded={isOpen}
             >
@@ -128,7 +237,7 @@ export default function Navbar() {
                 {isOpen ? 'Close' : 'Menu'}
               </span>
 
-              {/* Centered Icon Box */}
+              {/* Centered Animated Icon */}
               <div className="w-5 h-5 flex items-center justify-center relative">
                 <AnimatePresence mode="wait" initial={false}>
                   {isOpen ? (
@@ -157,154 +266,322 @@ export default function Navbar() {
                 </AnimatePresence>
               </div>
             </button>
-
           </div>
-
         </div>
       </header>
 
-      {/* FULL-SCREEN ANIMATED MARINE NAVIGATION DRAWER (Z-INDEX 100 TO AVOID ANY OVERLAPPING) */}
+      {/* =========================================================
+          FULL-SCREEN EDITORIAL OVERLAY MENU (IMMERSIVE LUXURY)
+          ========================================================= */}
       <AnimatePresence>
         {isOpen && (
-          <div className="fixed inset-0 z-[100] flex justify-end">
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="fixed inset-0 bg-[#27187e]/60 backdrop-blur-sm"
-              onClick={closeMenu}
-            />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+            className="fixed inset-0 z-[100] bg-[#12093d]/98 backdrop-blur-2xl text-[#f7f7ff] overflow-y-auto flex flex-col justify-between"
+          >
+            {/* Background Ambient Aquatic Accents */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-30">
+              <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#27187e] blur-[120px]" />
+              <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-[#3b28ab] blur-[140px] opacity-40" />
+              <div className="absolute inset-0 bg-[radial-gradient(#cfcaf5_1px,transparent_1px)] [background-size:24px_24px] opacity-10" />
+            </div>
 
-            {/* Drawer Container */}
-            <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 30, stiffness: 260 }}
-              className="relative w-full max-w-lg h-full bg-[#f7f7ff] border-l-2 border-[#cfcaf5] shadow-2xl flex flex-col justify-between p-6 sm:p-8 overflow-y-auto z-10 marine-pattern-light"
-            >
-              <div>
-                {/* TOP HEADER INSIDE DRAWER (Fixed cleanly without colliding) */}
-                <div className="flex items-center justify-between pb-5 mb-5 border-b border-[#cfcaf5]">
-                  <BrandLogo size="sm" onClick={closeMenu} />
+            {/* TOP BAR INSIDE OVERLAY */}
+            <div className="relative z-10 border-b border-[#cfcaf5]/15 py-5">
+              <div className="site-container flex items-center justify-between">
+                {/* Brand Logo Dark Mode */}
+                <BrandLogo size="md" theme="dark" onClick={closeMenu} />
 
-                  {/* Single Clean Close Button */}
+                {/* Right Action: Close Button */}
+                <div className="flex items-center gap-3">
                   <button
                     onClick={closeMenu}
-                    className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#edeafc] hover:bg-[#27187e] text-[#27187e] hover:text-[#f7f7ff] border border-[#cfcaf5] transition-all font-sans text-xs font-bold"
-                    aria-label="Close menu"
+                    className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#27187e]/80 hover:bg-[#3b28ab] text-[#f7f7ff] border border-[#cfcaf5]/30 transition-all font-condensed text-xs uppercase tracking-wider cursor-pointer shadow-lg"
+                    aria-label="Close navigation overlay"
                   >
-                    <span>CLOSE</span>
-                    <X className="w-4 h-4" strokeWidth={2} aria-hidden="true" />
+                    <span>Close Menu</span>
+                    <span className="hidden sm:inline-block text-[10px] px-1.5 py-0.5 rounded bg-[#12093d] text-[#cfcaf5] border border-[#cfcaf5]/20 font-mono">
+                      ESC
+                    </span>
+                    <X className="w-4 h-4 text-[#f7f7ff]" strokeWidth={2} />
                   </button>
                 </div>
+              </div>
+            </div>
 
-                {/* INLINE QUICK SEARCH IN DRAWER */}
-                <form
-                  onSubmit={(e) => handleSearchSubmit(e, searchQuery)}
-                  className="relative mb-5"
-                >
-                  <Search className="w-4 h-4 text-[#27187e]/60 absolute left-3.5 top-1/2 -translate-y-1/2" strokeWidth={1.8} aria-hidden="true" />
-                  <input
-                    ref={drawerSearchInputRef}
-                    type="text"
-                    placeholder="Search species, equipment, guides..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-10 pr-20 py-2.5 rounded-xl bg-[#ffffff] border border-[#cfcaf5] focus:border-[#27187e] text-sm text-[#27187e] font-sans focus:outline-none shadow-sm transition-all"
-                  />
-                  <button
-                    type="submit"
-                    className="absolute right-1.5 top-1/2 -translate-y-1/2 px-3 py-1 bg-[#27187e] hover:bg-[#1b1059] text-[#f7f7ff] rounded-lg text-xs font-bold font-sans transition-colors"
-                  >
-                    Search
-                  </button>
-                </form>
+            {/* MAIN EDITORIAL CONTENT GRID */}
+            <div className="relative z-10 flex-1 py-8 lg:py-12">
+              <div className="site-container">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+                  
+                  {/* LEFT 7 COLS: EDITORIAL MAIN DIRECTORIES */}
+                  <div className="lg:col-span-7 flex flex-col">
+                    <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#cfcaf5]/15">
+                      <span className="font-condensed text-xs font-bold tracking-[0.25em] text-[#cfcaf5] uppercase">
+                        01 // Main Atlas Archives
+                      </span>
+                      <span className="text-[11px] font-sans text-[#cfcaf5]/60">
+                        Explore Verified Repositories
+                      </span>
+                    </div>
 
-                {/* NAVIGATION ITEMS */}
-                <nav className="space-y-2">
-                  {navLinks.map((item, idx) => {
-                    const isActive = pathname === item.href;
-                    return (
-                      <motion.div
-                        key={item.href}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.03 * idx, duration: 0.2 }}
-                      >
-                        <Link
-                          href={item.href}
-                          onClick={closeMenu}
-                          className={`flex items-center justify-between px-4 py-3 rounded-xl border transition-all duration-200 group ${
-                            isActive
-                              ? 'bg-[#27187e] text-[#f7f7ff] border-[#27187e] shadow-md'
-                              : 'bg-[#ffffff] text-[#27187e] border-[#cfcaf5] hover:border-[#27187e] hover:bg-[#edeafc]'
-                          }`}
-                        >
-                          <div className="flex items-center gap-3.5">
-                            <div
-                              className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all shrink-0 ${
-                                isActive
-                                  ? 'bg-[#1f1366] text-[#f7f7ff] shadow-inner'
-                                  : 'bg-[#edeafc] text-[#27187e] group-hover:bg-[#27187e] group-hover:text-[#f7f7ff]'
+                    <nav className="flex flex-col divide-y divide-[#cfcaf5]/10" aria-label="Main Navigation">
+                      {primaryLinks.map((item, idx) => {
+                        const isActive = pathname === item.href;
+                        const isHovered = hoveredIdx === idx;
+
+                        return (
+                          <motion.div
+                            key={item.href}
+                            initial={{ opacity: 0, y: 16 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.04 * idx, duration: 0.25 }}
+                            onMouseEnter={() => setHoveredIdx(idx)}
+                            onMouseLeave={() => setHoveredIdx(null)}
+                            className="relative group"
+                          >
+                            <Link
+                              href={item.href}
+                              onClick={closeMenu}
+                              className={`flex items-center justify-between py-3.5 sm:py-4 transition-all duration-200 ${
+                                isActive ? 'text-[#ffffff]' : 'text-[#f7f7ff]/90 hover:text-[#ffffff]'
                               }`}
                             >
-                              <item.icon
-                                className="w-5 h-5 transition-colors"
-                                strokeWidth={1.8}
-                                aria-hidden="true"
-                              />
-                            </div>
-                            <div className="flex flex-col text-left">
-                              <span className="font-display text-xl tracking-wide leading-tight">
-                                {item.label}
-                              </span>
-                              <span
-                                className={`text-[10px] font-sans font-semibold tracking-wider uppercase ${
-                                  isActive ? 'text-[#cfcaf5]' : 'text-[#27187e]/60'
-                                }`}
-                              >
-                                {item.badge}
-                              </span>
-                            </div>
-                          </div>
+                              <div className="flex items-center gap-4 sm:gap-6">
+                                {/* Number Prefix */}
+                                <span
+                                  className={`font-mono text-xs sm:text-sm font-medium tracking-wider transition-colors ${
+                                    isActive || isHovered
+                                      ? 'text-[#cfcaf5]'
+                                      : 'text-[#cfcaf5]/40'
+                                  }`}
+                                >
+                                  {item.num}
+                                </span>
 
-                          <ArrowRight
-                            className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${
-                              isActive ? 'text-[#f7f7ff]' : 'text-[#27187e]'
-                            }`}
-                            strokeWidth={2}
-                            aria-hidden="true"
-                          />
+                                {/* Icon Pill */}
+                                <div
+                                  className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all ${
+                                    isActive
+                                      ? 'bg-[#f7f7ff] text-[#27187e]'
+                                      : isHovered
+                                      ? 'bg-[#3b28ab] text-[#f7f7ff]'
+                                      : 'bg-[#27187e]/60 text-[#cfcaf5]'
+                                  }`}
+                                >
+                                  <item.icon className="w-4 h-4" strokeWidth={2} />
+                                </div>
+
+                                {/* Label & Badge */}
+                                <div className="flex flex-col text-left">
+                                  <div className="flex items-center gap-3">
+                                    <span className="font-display text-2xl sm:text-3xl lg:text-4xl tracking-wide group-hover:translate-x-1.5 transition-transform duration-200">
+                                      {item.label}
+                                    </span>
+                                    {isActive && (
+                                      <span className="px-2 py-0.5 rounded-full bg-[#f7f7ff] text-[#27187e] text-[10px] font-sans font-bold uppercase tracking-wider">
+                                        Active
+                                      </span>
+                                    )}
+                                  </div>
+                                  <span className="text-xs text-[#cfcaf5]/70 font-sans hidden sm:block">
+                                    {item.desc}
+                                  </span>
+                                </div>
+                              </div>
+
+                              {/* Right Badge & Arrow */}
+                              <div className="flex items-center gap-3">
+                                <span className="hidden md:inline-block px-2.5 py-1 rounded-md bg-[#27187e]/50 border border-[#cfcaf5]/20 text-[11px] font-condensed font-semibold uppercase tracking-wider text-[#cfcaf5]">
+                                  {item.badge}
+                                </span>
+                                <div className="w-8 h-8 rounded-full flex items-center justify-center bg-[#27187e]/40 group-hover:bg-[#f7f7ff] text-[#cfcaf5] group-hover:text-[#27187e] transition-all">
+                                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                                </div>
+                              </div>
+                            </Link>
+                          </motion.div>
+                        );
+                      })}
+                    </nav>
+                  </div>
+
+                  {/* RIGHT 5 COLS: QUICK SEARCH & SMART TOOLS */}
+                  <div className="lg:col-span-5 flex flex-col gap-6">
+                    
+                    {/* INLINE QUICK SEARCH BOX */}
+                    <div className="p-5 sm:p-6 rounded-2xl bg-[#1b1059]/80 border border-[#cfcaf5]/20 shadow-xl backdrop-blur-md">
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="font-condensed text-xs font-bold tracking-[0.2em] text-[#cfcaf5] uppercase flex items-center gap-2">
+                          <Search className="w-3.5 h-3.5" />
+                          Quick Atlas Search
+                        </span>
+                      </div>
+
+                      <form
+                        onSubmit={(e) => handleSearchSubmit(e, searchQuery)}
+                        className="relative mb-3"
+                      >
+                        <Search
+                          className="w-4 h-4 text-[#cfcaf5]/60 absolute left-3.5 top-1/2 -translate-y-1/2"
+                          strokeWidth={2}
+                        />
+                        <input
+                          ref={overlaySearchInputRef}
+                          type="text"
+                          placeholder="Search species, plants, gear..."
+                          value={searchQuery}
+                          onChange={(e) => setSearchQuery(e.target.value)}
+                          className="w-full pl-10 pr-20 py-2.5 rounded-xl bg-[#12093d] border border-[#cfcaf5]/30 focus:border-[#cfcaf5] text-sm text-[#f7f7ff] placeholder-[#cfcaf5]/50 font-sans focus:outline-none transition-all"
+                        />
+                        <button
+                          type="submit"
+                          className="absolute right-1.5 top-1/2 -translate-y-1/2 px-3 py-1 bg-[#27187e] hover:bg-[#3b28ab] text-[#f7f7ff] border border-[#cfcaf5]/30 rounded-lg text-xs font-bold font-sans transition-colors cursor-pointer"
+                        >
+                          Find
+                        </button>
+                      </form>
+
+                      {/* Trending Suggestions */}
+                      <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                        <span className="text-[10px] text-[#cfcaf5]/60 uppercase tracking-wider font-condensed">
+                          Trending:
+                        </span>
+                        {trendingSearches.map((term) => (
+                          <button
+                            key={term}
+                            onClick={() => {
+                              router.push(`/search?q=${encodeURIComponent(term)}`);
+                              closeMenu();
+                            }}
+                            className="px-2 py-0.5 rounded-md bg-[#27187e]/60 hover:bg-[#f7f7ff] text-[#cfcaf5] hover:text-[#27187e] border border-[#cfcaf5]/15 text-[11px] font-sans transition-all cursor-pointer"
+                          >
+                            {term}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* SMART TOOLS & CALCULATORS */}
+                    <div>
+                      <div className="flex items-center justify-between pb-2 mb-3 border-b border-[#cfcaf5]/15">
+                        <span className="font-condensed text-xs font-bold tracking-[0.25em] text-[#cfcaf5] uppercase">
+                          02 // Interactive Tools
+                        </span>
+                        <Link
+                          href="/compatibility"
+                          onClick={closeMenu}
+                          className="text-[11px] font-sans text-[#cfcaf5]/80 hover:text-[#ffffff] flex items-center gap-1"
+                        >
+                          <span>All Tools</span>
+                          <ChevronRight className="w-3 h-3" />
                         </Link>
-                      </motion.div>
-                    );
-                  })}
-                </nav>
-              </div>
+                      </div>
 
-              {/* DRAWER FOOTER */}
-              <div className="mt-6 pt-5 border-t border-[#cfcaf5] flex flex-col gap-3">
-                <Link
-                  href="/start-aquarium"
-                  onClick={closeMenu}
-                  className="w-full py-3.5 rounded-xl bg-[#27187e] hover:bg-[#1b1059] text-[#f7f7ff] text-xs font-condensed font-bold uppercase tracking-wider text-center transition-all shadow-md flex items-center justify-center gap-2"
-                >
-                  <span>Start Beginner Setup Roadmap</span>
-                  <ArrowRight className="w-4 h-4" strokeWidth={2} aria-hidden="true" />
-                </Link>
-                <p className="text-[11px] text-[#27187e]/70 text-center font-sans">
-                  The Aquarium Atlas — Systematic knowledge for aquarium keepers.
-                </p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        {smartTools.map((tool) => (
+                          <Link
+                            key={tool.href}
+                            href={tool.href}
+                            onClick={closeMenu}
+                            className="group p-3.5 rounded-xl bg-[#1b1059]/60 hover:bg-[#27187e] border border-[#cfcaf5]/15 hover:border-[#cfcaf5]/50 transition-all flex flex-col justify-between"
+                          >
+                            <div className="flex items-center justify-between mb-1.5">
+                              <div className="w-7 h-7 rounded-lg bg-[#12093d] flex items-center justify-center text-[#cfcaf5] group-hover:bg-[#f7f7ff] group-hover:text-[#27187e] transition-colors">
+                                <tool.icon className="w-3.5 h-3.5" />
+                              </div>
+                              <span className="text-[10px] font-mono text-[#cfcaf5]/60 uppercase">
+                                {tool.badge}
+                              </span>
+                            </div>
+                            <div>
+                              <h4 className="font-condensed text-sm font-bold tracking-wider text-[#f7f7ff] group-hover:text-[#ffffff]">
+                                {tool.title}
+                              </h4>
+                              <p className="text-[11px] text-[#cfcaf5]/70 font-sans line-clamp-1 mt-0.5">
+                                {tool.desc}
+                              </p>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* FEATURED ROADMAP CARD */}
+                    <div className="p-5 rounded-2xl bg-gradient-to-br from-[#27187e] to-[#1b1059] border-2 border-[#cfcaf5]/30 shadow-xl flex items-center justify-between gap-4">
+                      <div>
+                        <span className="inline-block px-2 py-0.5 rounded bg-[#f7f7ff] text-[#27187e] text-[10px] font-bold font-condensed tracking-wider uppercase mb-1.5">
+                          New to Aquariums?
+                        </span>
+                        <h4 className="font-display text-lg text-[#f7f7ff] leading-snug">
+                          Complete 10-Step Setup Roadmap
+                        </h4>
+                        <p className="text-xs text-[#cfcaf5]/80 font-sans mt-0.5">
+                          Avoid common beginner mistakes before buying fish.
+                        </p>
+                      </div>
+
+                      <Link
+                        href="/start-aquarium"
+                        onClick={closeMenu}
+                        className="shrink-0 w-11 h-11 rounded-full bg-[#f7f7ff] hover:bg-[#cfcaf5] text-[#27187e] flex items-center justify-center transition-transform hover:scale-105 shadow-md"
+                        aria-label="Start Beginner Roadmap"
+                      >
+                        <ArrowRight className="w-5 h-5" strokeWidth={2.2} />
+                      </Link>
+                    </div>
+
+                  </div>
+
+                </div>
               </div>
-            </motion.div>
-          </div>
+            </div>
+
+            {/* BOTTOM BAR INSIDE OVERLAY */}
+            <div className="relative z-10 border-t border-[#cfcaf5]/15 py-4 bg-[#12093d]/90">
+              <div className="site-container flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-sans text-[#cfcaf5]/70">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>Roshan Aquva World — The Free & Systematic Aquarium Atlas.</span>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <Link
+                    href="/privacy"
+                    onClick={closeMenu}
+                    className="hover:text-[#f7f7ff] transition-colors"
+                  >
+                    Privacy Policy
+                  </Link>
+                  <span>•</span>
+                  <Link
+                    href="/terms"
+                    onClick={closeMenu}
+                    className="hover:text-[#f7f7ff] transition-colors"
+                  >
+                    Terms of Use
+                  </Link>
+                  <span>•</span>
+                  <Link
+                    href="/contact"
+                    onClick={closeMenu}
+                    className="hover:text-[#f7f7ff] transition-colors"
+                  >
+                    Direct Support
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
 
-      {/* INDEPENDENT SEARCH MODAL DIALOG */}
+      {/* =========================================================
+          INDEPENDENT SEARCH MODAL DIALOG
+          ========================================================= */}
       <AnimatePresence>
         {isSearchOpen && (
           <div className="fixed inset-0 z-[110] flex items-start justify-center p-4 pt-24">
@@ -332,7 +609,7 @@ export default function Navbar() {
                 </div>
                 <button
                   onClick={() => setIsSearchOpen(false)}
-                  className="w-8 h-8 rounded-full bg-[#edeafc] flex items-center justify-center text-[#27187e] hover:bg-[#27187e] hover:text-[#f7f7ff] transition-colors"
+                  className="w-8 h-8 rounded-full bg-[#edeafc] flex items-center justify-center text-[#27187e] hover:bg-[#27187e] hover:text-[#f7f7ff] transition-colors cursor-pointer"
                   aria-label="Close search"
                 >
                   <X className="w-4 h-4" strokeWidth={2} aria-hidden="true" />
@@ -340,7 +617,11 @@ export default function Navbar() {
               </div>
 
               <form onSubmit={handleSearchSubmit} className="relative">
-                <Search className="w-5 h-5 text-[#27187e]/60 absolute left-4 top-1/2 -translate-y-1/2" strokeWidth={1.8} aria-hidden="true" />
+                <Search
+                  className="w-5 h-5 text-[#27187e]/60 absolute left-4 top-1/2 -translate-y-1/2"
+                  strokeWidth={1.8}
+                  aria-hidden="true"
+                />
                 <input
                   ref={searchInputRef}
                   autoFocus
@@ -363,7 +644,7 @@ export default function Navbar() {
                         router.push(`/search?q=${encodeURIComponent(term)}`);
                         setIsSearchOpen(false);
                       }}
-                      className="px-3 py-1 rounded-lg bg-[#edeafc] text-[#27187e] hover:bg-[#27187e] hover:text-[#f7f7ff] transition-colors"
+                      className="px-3 py-1 rounded-lg bg-[#edeafc] text-[#27187e] hover:bg-[#27187e] hover:text-[#f7f7ff] transition-colors cursor-pointer"
                     >
                       {term}
                     </button>
@@ -377,4 +658,5 @@ export default function Navbar() {
     </>
   );
 }
+
 
