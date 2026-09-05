@@ -6,6 +6,7 @@ import { Search, ArrowRight, RotateCcw, SlidersHorizontal, Wrench, Filter, Shiel
 import Image from 'next/image';
 import Link from 'next/link';
 import GlobalCTA from '@/components/ui/GlobalCTA';
+import CareDisclaimer from '@/components/ui/CareDisclaimer';
 
 interface EquipmentClientProps {
   eqList: EquipmentType[];
@@ -161,6 +162,10 @@ export default function EquipmentClient({ eqList }: EquipmentClientProps) {
             </button>
           </div>
         )}
+
+        <div className="mt-16">
+          <CareDisclaimer />
+        </div>
 
       </div>
 

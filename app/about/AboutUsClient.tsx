@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Heart, Shield, Award, ArrowRight, Fish, Leaf, Wrench, Compass, Layers } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import GlobalCTA from '@/components/ui/GlobalCTA';
+import CareDisclaimer from '@/components/ui/CareDisclaimer';
 
 export default function AboutUsClient() {
   const pillars = [
@@ -39,7 +40,7 @@ export default function AboutUsClient() {
             ABOUT ROSHAN AQUVA WORLD
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-[#27187e]/90 font-medium max-w-3xl leading-relaxed">
-            An independent aquarium knowledge platform built to empower fishkeepers with verified natural history data, water chemistry tools, and biotope planning guides.
+            An independent aquarium knowledge platform built to empower fishkeepers with educational natural history guidance, water chemistry tools, and biotope planning resources.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
@@ -94,6 +95,10 @@ export default function AboutUsClient() {
               {siteConfig.name} was established as a rigorous digital reference: complete biological species parameters, realistic volume and footprint requirements, clear nitrogen chemistry explanations, and honest compatibility warnings.
             </p>
           </div>
+        </div>
+
+        <div className="mt-16">
+          <CareDisclaimer />
         </div>
 
       </div>

@@ -6,6 +6,7 @@ import { ArrowLeft, Settings, Info, AlertTriangle, CheckCircle2, Sparkles, Wrenc
 import { Metadata } from 'next';
 import { siteConfig } from "@/config/site";
 import GlobalCTA from "@/components/ui/GlobalCTA";
+import CareDisclaimer from "@/components/ui/CareDisclaimer";
 
 export async function generateMetadata({
   params,
@@ -282,7 +283,7 @@ export default async function EquipmentDetailPage({
               <div className="flex items-center gap-2.5 mb-3 text-[#27187e]">
                 <AlertTriangle className="w-5 h-5 text-[#27187e]" />
                 <h3 className="text-xl sm:text-2xl font-display font-normal text-[#27187e]">
-                  Avoid This Setup Mistake
+                  Setup Considerations
                 </h3>
               </div>
               <p className="text-sm sm:text-base text-[#27187e]/85 font-readable leading-relaxed">
@@ -292,6 +293,10 @@ export default async function EquipmentDetailPage({
 
           </aside>
 
+        </div>
+
+        <div className="mt-12">
+          <CareDisclaimer />
         </div>
 
       </div>

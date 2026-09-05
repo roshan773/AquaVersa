@@ -6,6 +6,7 @@ import { ArrowLeft, Leaf, Info, Activity, ArrowRight, Sparkles, Sprout, Sun, Dro
 import { Metadata } from 'next';
 import { siteConfig } from "@/config/site";
 import GlobalCTA from "@/components/ui/GlobalCTA";
+import CareDisclaimer from "@/components/ui/CareDisclaimer";
 
 export async function generateMetadata({
   params,
@@ -280,6 +281,10 @@ export default async function PlantDetailPage({
                 {plant.ph}
               </span>
             </div>
+          </div>
+
+          <div className="mt-8">
+            <CareDisclaimer />
           </div>
         </div>
 

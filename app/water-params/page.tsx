@@ -3,18 +3,23 @@ import WaterParams from "@/components/home/WaterParams";
 import MaintenanceSection from "@/components/home/MaintenanceSection";
 import SubpageHero from "@/components/ui/SubpageHero";
 import GlobalCTA from "@/components/ui/GlobalCTA";
+import CareDisclaimer from "@/components/ui/CareDisclaimer";
 
 export default function WaterChemistryPage() {
   return (
-    <div className="w-full">
+    <div className="w-full bg-[#f7f7ff]">
       <SubpageHero 
         title="Water Chemistry Guide" 
-        description="Master the science of water quality. Learn how to test, balance, and maintain the perfect environment for your aquatic life."
+        description="Understand the fundamental principles of aquatic water quality. Learn how to test, balance, and maintain stable conditions for your aquarium ecosystem."
         icon={<Droplets className="w-8 h-8" />}
       />
 
       <WaterParams showCTA={false} />
       <MaintenanceSection />
+
+      <div className="site-container pb-12">
+        <CareDisclaimer />
+      </div>
 
       <GlobalCTA
         badge="WATER CHEMISTRY & NITROGEN CYCLE"
@@ -24,7 +29,7 @@ export default function WaterChemistryPage() {
             and liquid kit readings now.
           </>
         }
-        description="Enter your exact ammonia, nitrite, nitrate, pH, and hardness values to receive instant bio-remediation guidance."
+        description="Enter your measured ammonia, nitrite, nitrate, pH, and hardness values to receive educational parameter guidance and corrective recommendations."
         primaryAction={{
           label: 'Launch Water Analyzer',
           href: '/water-analyzer',

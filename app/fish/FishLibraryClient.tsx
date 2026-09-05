@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Fish as FishType } from '@/lib/types';
 import GlobalCTA from '@/components/ui/GlobalCTA';
+import CareDisclaimer from '@/components/ui/CareDisclaimer';
 import {
   Search,
   RotateCcw,
@@ -75,7 +76,7 @@ export default function FishLibraryClient({ initialFish }: FishLibraryClientProp
             FISH SPECIES ATLAS
           </h1>
           <p className="text-base sm:text-lg text-[#27187e]/85 font-readable max-w-2xl leading-relaxed">
-            Explore verified biological requirements, water chemistry ranges, minimum aquarium volumes, and community temperaments.
+            Explore species care guidelines, commonly recommended water chemistry ranges, minimum aquarium volumes, and community temperaments.
           </p>
 
           {/* Search Bar */}
@@ -246,6 +247,10 @@ export default function FishLibraryClient({ initialFish }: FishLibraryClientProp
             </button>
           </div>
         )}
+
+        <div className="mt-16">
+          <CareDisclaimer />
+        </div>
 
       </div>
 

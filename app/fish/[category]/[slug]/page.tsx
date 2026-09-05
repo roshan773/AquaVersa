@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, Compass, Droplets, Thermometer, ShieldCheck, Rul
 import { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
 import GlobalCTA from '@/components/ui/GlobalCTA';
+import CareDisclaimer from '@/components/ui/CareDisclaimer';
 
 export async function generateMetadata({
   params,
@@ -229,12 +230,16 @@ export default async function FishDetailPage({
 
             <div className="bg-[#ffffff] border-2 border-[#cfcaf5] p-6 rounded-2xl shadow-sm sm:col-span-2">
               <span className="text-xs uppercase font-semibold tracking-wider text-[#27187e]/70 block mb-1">
-                Compatibility &amp; Cohabitation Note
+                Compatibility &amp; Cohabitation Guidance
               </span>
               <p className="text-sm sm:text-base text-[#27187e]/90 block mt-2 font-medium leading-relaxed">
-                Successful cohabitation requires matching water parameters (pH &amp; temp), respecting swim territories, and providing suitable hides or plant cover.
+                Successful cohabitation typically requires matching water parameters (pH &amp; temp), respecting swim territories, and providing suitable hides or plant cover. Requirements may vary between individual fish and aquarium setups.
               </p>
             </div>
+          </div>
+
+          <div className="mt-8">
+            <CareDisclaimer />
           </div>
         </div>
 

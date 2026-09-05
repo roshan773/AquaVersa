@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, ShieldAlert, Heart, Activity, Info, Stethoscope, AlertTriangle } from "lucide-react";
 import GlobalCTA from "@/components/ui/GlobalCTA";
+import CareDisclaimer from "@/components/ui/CareDisclaimer";
 
 export function generateStaticParams() {
   return diseasesData.map((d) => ({
@@ -144,6 +145,10 @@ export default async function DiseaseDetailPage({ params }: PageProps) {
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="mb-16">
+          <CareDisclaimer />
         </div>
 
       </div>

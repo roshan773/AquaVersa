@@ -281,8 +281,8 @@ export default function BudgetCalculatorPage() {
         badge="AQUARIUM BUDGETING & GEAR SELECTION"
         title={
           <>
-            Explore verified hardware <br className="hidden sm:inline" />
-            and filtration reviews.
+            Explore recommended hardware <br className="hidden sm:inline" />
+            and filtration guides.
           </>
         }
         description="Compare prices, flow rates, and power consumption across leading canister filters, heaters, and lighting fixtures."

@@ -6,6 +6,7 @@ import { Search, ArrowRight, RotateCcw, SlidersHorizontal, Leaf, Sun, Layers, Sp
 import Image from 'next/image';
 import Link from 'next/link';
 import GlobalCTA from '@/components/ui/GlobalCTA';
+import CareDisclaimer from '@/components/ui/CareDisclaimer';
 
 interface PlantsClientProps {
   plantList: PlantType[];
@@ -194,6 +195,10 @@ export default function PlantsClient({ plantList }: PlantsClientProps) {
             </button>
           </div>
         )}
+
+        <div className="mt-16">
+          <CareDisclaimer />
+        </div>
 
       </div>
 

@@ -5,6 +5,7 @@ import { Food as FoodType } from "@/lib/types";
 import { Search, Utensils, Heart, ArrowRight, Layers } from "lucide-react";
 import Image from "next/image";
 import GlobalCTA from "@/components/ui/GlobalCTA";
+import CareDisclaimer from "@/components/ui/CareDisclaimer";
 
 export default function FoodPage() {
   const [foodList, setFoodList] = useState<FoodType[]>([]);
@@ -140,7 +141,7 @@ export default function FoodPage() {
                 </div>
 
                 <div className="pt-4 mt-5 border-t border-[#edeafc] text-xs text-[#27187e]/70 font-semibold uppercase tracking-wider">
-                  Verified Nutritional Balance
+                  Nutritional Profile &amp; Guidelines
                 </div>
               </div>
             ))}
@@ -161,6 +162,10 @@ export default function FoodPage() {
             </button>
           </div>
         )}
+
+        <div className="mt-16">
+          <CareDisclaimer />
+        </div>
 
       </div>
 

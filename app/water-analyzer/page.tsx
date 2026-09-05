@@ -5,6 +5,7 @@ import { FlaskConical, AlertTriangle, CheckCircle2, XCircle, Info, RefreshCw, La
 import { fishData } from '@/data/fish';
 import { unlockAchievement } from '@/lib/storage';
 import GlobalCTA from '@/components/ui/GlobalCTA';
+import CareDisclaimer from '@/components/ui/CareDisclaimer';
 
 interface ParameterResult {
   name: string;
@@ -536,6 +537,10 @@ export default function WaterAnalyzerPage() {
 
           </div>
 
+        </div>
+
+        <div className="mt-16">
+          <CareDisclaimer />
         </div>
 
       </div>

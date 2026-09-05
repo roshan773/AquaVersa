@@ -136,7 +136,7 @@ export default function MythsSection() {
                     <div>
                       <div className="flex items-center gap-2 mb-3 text-[#cfcaf5] font-bold uppercase tracking-wider text-xs">
                         <CheckCircle2 className="w-4 h-4 shrink-0 text-[#f7f7ff]" />
-                        <span>Verified Biological Fact</span>
+                        <span>Biological Reality &amp; Context</span>
                       </div>
 
                       <div className="text-[#f7f7ff] font-bold text-sm sm:text-base leading-snug mb-3">

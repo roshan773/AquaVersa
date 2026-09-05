@@ -324,7 +324,7 @@ export default function Navbar() {
                         01 // Main Atlas Archives
                       </span>
                       <span className="font-readable text-sm sm:text-base text-[#cfcaf5]">
-                        Explore Verified Repositories
+                        Explore Aquarium Repositories
                       </span>
                     </div>
 
