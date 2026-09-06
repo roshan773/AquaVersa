@@ -102,7 +102,7 @@ export default function CompatibilityGuide() {
             <BookOpen className="w-3.5 h-3.5" />
             <span>Foundational Principles</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-display font-normal text-[#27187e] tracking-tight mb-3">
+          <h2 className="text-3xl sm:text-4xl font-sans font-bold text-[#27187e] tracking-tight mb-3">
             The 5 Pillars of Community Aquarium Compatibility
           </h2>
           <p className="font-readable text-sm sm:text-base text-[#27187e]/80 leading-relaxed">
@@ -122,14 +122,14 @@ export default function CompatibilityGuide() {
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="font-display text-3xl text-[#27187e] leading-none">
+                    <span className="font-sans text-3xl font-black text-[#27187e] leading-none">
                       {p.num}
                     </span>
                     <div className="w-10 h-10 rounded-xl bg-[#edeafc] border border-[#cfcaf5] flex items-center justify-center text-[#27187e]">
                       <Icon className="w-5 h-5" />
                     </div>
                   </div>
-                  <h3 className="font-display text-xl text-[#27187e] mb-2 leading-tight">
+                  <h3 className="font-sans font-bold text-xl text-[#27187e] mb-2 leading-tight">
                     {p.title}
                   </h3>
                   <p className="font-readable text-xs sm:text-sm text-[#27187e]/80 leading-relaxed">
@@ -149,7 +149,7 @@ export default function CompatibilityGuide() {
             <AlertOctagon className="w-3.5 h-3.5 text-amber-400" />
             <span>Crucial Warnings</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-display font-normal text-[#f7f7ff] tracking-tight mb-2">
+          <h2 className="text-3xl sm:text-4xl font-sans font-bold text-[#f7f7ff] tracking-tight mb-2">
             4 Common Pairing Mistakes to Avoid
           </h2>
           <p className="font-readable text-sm sm:text-base text-[#cfcaf5] leading-relaxed">
@@ -167,7 +167,7 @@ export default function CompatibilityGuide() {
                 <span className="text-xs font-bold font-mono uppercase text-rose-400 block mb-1">
                   Mismatch #{idx + 1}
                 </span>
-                <h3 className="font-display text-2xl text-[#ffffff] mb-2">
+                <h3 className="font-sans font-bold text-xl sm:text-2xl text-[#ffffff] mb-2">
                   {m.pair}
                 </h3>
                 <p className="font-readable text-xs sm:text-sm text-[#cfcaf5] leading-relaxed mb-4">
@@ -185,7 +185,7 @@ export default function CompatibilityGuide() {
 
       {/* Safe Introduction Protocol Guide */}
       <div className="bg-[#ffffff] border-2 border-[#cfcaf5] rounded-3xl p-6 sm:p-10 shadow-sm">
-        <h2 className="text-3xl sm:text-4xl font-display font-normal text-[#27187e] tracking-tight mb-6">
+        <h2 className="text-3xl sm:text-4xl font-sans font-bold text-[#27187e] tracking-tight mb-6">
           Step-by-Step New Fish Acclimation Protocol
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 font-readable">
@@ -208,7 +208,7 @@ export default function CompatibilityGuide() {
             }
           ].map((s, i) => (
             <div key={i} className="bg-[#f7f7ff] border border-[#cfcaf5] rounded-2xl p-5">
-              <span className="font-display text-lg text-[#27187e] block mb-1.5">{s.step}</span>
+              <span className="font-sans font-bold text-base sm:text-lg text-[#27187e] block mb-1.5">{s.step}</span>
               <p className="text-xs sm:text-sm text-[#27187e]/80 leading-relaxed">{s.desc}</p>
             </div>
           ))}
@@ -217,7 +217,7 @@ export default function CompatibilityGuide() {
 
       {/* FAQ Accordion Section */}
       <div className="bg-[#ffffff] border-2 border-[#cfcaf5] rounded-3xl p-6 sm:p-10 shadow-sm">
-        <h2 className="text-3xl sm:text-4xl font-display font-normal text-[#27187e] tracking-tight mb-6">
+        <h2 className="text-3xl sm:text-4xl font-sans font-bold text-[#27187e] tracking-tight mb-6">
           Frequently Asked Questions on Fish Compatibility
         </h2>
         <div className="space-y-4 font-readable">
@@ -232,7 +232,7 @@ export default function CompatibilityGuide() {
                   onClick={() => setOpenFaq(isOpen ? null : idx)}
                   className="w-full flex items-center justify-between p-5 text-left bg-[#f7f7ff] hover:bg-[#edeafc] transition-colors cursor-pointer"
                 >
-                  <span className="font-display text-lg sm:text-xl text-[#27187e] pr-4">
+                  <span className="font-sans font-bold text-base sm:text-lg text-[#27187e] pr-4">
                     {faq.q}
                   </span>
                   {isOpen ? (

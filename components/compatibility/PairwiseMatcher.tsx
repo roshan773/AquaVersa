@@ -332,10 +332,10 @@ export default function PairwiseMatcher() {
         {/* Top Control Bar */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-[#edeafc]">
           <div>
-            <span className="text-xs font-condensed font-bold uppercase tracking-[0.2em] text-[#27187e]/70 block mb-1">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#27187e]/70 block mb-1">
               PAIRWISE COMPARISON TOOL
             </span>
-            <h2 className="text-2xl sm:text-3xl font-display font-normal text-[#27187e] tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-sans font-bold text-[#27187e] tracking-tight">
               Select Two Species to Evaluate
             </h2>
           </div>
@@ -382,7 +382,7 @@ export default function PairwiseMatcher() {
                   {fish1.temperament}
                 </span>
               </div>
-              <h3 className="font-display text-xl sm:text-2xl text-[#27187e] leading-tight mb-2">
+              <h3 className="font-sans font-bold text-xl sm:text-2xl text-[#27187e] leading-tight mb-2">
                 {fish1.name}
               </h3>
               <div className="relative">
@@ -406,7 +406,7 @@ export default function PairwiseMatcher() {
 
           {/* VS Divider */}
           <div className="lg:col-span-1 flex justify-center">
-            <div className="w-12 h-12 rounded-full bg-[#27187e] text-[#f7f7ff] flex items-center justify-center font-display text-lg tracking-wider shadow-md">
+            <div className="w-12 h-12 rounded-full bg-[#27187e] text-[#f7f7ff] flex items-center justify-center font-sans font-extrabold text-sm tracking-widest shadow-md">
               VS
             </div>
           </div>
@@ -431,7 +431,7 @@ export default function PairwiseMatcher() {
                   {fish2.temperament}
                 </span>
               </div>
-              <h3 className="font-display text-xl sm:text-2xl text-[#27187e] leading-tight mb-2">
+              <h3 className="font-sans font-bold text-xl sm:text-2xl text-[#27187e] leading-tight mb-2">
                 {fish2.name}
               </h3>
               <div className="relative">
@@ -471,7 +471,7 @@ export default function PairwiseMatcher() {
                 Compatibility Index: <strong className="text-[#27187e] text-sm">{analysis.score}%</strong>
               </span>
             </div>
-            <h3 className="text-3xl sm:text-4xl font-display font-normal text-[#27187e] tracking-tight">
+            <h3 className="text-3xl sm:text-4xl font-sans font-bold text-[#27187e] tracking-tight">
               {analysis.title}
             </h3>
           </div>
@@ -617,7 +617,7 @@ export default function PairwiseMatcher() {
 
         {/* Actionable Husbandry Tips */}
         <div className="p-5 sm:p-6 rounded-2xl bg-[#edeafc] border border-[#cfcaf5]">
-          <h4 className="flex items-center gap-2 text-base font-display font-normal text-[#27187e] mb-3">
+          <h4 className="flex items-center gap-2 text-base font-sans font-bold text-[#27187e] mb-3">
             <Sparkles className="w-4 h-4 text-[#27187e]" />
             <span>Recommended Husbandry Protocols for this Pairing</span>
           </h4>

@@ -44,7 +44,7 @@ export default function CompatibilityClient() {
             <Compass className="w-3.5 h-3.5 text-[#27187e]" />
             <span>Atlas Community Biology Engine</span>
           </div>
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-normal text-[#27187e] tracking-tight mb-4 leading-[0.95]">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-sans font-extrabold text-[#27187e] tracking-tight mb-4 leading-[0.95]">
             Aquarium Fish Compatibility Checker
           </h1>
           <p className="text-base sm:text-lg text-[#27187e]/85 font-readable max-w-3xl leading-relaxed font-medium">

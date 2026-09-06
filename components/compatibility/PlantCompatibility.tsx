@@ -84,7 +84,7 @@ export default function PlantCompatibility() {
             <Leaf className="w-3.5 h-3.5" />
             <span>Flora &amp; Fauna Compatibility</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-display font-normal text-[#27187e] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-sans font-bold text-[#27187e] tracking-tight">
             Fish-Safe Aquatic Plant Selector
           </h2>
         </div>
@@ -105,7 +105,7 @@ export default function PlantCompatibility() {
                 : 'border-[#cfcaf5] bg-[#f7f7ff] text-[#27187e] hover:border-[#27187e] hover:bg-[#edeafc]'
             }`}
           >
-            <span className="font-display text-base sm:text-lg leading-tight mb-1">
+            <span className="font-sans font-bold text-sm sm:text-base leading-tight mb-1">
               {bio.name}
             </span>
             <span className={`font-readable text-[11px] leading-tight line-clamp-2 ${
@@ -140,7 +140,7 @@ export default function PlantCompatibility() {
       {/* Recommended Plants Grid */}
       <div>
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-display text-2xl text-[#27187e] flex items-center gap-2">
+          <h3 className="font-sans font-bold text-2xl text-[#27187e] flex items-center gap-2">
             <CheckCircle2 className="w-5 h-5 text-emerald-600" />
             <span>Recommended Compatible Plants for {currentBiotype.name}</span>
           </h3>
@@ -170,7 +170,7 @@ export default function PlantCompatibility() {
                 </div>
 
                 <div className="mb-2">
-                  <h4 className="font-display text-lg text-[#27187e] leading-tight">
+                  <h4 className="font-sans font-bold text-lg text-[#27187e] leading-tight">
                     {plant.name}
                   </h4>
                   <span className="font-readable text-xs italic text-[#27187e]/70 block">

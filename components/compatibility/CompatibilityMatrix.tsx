@@ -167,7 +167,7 @@ export default function CompatibilityMatrix() {
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#edeafc] text-[#27187e] text-xs font-bold uppercase tracking-wider mb-2">
           <span>Quick Reference Chart</span>
         </div>
-        <h2 className="text-3xl sm:text-4xl font-display font-normal text-[#27187e] tracking-tight mb-2">
+        <h2 className="text-3xl sm:text-4xl font-sans font-bold text-[#27187e] tracking-tight mb-2">
           Community Fish Compatibility Matrix
         </h2>
         <p className="font-readable text-sm sm:text-base text-[#27187e]/80 max-w-2xl leading-relaxed">
@@ -196,11 +196,11 @@ export default function CompatibilityMatrix() {
         <table className="w-full text-center border-collapse min-w-[640px]">
           <thead>
             <tr>
-              <th className="p-2 text-left font-display text-xs text-[#27187e]/70 uppercase tracking-wider border-b-2 border-[#cfcaf5]">
+              <th className="p-2 text-left font-sans text-xs font-bold text-[#27187e]/70 uppercase tracking-wider border-b-2 border-[#cfcaf5]">
                 Species
               </th>
               {matrixSpecies.map(s => (
-                <th key={s.id} className="p-2 font-display text-xs text-[#27187e] uppercase tracking-wider border-b-2 border-[#cfcaf5]">
+                <th key={s.id} className="p-2 font-sans text-xs font-bold text-[#27187e] uppercase tracking-wider border-b-2 border-[#cfcaf5]">
                   {s.short}
                 </th>
               ))}
@@ -209,7 +209,7 @@ export default function CompatibilityMatrix() {
           <tbody>
             {matrixSpecies.map(row => (
               <tr key={row.id} className="hover:bg-[#f7f7ff] transition-colors">
-                <td className="p-2 text-left font-display text-sm text-[#27187e] font-semibold border-b border-[#edeafc] whitespace-nowrap">
+                <td className="p-2 text-left font-sans text-xs sm:text-sm text-[#27187e] font-bold border-b border-[#edeafc] whitespace-nowrap">
                   {row.name}
                 </td>
                 {matrixSpecies.map(col => {
@@ -265,7 +265,7 @@ export default function CompatibilityMatrix() {
               }`}>
                 {cellInfo.status === 'C' ? 'Compatible' : cellInfo.status === 'W' ? 'Caution' : cellInfo.status === 'X' ? 'Incompatible' : 'Same Species'}
               </span>
-              <h4 className="font-display text-xl text-[#27187e]">
+              <h4 className="font-sans font-bold text-lg sm:text-xl text-[#27187e]">
                 {species1.name} + {species2.name}
               </h4>
             </div>
