@@ -101,7 +101,7 @@ export default function AboutUsClient() {
             <Compass className="w-3.5 h-3.5 text-[#27187e]" />
             <span>The Aquarium Atlas Mission</span>
           </div>
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-sans font-extrabold text-[#27187e] tracking-tight mb-6 leading-[0.95]">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-normal text-[#27187e] tracking-wide mb-6 leading-[0.95]">
             About Roshan Aquva World
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-[#27187e]/90 font-medium max-w-3xl leading-relaxed">
