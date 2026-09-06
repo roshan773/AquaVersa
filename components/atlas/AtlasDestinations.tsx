@@ -36,7 +36,7 @@ export default function AtlasDestinations() {
       title: 'CARE GUIDES',
       subtitle: 'Knowledge Base',
       desc: 'In-depth reference articles on biological cycling, acclimation protocols, and long-term water stability.',
-      image: '/hero_aquarium.jpg',
+      image: '/images/care_guides.jpg',
       href: '/guides',
       icon: BookOpen,
     },
