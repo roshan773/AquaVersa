@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { siteConfig } from "@/config/site";
 
 // In-memory rate limiting
 const ipRateLimit = new Map<string, { count: number; timestamp: number }>();
@@ -106,7 +107,7 @@ export async function POST(request: Request) {
         incorrectDetail: escapeHtml(incorrectDetail.trim()),
         correction: escapeHtml(correction.trim()),
         sources: sources && typeof sources === "string" ? escapeHtml(sources.trim()) : "None",
-        site: "https://aquaversa.vercel.app"
+        site: siteConfig.url
       }),
     });
 

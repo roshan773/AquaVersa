@@ -8,8 +8,8 @@ export const siteConfig = {
   description: "An educational aquarium platform. Discover fish species profiles, plant care, community compatibility, equipment guides, water chemistry, and tank maintenance routines.",
   
   // Production site URL (both siteUrl and url for compatibility)
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://aquaversa.vercel.app",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://aquaversa.vercel.app",
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://roshanaquvaworld.vercel.app",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://roshanaquvaworld.vercel.app",
   
   // Direct contact details
   contactEmail: "pakhreroshan@gmail.com",

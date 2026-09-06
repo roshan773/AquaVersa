@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { siteConfig } from "@/config/site";
 
 // Simple in-memory rate limiting map
 const ipRateLimit = new Map<string, { count: number; timestamp: number }>();
@@ -135,7 +136,7 @@ export async function POST(request: Request) {
       <div style="max-width: 600px; margin: auto; text-align: center;">
         <hr style="border: 0; border-top: 1px solid #e2e8f0; margin-bottom: 12px;"/>
         <p style="font-size: 11px; color: #64748b; margin: 0;">
-          Submitted from: <a href="https://aquaversa.vercel.app" style="color: #64748b; text-decoration: underline;">roshan aquva world</a>
+          Submitted from: <a href="${siteConfig.url}" style="color: #64748b; text-decoration: underline;">${siteConfig.name}</a>
         </p>
       </div>
     `;
