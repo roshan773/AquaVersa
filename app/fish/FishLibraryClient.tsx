@@ -63,8 +63,8 @@ export default function FishLibraryClient({ initialFish }: FishLibraryClientProp
     searchTerm !== '' || habitatFilter !== 'All' || difficultyFilter !== 'All' || temperamentFilter !== 'All';
 
   return (
-    <div className="min-h-screen bg-[#f7f7ff] text-[#27187e] pt-32 pb-24 text-left marine-pattern-light">
-      <div className="site-container">
+    <div className="min-h-screen bg-[#f7f7ff] text-[#27187e] pt-32 text-left marine-pattern-light">
+      <div className="site-container pb-20 sm:pb-24">
         
         {/* Page Header */}
         <div className="mb-10 pb-8 border-b-2 border-[#cfcaf5]">

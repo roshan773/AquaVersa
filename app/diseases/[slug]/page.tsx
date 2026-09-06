@@ -87,7 +87,7 @@ export default async function DiseaseDetailPage({ params }: PageProps) {
     .slice(0, 3);
 
   return (
-    <div className="min-h-screen bg-[#f7f7ff] text-[#27187e] pt-32 pb-24 text-left marine-pattern-light">
+    <div className="min-h-screen bg-[#f7f7ff] text-[#27187e] pt-32 text-left marine-pattern-light">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -97,7 +97,7 @@ export default async function DiseaseDetailPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
 
-      <div className="site-container font-readable">
+      <div className="site-container font-readable pb-20 sm:pb-24">
         
         {/* Visual Breadcrumbs */}
         <nav aria-label="Breadcrumbs" className="mb-6 flex items-center gap-2 text-xs sm:text-sm font-medium text-[#27187e]/70">

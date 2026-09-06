@@ -113,8 +113,8 @@ export default async function FishDetailPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
-      <div className="min-h-screen bg-[#f7f7ff] text-[#27187e] pt-32 pb-24 text-left marine-pattern-light font-readable">
-        <div className="site-container">
+      <div className="min-h-screen bg-[#f7f7ff] text-[#27187e] pt-32 text-left marine-pattern-light font-readable">
+        <div className="site-container pb-20 sm:pb-24">
           
           {/* Visual Breadcrumb Navigation */}
           <nav aria-label="Breadcrumb" className="mb-6">
