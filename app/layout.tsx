@@ -39,19 +39,6 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: [
-    "Roshan Aquva World",
-    "Aquarium Care Guide",
-    "Fish Compatibility",
-    "Aquarium Plants",
-    "Freshwater Fish Care",
-    "Saltwater Fish Care",
-    "Aquarium Nitrogen Cycle",
-    "Aquarium Maintenance",
-    "Fish Species Database",
-    "Tank Size Guide",
-    "Water Chemistry"
-  ],
   authors: [{ name: "Roshan Aquva World" }],
   creator: "Roshan Aquva World",
   publisher: "Roshan Aquva World",
@@ -111,19 +98,33 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              "name": siteConfig.name,
-              "alternateName": siteConfig.alternateNames,
-              "url": `${siteConfig.siteUrl}/`,
-              "description": siteConfig.description,
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": `${siteConfig.siteUrl}/search?q={search_term_string}`,
-                "query-input": "required name=search_term_string"
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": siteConfig.name,
+                "alternateName": siteConfig.alternateNames,
+                "url": `${siteConfig.siteUrl}/`,
+                "description": siteConfig.description,
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": `${siteConfig.siteUrl}/search?q={search_term_string}`,
+                  "query-input": "required name=search_term_string"
+                }
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": siteConfig.name,
+                "url": siteConfig.siteUrl,
+                "logo": `${siteConfig.siteUrl}/apple-touch-icon.png`,
+                "sameAs": [
+                  siteConfig.socialLinks.twitter,
+                  siteConfig.socialLinks.facebook,
+                  siteConfig.socialLinks.instagram
+                ]
               }
-            })
+            ])
           }}
         />
       </head>
