@@ -134,12 +134,12 @@ export default function Footer() {
             <ul className="space-y-3 font-readable text-sm sm:text-base font-normal">
               <li>
                 <Link href="/about" className="text-[#cfcaf5] hover:text-[#ffffff] transition-colors">
-                  About Roshan Aquva World
+                  About Us
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="text-[#cfcaf5] hover:text-[#ffffff] transition-colors">
-                  Contact Editorial Desk
+                  Contact Us
                 </Link>
               </li>
               <li>
