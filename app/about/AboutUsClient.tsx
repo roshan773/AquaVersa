@@ -27,8 +27,8 @@ export default function AboutUsClient() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#f7f7ff] text-[#27187e] pt-32 pb-24 text-left font-readable marine-pattern-light">
-      <div className="site-container">
+    <div className="min-h-screen bg-[#f7f7ff] text-[#27187e] pt-32 text-left font-readable marine-pattern-light">
+      <div className="site-container pb-20 sm:pb-24">
         
         {/* Hero Section */}
         <div className="mb-16 pb-12 border-b-2 border-[#cfcaf5]">

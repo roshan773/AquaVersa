@@ -85,8 +85,8 @@ export default function BudgetCalculatorClient() {
   const symbol = currency === 'INR' ? '₹' : '$';
 
   return (
-    <div className="min-h-screen bg-background py-16 px-4 font-sans text-foreground">
-      <div className="max-w-6xl mx-auto space-y-12">
+    <div className="min-h-screen bg-background pt-16 font-sans text-foreground">
+      <div className="max-w-6xl mx-auto px-4 pb-20 sm:pb-24 space-y-12">
         
         {/* Header */}
         <div className="text-center space-y-4 max-w-2xl mx-auto">
