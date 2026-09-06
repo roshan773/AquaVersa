@@ -2,18 +2,45 @@ import { diseasesData } from "@/data/diseases";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, CheckCircle2, ShieldAlert, Heart, Activity, Info, Stethoscope, AlertTriangle } from "lucide-react";
+import { ArrowLeft, ShieldAlert, Heart, Activity, Info, AlertTriangle, ArrowRight, Home } from "lucide-react";
+import { Metadata } from 'next';
+import { siteConfig } from "@/config/site";
+import { constructMetadata, constructBreadcrumbSchema } from "@/lib/seo";
 import GlobalCTA from "@/components/ui/GlobalCTA";
 import CareDisclaimer from "@/components/ui/CareDisclaimer";
+
+interface PageProps {
+  params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const disease = diseasesData.find((d) => d.slug === slug);
+
+  if (!disease) {
+    return constructMetadata({
+      title: `Fish Disease Guide | ${siteConfig.name}`,
+      description: `Learn how to identify and treat aquarium fish diseases on ${siteConfig.name}.`,
+      pathname: `/diseases/${slug}`,
+    });
+  }
+
+  const titleText = `${disease.name}: Fish Symptoms, Diagnosis & Treatment Guide`;
+  const descText = `Learn how to identify and treat ${disease.name} in aquarium fish. Covers clinical symptoms, transmission, medication precautions, and hospital tank protocols.`;
+
+  return constructMetadata({
+    title: titleText,
+    description: descText,
+    pathname: `/diseases/${disease.slug}`,
+    image: disease.image,
+    type: 'article',
+  });
+}
 
 export function generateStaticParams() {
   return diseasesData.map((d) => ({
     slug: d.slug,
   }));
-}
-
-interface PageProps {
-  params: Promise<{ slug: string }>;
 }
 
 export default async function DiseaseDetailPage({ params }: PageProps) {
@@ -24,11 +51,69 @@ export default async function DiseaseDetailPage({ params }: PageProps) {
     notFound();
   }
 
+  const breadcrumbSchema = constructBreadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Diseases', path: '/diseases' },
+    { name: disease.name, path: `/diseases/${disease.slug}` },
+  ]);
+
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: `${disease.name}: Fish Symptoms, Diagnosis & Treatment Guide`,
+    description: disease.description,
+    image: `${siteConfig.siteUrl}${disease.image}`,
+    author: {
+      '@type': 'Organization',
+      name: siteConfig.name,
+      url: siteConfig.siteUrl,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: siteConfig.name,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteConfig.siteUrl}/apple-touch-icon.png`,
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${siteConfig.siteUrl}/diseases/${disease.slug}`,
+    },
+  };
+
+  const otherDiseases = diseasesData
+    .filter((d) => d.slug !== disease.slug)
+    .slice(0, 3);
+
   return (
     <div className="min-h-screen bg-[#f7f7ff] text-[#27187e] pt-32 pb-24 text-left marine-pattern-light">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+
       <div className="site-container font-readable">
         
-        {/* Navigation Breadcrumb */}
+        {/* Visual Breadcrumbs */}
+        <nav aria-label="Breadcrumbs" className="mb-6 flex items-center gap-2 text-xs sm:text-sm font-medium text-[#27187e]/70">
+          <Link href="/" className="hover:text-[#27187e] flex items-center gap-1">
+            <Home className="w-3.5 h-3.5" />
+            <span>Home</span>
+          </Link>
+          <span>/</span>
+          <Link href="/diseases" className="hover:text-[#27187e]">
+            Diseases
+          </Link>
+          <span>/</span>
+          <span className="text-[#27187e] font-semibold">{disease.name}</span>
+        </nav>
+
+        {/* Back Link */}
         <Link 
           href="/diseases" 
           className="inline-flex items-center gap-2 text-sm font-semibold text-[#27187e] hover:underline mb-8 group"
@@ -61,7 +146,7 @@ export default async function DiseaseDetailPage({ params }: PageProps) {
             <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden border-4 border-[#ffffff] bg-[#12093d] shadow-xl">
               <Image 
                 src={disease.image} 
-                alt={disease.name} 
+                alt={`${disease.name} diagnostic symptom profile`} 
                 fill 
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 500px"
@@ -77,7 +162,7 @@ export default async function DiseaseDetailPage({ params }: PageProps) {
           <div className="space-y-1">
             <strong className="font-bold text-base block text-[#27187e] uppercase tracking-wider">Critical Medication Precaution</strong>
             <p className="leading-relaxed text-[#27187e]/90 font-medium">
-              Always isolate sick fish in a dedicated quarantine or hospital tank before applying medications. Certain active compounds (like copper, malachite green, or formalin) and temperature shifts can be lethal to snails, shrimp, delicate scale-less fish (like Corydoras), and live plants.
+              Always isolate sick fish in a dedicated quarantine or hospital tank before applying medications. Certain active compounds (like copper, malachite green, or formalin) and temperature shifts can be harmful to snails, shrimp, delicate scale-less fish (like Corydoras), and live plants.
             </p>
           </div>
         </div>
@@ -146,6 +231,61 @@ export default async function DiseaseDetailPage({ params }: PageProps) {
             ))}
           </div>
         </div>
+
+        {/* Related Diseases */}
+        {otherDiseases.length > 0 && (
+          <div className="pt-12 mb-16 border-t-2 border-[#cfcaf5]">
+            <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <span className="text-xs font-readable font-semibold uppercase tracking-wider text-[#27187e]/70 block mb-1">
+                  RELATED PATHOLOGY
+                </span>
+                <h3 className="text-3xl sm:text-4xl font-display font-normal text-[#27187e] tracking-tight">
+                  Other Common Aquatic Illnesses
+                </h3>
+              </div>
+              <Link
+                href="/diseases"
+                className="font-readable font-semibold text-sm sm:text-base text-[#27187e] hover:underline inline-flex items-center gap-2"
+              >
+                <span>Browse All Diseases</span>
+                <ArrowRight className="w-4 h-4" strokeWidth={2} />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {otherDiseases.map((rel) => (
+                <Link
+                  key={rel.id}
+                  href={`/diseases/${rel.slug}`}
+                  className="bg-[#ffffff] border-2 border-[#cfcaf5] hover:border-[#27187e] rounded-3xl p-6 flex flex-col justify-between group transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1"
+                >
+                  <div>
+                    <div className="relative w-full aspect-[16/10] rounded-2xl bg-[#12093d] overflow-hidden mb-4">
+                      <Image
+                        src={rel.image}
+                        alt={rel.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes="350px"
+                      />
+                    </div>
+                    <span className="text-xs uppercase font-bold text-[#27187e] px-2 py-0.5 rounded bg-[#edeafc] border border-[#cfcaf5]">
+                      {rel.type}
+                    </span>
+                    <h4 className="text-2xl font-display font-normal text-[#27187e] group-hover:text-[#1b1059] leading-tight mt-2 mb-1">
+                      {rel.name}
+                    </h4>
+                  </div>
+                  <div className="pt-3 border-t border-[#edeafc] flex items-center justify-between font-readable font-semibold text-sm text-[#27187e]">
+                    <span>View Treatment Sheet</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className="mb-16">
           <CareDisclaimer />

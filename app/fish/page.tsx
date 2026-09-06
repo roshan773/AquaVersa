@@ -1,25 +1,26 @@
-import { Metadata } from "next";
 import { fishData } from "@/data/fish";
 import FishLibraryClient from "./FishLibraryClient";
-import { siteConfig } from "@/config/site";
+import { constructMetadata, constructBreadcrumbSchema } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: `Aquarium Fish Care Library & Species Catalog | ${siteConfig.name}`,
-  description: `Browse the ${siteConfig.name} fish species library. Care profiles, water parameter ranges, temperaments, sizing, and compatibility guidelines for freshwater and saltwater fish.`,
-  keywords: [
-    "roshan aquva world fish catalog",
-    "roshan aquva world fish database",
-    "roshan aquva world species care",
-    "roshan aquva world fish",
-    "roshan aquva world",
-    "aquaguide",
-    "aquvaGuide"
-  ],
-  alternates: {
-    canonical: `${siteConfig.siteUrl}/fish`,
-  }
-};
+export const metadata = constructMetadata({
+  title: 'Aquarium Fish Species Index & Care Guide Library',
+  description: 'Browse complete profiles for freshwater and marine aquarium species. View minimum tank sizes, pH, temperature, diets, and temperament requirements.',
+  path: '/fish',
+});
 
 export default function FishPage() {
-  return <FishLibraryClient initialFish={fishData} />;
+  const breadcrumbSchema = constructBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Species Atlas', url: '/fish' },
+  ]);
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <FishLibraryClient initialFish={fishData} />
+    </>
+  );
 }

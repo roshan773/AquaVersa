@@ -1,25 +1,28 @@
-import { Metadata } from "next";
 import { fishData } from "@/data/fish";
 import SaltwaterClient from "./SaltwaterClient";
-import { siteConfig } from "@/config/site";
+import { constructMetadata, constructBreadcrumbSchema } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: `Saltwater Marine Fish Care, Species & Compatibility | ${siteConfig.name}`,
-  description: `Detailed care guide library for saltwater marine aquarium fish on ${siteConfig.name}. Browse clownfish, marine tangs, gobies, and cardinalfish. Learn about salinity, parameters, and compatibility.`,
-  keywords: [
-    "roshan aquva world saltwater fish",
-    "saltwater marine species guide",
-    "roshan aquva world marine",
-    "roshan aquva world",
-    "aquaguide",
-    "aquvaGuide"
-  ],
-  alternates: {
-    canonical: `${siteConfig.siteUrl}/fish/saltwater`,
-  }
-};
+export const metadata = constructMetadata({
+  title: 'Saltwater Marine Fish Species & Care Profiles',
+  description: 'Care guides for marine aquarium fish including clownfish, tangs, gobies, and cardinalfish. Learn salinity, tank size, and reef compatibility.',
+  path: '/fish/saltwater',
+});
 
 export default function SaltwaterPage() {
   const saltwaterFish = fishData.filter(f => f.category?.toLowerCase() === "saltwater");
-  return <SaltwaterClient saltwaterFish={saltwaterFish} />;
+  const breadcrumbSchema = constructBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Species Atlas', url: '/fish' },
+    { name: 'Saltwater Fish', url: '/fish/saltwater' },
+  ]);
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <SaltwaterClient saltwaterFish={saltwaterFish} />
+    </>
+  );
 }

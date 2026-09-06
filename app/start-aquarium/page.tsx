@@ -1,24 +1,45 @@
 import { starterGuideSteps } from "@/data/guides";
 import StartAquariumClient from "@/components/start-aquarium/StartAquariumClient";
-import type { Metadata } from "next";
-import { siteConfig } from "@/config/site";
+import { constructMetadata, constructBreadcrumbSchema } from '@/lib/seo';
+import { siteConfig } from '@/config/site';
 
-export const metadata: Metadata = {
-  title: `How to Start Your First Aquarium: Step-by-Step Guide | ${siteConfig.name}`,
-  description: `Follow our step-by-step guide to set up your first aquarium. Learn how to choose a tank, condition water, cycle the ecosystem, and maintain healthy water conditions on ${siteConfig.name}.`,
-  keywords: [
-    "roshan aquva world beginner setup",
-    "start aquarium guide step by step",
-    "roshan aquva world beginner guide",
-    "roshan aquva world",
-    "aquaguide",
-    "aquvaGuide"
-  ],
-  alternates: {
-    canonical: `${siteConfig.siteUrl}/start-aquarium`,
-  }
-};
+export const metadata = constructMetadata({
+  title: 'How to Start an Aquarium: Beginner 5-Step Setup Guide',
+  description: 'Step-by-step guide to setting up your first freshwater or saltwater tank: tank sizing, equipment installation, nitrogen cycling, stocking, and maintenance.',
+  path: '/start-aquarium',
+});
 
 export default function StartAquariumPage() {
-  return <StartAquariumClient starterGuideSteps={starterGuideSteps} />;
+  const breadcrumbSchema = constructBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'How to Start an Aquarium', url: '/start-aquarium' },
+  ]);
+
+  const howToSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'How to Set Up Your First Aquarium',
+    description: 'A 5-step beginner progression for setting up a freshwater or marine aquarium safely.',
+    step: starterGuideSteps.map((step, idx) => ({
+      '@type': 'HowToStep',
+      position: idx + 1,
+      name: step.title,
+      text: step.description,
+      url: `${siteConfig.url}/start-aquarium#step-${idx + 1}`,
+    })),
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
+      <StartAquariumClient starterGuideSteps={starterGuideSteps} />
+    </>
+  );
 }

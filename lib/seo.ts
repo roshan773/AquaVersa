@@ -4,6 +4,7 @@ import { siteConfig } from '@/config/site';
 interface MetadataProps {
   title: string;
   description: string;
+  path?: string;
   pathname?: string;
   image?: string;
   noIndex?: boolean;
@@ -18,14 +19,16 @@ interface MetadataProps {
 export function constructMetadata({
   title,
   description,
+  path = '',
   pathname = '',
-  image = '/og-image.png',
+  image = '/hero_aquarium.jpg',
   noIndex = false,
   type = 'website',
 }: MetadataProps): Metadata {
-  const cleanPath = pathname.startsWith('/') ? pathname : `/${pathname}`;
-  const canonicalUrl = `${siteConfig.siteUrl}${cleanPath === '/' ? '' : cleanPath}`;
-  const imageUrl = image.startsWith('http') ? image : `${siteConfig.siteUrl}${image}`;
+  const targetPath = path || pathname || '';
+  const cleanPath = targetPath.startsWith('/') ? targetPath : `/${targetPath}`;
+  const canonicalUrl = `${siteConfig.url}${cleanPath === '/' ? '' : cleanPath}`;
+  const imageUrl = image.startsWith('http') ? image : `${siteConfig.url}${image.startsWith('/') ? image : `/${image}`}`;
 
   return {
     title,
@@ -81,16 +84,25 @@ export function constructMetadata({
 /**
  * Helper to build BreadcrumbList structured data (JSON-LD)
  */
-export function constructBreadcrumbSchema(items: { name: string; path: string }[]) {
+export function constructBreadcrumbSchema(
+  items: { name: string; url?: string; path?: string }[]
+) {
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: items.map((item, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      name: item.name,
-      item: `${siteConfig.siteUrl}${item.path.startsWith('/') ? item.path : `/${item.path}`}`,
-    })),
+    itemListElement: items.map((item, index) => {
+      const rawTarget = item.url || item.path || '/';
+      const itemUrl = rawTarget.startsWith('http')
+        ? rawTarget
+        : `${siteConfig.url}${rawTarget.startsWith('/') ? rawTarget : `/${rawTarget}`}`;
+
+      return {
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.name,
+        item: itemUrl,
+      };
+    }),
   };
 }
 
@@ -100,7 +112,7 @@ export function constructBreadcrumbSchema(items: { name: string; path: string }[
 export function constructToolSchema({
   name,
   description,
-  path,
+  path = '',
   applicationCategory = 'EducationalApplication',
 }: {
   name: string;
@@ -108,12 +120,15 @@ export function constructToolSchema({
   path: string;
   applicationCategory?: string;
 }) {
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  const toolUrl = `${siteConfig.url}${cleanPath}`;
+
   return {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
     name,
     description,
-    url: `${siteConfig.siteUrl}${path.startsWith('/') ? path : `/${path}`}`,
+    url: toolUrl,
     applicationCategory,
     operatingSystem: 'All',
     offers: {
@@ -124,7 +139,7 @@ export function constructToolSchema({
     provider: {
       '@type': 'Organization',
       name: siteConfig.name,
-      url: siteConfig.siteUrl,
+      url: siteConfig.url,
     },
   };
 }

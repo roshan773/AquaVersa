@@ -1,3 +1,4 @@
+import { constructMetadata } from '@/lib/seo';
 import AtlasHero from '@/components/atlas/AtlasHero';
 import AtlasDestinations from '@/components/atlas/AtlasDestinations';
 import AtlasSpeciesIndex from '@/components/atlas/AtlasSpeciesIndex';
@@ -5,6 +6,12 @@ import AtlasKnowledge from '@/components/atlas/AtlasKnowledge';
 import AtlasTools from '@/components/atlas/AtlasTools';
 import AtlasBeginner from '@/components/atlas/AtlasBeginner';
 import AtlasFinalCTA from '@/components/atlas/AtlasFinalCTA';
+
+export const metadata = constructMetadata({
+  title: 'The Comprehensive Aquarium Care & Planning Atlas',
+  description: 'Explore verified species care sheets, live plant profiles, water parameter testing tools, stocking calculators, and beginner aquarium guides.',
+  path: '/',
+});
 
 export default function Home() {
   return (

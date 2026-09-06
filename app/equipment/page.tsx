@@ -1,24 +1,26 @@
-import { Metadata } from "next";
 import { equipmentData } from "@/data/equipment";
 import EquipmentClient from "./EquipmentClient";
-import { siteConfig } from "@/config/site";
+import { constructMetadata, constructBreadcrumbSchema } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: `Aquarium Equipment Spec Guides & Hardware | ${siteConfig.name}`,
-  description: `Detailed hardware specifications and maintenance tutorials for aquarium filtration, heating, lighting, and aeration systems on ${siteConfig.name}.`,
-  keywords: [
-    "roshan aquva world equipment",
-    "aquarium hardware guide",
-    "roshan aquva world",
-    "aquaguide",
-    "aquvaGuide",
-    "aquarium filtration specs"
-  ],
-  alternates: {
-    canonical: `${siteConfig.siteUrl}/equipment`,
-  }
-};
+export const metadata = constructMetadata({
+  title: 'Aquarium Equipment & Hardware Specifications',
+  description: 'Technical guides and maintenance protocols for aquarium filtration, canister filters, LED lighting, heaters, and water test kits.',
+  path: '/equipment',
+});
 
 export default function EquipmentPage() {
-  return <EquipmentClient eqList={equipmentData} />;
+  const breadcrumbSchema = constructBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Equipment Guide', url: '/equipment' },
+  ]);
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <EquipmentClient eqList={equipmentData} />
+    </>
+  );
 }

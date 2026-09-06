@@ -1,23 +1,25 @@
-import { Metadata } from "next";
+import { constructMetadata, constructBreadcrumbSchema } from '@/lib/seo';
 import AboutUsClient from "./AboutUsClient";
-import { siteConfig } from "@/config/site";
 
-export const metadata: Metadata = {
-  title: `About Us | Aquarium Science Mission | ${siteConfig.name}`,
-  description: `Learn about the mission of ${siteConfig.name}. We aim to clarify aquarium biology and water chemistry for keepers worldwide.`,
-  keywords: [
-    "about roshan aquva world",
-    "roshan aquva world mission",
-    "roshan aquva world story",
-    "roshan aquva world",
-    "aquaguide",
-    "aquvaGuide"
-  ],
-  alternates: {
-    canonical: `${siteConfig.siteUrl}/about`,
-  }
-};
+export const metadata = constructMetadata({
+  title: 'About Roshan Aquva World: Our Fishkeeping Mission',
+  description: 'Learn about the mission and editorial methodology of Roshan Aquva World. We provide structured species care guides, water chemistry tools, and stocking models.',
+  path: '/about',
+});
 
 export default function AboutPage() {
-  return <AboutUsClient />;
+  const breadcrumbSchema = constructBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'About Us', url: '/about' },
+  ]);
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <AboutUsClient />
+    </>
+  );
 }
