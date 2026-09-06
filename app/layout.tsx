@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans, Oswald, Bebas_Neue } from "next/font/google";
 import "./globals.css";
@@ -6,6 +7,7 @@ import Navbar from "@/components/navbar/Navbar";
 import { StatsProvider } from "@/components/home/StatsContext";
 import Footer from "@/components/footer/Footer";
 import SitePreloader from "@/components/ui/SitePreloader";
+import TopProgressBar from "@/components/ui/TopProgressBar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -130,6 +132,9 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${plusJakarta.variable} ${oswald.variable} ${bebasNeue.variable} font-sans antialiased min-h-screen flex flex-col bg-[#F7F7FF] text-[#27187E] selection:bg-[#27187E] selection:text-[#F7F7FF]`}>
         <SitePreloader />
+        <Suspense fallback={null}>
+          <TopProgressBar />
+        </Suspense>
         <Navbar />
         <StatsProvider>
           <main className="flex-grow">
